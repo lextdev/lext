@@ -1,0 +1,19 @@
+{
+  "name": "@lextdev/lext",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
+  "scripts": {
+    "native:build": "lerna run build --scope @lextdev/lext",
+    "native:watch": "nodemon --watch packages/native/src/**/* -e ts,tsx --exec 'npm run native:build && npm run native:add'",
+    "native:start": "lerna run --scope @lextdev/expo-app",
+    "native:add": "lerna add @lextdev/lext --scope @lextdev/expo-app"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0",
+    "nodemon": "^3.0.1"
+  }
+}
