@@ -1,10 +1,10 @@
 export type SpacingProps = {
-  xl: number
-  lg: number
-  md: number
-  sm: number
-  xs: number
-}
+  xl: number;
+  lg: number;
+  md: number;
+  sm: number;
+  xs: number;
+};
 
 const Spacing: SpacingProps = {
   xl: 30,
@@ -12,6 +12,6 @@ const Spacing: SpacingProps = {
   md: 15,
   sm: 10,
   xs: 5,
-}
+};
 
-export default Spacing
+export default Spacing;

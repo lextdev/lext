@@ -1,18 +1,18 @@
-import { HeadingSizesProps } from "../../styles/HeadingSizes"
+import { HeadingSizesProps } from "../../styles/HeadingSizes";
 
 const GetHeadingSizeValue = (
   size?: keyof HeadingSizesProps | number,
-  sizes?: HeadingSizesProps
+  sizes?: HeadingSizesProps,
 ) => {
   if (!size || !sizes) {
-    return undefined
+    return undefined;
   }
 
   if (typeof size === "number") {
-    return size
+    return size;
   } else {
-    return sizes[size]
+    return sizes[size];
   }
-}
+};
 
-export default GetHeadingSizeValue
+export default GetHeadingSizeValue;

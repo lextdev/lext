@@ -1,52 +1,23 @@
-import { BoxComponentThemeData, BoxComponentThemeProps } from "../../components/Box/DefaultProps"
-import { GridComponentThemeData, GridComponentThemeProps } from "../../components/Grid/DefaultProps"
-import {
-  GroupComponentThemeData,
-  GroupComponentThemeProps,
-} from "../../components/Group/DefaultProps"
-import {
-  HeadingComponentThemeData,
-  HeadingComponentThemeProps,
-} from "../../components/Heading/DefaultProps"
-import {
-  StackComponentThemeData,
-  StackComponentThemeProps,
-} from "../../components/Stack/DefaultProps"
-import { TextComponentThemeData, TextComponentThemeProps } from "../../components/Text/DefaultProps"
-import Colors, { Black, ColorsProps, White } from "../../styles/Colors"
-import HeadingSizes, { HeadingSizesProps } from "../../styles/HeadingSizes"
-import Spacing, { SpacingProps } from "../../styles/Spacing"
-import TextSizes, { TextSizesProps } from "../../styles/TextSizes"
+import { Theme } from "@emotion/react";
+
+import { ActionButtonComponentThemeData } from "../../components/ActionButton/DefaultProps";
+import { BoxComponentThemeData } from "../../components/Box/DefaultProps";
+import { ButtonComponentThemeData } from "../../components/Button/DefaultProps";
+import { GridComponentThemeData } from "../../components/Grid/DefaultProps";
+import { GroupComponentThemeData } from "../../components/Group/DefaultProps";
+import { HeadingComponentThemeData } from "../../components/Heading/DefaultProps";
+import { StackComponentThemeData } from "../../components/Stack/DefaultProps";
+import { TextComponentThemeData } from "../../components/Text/DefaultProps";
+import Colors, { Black, White } from "../../styles/Colors";
+import HeadingSizes from "../../styles/HeadingSizes";
+import Spacing from "../../styles/Spacing";
+import TextSizes from "../../styles/TextSizes";
 
 export type ThemeProps = {
-  theme?: ThemeDefineProps
-}
+  theme?: Theme;
+};
 
-export type ThemeDefineProps = {
-  primaryColor: keyof ColorsProps
-  colors: ColorsProps
-  white: string
-  black: string
-  spacing: SpacingProps
-  fontsSizes: {
-    heading: HeadingSizesProps
-    text: TextSizesProps
-  }
-  components: {
-    Text: TextComponentThemeProps
-    Heading: HeadingComponentThemeProps
-    Stack: StackComponentThemeProps
-    Group: GroupComponentThemeProps
-    Grid: GridComponentThemeProps
-    Box: BoxComponentThemeProps
-  }
-  defaultOptions: {
-    gap: number
-    padding: 10
-  }
-}
-
-const Theme: ThemeDefineProps = {
+const ThemeData: Theme = {
   primaryColor: "blue",
   colors: Colors,
   white: White,
@@ -63,11 +34,17 @@ const Theme: ThemeDefineProps = {
     Group: GroupComponentThemeData,
     Grid: GridComponentThemeData,
     Box: BoxComponentThemeData,
+    Button: ButtonComponentThemeData,
+    ActionButton: ActionButtonComponentThemeData,
   },
   defaultOptions: {
     gap: 5,
-    padding: 10,
+    padding: 25,
+    paddingHorizontal: 25,
+    paddingVertical: 15,
+    borderRadius: 7,
+    minHeight: 47,
   },
-}
+};
 
-export default Theme
+export default ThemeData;

@@ -1,15 +1,18 @@
-import { TextSizesProps } from "../../styles/TextSizes"
+import { TextSizesProps } from "../../styles/TextSizes";
 
-const GetTextSizeValue = (size?: keyof TextSizesProps | number, sizes?: TextSizesProps) => {
+const GetTextSizeValue = (
+  size?: keyof TextSizesProps | number,
+  sizes?: TextSizesProps,
+) => {
   if (!size || !sizes) {
-    return undefined
+    return undefined;
   }
 
   if (typeof size === "number") {
-    return size
+    return size;
   } else {
-    return sizes[size]
+    return sizes[size];
   }
-}
+};
 
-export default GetTextSizeValue
+export default GetTextSizeValue;

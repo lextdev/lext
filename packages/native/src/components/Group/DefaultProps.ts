@@ -1,17 +1,19 @@
-import { FlexStyle } from "react-native"
+import { FlexStyle } from "react-native";
 
 export type GroupProps = {
-  alignItems?: FlexStyle["alignItems"]
-  justifyContent?: FlexStyle["justifyContent"]
-  gap?: FlexStyle["gap"]
-  flex?: FlexStyle["flex"]
-}
+  alignItems?: FlexStyle["alignItems"];
+  justifyContent?: FlexStyle["justifyContent"];
+  gap?: FlexStyle["gap"];
+  flex?: FlexStyle["flex"];
+};
 
 export type GroupComponentThemeProps = {
-  default: GroupProps
-  classes?: {}
-}
+  default: GroupProps;
+  classes?: object;
+};
 
 export const GroupComponentThemeData: GroupComponentThemeProps = {
-  default: {},
-}
+  default: {
+    alignItems: "center",
+  },
+};

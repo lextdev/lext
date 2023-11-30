@@ -1,17 +1,17 @@
-import { FlexStyle } from "react-native"
+import { FlexStyle } from "react-native";
 
 export type ExampleProps = {
-  alignItems?: FlexStyle["alignItems"]
-  justifyContent?: FlexStyle["justifyContent"]
-  gap?: FlexStyle["gap"]
-  flex?: FlexStyle["flex"]
-}
+  alignItems?: FlexStyle["alignItems"];
+  justifyContent?: FlexStyle["justifyContent"];
+  gap?: FlexStyle["gap"];
+  flex?: FlexStyle["flex"];
+};
 
 export type ExampleComponentThemeProps = {
-  default: ExampleProps
-  classes?: {}
-}
+  default: ExampleProps;
+  classes?: object;
+};
 
 export const ExampleComponentThemeData: ExampleComponentThemeProps = {
   default: {},
-}
+};

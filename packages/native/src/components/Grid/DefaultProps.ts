@@ -1,17 +1,17 @@
-import { FlexStyle } from "react-native"
+import { FlexStyle } from "react-native";
 
 export type GridProps = {
-  alignItems?: FlexStyle["alignItems"]
-  justifyContent?: FlexStyle["justifyContent"]
-  gap?: FlexStyle["gap"]
-  flex?: FlexStyle["flex"]
-}
+  alignItems?: FlexStyle["alignItems"];
+  justifyContent?: FlexStyle["justifyContent"];
+  gap?: FlexStyle["gap"];
+  flex?: FlexStyle["flex"];
+};
 
 export type GridComponentThemeProps = {
-  default: GridProps
-  classes?: {}
-}
+  default: GridProps;
+  classes?: object;
+};
 
 export const GridComponentThemeData: GridComponentThemeProps = {
   default: {},
-}
+};

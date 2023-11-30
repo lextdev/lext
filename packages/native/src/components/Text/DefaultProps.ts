@@ -1,23 +1,21 @@
-import { TextStyle } from "react-native"
-import { TextSizesProps } from "../../styles/TextSizes"
-import { ColorTypeProps } from "../../helpers/GetColorValue"
+import { ColorTypeProps } from "../../helpers/GetColorValue";
+import { TextSizesProps } from "../../styles/TextSizes";
 
 export type TextProps = {
-  color?: ColorTypeProps
-  fontWeight?: TextStyle["fontWeight"]
-  fontSize?: keyof TextSizesProps | number
-  fontFamily?: string
-}
+  color?: ColorTypeProps;
+  fontSize?: keyof TextSizesProps | number;
+  fontFamily?: string;
+};
 
 export type TextComponentThemeProps = {
-  default: TextProps
-  classes?: {}
-}
+  default: TextProps;
+  classes?: object;
+};
 
 export const TextComponentThemeData: TextComponentThemeProps = {
   default: {
     color: "black",
     fontSize: "body",
-    fontWeight: "normal",
+    fontFamily: "UrbanistMedium",
   },
-}
+};

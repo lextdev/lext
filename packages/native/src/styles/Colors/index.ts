@@ -1,19 +1,7 @@
-export type ColorsProps = {
-  gray: string[]
-  white: string[]
-  black: string[]
-  primary: string[]
-  red: string[]
-  green: string[]
-  blue: string[]
-  yellow: string[]
-  orange: string[]
-  purple: string[]
-  pink: string[]
-}
+import { ColorsProps } from "@emotion/react";
 
-export const Black = "#000"
-export const White = "#FFF"
+export const Black = "#000";
+export const White = "#FFF";
 
 const Colors: ColorsProps = {
   gray: [
@@ -65,7 +53,7 @@ const Colors: ColorsProps = {
     "#c6dbff",
     "#e2edff",
   ],
-  green: [
+  lightGreen: [
     "#00ff00",
     "#4cff45",
     "#6cff64",
@@ -76,6 +64,30 @@ const Colors: ColorsProps = {
     "#d0ffcb",
     "#e0ffdd",
     "#f0ffee",
+  ],
+  green: [
+    "#077c34",
+    "#328948",
+    "#4d965c",
+    "#64a370",
+    "#7bb083",
+    "#91bd97",
+    "#a7caac",
+    "#bdd7c0",
+    "#d3e4d5",
+    "#e9f2ea",
+  ],
+  darkGreen: [
+    "#112e1c",
+    "#26402f",
+    "#3c5343",
+    "#526758",
+    "#697b6e",
+    "#809084",
+    "#98a59c",
+    "#b1bbb4",
+    "#cbd1cc",
+    "#e4e8e5",
   ],
   orange: [
     "#ffa500",
@@ -137,6 +149,6 @@ const Colors: ColorsProps = {
     "#feffe0",
     "#fffff0",
   ],
-}
+};
 
-export default Colors
+export default Colors;

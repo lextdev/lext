@@ -1,15 +1,16 @@
-import { FlexStyle, PressableProps } from "react-native"
-import { ColorTypeProps } from "../../helpers/GetColorValue"
+import { FlexStyle } from "react-native";
+
+import { ColorTypeProps } from "../../helpers/GetColorValue";
 
 export type BoxProps = {
-  backgroundColor?: ColorTypeProps
-} & FlexStyle
+  backgroundColor?: ColorTypeProps;
+} & FlexStyle;
 
 export type BoxComponentThemeProps = {
-  default: BoxProps
-  classes?: {}
-}
+  default: BoxProps;
+  classes?: object;
+};
 
 export const BoxComponentThemeData: BoxComponentThemeProps = {
   default: {},
-}
+};
