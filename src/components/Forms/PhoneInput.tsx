@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Controller } from "react-hook-form";
 import { TextInputProps } from "react-native";
 import MaskInput from "react-native-mask-input";

@@ -1,7 +1,7 @@
 import styled from "@emotion/native";
 
 import { ExampleProps } from "./DefaultProps";
-import { ThemeProps } from "../../utils";
+import { ThemeProps } from "../../utils/Theme";
 
 const Example = styled.View<ExampleProps & ThemeProps>((props) => {
   const { theme, style, children, ...componentProps } = props;

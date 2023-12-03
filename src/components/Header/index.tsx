@@ -1,5 +1,5 @@
 import { useTheme } from "@emotion/react";
-import { FC } from "react";
+import React, { FC } from "react";
 
 import GetColorValue, { ColorTypeProps } from "../../helpers/GetColorValue";
 import ActionButton from "../ActionButton";

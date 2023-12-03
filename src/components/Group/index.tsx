@@ -1,7 +1,7 @@
 import styled from "@emotion/native";
 
 import { GroupProps } from "./DefaultProps";
-import { ThemeProps } from "../../utils";
+import { ThemeProps } from "../../utils/Theme";
 
 const Group = styled.View<GroupProps & ThemeProps>((props) => {
   const { theme, style, children, ...componentProps } = props;

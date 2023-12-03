@@ -1,7 +1,7 @@
 import styled from "@emotion/native";
 
 import { StackProps } from "./DefaultProps";
-import { ThemeProps } from "../../utils";
+import { ThemeProps } from "../../utils/Theme";
 
 const Stack = styled.View<StackProps & ThemeProps>((props) => {
   const { theme, style, children, ...componentProps } = props;

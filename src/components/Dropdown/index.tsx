@@ -1,5 +1,5 @@
 import { useTheme } from "@emotion/react";
-import { Dispatch, FC, ReactNode, SetStateAction } from "react";
+import React, { Dispatch, FC, ReactNode, SetStateAction } from "react";
 import {
   DimensionValue,
   Modal,

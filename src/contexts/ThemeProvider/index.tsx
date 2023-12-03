@@ -1,7 +1,9 @@
-import { ThemeProvider as RThemeProvider, Theme } from "@emotion/react";
+import {
+  ThemeProvider as RThemeProvider,
+  ColorsProps,
+  Theme,
+} from "@emotion/react";
 import React, { FC, ReactNode } from "react";
-
-import { ColorsProps } from "../../styles/Colors";
 
 type ThemeProviderProps = {
   children: ReactNode;
@@ -14,7 +16,7 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, theme }) => {
   const colors: ColorsProps = { ...theme.colors, primary: getPrimaryColor };
 
   const overrideTheme = { ...theme, colors };
-  return <RThemeProvider theme={overrideTheme}>{children}</RThemeProvider>;
+  return <RThemeProvider children={children} theme={overrideTheme} />;
 };
 
 export default ThemeProvider;

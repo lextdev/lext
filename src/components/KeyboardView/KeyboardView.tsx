@@ -1,4 +1,4 @@
-import { FC, ReactNode, useCallback, useEffect } from "react";
+import React, { FC, ReactNode, useCallback, useEffect } from "react";
 import { ViewProps } from "react-native";
 import Animated, {
   AnimateProps,
@@ -15,7 +15,7 @@ type KeyboardViewProps = AnimateProps<ViewProps> & {
 };
 
 export const KeyboardView: FC<KeyboardViewProps> = (props) => {
-  const { showIf = false, children, style, ...animatedViewProps } = props;
+  const { children, style, ...animatedViewProps } = props;
   const { isKeyboardOpen } = useKeyboard();
   const translateY = useSharedValue(0);
 

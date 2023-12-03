@@ -1,4 +1,4 @@
-import commonjs from "@rollup/plugin-commonjs";
+// import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
@@ -12,11 +12,11 @@ export default [
   {
     input: "src/index.ts",
     output: [
-      {
-        file: packageJson.main,
-        format: "cjs",
-        sourcemap: true,
-      },
+      // {
+      //   file: packageJson.main,
+      //   format: "cjs",
+      //   sourcemap: true,
+      // },
       {
         file: packageJson.module,
         format: "esm",
@@ -26,12 +26,12 @@ export default [
     plugins: [
       peerDepsExternal(),
       resolve({ preferBuiltins: true }),
-      commonjs(),
+      // commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
       postcss(),
       json(),
     ],
-    external: ["react", "react-native"],
+    external: ["react", "lodash", "react-native"],
   },
   {
     input: "src/index.ts",

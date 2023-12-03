@@ -1,17 +1,10 @@
-import { css } from "@emotion/native";
 import { useTheme } from "@emotion/react";
-import { FC } from "react";
+import React, { FC } from "react";
 import { View } from "react-native";
 
 import GetColorValue, { ColorTypeProps } from "../../helpers/GetColorValue";
 import Group from "../Group";
 import Text from "../Text";
-
-const DividerCSS = css({
-  height: 1,
-  width: "100%",
-  backgroundColor: "black",
-});
 
 type DividerProps = {
   label: string;
