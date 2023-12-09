@@ -1,9 +1,21 @@
 import { ColorsProps } from "../types";
 
-export type ColorTypeProps =
-  | keyof ColorsProps
-  | `${keyof ColorsProps}.${number}`;
+export type ColorTypeProps = keyof ColorsProps;
 
+/**
+ * @deprecated
+ *
+// export type ColorTypeProps =
+//   | keyof ColorsProps
+//   | `${keyof ColorsProps}.${number}`;
+*/
+
+/**
+ * @deprecated
+ * @param color
+ * @param colors
+ * @returns
+ */
 const GetColorValue = (
   color?: ColorTypeProps,
   colors?: ColorsProps
@@ -27,6 +39,8 @@ const GetColorValue = (
     if (colors[currentColor] && colors[currentColor][0]) {
       return colors[currentColor][0];
     }
+
+    return currentColor;
   }
 
   return undefined;

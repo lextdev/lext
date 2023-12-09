@@ -11,8 +11,8 @@ const Text = styled.Text<TextProps & ThemeProps>((props) => {
 
   return {
     ...merged,
-    color: GetColorValue(merged.color, theme.colors),
-    fontSize: GetTextSizeValue(props.fontSize, theme.fontsSizes.text),
+    color: merged.color && theme.colors[merged.color],
+    fontSize: GetTextSizeValue(props.fontSize, theme.fontSizes.text),
   };
 });
 
