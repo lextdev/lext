@@ -25,6 +25,7 @@ composer.lock
 /packages/*/node_modules
 /packages/legacy-structure/commands/*/node_modules
 *.log
+/lib
 tmp
 .changelog
 coverage/
@@ -35,4 +36,4 @@ coverage/
 dist
 *.tgz
 .next
-dist
+.ikas

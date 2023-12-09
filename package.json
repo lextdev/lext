@@ -1,19 +1,19 @@
 {
-  "name": "@ynssenem/lext",
+  "name": "@ynssenem/lextdev",
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "lib/*",
-    "example/*"
+    "app/*",
+    "package/*"
   ],
   "scripts": {
-    "build": "lerna run build --scope @ynssenem/lext",
-    "add": "lerna add @ynssenem/lext --scope @ynssenem/example",
-    "start": "lerna run --scope @ynssenem/example",
-    "watch": "nodemon --watch lib/**/* -e ts,tsx --exec 'npm run build && npm run add'"
+    "build": "lerna run rollup --scope @ynssenem/lext",
+    "add": "lerna add @ynssenem/lext --scope @ynssenem/cool-app",
+    "ios": "lerna run ios --scope @ynssenem/cool-app --stream --",
+    "watch": "nodemon --watch 'package/core/src/**/*' --ext 'ts,tsx' --exec 'npm run build && npm run add'"
   },
   "devDependencies": {
-    "lerna": "^8.0.0",
+    "lerna": "^4.0.0",
     "nodemon": "^3.0.1"
   }
 }
