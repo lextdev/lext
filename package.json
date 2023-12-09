@@ -4,13 +4,13 @@
   "private": true,
   "workspaces": [
     "lib/*",
-    "expo/*"
+    "example/*"
   ],
   "scripts": {
-    "native:build": "lerna run build --scope @lextdev/lext",
-    "native:watch": "nodemon --watch packages/native/src/**/* -e ts,tsx --exec 'npm run native:build && npm run native:add'",
-    "native:start": "lerna run --scope @lextdev/expo-app",
-    "native:add": "lerna add @lextdev/lext --scope @lextdev/expo-app"
+    "build": "lerna run build --scope @ynssenem/lext",
+    "add": "lerna add @ynssenem/lext --scope @ynssenem/example",
+    "start": "lerna run --scope @ynssenem/example",
+    "watch": "nodemon --watch lib/**/* -e ts,tsx --exec 'npm run build && npm run add'"
   },
   "devDependencies": {
     "lerna": "^8.0.0",
