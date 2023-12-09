@@ -33,7 +33,6 @@ coverage/
 .eslintcache
 .env
 
-dist
 *.tgz
 .next
-.ikas
+./app/**/dist
