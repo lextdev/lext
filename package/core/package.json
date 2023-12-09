@@ -5,7 +5,11 @@
   "module": "dist/esm/index.js",
   "types": "dist/types.d.ts",
   "repository": "https://github.com/ynssenem/lext",
-  "keywords": [],
+  "keywords": [
+    "react-native",
+    "uikit",
+    "typescript"
+  ],
   "scripts": {
     "rollup": "rollup -c --bundleConfigAsCjs"
   },
