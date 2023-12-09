@@ -16,11 +16,15 @@ export default [
         file: packageJson.main,
         format: "cjs",
         sourcemap: true,
+        exports: "named",
+        interop: "compat",
       },
       {
         file: packageJson.module,
         format: "esm",
         sourcemap: true,
+        exports: "named",
+        interop: "compat",
       },
     ],
     plugins: [
@@ -31,11 +35,12 @@ export default [
       postcss(),
       json(),
     ],
-    peerDepsExternal: ["@emotion/react", "@emotion/native"],
+    external: ["@emotion/react", "@emotion/native"],
   },
   {
     input: "src/index.ts",
     output: [{ file: "dist/types.d.ts", format: "es" }],
     plugins: [dts.default()],
+    interop: "compat",
   },
 ];

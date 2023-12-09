@@ -3,6 +3,7 @@ import ColorsProps from "../types/ColorsProps";
 import HeadingSizesProps from "../types/HeadingSizesProps";
 import SpacingProps from "../types/SpacingProps";
 import TextSizesProps from "../types/TextSizesProps";
+import { TextComponentThemeProps } from "../components/typography/Text/DefaultProps";
 
 interface ThemeInterface {
   colors: ColorsProps;
@@ -14,7 +15,7 @@ interface ThemeInterface {
     text: TextSizesProps;
   };
   components: {
-    // Text: TextComponentThemeProps;
+    Text: TextComponentThemeProps;
     // Heading: HeadingComponentThemeProps;
     // Stack: StackComponentThemeProps;
     // Group: GroupComponentThemeProps;

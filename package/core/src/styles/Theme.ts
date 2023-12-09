@@ -1,3 +1,4 @@
+import { TextComponentThemeData } from "../components/typography/Text/DefaultProps";
 import { ThemeInterface } from "../interfaces";
 import Colors, { Black, White } from "./Colors";
 import HeadingSizes from "./HeadingSizes";
@@ -18,7 +19,7 @@ const Theme: ThemeInterface = {
     text: TextSizes,
   },
   components: {
-    // Text: TextComponentThemeData,
+    Text: TextComponentThemeData,
     // Heading: HeadingComponentThemeData,
     // Stack: StackComponentThemeData,
     // Group: GroupComponentThemeData,
