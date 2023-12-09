@@ -1,10 +1,10 @@
 {
-  "name": "@lextdev/lext",
+  "name": "@ynssenem/lext",
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "packages/*",
-    "examples/*"
+    "lib/*",
+    "expo/*"
   ],
   "scripts": {
     "native:build": "lerna run build --scope @lextdev/lext",
@@ -13,11 +13,7 @@
     "native:add": "lerna add @lextdev/lext --scope @lextdev/expo-app"
   },
   "devDependencies": {
-    "lerna": "^4.0.0",
+    "lerna": "^8.0.0",
     "nodemon": "^3.0.1"
-  },
-  "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.21.0",
-    "react-hook-form": "^7.48.2"
   }
 }

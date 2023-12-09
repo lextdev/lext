@@ -36,4 +36,4 @@ coverage/
 dist
 *.tgz
 .next
-.ikas
+dist
