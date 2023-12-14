@@ -1,11 +1,9 @@
 import React, { FC } from "react";
 import { View } from "react-native";
-import { GetColorValue } from "../../../helpers";
 import { ColorTypeProps } from "../../../helpers/GetColorValue";
 import Text from "../../typography/Text/Text";
 import Group from "../Group/Group";
-import { useTheme } from "@emotion/react";
-import { ThemeInterface } from "../../../interfaces";
+import { useColor } from "../../../hooks";
 
 type DividerProps = {
   label: string;
@@ -13,7 +11,7 @@ type DividerProps = {
 };
 
 const Divider: FC<DividerProps> = ({ label, color = "muted" }) => {
-  const theme = useTheme();
+  const getColor = useColor();
 
   return (
     <Group gap={10}>
@@ -21,7 +19,7 @@ const Divider: FC<DividerProps> = ({ label, color = "muted" }) => {
         style={{
           flex: 1,
           height: 1,
-          backgroundColor: color && theme.colors[color],
+          backgroundColor: color && getColor(color),
         }}
       />
       <View>
@@ -33,7 +31,7 @@ const Divider: FC<DividerProps> = ({ label, color = "muted" }) => {
         style={{
           flex: 5,
           height: 1,
-          backgroundColor: color && theme.colors[color],
+          backgroundColor: color && getColor(color),
         }}
       />
     </Group>

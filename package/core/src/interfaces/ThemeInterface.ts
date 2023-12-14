@@ -11,11 +11,14 @@ import { GridComponentThemeProps } from "../components/mics/Grid/DefaultProps";
 import { BoxComponentThemeProps } from "../components/mics/Box/DefaultProps";
 import { ButtonComponentThemeProps } from "../components/button/Button/DefaultProps";
 import { ActionButtonComponentThemeProps } from "../components/button/ActionButton/DefaultProps";
+import { ColorSchemeProps } from "../types";
 
 interface ThemeInterface {
-  colors: ColorsProps;
-  white: string;
-  black: string;
+  colorScheme: ColorSchemeProps;
+  colors: {
+    darken: ColorsProps;
+    lighten: ColorsProps;
+  };
   spacing: SpacingProps;
   fontSizes: {
     heading: HeadingSizesProps;

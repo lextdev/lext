@@ -1,7 +1,7 @@
 import * as _emotion_react from '@emotion/react';
 import { Theme as Theme$1 } from '@emotion/react';
-import * as react from 'react';
-import react__default, { FC, ReactNode } from 'react';
+import * as React from 'react';
+import React__default, { FC, ReactNode } from 'react';
 import * as _emotion_native from '@emotion/native';
 import * as react_native from 'react-native';
 import { FlexStyle, DimensionValue, TouchableOpacityProps, ViewProps } from 'react-native';
@@ -46,6 +46,8 @@ type TextSizesProps = {
     body: number;
     caption: number;
 };
+
+type ColorSchemeProps = "darken" | "lighten";
 
 type ColorTypeProps = keyof ColorsProps;
 
@@ -141,9 +143,11 @@ type ActionButtonComponentThemeProps = {
 };
 
 interface ThemeInterface {
-    colors: ColorsProps;
-    white: string;
-    black: string;
+    colorScheme: ColorSchemeProps;
+    colors: {
+        darken: ColorsProps;
+        lighten: ColorsProps;
+    };
     spacing: SpacingProps;
     fontSizes: {
         heading: HeadingSizesProps;
@@ -187,6 +191,11 @@ type SessionProviderProps = {
 };
 declare const SessionProvider: FC<SessionProviderProps>;
 
+declare const ColorSchemeProvider: FC<{
+    children: ReactNode;
+    themeColorScheme?: ColorSchemeProps;
+}>;
+
 declare function useCountdown(seconds: number): {
     isCompleteRemainingTime: boolean;
     formatTime: string;
@@ -204,6 +213,14 @@ declare const useSession: () => {
     signOut: () => Promise<void>;
 };
 
+declare const useTheme: () => {
+    colorScheme: ColorSchemeProps;
+    setColorScheme: React.Dispatch<React.SetStateAction<ColorSchemeProps>>;
+    theme: _emotion_react.Theme;
+};
+
+declare const useColor: () => (color: keyof ColorsProps) => string;
+
 type ThemeProps = {
     theme?: ThemeInterface;
 };
@@ -211,16 +228,16 @@ declare const Theme: ThemeInterface;
 
 declare const Text: _emotion_native.StyledComponent<react_native.TextProps & {
     theme?: _emotion_react.Theme | undefined;
-    as?: react.ElementType<any> | undefined;
+    as?: React.ElementType<any> | undefined;
 } & TextProps & ThemeProps, {}, {
-    ref?: react.Ref<react_native.Text> | undefined;
+    ref?: React.Ref<react_native.Text> | undefined;
 }>;
 
 declare const Heading: _emotion_native.StyledComponent<react_native.TextProps & {
     theme?: _emotion_react.Theme | undefined;
-    as?: react.ElementType<any> | undefined;
+    as?: React.ElementType<any> | undefined;
 } & HeadingProps & ThemeProps, {}, {
-    ref?: react.Ref<react_native.Text> | undefined;
+    ref?: React.Ref<react_native.Text> | undefined;
 }>;
 
 declare const ActionButton: FC<ActionButtonProps & {
@@ -240,11 +257,11 @@ declare const Button: FC<ButtonProps$1 & {
 
 declare const Box: _emotion_native.StyledComponent<react_native.ViewProps & {
     theme?: _emotion_react.Theme | undefined;
-    as?: react.ElementType<any> | undefined;
+    as?: React.ElementType<any> | undefined;
 } & {
     backgroundColor?: keyof ColorsProps | undefined;
 } & react_native.FlexStyle & ThemeProps, {}, {
-    ref?: react.Ref<react_native.View> | undefined;
+    ref?: React.Ref<react_native.View> | undefined;
 }>;
 
 type DividerProps = {
@@ -256,28 +273,28 @@ declare const Divider: FC<DividerProps>;
 declare const _default: {
     Container: _emotion_native.StyledComponent<react_native.ViewProps & {
         theme?: _emotion_react.Theme | undefined;
-        as?: react__default.ElementType<any> | undefined;
+        as?: React__default.ElementType<any> | undefined;
     } & GridProps & ThemeProps, {}, {
-        ref?: react__default.Ref<react_native.View> | undefined;
+        ref?: React__default.Ref<react_native.View> | undefined;
     }>;
-    Item: react__default.FC<{
-        children: react__default.ReactNode;
+    Item: React__default.FC<{
+        children: React__default.ReactNode;
         span: 2 | 1 | 10 | 5 | 12 | 3 | 4 | 6 | 7 | 8 | 9 | 11;
     }>;
 };
 
 declare const Group: _emotion_native.StyledComponent<react_native.ViewProps & {
     theme?: _emotion_react.Theme | undefined;
-    as?: react.ElementType<any> | undefined;
+    as?: React.ElementType<any> | undefined;
 } & GroupProps & ThemeProps, {}, {
-    ref?: react.Ref<react_native.View> | undefined;
+    ref?: React.Ref<react_native.View> | undefined;
 }>;
 
 declare const Stack: _emotion_native.StyledComponent<react_native.ViewProps & {
     theme?: _emotion_react.Theme | undefined;
-    as?: react.ElementType<any> | undefined;
+    as?: React.ElementType<any> | undefined;
 } & StackProps & ThemeProps, {}, {
-    ref?: react.Ref<react_native.View> | undefined;
+    ref?: React.Ref<react_native.View> | undefined;
 }>;
 
 type SafeAreaViewProps = {
@@ -292,4 +309,4 @@ type DeepPartial<T> = {
 type DeepPartialTheme = DeepPartial<ThemeInterface>;
 declare const createTheme: (newTheme?: DeepPartialTheme) => ThemeInterface;
 
-export { ActionButton, Anchor, Box, Button, ButtonProps as ButtonInterface, ColorsProps, Divider, _default as Grid, Group, Heading, HeadingSizesProps, SafeAreaView, SessionProps, SessionProvider, SpacingProps, Stack, Text, TextSizesProps, Theme, ThemeInterface, ThemeProvider, createTheme, useCountdown, useKeyboard, useSession };
+export { ActionButton, Anchor, Box, Button, ButtonProps as ButtonInterface, ColorSchemeProps, ColorSchemeProvider, ColorsProps, Divider, _default as Grid, Group, Heading, HeadingSizesProps, SafeAreaView, SessionProps, SessionProvider, SpacingProps, Stack, Text, TextSizesProps, Theme, ThemeInterface, ThemeProvider, createTheme, useColor, useCountdown, useKeyboard, useSession, useTheme };

@@ -1,22 +1,26 @@
 import React from "react"
-import { View } from "react-native"
-import { SafeAreaView, Text, ThemeProvider, createTheme } from "@ynssenem/lext"
+import { ThemeProvider, createTheme } from "@ynssenem/lext"
+import IndexScreen from "./src"
 
 export default function App() {
   const theme = createTheme({
+    colorScheme: "darken",
     colors: {
-      background: "#FFF78A",
-      global: "#000",
+      darken: {
+        background: "#2B2A4C",
+        global: "#FFF",
+        primary: "#83A2FF",
+      },
+      lighten: {
+        background: "#B4BDFF",
+        global: "#000",
+      },
     },
   })
 
   return (
     <ThemeProvider theme={theme}>
-      <SafeAreaView>
-        <View>
-          <Text>Hello World</Text>
-        </View>
-      </SafeAreaView>
+      <IndexScreen />
     </ThemeProvider>
   )
 }
