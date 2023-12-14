@@ -19,28 +19,61 @@ yarn add @ynssenem/lext
 After including Lext in your project, you can easily use the components. Here's a simple example:
 
 ```ts
+// ./index.ts
 import React from "react";
-import { View } from "react-native";
-import { SafeAreaView, Text, ThemeProvider, createTheme } from "@ynssenem/lext";
+import { ThemeProvider, createTheme } from "@ynssenem/lext";
+import IndexScreen from "./src/indexScreen";
 
 export default function App() {
   const theme = createTheme({
+    colorScheme: "lighten",
     colors: {
-      background: "#FFF78A",
-      global: "#000",
+      darken: {
+        background: "#2B2A4C",
+        global: "#FFF",
+        primary: "#83A2FF",
+      },
+      lighten: {
+        background: "#B4BDFF",
+        global: "#000",
+      },
     },
   });
 
   return (
     <ThemeProvider theme={theme}>
-      <SafeAreaView>
-        <View>
-          <Text>Hello World</Text>
-        </View>
-      </SafeAreaView>
+      <IndexScreen />
     </ThemeProvider>
   );
 }
+```
+
+```ts
+// ./src/indexScreen.ts
+import React from "react";
+import { Box, Button, SafeAreaView, useTheme } from "@ynssenem/lext";
+
+const IndexScreen = () => {
+  const { colorScheme, setColorScheme } = useTheme();
+
+  return (
+    <SafeAreaView>
+      <Box flex={1} justifyContent="center" gap={15} alignItems="center">
+        <Button
+          onPress={() =>
+            setColorScheme((prev) => (prev == "lighten" ? "darken" : "lighten"))
+          }
+          backgroundColor="primary"
+          variant="filled"
+        >
+          changeColorScheme: {colorScheme}
+        </Button>
+      </Box>
+    </SafeAreaView>
+  );
+};
+
+export default IndexScreen;
 ```
 
 For more examples and usage details, you can check our [Documentation](docs/) page.

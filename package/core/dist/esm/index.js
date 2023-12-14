@@ -1,11 +1,31 @@
-import { ThemeProvider as ThemeProvider$1, useTheme } from '@emotion/react';
+import { ThemeProvider as ThemeProvider$1, useTheme as useTheme$1 } from '@emotion/react';
 import React, { createContext, useState, useEffect, useContext } from 'react';
-import { Keyboard, TouchableOpacity, View, SafeAreaView as SafeAreaView$1 } from 'react-native';
+import { StatusBar, Keyboard, TouchableOpacity, View, SafeAreaView as SafeAreaView$1 } from 'react-native';
 import styled from '@emotion/native';
+
+var ColorSchemeContext = createContext("lighten");
+var ColorSchemeContextDispatch = createContext(function () { });
+var ColorSchemeProvider = function (_a) {
+    var children = _a.children, themeColorScheme = _a.themeColorScheme;
+    var _b = useState("lighten"), colorScheme = _b[0], setColorScheme = _b[1];
+    useEffect(function () {
+        if (themeColorScheme) {
+            console.log("State ColorSchemeProvider", themeColorScheme);
+            setColorScheme(themeColorScheme);
+        }
+    }, []);
+    var barStyle = colorScheme === "lighten" ? "dark-content" : "light-content";
+    return (React.createElement(ColorSchemeContext.Provider, { value: colorScheme },
+        React.createElement(ColorSchemeContextDispatch.Provider, { value: setColorScheme },
+            React.createElement(StatusBar, { barStyle: barStyle }),
+            children)));
+};
 
 var ThemeProvider = function (_a) {
     var children = _a.children, theme = _a.theme;
-    return React.createElement(ThemeProvider$1, { children: children, theme: theme });
+    console.log("State ThemeProvider", theme.colorScheme);
+    return (React.createElement(ThemeProvider$1, { theme: theme },
+        React.createElement(ColorSchemeProvider, { themeColorScheme: theme.colorScheme }, children)));
 };
 
 /*! *****************************************************************************
@@ -572,6 +592,24 @@ var useSession = function () {
     return { session: session, signIn: signIn, signOut: signOut };
 };
 
+var useTheme = function () {
+    var colorScheme = useContext(ColorSchemeContext);
+    var setColorScheme = useContext(ColorSchemeContextDispatch);
+    var theme = useTheme$1();
+    return {
+        colorScheme: colorScheme,
+        setColorScheme: setColorScheme,
+        theme: theme,
+    };
+};
+
+var useColor = function () {
+    var _a = useTheme(), colorScheme = _a.colorScheme, theme = _a.theme;
+    var colors = theme.colors;
+    var getColor = function (color) { return colors[colorScheme][color]; };
+    return getColor;
+};
+
 var GetTextSizeValue = function (size, sizes) {
     if (!size || !sizes) {
         return undefined;
@@ -598,10 +636,11 @@ var GetHeadingSizeValue = function (size, sizes) {
 
 var Text = styled.Text(function (props) {
     var _a;
+    var getColor = useColor();
     var theme = props.theme; props.style; props.children; var componentProps = __rest(props, ["theme", "style", "children"]);
     var defaultProps = (_a = props.theme) === null || _a === void 0 ? void 0 : _a.components.Text.default;
     var merged = __assign(__assign({}, defaultProps), componentProps);
-    return __assign(__assign({}, merged), { color: merged.color && theme.colors[merged.color], fontSize: GetTextSizeValue(props.fontSize, theme.fontSizes.text) });
+    return __assign(__assign({}, merged), { color: merged.color && getColor(merged.color), fontSize: GetTextSizeValue(props.fontSize, theme.fontSizes.text) });
 });
 
 var Heading = styled.Text(function (props) {
@@ -609,7 +648,8 @@ var Heading = styled.Text(function (props) {
     var theme = props.theme; props.style; props.children; var componentProps = __rest(props, ["theme", "style", "children"]);
     var defaultProps = (_a = props.theme) === null || _a === void 0 ? void 0 : _a.components.Heading.default;
     var merged = __assign(__assign({}, defaultProps), componentProps);
-    return __assign(__assign({}, merged), { color: merged.color && theme.colors[merged.color], fontSize: GetHeadingSizeValue(props.fontSize, theme.fontSizes.heading) });
+    var getColor = useColor();
+    return __assign(__assign({}, merged), { color: merged.color && getColor(merged.color), fontSize: GetHeadingSizeValue(props.fontSize, theme.fontSizes.heading) });
 });
 
 var StyledActionButton = styled.TouchableOpacity(function (props) {
@@ -617,12 +657,13 @@ var StyledActionButton = styled.TouchableOpacity(function (props) {
     var theme = props.theme; props.children; var variant = props.variant, size = props.size, componentProps = __rest(props, ["theme", "children", "variant", "size"]);
     var defaultProps = (_a = props.theme) === null || _a === void 0 ? void 0 : _a.components.ActionButton.default;
     var merged = __assign(__assign({}, defaultProps), componentProps);
+    var getColor = useColor();
     var variantStyle = {};
     if (variant === "outline") {
         variantStyle = {
             backgroundColor: "transparent",
             borderWidth: 2,
-            borderColor: merged.backgroundColor && theme.colors[merged.backgroundColor],
+            borderColor: merged.backgroundColor && getColor(merged.backgroundColor),
             borderStyle: "solid",
         };
     }
@@ -631,7 +672,7 @@ var StyledActionButton = styled.TouchableOpacity(function (props) {
     }
     else {
         variantStyle = {
-            backgroundColor: merged.backgroundColor && theme.colors[merged.backgroundColor],
+            backgroundColor: merged.backgroundColor && getColor(merged.backgroundColor),
         };
     }
     var divisionValue = function (value, division) {
@@ -682,18 +723,19 @@ var StyledButton = styled.TouchableOpacity(function (props) {
     var theme = props.theme; props.children; var variant = props.variant, size = props.size, componentProps = __rest(props, ["theme", "children", "variant", "size"]);
     var defaultProps = (_a = props.theme) === null || _a === void 0 ? void 0 : _a.components.Button.default;
     var merged = __assign(__assign({}, defaultProps), componentProps);
+    var getColor = useColor();
     var variantStyle = {};
     if (variant === "outline") {
         variantStyle = {
             backgroundColor: "transparent",
             borderWidth: 2,
-            borderColor: merged.backgroundColor && theme.colors[merged.backgroundColor],
+            borderColor: merged.backgroundColor && getColor(merged.backgroundColor),
             borderStyle: "solid",
         };
     }
     else {
         variantStyle = {
-            backgroundColor: merged.backgroundColor && theme.colors[merged.backgroundColor],
+            backgroundColor: merged.backgroundColor && getColor(merged.backgroundColor),
         };
     }
     var divisionValue = function (value, division) {
@@ -728,7 +770,7 @@ var StyledButton = styled.TouchableOpacity(function (props) {
 });
 
 var Button = function (props) {
-    var children = props.children, color = props.color, touchableComponent = __rest(props, ["children", "color"]);
+    var children = props.children, _a = props.color, color = _a === void 0 ? "global" : _a, touchableComponent = __rest(props, ["children", "color"]);
     var fonstSize = props.size === "sm" ? "caption" : "body";
     return (React.createElement(StyledButton, __assign({}, touchableComponent, { activeOpacity: 0.7, style: { opacity: props.disabled ? 0.3 : 1 } }),
         React.createElement(Text, { color: color, fontSize: fonstSize }, children)));
@@ -739,7 +781,8 @@ var Box = styled.View(function (props) {
     var theme = props.theme; props.style; props.children; var componentProps = __rest(props, ["theme", "style", "children"]);
     var defaultProps = (_a = props.theme) === null || _a === void 0 ? void 0 : _a.components.Box.default;
     var merged = __assign(__assign({}, defaultProps), componentProps);
-    return __assign(__assign({ paddingHorizontal: theme.defaultOptions.paddingHorizontal, paddingVertical: theme.defaultOptions.paddingVertical }, merged), { backgroundColor: merged.backgroundColor && theme.colors[merged.backgroundColor] });
+    var getColor = useColor();
+    return __assign(__assign({ paddingHorizontal: theme.defaultOptions.paddingHorizontal, paddingVertical: theme.defaultOptions.paddingVertical }, merged), { backgroundColor: merged.backgroundColor && getColor(merged.backgroundColor) });
 });
 
 var Group = styled.View(function (props) {
@@ -752,19 +795,19 @@ var Group = styled.View(function (props) {
 
 var Divider = function (_a) {
     var label = _a.label, _b = _a.color, color = _b === void 0 ? "muted" : _b;
-    var theme = useTheme();
+    var getColor = useColor();
     return (React.createElement(Group, { gap: 10 },
         React.createElement(View, { style: {
                 flex: 1,
                 height: 1,
-                backgroundColor: color && theme.colors[color],
+                backgroundColor: color && getColor(color),
             } }),
         React.createElement(View, null,
             React.createElement(Text, { color: color, fontSize: "caption", style: { textAlign: "center" } }, label)),
         React.createElement(View, { style: {
                 flex: 5,
                 height: 1,
-                backgroundColor: color && theme.colors[color],
+                backgroundColor: color && getColor(color),
             } })));
 };
 
@@ -791,11 +834,12 @@ var Stack = styled.View(function (props) {
 
 var SafeAreaView = function (_a) {
     var children = _a.children, _b = _a.backgroundColor, backgroundColor = _b === void 0 ? "background" : _b;
-    var theme = useTheme();
+    useTheme$1();
+    var getColor = useColor();
     return (React.createElement(SafeAreaView$1, { style: {
             flex: 1,
             backgroundColor: backgroundColor
-                ? theme.colors[backgroundColor]
+                ? getColor(backgroundColor)
                 : undefined,
         } }, children));
 };
@@ -849,8 +893,6 @@ var TextComponentThemeData = {
     },
 };
 
-var Black = "#000";
-var White = "#FFF";
 var Colors = {
     background: "#fff",
     default: "#1e87f0",
@@ -887,9 +929,11 @@ var TextSizes = {
 };
 
 var Theme = {
-    colors: Colors,
-    white: White,
-    black: Black,
+    colorScheme: "lighten",
+    colors: {
+        darken: Colors,
+        lighten: Colors,
+    },
     spacing: Spacing,
     fontSizes: {
         heading: HeadingSizes,
@@ -916,48 +960,50 @@ var Theme = {
 };
 
 var createTheme = function (newTheme) {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z;
     var defaultTheme = Theme;
     return __assign(__assign({}, defaultTheme), (newTheme && {
-        colors: __assign(__assign({}, defaultTheme.colors), (newTheme.colors || {})),
-        white: newTheme.white || defaultTheme.white,
-        black: newTheme.black || defaultTheme.black,
+        colorScheme: newTheme.colorScheme || defaultTheme.colorScheme,
+        colors: {
+            darken: __assign(__assign({}, defaultTheme.colors.darken), (((_a = newTheme.colors) === null || _a === void 0 ? void 0 : _a.darken) || {})),
+            lighten: __assign(__assign({}, defaultTheme.colors.lighten), (((_b = newTheme.colors) === null || _b === void 0 ? void 0 : _b.lighten) || {})),
+        },
         spacing: __assign(__assign({}, defaultTheme.spacing), (newTheme.spacing || {})),
         fontSizes: {
-            heading: __assign(__assign({}, defaultTheme.fontSizes.heading), (((_a = newTheme.fontSizes) === null || _a === void 0 ? void 0 : _a.heading) || {})),
-            text: __assign(__assign({}, defaultTheme.fontSizes.text), (((_b = newTheme.fontSizes) === null || _b === void 0 ? void 0 : _b.text) || {})),
+            heading: __assign(__assign({}, defaultTheme.fontSizes.heading), (((_c = newTheme.fontSizes) === null || _c === void 0 ? void 0 : _c.heading) || {})),
+            text: __assign(__assign({}, defaultTheme.fontSizes.text), (((_d = newTheme.fontSizes) === null || _d === void 0 ? void 0 : _d.text) || {})),
         },
         components: {
             Text: {
-                default: __assign(__assign({}, defaultTheme.components.Text.default), (((_d = (_c = newTheme.components) === null || _c === void 0 ? void 0 : _c.Text) === null || _d === void 0 ? void 0 : _d.default) || {})),
-                classes: ((_f = (_e = newTheme.components) === null || _e === void 0 ? void 0 : _e.Text) === null || _f === void 0 ? void 0 : _f.classes) || {},
+                default: __assign(__assign({}, defaultTheme.components.Text.default), (((_f = (_e = newTheme.components) === null || _e === void 0 ? void 0 : _e.Text) === null || _f === void 0 ? void 0 : _f.default) || {})),
+                classes: ((_h = (_g = newTheme.components) === null || _g === void 0 ? void 0 : _g.Text) === null || _h === void 0 ? void 0 : _h.classes) || {},
             },
             Heading: {
-                default: __assign(__assign({}, defaultTheme.components.Heading.default), (((_h = (_g = newTheme.components) === null || _g === void 0 ? void 0 : _g.Heading) === null || _h === void 0 ? void 0 : _h.default) || {})),
-                classes: ((_k = (_j = newTheme.components) === null || _j === void 0 ? void 0 : _j.Heading) === null || _k === void 0 ? void 0 : _k.classes) || {},
+                default: __assign(__assign({}, defaultTheme.components.Heading.default), (((_k = (_j = newTheme.components) === null || _j === void 0 ? void 0 : _j.Heading) === null || _k === void 0 ? void 0 : _k.default) || {})),
+                classes: ((_m = (_l = newTheme.components) === null || _l === void 0 ? void 0 : _l.Heading) === null || _m === void 0 ? void 0 : _m.classes) || {},
             },
             Stack: {
-                default: __assign({}, (((_m = (_l = newTheme.components) === null || _l === void 0 ? void 0 : _l.Stack) === null || _m === void 0 ? void 0 : _m.default) || {})),
+                default: __assign({}, (((_p = (_o = newTheme.components) === null || _o === void 0 ? void 0 : _o.Stack) === null || _p === void 0 ? void 0 : _p.default) || {})),
                 // Other features will be added here
             },
             Group: {
-                default: __assign({}, (((_p = (_o = newTheme.components) === null || _o === void 0 ? void 0 : _o.Group) === null || _p === void 0 ? void 0 : _p.default) || {})),
+                default: __assign({}, (((_r = (_q = newTheme.components) === null || _q === void 0 ? void 0 : _q.Group) === null || _r === void 0 ? void 0 : _r.default) || {})),
                 // Other features will be added here
             },
             Grid: {
-                default: __assign({}, (((_r = (_q = newTheme.components) === null || _q === void 0 ? void 0 : _q.Grid) === null || _r === void 0 ? void 0 : _r.default) || {})),
+                default: __assign({}, (((_t = (_s = newTheme.components) === null || _s === void 0 ? void 0 : _s.Grid) === null || _t === void 0 ? void 0 : _t.default) || {})),
                 // Other features will be added here
             },
             Box: {
-                default: __assign({}, (((_t = (_s = newTheme.components) === null || _s === void 0 ? void 0 : _s.Box) === null || _t === void 0 ? void 0 : _t.default) || {})),
+                default: __assign({}, (((_v = (_u = newTheme.components) === null || _u === void 0 ? void 0 : _u.Box) === null || _v === void 0 ? void 0 : _v.default) || {})),
                 // Other features will be added here
             },
             Button: {
-                default: __assign({}, (((_v = (_u = newTheme.components) === null || _u === void 0 ? void 0 : _u.Button) === null || _v === void 0 ? void 0 : _v.default) || {})),
+                default: __assign({}, (((_x = (_w = newTheme.components) === null || _w === void 0 ? void 0 : _w.Button) === null || _x === void 0 ? void 0 : _x.default) || {})),
                 // Other features will be added here
             },
             ActionButton: {
-                default: __assign({}, (((_x = (_w = newTheme.components) === null || _w === void 0 ? void 0 : _w.ActionButton) === null || _x === void 0 ? void 0 : _x.default) || {})),
+                default: __assign({}, (((_z = (_y = newTheme.components) === null || _y === void 0 ? void 0 : _y.ActionButton) === null || _z === void 0 ? void 0 : _z.default) || {})),
                 // Other features will be added here
             },
         },
@@ -965,5 +1011,5 @@ var createTheme = function (newTheme) {
     }));
 };
 
-export { ActionButton, Anchor, Box, Button, Divider, Grid, Group, Heading, SafeAreaView, SessionProvider, Stack, Text, Theme, ThemeProvider, createTheme, useCountdown, useKeyboard, useSession };
+export { ActionButton, Anchor, Box, Button, ColorSchemeProvider, Divider, Grid, Group, Heading, SafeAreaView, SessionProvider, Stack, Text, Theme, ThemeProvider, createTheme, useColor, useCountdown, useKeyboard, useSession, useTheme };
 //# sourceMappingURL=index.js.map

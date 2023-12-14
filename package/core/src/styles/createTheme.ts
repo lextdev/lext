@@ -12,12 +12,17 @@ const createTheme = (newTheme?: DeepPartialTheme): ThemeInterface => {
   return {
     ...defaultTheme, // varsayılan tema veya mevcut temayı buradan alabilirsiniz
     ...(newTheme && {
+      colorScheme: newTheme.colorScheme || defaultTheme.colorScheme,
       colors: {
-        ...defaultTheme.colors,
-        ...(newTheme.colors || {}),
+        darken: {
+          ...defaultTheme.colors.darken,
+          ...(newTheme.colors?.darken || {}),
+        },
+        lighten: {
+          ...defaultTheme.colors.lighten,
+          ...(newTheme.colors?.lighten || {}),
+        },
       },
-      white: newTheme.white || defaultTheme.white,
-      black: newTheme.black || defaultTheme.black,
       spacing: {
         ...defaultTheme.spacing,
         ...(newTheme.spacing || {}),

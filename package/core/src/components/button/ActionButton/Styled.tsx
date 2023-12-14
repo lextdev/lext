@@ -2,6 +2,7 @@ import styled from "@emotion/native";
 
 import { ActionButtonProps } from "./DefaultProps";
 import { ThemeProps } from "../../../styles/Theme";
+import { useColor } from "../../../hooks";
 
 const StyledActionButton = styled.TouchableOpacity<
   ActionButtonProps & ThemeProps
@@ -9,14 +10,14 @@ const StyledActionButton = styled.TouchableOpacity<
   const { theme, children, variant, size, ...componentProps } = props;
   const defaultProps = props.theme?.components.ActionButton.default;
   const merged = { ...defaultProps, ...componentProps };
+  const getColor = useColor();
 
   let variantStyle = {};
   if (variant === "outline") {
     variantStyle = {
       backgroundColor: "transparent",
       borderWidth: 2,
-      borderColor:
-        merged.backgroundColor && theme.colors[merged.backgroundColor],
+      borderColor: merged.backgroundColor && getColor(merged.backgroundColor),
       borderStyle: "solid",
     };
   } else if (variant === "transparent") {
@@ -24,7 +25,7 @@ const StyledActionButton = styled.TouchableOpacity<
   } else {
     variantStyle = {
       backgroundColor:
-        merged.backgroundColor && theme.colors[merged.backgroundColor],
+        merged.backgroundColor && getColor(merged.backgroundColor),
     };
   }
 

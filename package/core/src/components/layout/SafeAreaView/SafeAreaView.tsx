@@ -3,6 +3,7 @@ import { SafeAreaView as RSafeAreaView, ViewProps } from "react-native";
 import { ColorTypeProps } from "../../../helpers/GetColorValue";
 import { useTheme } from "@emotion/react";
 import { ThemeInterface } from "../../../interfaces";
+import { useColor } from "../../../hooks";
 
 type SafeAreaViewProps = {
   children: ReactNode;
@@ -14,13 +15,13 @@ const SafeAreaView: FC<SafeAreaViewProps> = ({
   backgroundColor = "background",
 }) => {
   const theme: ThemeInterface = useTheme();
-
+  const getColor = useColor();
   return (
     <RSafeAreaView
       style={{
         flex: 1,
         backgroundColor: backgroundColor
-          ? theme.colors[backgroundColor]
+          ? getColor(backgroundColor)
           : undefined,
       }}
     >

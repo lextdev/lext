@@ -4,6 +4,7 @@ import { ButtonProps } from "./DefaultProps";
 import StyledButton from "./Styled";
 import Text from "../../typography/Text/Text";
 import { ColorTypeProps } from "../../../helpers/GetColorValue";
+import { useColor } from "../../../hooks";
 
 const Button: FC<
   ButtonProps & {
@@ -11,7 +12,7 @@ const Button: FC<
     color?: ColorTypeProps;
   }
 > = (props) => {
-  const { children, color, ...touchableComponent } = props;
+  const { children, color = "global", ...touchableComponent } = props;
   const fonstSize = props.size === "sm" ? "caption" : "body";
 
   return (

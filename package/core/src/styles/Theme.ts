@@ -17,9 +17,11 @@ export type ThemeProps = {
 };
 
 const Theme: ThemeInterface = {
-  colors: Colors,
-  white: White,
-  black: Black,
+  colorScheme: "lighten",
+  colors: {
+    darken: Colors,
+    lighten: Colors,
+  },
   spacing: Spacing,
   fontSizes: {
     heading: HeadingSizes,
