@@ -340,10 +340,19 @@ interface CustomSwitchProps extends SwitchProps {
 }
 declare const CustomSwitch: FormProps<CustomSwitchProps>;
 
-type CustomSelectBoxProps = {
+type DataProps = {
+    image?: string;
+    value: TextInputProps["value"];
+    description?: string;
+    label: string;
+};
+interface CustomSelectBoxProps extends TextInputProps {
     modal: CustomModalProps;
     onPress?: () => any;
-};
+    data: DataProps[];
+    defaultSelectMessage?: string;
+    onChange?: ((e: any) => void) | undefined;
+}
 declare const CustomSelectBox: FormProps<CustomSelectBoxProps>;
 
 type DeepPartial<T> = {

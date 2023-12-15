@@ -11,6 +11,32 @@ import {
 } from "@ynssenem/lext"
 import { useState } from "react"
 
+const selectBoxData = [
+  {
+    label: "Example Name",
+    value: "1",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    image:
+      "https://res.cloudinary.com/dczeivoxt/image/upload/c_thumb,w_38,g_face/v1701344564/thumbnail_pizza_l9k4rj_68ef06d179.png",
+  },
+  {
+    label: "Example Name",
+    value: "2",
+  },
+  {
+    label: "Example Name",
+    value: "3",
+  },
+  {
+    label: "Example Name",
+    value: "4",
+  },
+  {
+    label: "Example Name",
+    value: "5",
+  },
+]
+
 const IndexScreen = () => {
   const { colorScheme, setColorScheme } = useTheme()
   const [value, setValue] = useState("")
@@ -58,11 +84,14 @@ const IndexScreen = () => {
         />
 
         <SelectBox
+          data={selectBoxData}
+          value="1"
+          onChange={(item) => {
+            console.log("Test", item)
+          }}
           layout={{
             label: "SelectBox",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-            right: <Text>He</Text>,
-            left: <Text>He</Text>,
           }}
           modal={{
             visible: showModal,

@@ -919,13 +919,46 @@ var CustomSwitch = function (props) {
 };
 
 var CustomSelectBox = function (props) {
-    var layout = props.layout, modal = props.modal, onPress = props.onPress;
+    var layout = props.layout, modal = props.modal, data = props.data, _a = props.defaultSelectMessage, defaultSelectMessage = _a === void 0 ? "Select" : _a, onPress = props.onPress, value = props.value, onChange = props.onChange;
+    var getColor = useColor();
+    var _b = React.useState(), getValue = _b[0], setValue = _b[1];
+    var findValue = function (value) {
+        return data.find(function (item) { return item.value === value; });
+    };
+    var onPressItem = function (item) {
+        setValue(item);
+        if (onChange) {
+            onChange(item);
+        }
+    };
+    React.useEffect(function () {
+        if (!getValue && value) {
+            var field = findValue(value);
+            if (field) {
+                setValue(field);
+            }
+        }
+    }, []);
+    var itemCss = styled.css({
+        borderBottomStyle: "solid",
+        borderBottomWidth: 1,
+        borderBottomColor: getColor("muted"),
+        flexDirection: "row",
+        gap: 10,
+    });
     return (React__default.default.createElement(React__default.default.Fragment, null,
         React__default.default.createElement(CustomModal, __assign({}, modal),
-            React__default.default.createElement(Text, null, "Hello World!")),
+            React__default.default.createElement(reactNative.ScrollView, null, data.map(function (item, index) { return (React__default.default.createElement(reactNative.TouchableOpacity, { key: index, onPress: function () { return onPressItem(item); } },
+                React__default.default.createElement(Box, { backgroundColor: getValue && item.value == getValue.value ? "muted" : undefined, style: itemCss },
+                    item.image && (React__default.default.createElement(reactNative.Image, { source: { uri: item.image }, width: 32, height: 32 })),
+                    React__default.default.createElement(Stack, { gap: 0 },
+                        React__default.default.createElement(Text, null, item.label),
+                        item.description && (React__default.default.createElement(Text, { fontSize: "caption", color: "emphasis" }, item.description)))))); }))),
         React__default.default.createElement(Layout, { layout: layout },
-            React__default.default.createElement(reactNative.TouchableOpacity, { onPress: onPress, style: { flex: 1 } },
-                React__default.default.createElement(Text, null, "Hello World!")))));
+            React__default.default.createElement(reactNative.TouchableOpacity, { onPress: onPress, style: { flex: 1 } }, getValue ? (React__default.default.createElement(Group, { gap: 10, alignItems: "center" },
+                getValue.image && (React__default.default.createElement(reactNative.Image, { source: { uri: getValue.image }, width: 24, height: 24 })),
+                React__default.default.createElement(Stack, { gap: 0 },
+                    React__default.default.createElement(Text, null, getValue.label)))) : (React__default.default.createElement(Text, null, defaultSelectMessage))))));
 };
 
 var ActionButtonComponentThemeData = {

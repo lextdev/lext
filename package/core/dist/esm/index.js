@@ -1,6 +1,6 @@
 import { ThemeProvider as ThemeProvider$1, useTheme as useTheme$1 } from '@emotion/react';
 import React, { createContext, useState, useEffect, useContext } from 'react';
-import { StatusBar, Keyboard, TouchableOpacity, View, SafeAreaView as SafeAreaView$1, Modal, TextInput, Switch } from 'react-native';
+import { StatusBar, Keyboard, TouchableOpacity, View, SafeAreaView as SafeAreaView$1, Modal, TextInput, Switch, ScrollView, Image } from 'react-native';
 import styled, { css } from '@emotion/native';
 
 var ColorSchemeContext = createContext("lighten");
@@ -912,13 +912,46 @@ var CustomSwitch = function (props) {
 };
 
 var CustomSelectBox = function (props) {
-    var layout = props.layout, modal = props.modal, onPress = props.onPress;
+    var layout = props.layout, modal = props.modal, data = props.data, _a = props.defaultSelectMessage, defaultSelectMessage = _a === void 0 ? "Select" : _a, onPress = props.onPress, value = props.value, onChange = props.onChange;
+    var getColor = useColor();
+    var _b = useState(), getValue = _b[0], setValue = _b[1];
+    var findValue = function (value) {
+        return data.find(function (item) { return item.value === value; });
+    };
+    var onPressItem = function (item) {
+        setValue(item);
+        if (onChange) {
+            onChange(item);
+        }
+    };
+    useEffect(function () {
+        if (!getValue && value) {
+            var field = findValue(value);
+            if (field) {
+                setValue(field);
+            }
+        }
+    }, []);
+    var itemCss = css({
+        borderBottomStyle: "solid",
+        borderBottomWidth: 1,
+        borderBottomColor: getColor("muted"),
+        flexDirection: "row",
+        gap: 10,
+    });
     return (React.createElement(React.Fragment, null,
         React.createElement(CustomModal, __assign({}, modal),
-            React.createElement(Text, null, "Hello World!")),
+            React.createElement(ScrollView, null, data.map(function (item, index) { return (React.createElement(TouchableOpacity, { key: index, onPress: function () { return onPressItem(item); } },
+                React.createElement(Box, { backgroundColor: getValue && item.value == getValue.value ? "muted" : undefined, style: itemCss },
+                    item.image && (React.createElement(Image, { source: { uri: item.image }, width: 32, height: 32 })),
+                    React.createElement(Stack, { gap: 0 },
+                        React.createElement(Text, null, item.label),
+                        item.description && (React.createElement(Text, { fontSize: "caption", color: "emphasis" }, item.description)))))); }))),
         React.createElement(Layout, { layout: layout },
-            React.createElement(TouchableOpacity, { onPress: onPress, style: { flex: 1 } },
-                React.createElement(Text, null, "Hello World!")))));
+            React.createElement(TouchableOpacity, { onPress: onPress, style: { flex: 1 } }, getValue ? (React.createElement(Group, { gap: 10, alignItems: "center" },
+                getValue.image && (React.createElement(Image, { source: { uri: getValue.image }, width: 24, height: 24 })),
+                React.createElement(Stack, { gap: 0 },
+                    React.createElement(Text, null, getValue.label)))) : (React.createElement(Text, null, defaultSelectMessage))))));
 };
 
 var ActionButtonComponentThemeData = {
