@@ -1,10 +1,10 @@
 import * as _emotion_react from '@emotion/react';
 import { Theme as Theme$1 } from '@emotion/react';
 import * as React from 'react';
-import React__default, { FC, ReactNode } from 'react';
+import React__default, { FC, ReactNode, ReactElement } from 'react';
 import * as _emotion_native from '@emotion/native';
 import * as react_native from 'react-native';
-import { FlexStyle, DimensionValue, TouchableOpacityProps, ViewProps } from 'react-native';
+import { FlexStyle, DimensionValue, TouchableOpacityProps, ModalProps, ViewProps, TextInputProps, SwitchProps } from 'react-native';
 
 type ThemeProviderProps = {
     children: ReactNode;
@@ -265,7 +265,7 @@ declare const Box: _emotion_native.StyledComponent<react_native.ViewProps & {
 }>;
 
 type DividerProps = {
-    label: string;
+    label?: string;
     color?: ColorTypeProps;
 };
 declare const Divider: FC<DividerProps>;
@@ -297,11 +297,54 @@ declare const Stack: _emotion_native.StyledComponent<react_native.ViewProps & {
     ref?: React.Ref<react_native.View> | undefined;
 }>;
 
+type CustomModalHeaderProps = {
+    left?: ReactNode;
+    center?: ReactNode;
+    right?: ReactNode;
+};
+type CustomModalProps = ModalProps & {
+    header?: CustomModalHeaderProps;
+};
+declare const CustomModal: FC<CustomModalProps & {
+    children: ReactNode;
+}>;
+
 type SafeAreaViewProps = {
     children: ReactNode;
     backgroundColor?: ColorTypeProps | null;
 } & ViewProps;
 declare const SafeAreaView: FC<SafeAreaViewProps>;
+
+type LayoutProps = {
+    layout?: {
+        label?: string;
+        description?: string;
+        error?: string;
+        left?: ReactElement;
+        right?: ReactElement;
+    };
+};
+
+type FormProps<P = object> = FC<P & LayoutProps>;
+
+interface CustomTextInputProps extends TextInputProps {
+}
+declare const CustomTextInput: FormProps<CustomTextInputProps>;
+
+interface CustomTextareaProps extends TextInputProps {
+    height?: DimensionValue;
+}
+declare const CustomTextarea: FormProps<CustomTextareaProps>;
+
+interface CustomSwitchProps extends SwitchProps {
+}
+declare const CustomSwitch: FormProps<CustomSwitchProps>;
+
+type CustomSelectBoxProps = {
+    modal: CustomModalProps;
+    onPress?: () => any;
+};
+declare const CustomSelectBox: FormProps<CustomSelectBoxProps>;
 
 type DeepPartial<T> = {
     [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
@@ -309,4 +352,4 @@ type DeepPartial<T> = {
 type DeepPartialTheme = DeepPartial<ThemeInterface>;
 declare const createTheme: (newTheme?: DeepPartialTheme) => ThemeInterface;
 
-export { ActionButton, Anchor, Box, Button, ButtonProps as ButtonInterface, ColorSchemeProps, ColorSchemeProvider, ColorsProps, Divider, _default as Grid, Group, Heading, HeadingSizesProps, SafeAreaView, SessionProps, SessionProvider, SpacingProps, Stack, Text, TextSizesProps, Theme, ThemeInterface, ThemeProvider, createTheme, useColor, useCountdown, useKeyboard, useSession, useTheme };
+export { ActionButton, Anchor, Box, Button, ButtonProps as ButtonInterface, ColorSchemeProps, ColorSchemeProvider, ColorsProps, Divider, _default as Grid, Group, Heading, HeadingSizesProps, CustomModal as Modal, SafeAreaView, CustomSelectBox as SelectBox, SessionProps, SessionProvider, SpacingProps, Stack, CustomSwitch as Switch, Text, CustomTextInput as TextInput, TextSizesProps, CustomTextarea as Textarea, Theme, ThemeInterface, ThemeProvider, createTheme, useColor, useCountdown, useKeyboard, useSession, useTheme };

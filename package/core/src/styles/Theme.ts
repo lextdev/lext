@@ -7,7 +7,7 @@ import { StackComponentThemeData } from "../components/mics/Stack/DefaultProps";
 import { HeadingComponentThemeData } from "../components/typography/Heading/DefaultProps";
 import { TextComponentThemeData } from "../components/typography/Text/DefaultProps";
 import { ThemeInterface } from "../interfaces";
-import Colors, { Black, White } from "./Colors";
+import Colors from "./Colors";
 import HeadingSizes from "./HeadingSizes";
 import Spacing from "./Spacing";
 import TextSizes from "./TextSizes";

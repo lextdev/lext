@@ -7,7 +7,7 @@ const Colors: ColorsProps = {
   background: "#fff",
   default: "#1e87f0",
   emphasis: "#333",
-  muted: "#999",
+  muted: "#F1EFEF",
   primary: "#1e87f0",
   secondary: "#222",
   global: "#666",

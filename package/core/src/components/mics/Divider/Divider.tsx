@@ -6,7 +6,7 @@ import Group from "../Group/Group";
 import { useColor } from "../../../hooks";
 
 type DividerProps = {
-  label: string;
+  label?: string;
   color?: ColorTypeProps;
 };
 
@@ -14,7 +14,7 @@ const Divider: FC<DividerProps> = ({ label, color = "muted" }) => {
   const getColor = useColor();
 
   return (
-    <Group gap={10}>
+    <Group gap={label ? 10 : 0}>
       <View
         style={{
           flex: 1,
@@ -22,11 +22,17 @@ const Divider: FC<DividerProps> = ({ label, color = "muted" }) => {
           backgroundColor: color && getColor(color),
         }}
       />
-      <View>
-        <Text color={color} fontSize="caption" style={{ textAlign: "center" }}>
-          {label}
-        </Text>
-      </View>
+      {label && (
+        <View>
+          <Text
+            color={color}
+            fontSize="caption"
+            style={{ textAlign: "center" }}
+          >
+            {label}
+          </Text>
+        </View>
+      )}
       <View
         style={{
           flex: 5,

@@ -803,14 +803,14 @@ var Group = styled__default.default.View(function (props) {
 var Divider = function (_a) {
     var label = _a.label, _b = _a.color, color = _b === void 0 ? "muted" : _b;
     var getColor = useColor();
-    return (React__default.default.createElement(Group, { gap: 10 },
+    return (React__default.default.createElement(Group, { gap: label ? 10 : 0 },
         React__default.default.createElement(reactNative.View, { style: {
                 flex: 1,
                 height: 1,
                 backgroundColor: color && getColor(color),
             } }),
-        React__default.default.createElement(reactNative.View, null,
-            React__default.default.createElement(Text, { color: color, fontSize: "caption", style: { textAlign: "center" } }, label)),
+        label && (React__default.default.createElement(reactNative.View, null,
+            React__default.default.createElement(Text, { color: color, fontSize: "caption", style: { textAlign: "center" } }, label))),
         React__default.default.createElement(reactNative.View, { style: {
                 flex: 5,
                 height: 1,
@@ -849,6 +849,83 @@ var SafeAreaView = function (_a) {
                 ? getColor(backgroundColor)
                 : undefined,
         } }, children));
+};
+
+var CustomModal = function (props) {
+    var header = props.header, children = props.children, modalProps = __rest(props, ["header", "children"]);
+    var HeaderComponent = function () {
+        if (!header) {
+            return null;
+        }
+        return (React__default.default.createElement(React__default.default.Fragment, null,
+            React__default.default.createElement(Box, { gap: 15 },
+                React__default.default.createElement(Group, { justifyContent: "space-between" },
+                    React__default.default.createElement(reactNative.View, { style: { flex: 1 } }, header.left && header.left),
+                    React__default.default.createElement(reactNative.View, { style: { flex: 1, alignItems: "center" } }, header.center && header.center),
+                    React__default.default.createElement(reactNative.View, { style: { flex: 1, alignItems: "flex-end" } }, header.right && header.right))),
+            React__default.default.createElement(Divider, null)));
+    };
+    return (React__default.default.createElement(reactNative.Modal, __assign({ animationType: "slide", presentationStyle: "formSheet" }, modalProps),
+        React__default.default.createElement(SafeAreaView, null,
+            React__default.default.createElement(React__default.default.Fragment, null,
+                header && React__default.default.createElement(HeaderComponent, null),
+                children))));
+};
+
+var Layout = function (_a) {
+    var layout = _a.layout, children = _a.children, height = _a.height, _b = _a.alignItems, alignItems = _b === void 0 ? "center" : _b, _c = _a.transparent, transparent = _c === void 0 ? false : _c;
+    var theme = useTheme().theme;
+    var getColor = useColor();
+    var viewCss = styled.css({
+        backgroundColor: getColor("muted"),
+        borderRadius: theme.defaultOptions.borderRadius,
+        height: height !== null && height !== void 0 ? height : theme.defaultOptions.minHeight,
+        paddingHorizontal: theme.defaultOptions.paddingHorizontal / 2,
+        paddingVertical: alignItems !== "center"
+            ? theme.defaultOptions.paddingVertical / 2
+            : undefined,
+        alignItems: alignItems,
+        gap: theme.defaultOptions.gap,
+        borderColor: getColor((layout === null || layout === void 0 ? void 0 : layout.error) ? "danger" : "muted"),
+        borderWidth: 1,
+    });
+    return (React__default.default.createElement(Stack, null,
+        (layout === null || layout === void 0 ? void 0 : layout.label) && React__default.default.createElement(Text, { fontSize: "caption" }, layout.label),
+        React__default.default.createElement(Group, { style: !transparent && viewCss },
+            (layout === null || layout === void 0 ? void 0 : layout.left) && layout.left,
+            children,
+            (layout === null || layout === void 0 ? void 0 : layout.right) && layout.right),
+        !(layout === null || layout === void 0 ? void 0 : layout.error) && (layout === null || layout === void 0 ? void 0 : layout.description) && (React__default.default.createElement(Text, { fontSize: "caption", color: "emphasis" }, layout.description)),
+        (layout === null || layout === void 0 ? void 0 : layout.error) && (React__default.default.createElement(Text, { fontSize: "caption", color: "danger" }, layout.error))));
+};
+
+var CustomTextInput = function (props) {
+    var layout = props.layout, textInputProps = __rest(props, ["layout"]);
+    return (React__default.default.createElement(Layout, { layout: layout },
+        React__default.default.createElement(reactNative.TextInput, __assign({ style: { flex: 1 } }, textInputProps))));
+};
+
+var CustomTextarea = function (props) {
+    var layout = props.layout, _a = props.height, height = _a === void 0 ? 150 : _a, textInputProps = __rest(props, ["layout", "height"]);
+    return (React__default.default.createElement(Layout, { height: height, alignItems: "flex-start", layout: layout },
+        React__default.default.createElement(reactNative.TextInput, __assign({ multiline: true, numberOfLines: 4, style: { flex: 1, height: "100%" } }, textInputProps))));
+};
+
+var CustomSwitch = function (props) {
+    var layout = props.layout, switchProps = __rest(props, ["layout"]);
+    var getColor = useColor();
+    return (React__default.default.createElement(Layout, { transparent: true, layout: layout },
+        React__default.default.createElement(reactNative.Switch, __assign({ trackColor: { false: getColor("muted"), true: getColor("primary") }, thumbColor: getColor("background") }, switchProps))));
+};
+
+var CustomSelectBox = function (props) {
+    var layout = props.layout, modal = props.modal, onPress = props.onPress;
+    return (React__default.default.createElement(React__default.default.Fragment, null,
+        React__default.default.createElement(CustomModal, __assign({}, modal),
+            React__default.default.createElement(Text, null, "Hello World!")),
+        React__default.default.createElement(Layout, { layout: layout },
+            React__default.default.createElement(reactNative.TouchableOpacity, { onPress: onPress, style: { flex: 1 } },
+                React__default.default.createElement(Text, null, "Hello World!")))));
 };
 
 var ActionButtonComponentThemeData = {
@@ -904,7 +981,7 @@ var Colors = {
     background: "#fff",
     default: "#1e87f0",
     emphasis: "#333",
-    muted: "#999",
+    muted: "#F1EFEF",
     primary: "#1e87f0",
     secondary: "#222",
     global: "#666",
@@ -1027,10 +1104,15 @@ exports.Divider = Divider;
 exports.Grid = Grid;
 exports.Group = Group;
 exports.Heading = Heading;
+exports.Modal = CustomModal;
 exports.SafeAreaView = SafeAreaView;
+exports.SelectBox = CustomSelectBox;
 exports.SessionProvider = SessionProvider;
 exports.Stack = Stack;
+exports.Switch = CustomSwitch;
 exports.Text = Text;
+exports.TextInput = CustomTextInput;
+exports.Textarea = CustomTextarea;
 exports.Theme = Theme;
 exports.ThemeProvider = ThemeProvider;
 exports.createTheme = createTheme;

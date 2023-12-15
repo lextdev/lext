@@ -4,7 +4,6 @@ import IndexScreen from "./src"
 
 export default function App() {
   const theme = createTheme({
-    colorScheme: "darken",
     colors: {
       darken: {
         background: "#2B2A4C",
@@ -12,7 +11,7 @@ export default function App() {
         primary: "#83A2FF",
       },
       lighten: {
-        background: "#B4BDFF",
+        background: "#FFF",
         global: "#000",
       },
     },
