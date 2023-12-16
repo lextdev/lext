@@ -1,12 +1,10 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Text from "../../typography/Text/Text";
 import Layout from "../_layout/Layout";
 import FormProps from "../_types/FormProps";
 import {
   Image,
-  NativeSyntheticEvent,
   ScrollView,
-  TextInputChangeEventData,
   TextInputProps,
   TouchableOpacity,
 } from "react-native";

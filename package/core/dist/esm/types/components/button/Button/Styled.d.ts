@@ -12,6 +12,7 @@ declare const StyledButton: import("@emotion/native").StyledComponent<import("re
     borderRadius?: number | undefined;
     size?: "lg" | "md" | "sm" | undefined;
     minHeight?: import("react-native").DimensionValue | undefined;
+    color?: keyof import("../../../types/ColorsProps").default | undefined;
 } & ThemeProps, {}, {
     ref?: import("react").Ref<import("react-native").TouchableOpacity> | undefined;
 }>;

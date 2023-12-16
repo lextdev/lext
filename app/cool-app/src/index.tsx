@@ -1,4 +1,5 @@
 import {
+  ActionButton,
   Box,
   Button,
   SafeAreaView,
@@ -10,6 +11,7 @@ import {
   useTheme,
 } from "@ynssenem/lext"
 import { useState } from "react"
+import { View } from "react-native"
 
 const selectBoxData = [
   {
@@ -51,13 +53,16 @@ const IndexScreen = () => {
       <Box>
         <Button
           onPress={() => setColorScheme((prev) => (prev == "lighten" ? "darken" : "lighten"))}
-          backgroundColor="primary"
-          variant="filled"
         >
           changeColorScheme: {colorScheme}
         </Button>
       </Box>
       <Box flex={1} gap={25}>
+        <View>
+          <ActionButton>
+            <Text>H</Text>
+          </ActionButton>
+        </View>
         <TextInput
           value={value}
           layout={{
@@ -96,16 +101,7 @@ const IndexScreen = () => {
           modal={{
             visible: showModal,
             header: {
-              left: (
-                <Button
-                  size="sm"
-                  backgroundColor="primary"
-                  variant="outline"
-                  onPress={() => setShowModal((prev) => !prev)}
-                >
-                  Close
-                </Button>
-              ),
+              left: <Button onPress={() => setShowModal((prev) => !prev)}>Close</Button>,
             },
           }}
           onPress={() => setShowModal((prev) => !prev)}

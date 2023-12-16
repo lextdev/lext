@@ -1,4 +1,4 @@
-import { DimensionValue, TouchableOpacityProps } from "react-native";
+import { DimensionValue } from "react-native";
 import { ColorTypeProps } from "../../../helpers/GetColorValue";
 import { ButtonInterface } from "../../../interfaces";
 
@@ -11,6 +11,7 @@ export type ButtonProps = ButtonInterface & {
   borderRadius?: number;
   size?: "lg" | "md" | "sm";
   minHeight?: DimensionValue;
+  color?: ColorTypeProps;
 };
 
 export type ButtonComponentThemeProps = {
@@ -23,6 +24,7 @@ export const ButtonComponentThemeData: ButtonComponentThemeProps = {
     backgroundColor: "primary",
     variant: "filled",
     size: "md",
-    minHeight: 47,
+    minHeight: 50,
+    color: "global",
   },
 };

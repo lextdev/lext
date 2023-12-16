@@ -15,6 +15,17 @@ export default function App() {
         global: "#000",
       },
     },
+    components: {
+      Button: {
+        default: {
+          color: "inverse",
+          size: "md",
+        },
+      },
+      ActionButton: {
+        default: {},
+      },
+    },
   })
 
   return (

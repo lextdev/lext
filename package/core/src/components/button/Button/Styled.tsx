@@ -11,8 +11,10 @@ const StyledButton = styled.TouchableOpacity<ButtonProps & ThemeProps>(
     const merged = { ...defaultProps, ...componentProps };
     const getColor = useColor();
 
+    const currentVariant = variant || defaultProps.variant;
     let variantStyle = {};
-    if (variant === "outline") {
+
+    if (currentVariant === "outline") {
       variantStyle = {
         backgroundColor: "transparent",
         borderWidth: 2,
@@ -29,8 +31,10 @@ const StyledButton = styled.TouchableOpacity<ButtonProps & ThemeProps>(
     const divisionValue = (value: number, division: number = 2) =>
       value / division;
 
+    const currentSize = size || defaultProps.size;
+
     let typeStyle = {};
-    switch (size) {
+    switch (currentSize) {
       case "lg":
         typeStyle = {
           paddingVertical:

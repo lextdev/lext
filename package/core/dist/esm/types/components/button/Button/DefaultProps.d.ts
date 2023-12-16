@@ -10,6 +10,7 @@ export type ButtonProps = ButtonInterface & {
     borderRadius?: number;
     size?: "lg" | "md" | "sm";
     minHeight?: DimensionValue;
+    color?: ColorTypeProps;
 };
 export type ButtonComponentThemeProps = {
     default: ButtonProps;

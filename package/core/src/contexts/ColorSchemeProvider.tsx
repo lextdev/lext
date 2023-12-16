@@ -23,7 +23,6 @@ const ColorSchemeProvider: FC<{
 
   useEffect(() => {
     if (themeColorScheme) {
-      console.log("State ColorSchemeProvider", themeColorScheme);
       setColorScheme(themeColorScheme);
     }
   }, []);

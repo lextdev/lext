@@ -121,6 +121,7 @@ type ButtonProps$1 = ButtonProps & {
     borderRadius?: number;
     size?: "lg" | "md" | "sm";
     minHeight?: DimensionValue;
+    color?: ColorTypeProps;
 };
 type ButtonComponentThemeProps = {
     default: ButtonProps$1;
@@ -252,7 +253,6 @@ declare const Anchor: FC<AnchorProps>;
 
 declare const Button: FC<ButtonProps$1 & {
     children: ReactNode | string;
-    color?: ColorTypeProps;
 }>;
 
 declare const Box: _emotion_native.StyledComponent<react_native.ViewProps & {
@@ -322,6 +322,7 @@ type LayoutProps = {
         error?: string;
         left?: ReactElement;
         right?: ReactElement;
+        variant?: "md" | "sm";
     };
 };
 

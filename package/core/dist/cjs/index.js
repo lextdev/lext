@@ -17,7 +17,6 @@ var ColorSchemeProvider = function (_a) {
     var _b = React.useState("lighten"), colorScheme = _b[0], setColorScheme = _b[1];
     React.useEffect(function () {
         if (themeColorScheme) {
-            console.log("State ColorSchemeProvider", themeColorScheme);
             setColorScheme(themeColorScheme);
         }
     }, []);
@@ -30,7 +29,6 @@ var ColorSchemeProvider = function (_a) {
 
 var ThemeProvider = function (_a) {
     var children = _a.children, theme = _a.theme;
-    console.log("State ThemeProvider", theme.colorScheme);
     return (React__default.default.createElement(react.ThemeProvider, { theme: theme },
         React__default.default.createElement(ColorSchemeProvider, { themeColorScheme: theme.colorScheme }, children)));
 };
@@ -665,8 +663,9 @@ var StyledActionButton = styled__default.default.TouchableOpacity(function (prop
     var defaultProps = (_a = props.theme) === null || _a === void 0 ? void 0 : _a.components.ActionButton.default;
     var merged = __assign(__assign({}, defaultProps), componentProps);
     var getColor = useColor();
+    var currentVariant = variant || defaultProps.variant;
     var variantStyle = {};
-    if (variant === "outline") {
+    if (currentVariant === "outline") {
         variantStyle = {
             backgroundColor: "transparent",
             borderWidth: 2,
@@ -674,7 +673,7 @@ var StyledActionButton = styled__default.default.TouchableOpacity(function (prop
             borderStyle: "solid",
         };
     }
-    else if (variant === "transparent") {
+    else if (currentVariant === "transparent") {
         variantStyle = {};
     }
     else {
@@ -731,8 +730,9 @@ var StyledButton = styled__default.default.TouchableOpacity(function (props) {
     var defaultProps = (_a = props.theme) === null || _a === void 0 ? void 0 : _a.components.Button.default;
     var merged = __assign(__assign({}, defaultProps), componentProps);
     var getColor = useColor();
+    var currentVariant = variant || defaultProps.variant;
     var variantStyle = {};
-    if (variant === "outline") {
+    if (currentVariant === "outline") {
         variantStyle = {
             backgroundColor: "transparent",
             borderWidth: 2,
@@ -749,8 +749,9 @@ var StyledButton = styled__default.default.TouchableOpacity(function (props) {
         if (division === void 0) { division = 2; }
         return value / division;
     };
+    var currentSize = size || defaultProps.size;
     var typeStyle = {};
-    switch (size) {
+    switch (currentSize) {
         case "lg":
             typeStyle = {
                 paddingVertical: divisionValue(theme.defaultOptions.paddingVertical) * 2,
@@ -777,10 +778,24 @@ var StyledButton = styled__default.default.TouchableOpacity(function (props) {
 });
 
 var Button = function (props) {
-    var children = props.children, _a = props.color, color = _a === void 0 ? "global" : _a, touchableComponent = __rest(props, ["children", "color"]);
-    var fonstSize = props.size === "sm" ? "caption" : "body";
+    var theme = useTheme().theme;
+    var children = props.children, color = props.color, touchableComponent = __rest(props, ["children", "color"]);
+    var currentSize = props.size || theme.components.Button.default.size;
+    //const fonstSize = (props.size || currentSize) == "sm" ? "caption" : "body";
+    var fontSize;
+    switch (currentSize) {
+        case "sm":
+            fontSize = "caption";
+            break;
+        case "lg":
+            fontSize = "subHeading";
+            break;
+        default:
+            fontSize = "body";
+            break;
+    }
     return (React__default.default.createElement(StyledButton, __assign({}, touchableComponent, { activeOpacity: 0.7, style: { opacity: props.disabled ? 0.3 : 1 } }),
-        React__default.default.createElement(Text, { color: color, fontSize: fonstSize }, children)));
+        React__default.default.createElement(Text, { color: color || theme.components.Button.default.color, fontSize: fontSize }, children)));
 };
 
 var Box = styled__default.default.View(function (props) {
@@ -876,10 +891,28 @@ var Layout = function (_a) {
     var layout = _a.layout, children = _a.children, height = _a.height, _b = _a.alignItems, alignItems = _b === void 0 ? "center" : _b, _c = _a.transparent, transparent = _c === void 0 ? false : _c;
     var theme = useTheme().theme;
     var getColor = useColor();
+    var getHeight = function () {
+        var h;
+        if (height) {
+            return height;
+        }
+        switch (layout === null || layout === void 0 ? void 0 : layout.variant) {
+            case "sm":
+                h =
+                    typeof theme.defaultOptions.minHeight === "number"
+                        ? theme.defaultOptions.minHeight - 10
+                        : theme.defaultOptions.minHeight;
+                break;
+            default:
+                h = theme.defaultOptions.minHeight;
+                break;
+        }
+        return h;
+    };
     var viewCss = styled.css({
         backgroundColor: getColor("muted"),
         borderRadius: theme.defaultOptions.borderRadius,
-        height: height !== null && height !== void 0 ? height : theme.defaultOptions.minHeight,
+        height: getHeight(),
         paddingHorizontal: theme.defaultOptions.paddingHorizontal / 2,
         paddingVertical: alignItems !== "center"
             ? theme.defaultOptions.paddingVertical / 2
@@ -915,7 +948,7 @@ var CustomSwitch = function (props) {
     var layout = props.layout, switchProps = __rest(props, ["layout"]);
     var getColor = useColor();
     return (React__default.default.createElement(Layout, { transparent: true, layout: layout },
-        React__default.default.createElement(reactNative.Switch, __assign({ trackColor: { false: getColor("muted"), true: getColor("primary") }, thumbColor: getColor("background") }, switchProps))));
+        React__default.default.createElement(reactNative.Switch, __assign({ style: { transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] }, trackColor: { false: getColor("muted"), true: getColor("primary") }, thumbColor: getColor("background") }, switchProps))));
 };
 
 var CustomSelectBox = function (props) {
@@ -974,7 +1007,8 @@ var ButtonComponentThemeData = {
         backgroundColor: "primary",
         variant: "filled",
         size: "md",
-        minHeight: 47,
+        minHeight: 50,
+        color: "global",
     },
 };
 
@@ -1100,27 +1134,27 @@ var createTheme = function (newTheme) {
                 classes: ((_m = (_l = newTheme.components) === null || _l === void 0 ? void 0 : _l.Heading) === null || _m === void 0 ? void 0 : _m.classes) || {},
             },
             Stack: {
-                default: __assign({}, (((_p = (_o = newTheme.components) === null || _o === void 0 ? void 0 : _o.Stack) === null || _p === void 0 ? void 0 : _p.default) || {})),
+                default: __assign(__assign({}, defaultTheme.components.Stack.default), (((_p = (_o = newTheme.components) === null || _o === void 0 ? void 0 : _o.Stack) === null || _p === void 0 ? void 0 : _p.default) || {})),
                 // Other features will be added here
             },
             Group: {
-                default: __assign({}, (((_r = (_q = newTheme.components) === null || _q === void 0 ? void 0 : _q.Group) === null || _r === void 0 ? void 0 : _r.default) || {})),
+                default: __assign(__assign({}, defaultTheme.components.Group.default), (((_r = (_q = newTheme.components) === null || _q === void 0 ? void 0 : _q.Group) === null || _r === void 0 ? void 0 : _r.default) || {})),
                 // Other features will be added here
             },
             Grid: {
-                default: __assign({}, (((_t = (_s = newTheme.components) === null || _s === void 0 ? void 0 : _s.Grid) === null || _t === void 0 ? void 0 : _t.default) || {})),
+                default: __assign(__assign({}, defaultTheme.components.Grid.default), (((_t = (_s = newTheme.components) === null || _s === void 0 ? void 0 : _s.Grid) === null || _t === void 0 ? void 0 : _t.default) || {})),
                 // Other features will be added here
             },
             Box: {
-                default: __assign({}, (((_v = (_u = newTheme.components) === null || _u === void 0 ? void 0 : _u.Box) === null || _v === void 0 ? void 0 : _v.default) || {})),
+                default: __assign(__assign({}, defaultTheme.components.Box.default), (((_v = (_u = newTheme.components) === null || _u === void 0 ? void 0 : _u.Box) === null || _v === void 0 ? void 0 : _v.default) || {})),
                 // Other features will be added here
             },
             Button: {
-                default: __assign({}, (((_x = (_w = newTheme.components) === null || _w === void 0 ? void 0 : _w.Button) === null || _x === void 0 ? void 0 : _x.default) || {})),
+                default: __assign(__assign({}, defaultTheme.components.Button.default), (((_x = (_w = newTheme.components) === null || _w === void 0 ? void 0 : _w.Button) === null || _x === void 0 ? void 0 : _x.default) || {})),
                 // Other features will be added here
             },
             ActionButton: {
-                default: __assign({}, (((_z = (_y = newTheme.components) === null || _y === void 0 ? void 0 : _y.ActionButton) === null || _z === void 0 ? void 0 : _z.default) || {})),
+                default: __assign(__assign({}, defaultTheme.components.ActionButton.default), (((_z = (_y = newTheme.components) === null || _y === void 0 ? void 0 : _y.ActionButton) === null || _z === void 0 ? void 0 : _z.default) || {})),
                 // Other features will be added here
             },
         },

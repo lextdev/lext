@@ -54,42 +54,42 @@ const createTheme = (newTheme?: DeepPartialTheme): ThemeInterface => {
         },
         Stack: {
           default: {
-            // Stack - add updates for component here
+            ...defaultTheme.components.Stack.default,
             ...(newTheme.components?.Stack?.default || {}),
           },
           // Other features will be added here
         },
         Group: {
           default: {
-            // Group - add updates for component here
+            ...defaultTheme.components.Group.default,
             ...(newTheme.components?.Group?.default || {}),
           },
           // Other features will be added here
         },
         Grid: {
           default: {
-            // Grid - add updates for component here
+            ...defaultTheme.components.Grid.default,
             ...(newTheme.components?.Grid?.default || {}),
           },
           // Other features will be added here
         },
         Box: {
           default: {
-            // Box - add updates for component here
+            ...defaultTheme.components.Box.default,
             ...(newTheme.components?.Box?.default || {}),
           },
           // Other features will be added here
         },
         Button: {
           default: {
-            // Button - add updates for component here
+            ...defaultTheme.components.Button.default,
             ...(newTheme.components?.Button?.default || {}),
           },
           // Other features will be added here
         },
         ActionButton: {
           default: {
-            // ActionButton - add updates for component here
+            ...defaultTheme.components.ActionButton.default,
             ...(newTheme.components?.ActionButton?.default || {}),
           },
           // Other features will be added here

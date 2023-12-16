@@ -23,10 +23,33 @@ const Layout: FC<LayoutProps & CustomLayoutProps> = ({
 }) => {
   const { theme } = useTheme();
   const getColor = useColor();
+
+  let getHeight = () => {
+    let h: DimensionValue;
+
+    if (height) {
+      return height;
+    }
+
+    switch (layout?.variant) {
+      case "sm":
+        h =
+          typeof theme.defaultOptions.minHeight === "number"
+            ? theme.defaultOptions.minHeight - 10
+            : theme.defaultOptions.minHeight;
+        break;
+      default:
+        h = theme.defaultOptions.minHeight;
+        break;
+    }
+
+    return h;
+  };
+
   const viewCss = css({
     backgroundColor: getColor("muted"),
     borderRadius: theme.defaultOptions.borderRadius,
-    height: height ?? theme.defaultOptions.minHeight,
+    height: getHeight(),
     paddingHorizontal: theme.defaultOptions.paddingHorizontal / 2,
     paddingVertical:
       alignItems !== "center"

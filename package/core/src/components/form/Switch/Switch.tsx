@@ -12,6 +12,7 @@ const CustomSwitch: FormProps<CustomSwitchProps> = (props) => {
   return (
     <Layout transparent layout={layout}>
       <Switch
+        style={{ transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] }}
         trackColor={{ false: getColor("muted"), true: getColor("primary") }}
         thumbColor={getColor("background")}
         {...switchProps}

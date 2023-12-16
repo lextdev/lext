@@ -12,15 +12,17 @@ const StyledActionButton = styled.TouchableOpacity<
   const merged = { ...defaultProps, ...componentProps };
   const getColor = useColor();
 
+  let currentVariant = variant || defaultProps.variant;
   let variantStyle = {};
-  if (variant === "outline") {
+
+  if (currentVariant === "outline") {
     variantStyle = {
       backgroundColor: "transparent",
       borderWidth: 2,
       borderColor: merged.backgroundColor && getColor(merged.backgroundColor),
       borderStyle: "solid",
     };
-  } else if (variant === "transparent") {
+  } else if (currentVariant === "transparent") {
     variantStyle = {};
   } else {
     variantStyle = {

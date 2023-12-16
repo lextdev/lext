@@ -7,6 +7,7 @@ type LayoutProps = {
     error?: string;
     left?: ReactElement;
     right?: ReactElement;
+    variant?: "md" | "sm";
   };
 };
 

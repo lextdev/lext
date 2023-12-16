@@ -8,7 +8,6 @@ type ThemeProviderProps = {
 };
 
 const ThemeProvider: FC<ThemeProviderProps> = ({ children, theme }) => {
-  console.log("State ThemeProvider", theme.colorScheme);
   return (
     <RThemeProvider theme={theme}>
       <ColorSchemeProvider themeColorScheme={theme.colorScheme}>
