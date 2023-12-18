@@ -6,7 +6,8 @@ import { useColor } from "../../../hooks";
 
 const StyledButton = styled.TouchableOpacity<ButtonProps & ThemeProps>(
   (props) => {
-    const { theme, children, variant, size, ...componentProps } = props;
+    const { theme, children, fontFamily, variant, size, ...componentProps } =
+      props;
     const defaultProps = props.theme?.components.Button.default;
     const merged = { ...defaultProps, ...componentProps };
     const getColor = useColor();

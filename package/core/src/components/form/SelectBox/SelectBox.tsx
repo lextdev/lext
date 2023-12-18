@@ -11,7 +11,7 @@ import {
 import { Box, Group, Modal, Stack } from "../..";
 import { CustomModalProps } from "../../mics/Modal/Modal";
 import { css } from "@emotion/native";
-import { useColor } from "../../../hooks";
+import { useColor, useTheme } from "../../../hooks";
 
 type DataProps = {
   image?: string;
@@ -39,7 +39,7 @@ const CustomSelectBox: FormProps<CustomSelectBoxProps> = (props) => {
   } = props;
   const getColor = useColor();
   const [getValue, setValue] = useState<DataProps>();
-
+  const { theme } = useTheme();
   const findValue = (value: string) =>
     data.find((item) => item.value === value);
 
@@ -107,7 +107,9 @@ const CustomSelectBox: FormProps<CustomSelectBoxProps> = (props) => {
                 />
               )}
               <Stack gap={0}>
-                <Text>{getValue.label}</Text>
+                <Text fontFamily={theme.fontFamily.monospace}>
+                  {getValue.label}
+                </Text>
               </Stack>
             </Group>
           ) : (

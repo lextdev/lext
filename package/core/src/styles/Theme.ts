@@ -23,6 +23,11 @@ const Theme: ThemeInterface = {
     lighten: Colors,
   },
   spacing: Spacing,
+  fontFamily: {
+    heading: undefined,
+    text: undefined,
+    monospace: undefined,
+  },
   fontSizes: {
     heading: HeadingSizes,
     text: TextSizes,

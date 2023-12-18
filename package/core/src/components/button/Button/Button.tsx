@@ -12,9 +12,12 @@ const Button: FC<
   }
 > = (props) => {
   const { theme } = useTheme();
-  const { children, color, ...touchableComponent } = props;
+  const { children, color, fontFamily, ...touchableComponent } = props;
   const currentSize = props.size || theme.components.Button.default.size;
-  //const fonstSize = (props.size || currentSize) == "sm" ? "caption" : "body";
+  const currentFontFamily =
+    fontFamily ||
+    theme.components.Button.default.fontFamily ||
+    theme.fontFamily.text;
 
   let fontSize: keyof TextSizesProps;
 
@@ -30,6 +33,8 @@ const Button: FC<
       break;
   }
 
+  console.log(fontFamily);
+
   return (
     <StyledButton
       {...touchableComponent}
@@ -39,6 +44,7 @@ const Button: FC<
       <Text
         color={color || theme.components.Button.default.color}
         fontSize={fontSize}
+        fontFamily={currentFontFamily}
       >
         {children}
       </Text>

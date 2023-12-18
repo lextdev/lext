@@ -20,6 +20,11 @@ interface ThemeInterface {
     lighten: ColorsProps;
   };
   spacing: SpacingProps;
+  fontFamily: {
+    heading?: string;
+    text?: string;
+    monospace?: string;
+  };
   fontSizes: {
     heading: HeadingSizesProps;
     text: TextSizesProps;

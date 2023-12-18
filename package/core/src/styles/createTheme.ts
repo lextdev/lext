@@ -27,6 +27,13 @@ const createTheme = (newTheme?: DeepPartialTheme): ThemeInterface => {
         ...defaultTheme.spacing,
         ...(newTheme.spacing || {}),
       },
+      fontFamily: {
+        heading:
+          newTheme.fontFamily?.heading ?? defaultTheme.fontFamily.heading,
+        text: newTheme.fontFamily?.text ?? defaultTheme.fontFamily.text,
+        monospace:
+          newTheme.fontFamily?.monospace ?? defaultTheme.fontFamily.monospace,
+      },
       fontSizes: {
         heading: {
           ...defaultTheme.fontSizes.heading,

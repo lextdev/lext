@@ -1,35 +1,49 @@
-import React from "react"
+import React, { useCallback } from "react"
 import { ThemeProvider, createTheme } from "@ynssenem/lext"
+import * as SplashScreen from "expo-splash-screen"
+
 import IndexScreen from "./src"
+import { useFonts } from "expo-font"
+
+const theme = createTheme({
+  colors: {
+    darken: {
+      background: "#2B2A4C",
+      global: "#FFF",
+      primary: "#83A2FF",
+    },
+    lighten: {
+      background: "#FFF",
+      global: "#000",
+    },
+  },
+  fontFamily: {
+    text: "Urbanist-Regular",
+    monospace: "Urbanist-Regular",
+  },
+})
+
+SplashScreen.preventAutoHideAsync()
 
 export default function App() {
-  const theme = createTheme({
-    colors: {
-      darken: {
-        background: "#2B2A4C",
-        global: "#FFF",
-        primary: "#83A2FF",
-      },
-      lighten: {
-        background: "#FFF",
-        global: "#000",
-      },
-    },
-    components: {
-      Button: {
-        default: {
-          color: "inverse",
-          size: "md",
-        },
-      },
-      ActionButton: {
-        default: {},
-      },
-    },
+  const [fontsLoaded] = useFonts({
+    "Urbanist-Black": require("./src/fonts/Urbanist-Black.otf"),
+    "Urbanist-Regular": require("./src/fonts/Urbanist-Regular.otf"),
+    "Urbanist-Thin": require("./src/fonts/Urbanist-Thin.otf"),
   })
 
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync()
+    }
+  }, [fontsLoaded])
+
+  if (!fontsLoaded) {
+    return null
+  }
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} onLayout={onLayoutRootView}>
       <IndexScreen />
     </ThemeProvider>
   )

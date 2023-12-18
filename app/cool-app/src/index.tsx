@@ -1,5 +1,4 @@
 import {
-  ActionButton,
   Box,
   Button,
   SafeAreaView,
@@ -11,7 +10,6 @@ import {
   useTheme,
 } from "@ynssenem/lext"
 import { useState } from "react"
-import { View } from "react-native"
 
 const selectBoxData = [
   {
@@ -40,16 +38,25 @@ const selectBoxData = [
 ]
 
 const IndexScreen = () => {
-  const { colorScheme, setColorScheme } = useTheme()
+  const { colorScheme, setColorScheme, theme } = useTheme()
   const [value, setValue] = useState("")
   const [switchValue, setSwitchValue] = useState(false)
   const [showModal, setShowModal] = useState(false)
+  const { fontFamily } = theme
+
   const onChangeValue = (value: string) => {
     setValue(value)
   }
 
   return (
     <SafeAreaView>
+      <Box>
+        <Text>Lorem ipsum dolor sit amet, Font Family Heading:{fontFamily.heading || "Yok"}</Text>
+        <Text>Lorem ipsum dolor sit amet, Font Family Text:{fontFamily.text || "Yok"}</Text>
+        <Text>
+          Lorem ipsum dolor sit amet, Font Family Monospace:{fontFamily.monospace || "Yok"}
+        </Text>
+      </Box>
       <Box>
         <Button
           onPress={() => setColorScheme((prev) => (prev == "lighten" ? "darken" : "lighten"))}
@@ -58,11 +65,6 @@ const IndexScreen = () => {
         </Button>
       </Box>
       <Box flex={1} gap={25}>
-        <View>
-          <ActionButton>
-            <Text>H</Text>
-          </ActionButton>
-        </View>
         <TextInput
           value={value}
           layout={{

@@ -13,6 +13,7 @@ const Heading = styled.Text<HeadingStyledProps>((props) => {
   const merged = { ...defaultProps, ...componentProps };
   const getColor = useColor();
   return {
+    fontFamily: theme.fontFamily.heading,
     ...merged,
     color: merged.color && getColor(merged.color),
     fontSize: GetHeadingSizeValue(props.fontSize, theme.fontSizes.heading),

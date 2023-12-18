@@ -9,6 +9,7 @@ interface CustomSwitchProps extends SwitchProps {}
 const CustomSwitch: FormProps<CustomSwitchProps> = (props) => {
   const { layout, ...switchProps } = props;
   const getColor = useColor();
+
   return (
     <Layout transparent layout={layout}>
       <Switch

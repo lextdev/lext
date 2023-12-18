@@ -5,6 +5,7 @@
 ### Added
 
 - Form elements added (TextInput, SelectBox, Switch)
+- Font Family
 
 ### Fixed
 

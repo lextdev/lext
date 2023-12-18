@@ -1,17 +1,25 @@
 import { ThemeProvider as RThemeProvider, Theme } from "@emotion/react";
 import React, { FC, ReactNode } from "react";
 import ColorSchemeProvider from "./ColorSchemeProvider";
+import { LayoutChangeEvent, View } from "react-native";
 
 type ThemeProviderProps = {
   children: ReactNode;
   theme: Theme;
+  onLayout?: (event: LayoutChangeEvent) => void;
 };
 
-const ThemeProvider: FC<ThemeProviderProps> = ({ children, theme }) => {
+const ThemeProvider: FC<ThemeProviderProps> = ({
+  children,
+  theme,
+  onLayout,
+}) => {
   return (
     <RThemeProvider theme={theme}>
       <ColorSchemeProvider themeColorScheme={theme.colorScheme}>
-        {children}
+        <View style={{ flex: 1 }} onLayout={onLayout}>
+          {children}
+        </View>
       </ColorSchemeProvider>
     </RThemeProvider>
   );

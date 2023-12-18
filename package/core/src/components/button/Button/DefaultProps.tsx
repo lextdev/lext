@@ -12,6 +12,7 @@ export type ButtonProps = ButtonInterface & {
   size?: "lg" | "md" | "sm";
   minHeight?: DimensionValue;
   color?: ColorTypeProps;
+  fontFamily?: string;
 };
 
 export type ButtonComponentThemeProps = {
