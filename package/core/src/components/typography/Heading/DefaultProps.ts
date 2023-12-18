@@ -9,7 +9,6 @@ export type HeadingProps = {
 
 export type HeadingComponentThemeProps = {
   default: HeadingProps;
-  classes?: object;
 };
 
 export const HeadingComponentThemeData: HeadingComponentThemeProps = {

@@ -23,7 +23,6 @@ const Layout: FC<LayoutProps & CustomLayoutProps> = ({
 }) => {
   const { theme } = useTheme();
   const getColor = useColor();
-
   let getHeight = () => {
     let h: DimensionValue;
 
@@ -46,6 +45,12 @@ const Layout: FC<LayoutProps & CustomLayoutProps> = ({
     return h;
   };
 
+  const labelProps = { ...theme.components.FormLayout.classes.label };
+  const descriptionProps = {
+    ...theme.components.FormLayout.classes.description,
+  };
+  const errorProps = { ...theme.components.FormLayout.classes.error };
+
   const viewCss = css({
     backgroundColor: getColor("muted"),
     borderRadius: theme.defaultOptions.borderRadius,
@@ -63,22 +68,16 @@ const Layout: FC<LayoutProps & CustomLayoutProps> = ({
 
   return (
     <Stack>
-      {layout?.label && <Text fontSize={"caption"}>{layout.label}</Text>}
+      {layout?.label && <Text {...labelProps}>{layout.label}</Text>}
       <Group style={!transparent && viewCss}>
         {layout?.left && layout.left}
         {children}
         {layout?.right && layout.right}
       </Group>
       {!layout?.error && layout?.description && (
-        <Text fontSize={"caption"} color={"emphasis"}>
-          {layout.description}
-        </Text>
+        <Text {...descriptionProps}>{layout.description}</Text>
       )}
-      {layout?.error && (
-        <Text fontSize={"caption"} color="danger">
-          {layout.error}
-        </Text>
-      )}
+      {layout?.error && <Text {...errorProps}>{layout.error}</Text>}
     </Stack>
   );
 };

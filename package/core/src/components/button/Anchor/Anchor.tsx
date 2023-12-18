@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC } from "react";
 import { TouchableOpacity, TouchableOpacityProps } from "react-native";
 import Text from "../../typography/Text/Text";
 import { TextProps } from "../../typography/Text/DefaultProps";

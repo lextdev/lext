@@ -33,8 +33,6 @@ const Button: FC<
       break;
   }
 
-  console.log(fontFamily);
-
   return (
     <StyledButton
       {...touchableComponent}

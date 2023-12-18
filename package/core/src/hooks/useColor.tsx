@@ -1,4 +1,3 @@
-import { ColorTypeProps } from "../helpers/GetColorValue";
 import { ColorsProps } from "../types";
 import useTheme from "./useTheme";
 

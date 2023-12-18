@@ -51,13 +51,6 @@ const IndexScreen = () => {
   return (
     <SafeAreaView>
       <Box>
-        <Text>Lorem ipsum dolor sit amet, Font Family Heading:{fontFamily.heading || "Yok"}</Text>
-        <Text>Lorem ipsum dolor sit amet, Font Family Text:{fontFamily.text || "Yok"}</Text>
-        <Text>
-          Lorem ipsum dolor sit amet, Font Family Monospace:{fontFamily.monospace || "Yok"}
-        </Text>
-      </Box>
-      <Box>
         <Button
           onPress={() => setColorScheme((prev) => (prev == "lighten" ? "darken" : "lighten"))}
         >

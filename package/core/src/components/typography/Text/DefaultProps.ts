@@ -9,7 +9,6 @@ export type TextProps = {
 
 export type TextComponentThemeProps = {
   default: TextProps;
-  classes?: object;
 };
 
 export const TextComponentThemeData: TextComponentThemeProps = {

@@ -50,14 +50,12 @@ const createTheme = (newTheme?: DeepPartialTheme): ThemeInterface => {
             ...defaultTheme.components.Text.default,
             ...(newTheme.components?.Text?.default || {}),
           },
-          classes: newTheme.components?.Text?.classes || {},
         },
         Heading: {
           default: {
             ...defaultTheme.components.Heading.default,
             ...(newTheme.components?.Heading?.default || {}),
           },
-          classes: newTheme.components?.Heading?.classes || {},
         },
         Stack: {
           default: {
@@ -92,14 +90,28 @@ const createTheme = (newTheme?: DeepPartialTheme): ThemeInterface => {
             ...defaultTheme.components.Button.default,
             ...(newTheme.components?.Button?.default || {}),
           },
-          // Other features will be added here
         },
         ActionButton: {
           default: {
             ...defaultTheme.components.ActionButton.default,
             ...(newTheme.components?.ActionButton?.default || {}),
           },
-          // Other features will be added here
+        },
+        FormLayout: {
+          classes: {
+            label: {
+              ...defaultTheme.components.FormLayout.classes.label,
+              ...(newTheme.components?.FormLayout?.classes?.label || {}),
+            },
+            description: {
+              ...defaultTheme.components.FormLayout.classes.description,
+              ...(newTheme.components?.FormLayout?.classes?.description || {}),
+            },
+            error: {
+              ...defaultTheme.components.FormLayout.classes.error,
+              ...(newTheme.components?.FormLayout?.classes?.error || {}),
+            },
+          },
         },
       },
       defaultOptions: {

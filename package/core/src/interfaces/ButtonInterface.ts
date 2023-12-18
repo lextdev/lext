@@ -1,5 +1,3 @@
-import { TouchableOpacityProps } from "react-native";
-
 interface ButtonProps {
   onPress?: () => void; // Kullanıcı bileşene dokunduğunda tetiklenecek fonksiyon
   onLongPress?: () => void; // Kullanıcı bileşene uzun süre dokunduğunda tetiklenecek fonksiyon

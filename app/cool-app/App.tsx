@@ -5,23 +5,7 @@ import * as SplashScreen from "expo-splash-screen"
 import IndexScreen from "./src"
 import { useFonts } from "expo-font"
 
-const theme = createTheme({
-  colors: {
-    darken: {
-      background: "#2B2A4C",
-      global: "#FFF",
-      primary: "#83A2FF",
-    },
-    lighten: {
-      background: "#FFF",
-      global: "#000",
-    },
-  },
-  fontFamily: {
-    text: "Urbanist-Regular",
-    monospace: "Urbanist-Regular",
-  },
-})
+const theme = createTheme()
 
 SplashScreen.preventAutoHideAsync()
 

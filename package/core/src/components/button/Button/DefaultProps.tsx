@@ -17,7 +17,6 @@ export type ButtonProps = ButtonInterface & {
 
 export type ButtonComponentThemeProps = {
   default: ButtonProps;
-  classes?: object;
 };
 
 export const ButtonComponentThemeData: ButtonComponentThemeProps = {
@@ -26,6 +25,6 @@ export const ButtonComponentThemeData: ButtonComponentThemeProps = {
     variant: "filled",
     size: "md",
     minHeight: 50,
-    color: "global",
+    color: "inverse",
   },
 };

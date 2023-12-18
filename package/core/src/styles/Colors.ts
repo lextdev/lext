@@ -1,11 +1,21 @@
 import { ColorsProps } from "../types";
 
-export const Black = "#000";
-export const White = "#FFF";
-
 const Colors: ColorsProps = {
   background: "#fff",
-  default: "#1e87f0",
+  primary: "#1e87f0",
+  secondary: "#222",
+  muted: "#F1EFEF",
+  global: "#666",
+  emphasis: "#333",
+  inverse: "#fff",
+  link: "#1e87f0",
+  danger: "#f0506e",
+  success: "#32d296",
+  warning: "#faa05a",
+};
+
+export const DarkColors: ColorsProps = {
+  background: "#000",
   emphasis: "#333",
   muted: "#F1EFEF",
   primary: "#1e87f0",
