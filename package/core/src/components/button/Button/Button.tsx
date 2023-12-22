@@ -5,6 +5,7 @@ import StyledButton from "./Styled";
 import Text from "../../typography/Text/Text";
 import { useTheme } from "../../../hooks";
 import { TextSizesProps } from "../../../types";
+import { TouchableOpacity } from "react-native";
 
 const Button: FC<
   ButtonProps & {
@@ -12,7 +13,14 @@ const Button: FC<
   }
 > = (props) => {
   const { theme } = useTheme();
-  const { children, color, fontFamily, ...touchableComponent } = props;
+  const {
+    children,
+    color,
+    fontFamily,
+    onPress,
+    onLongPress,
+    ...touchableComponent
+  } = props;
   const currentSize = props.size || theme.components.Button.default.size;
   const currentFontFamily =
     fontFamily ||
@@ -33,7 +41,7 @@ const Button: FC<
       break;
   }
 
-  return (
+  const buttonElement = (
     <StyledButton
       {...touchableComponent}
       activeOpacity={0.7}
@@ -48,6 +56,16 @@ const Button: FC<
       </Text>
     </StyledButton>
   );
+
+  if (onPress || onLongPress) {
+    return (
+      <TouchableOpacity onPress={onPress} onLayout={onLongPress}>
+        {buttonElement}
+      </TouchableOpacity>
+    );
+  }
+
+  return buttonElement;
 };
 
 export default Button;

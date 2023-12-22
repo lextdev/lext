@@ -10,7 +10,6 @@ export type ButtonProps = ButtonInterface & {
   paddingHorizontal?: number;
   borderRadius?: number;
   size?: "lg" | "md" | "sm";
-  minHeight?: DimensionValue;
   color?: ColorTypeProps;
   fontFamily?: string;
 };
@@ -24,7 +23,6 @@ export const ButtonComponentThemeData: ButtonComponentThemeProps = {
     backgroundColor: "primary",
     variant: "filled",
     size: "md",
-    minHeight: 50,
     color: "inverse",
   },
 };

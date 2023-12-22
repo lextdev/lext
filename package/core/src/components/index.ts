@@ -14,6 +14,8 @@ export { default as Grid } from "./mics/Grid/Grid";
 export { default as Group } from "./mics/Group/Group";
 export { default as Stack } from "./mics/Stack/Stack";
 export { default as Modal } from "./mics/Modal/Modal";
+export { default as Menu } from "./mics/Menu/Menu";
+export { default as BottomSheet } from "./mics/BottomSheet/BottomSheet";
 
 // layout
 export { default as SafeAreaView } from "./layout/SafeAreaView/SafeAreaView";

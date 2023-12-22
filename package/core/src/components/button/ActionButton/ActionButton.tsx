@@ -3,6 +3,7 @@ import React, { FC, ReactNode } from "react";
 import { ActionButtonProps } from "./DefaultProps";
 import StyledActionButton from "./Styled";
 import { ColorTypeProps } from "../../../helpers/GetColorValue";
+import { TouchableOpacity } from "react-native";
 
 const ActionButton: FC<
   ActionButtonProps & {
@@ -10,9 +11,10 @@ const ActionButton: FC<
     color?: ColorTypeProps;
   }
 > = (props) => {
-  const { children, color, ...touchableComponent } = props;
+  const { children, color, onLongPress, onPress, ...touchableComponent } =
+    props;
 
-  return (
+  const actionButtonElement = (
     <StyledActionButton
       {...touchableComponent}
       activeOpacity={0.7}
@@ -21,6 +23,16 @@ const ActionButton: FC<
       {children}
     </StyledActionButton>
   );
+
+  if (onPress || onLongPress) {
+    return (
+      <TouchableOpacity onPress={onPress} onLongPress={onLongPress}>
+        {actionButtonElement}
+      </TouchableOpacity>
+    );
+  }
+
+  return actionButtonElement;
 };
 
 export default ActionButton;

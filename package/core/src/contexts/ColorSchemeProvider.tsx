@@ -27,7 +27,7 @@ const ColorSchemeProvider: FC<{
     }
   }, []);
 
-  const barStyle = colorScheme === "lighten" ? "dark-content" : "light-content";
+  const barStyle = colorScheme === "darken" ? "dark-content" : "light-content";
 
   return (
     <ColorSchemeContext.Provider value={colorScheme}>

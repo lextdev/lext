@@ -2,6 +2,7 @@ import { ThemeProvider as RThemeProvider, Theme } from "@emotion/react";
 import React, { FC, ReactNode } from "react";
 import ColorSchemeProvider from "./ColorSchemeProvider";
 import { LayoutChangeEvent, View } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 type ThemeProviderProps = {
   children: ReactNode;
@@ -15,13 +16,15 @@ const ThemeProvider: FC<ThemeProviderProps> = ({
   onLayout,
 }) => {
   return (
-    <RThemeProvider theme={theme}>
-      <ColorSchemeProvider themeColorScheme={theme.colorScheme}>
-        <View style={{ flex: 1 }} onLayout={onLayout}>
-          {children}
-        </View>
-      </ColorSchemeProvider>
-    </RThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <RThemeProvider theme={theme}>
+        <ColorSchemeProvider themeColorScheme={theme.colorScheme}>
+          <View style={{ flex: 1 }} onLayout={onLayout}>
+            {children}
+          </View>
+        </ColorSchemeProvider>
+      </RThemeProvider>
+    </GestureHandlerRootView>
   );
 };
 
