@@ -1,39 +1,58 @@
-import { Dimensions, StyleSheet, View } from "react-native";
-import React, { useCallback, useImperativeHandle } from "react";
-import { Gesture, GestureDetector } from "react-native-gesture-handler";
+import { Dimensions, StyleSheet } from "react-native";
+import React, {
+  ReactNode,
+  forwardRef,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useState,
+} from "react";
+import { css } from "@emotion/native";
+import { useColor, useTheme } from "../../../hooks";
 import Animated, {
-  Extrapolate,
-  interpolate,
-  useAnimatedProps,
+  FadeIn,
+  FadeOut,
+  SharedValue,
+  useAnimatedGestureHandler,
   useAnimatedStyle,
   useSharedValue,
   withSpring,
 } from "react-native-reanimated";
-import { BottomSheetRefProps, useColor, useTheme } from "../../..";
-import { css } from "@emotion/native";
+import { PanGestureHandler } from "react-native-gesture-handler";
+import { BottomSheetRefProps } from "../../../types";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
-const MAX_TRANSLATE_Y = -SCREEN_HEIGHT + 50;
+function getSnapSize(value: number) {
+  const currentValue = SCREEN_HEIGHT * (value / 100);
+  return -currentValue;
+}
 
 type BottomSheetProps = {
-  children?: React.ReactNode;
+  children: ReactNode;
+  snaps: number[];
 };
 
-const BottomSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProps>(
-  ({ children }, ref) => {
-    const { theme } = useTheme();
+const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
+  ({ children, snaps }, ref) => {
     const getColor = useColor();
+    const { theme } = useTheme();
+    const [snapSizes, setSnapSizes] = useState<number[]>([]);
+
+    // Shared
+    const context = useSharedValue({ y: 0, index: 0 });
     const translateY = useSharedValue(0);
-    const active = useSharedValue(false);
+    const index = useSharedValue<number>(0);
+    // Shared
 
     const bottomSheetContainerCss = css({
-      height: SCREEN_HEIGHT,
+      height: SCREEN_HEIGHT + 100,
       width: "100%",
       backgroundColor: getColor("background"),
       position: "absolute",
       top: SCREEN_HEIGHT,
       borderRadius: theme.defaultOptions.borderRadius,
+      zIndex: 999,
     });
 
     const lineCss = css({
@@ -45,88 +64,125 @@ const BottomSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProps>(
       borderRadius: theme.defaultOptions.borderRadius / 2,
     });
 
-    const scrollTo = useCallback((destination: number) => {
-      "worklet";
-      active.value = destination !== 0;
-
-      translateY.value = withSpring(destination, {
-        damping: destination !== 0 ? 12 : 25,
-      });
-    }, []);
-
-    const isActive = useCallback(() => {
-      return active.value;
-    }, []);
-
-    useImperativeHandle(ref, () => ({ scrollTo, isActive }), [
-      scrollTo,
-      isActive,
-    ]);
-
-    const context = useSharedValue({ y: 0 });
-    const gesture = Gesture.Pan()
-      .onStart(() => {
-        context.value = { y: translateY.value };
-      })
-      .onUpdate((event) => {
-        translateY.value = event.translationY + context.value.y;
-        translateY.value = Math.max(translateY.value, MAX_TRANSLATE_Y);
-      })
-      .onEnd(() => {
-        if (translateY.value > -SCREEN_HEIGHT / 3) {
-          scrollTo(0);
-        } else if (translateY.value < -SCREEN_HEIGHT / 1.5) {
-          scrollTo(MAX_TRANSLATE_Y);
-        }
-      });
-
     const rBottomSheetStyle = useAnimatedStyle(() => {
-      const borderRadius = interpolate(
-        translateY.value,
-        [MAX_TRANSLATE_Y + 50, MAX_TRANSLATE_Y],
-        [25, 5],
-        Extrapolate.CLAMP
-      );
-
       return {
-        borderRadius,
         transform: [{ translateY: translateY.value }],
       };
     });
 
-    const rBackdropStyle = useAnimatedStyle(() => {
+    const presabbleStyle = useAnimatedStyle(() => {
       return {
-        opacity: withSpring(active.value ? 1 : 0),
+        display: index.value !== 0 ? "flex" : "none",
       };
+    });
+
+    const scrollTo = useCallback((destination: number) => {
+      "worklet";
+
+      translateY.value = withSpring(destination, {
+        damping: 12,
+      });
     }, []);
 
-    const rBackdropProps = useAnimatedProps(() => {
-      return {
-        pointerEvents: active.value ? "auto" : "none",
-      } as any;
+    const snapToIndex = useCallback(
+      (toIndex: number) => {
+        "worklet";
+
+        index.value = toIndex;
+        scrollTo(snapSizes[toIndex]);
+      },
+      [snapSizes]
+    );
+
+    const snapToClose = useCallback(() => {
+      "worklet";
+
+      index.value = 0;
+      scrollTo(0);
+    }, []);
+
+    const onHandlerEnd = useCallback(
+      (
+        context: SharedValue<{
+          y: number;
+          index: number;
+        }>,
+        nextY: number
+      ) => {
+        "worklet";
+
+        const prevIndex = context.value.index;
+        const prevY = context.value.y;
+
+        if (-50 + prevY > nextY && snapSizes[context.value.index + 1]) {
+          const nextSnapIndex = context.value.index + 1;
+          snapToIndex(nextSnapIndex);
+        } else if (prevY + -50 < nextY && snapSizes[context.value.index - 1]) {
+          const nextSnapIndex = context.value.index - 1;
+          snapToIndex(nextSnapIndex);
+        } else {
+          snapToIndex(prevIndex);
+        }
+      },
+      [snapSizes]
+    );
+
+    const onPanGestureEvent = useAnimatedGestureHandler({
+      onStart() {
+        context.value = { y: translateY.value, index: index.value };
+      },
+      onActive(event) {
+        translateY.value = event.translationY + context.value.y;
+      },
+      onEnd() {
+        if (translateY.value >= -125) {
+          snapToIndex(0);
+        } else {
+          onHandlerEnd(context, translateY.value);
+        }
+      },
+    });
+
+    useImperativeHandle(
+      ref,
+      () => ({
+        snapToIndex,
+        snapToClose,
+      }),
+      [snapToIndex, snapToClose]
+    );
+
+    useEffect(() => {
+      if (!snapSizes.length && snaps) {
+        const value = snaps.map((snap) => getSnapSize(snap));
+        value.unshift(0);
+        setSnapSizes(value);
+      }
     }, []);
 
     return (
       <>
         <Animated.View
           onTouchStart={() => {
-            scrollTo(0);
+            snapToIndex(0);
           }}
-          animatedProps={rBackdropProps}
+          entering={FadeIn}
+          exiting={FadeOut}
           style={[
+            presabbleStyle,
             {
               ...StyleSheet.absoluteFillObject,
-              backgroundColor: "rgba(0,0,0,0.4)",
+              backgroundColor: "#0000004D",
+              zIndex: 998,
             },
-            rBackdropStyle,
           ]}
         />
-        <GestureDetector gesture={gesture}>
+        <PanGestureHandler onGestureEvent={onPanGestureEvent}>
           <Animated.View style={[bottomSheetContainerCss, rBottomSheetStyle]}>
-            <View style={lineCss} />
+            <Animated.View style={lineCss} />
             {children}
           </Animated.View>
-        </GestureDetector>
+        </PanGestureHandler>
       </>
     );
   }

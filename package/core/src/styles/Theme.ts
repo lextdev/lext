@@ -20,8 +20,8 @@ export type ThemeProps = {
 const Theme: ThemeInterface = {
   colorScheme: "lighten",
   colors: {
-    darken: Colors,
-    lighten: DarkColors,
+    lighten: Colors,
+    darken: DarkColors,
   },
   spacing: Spacing,
   fontFamily: {

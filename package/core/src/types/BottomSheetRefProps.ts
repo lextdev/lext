@@ -1,6 +1,6 @@
 type BottomSheetRefProps = {
-  scrollTo: (destination: number) => void;
-  isActive: () => boolean;
+  snapToIndex: (toIndex: number) => void;
+  snapToClose: () => void;
 };
 
 export default BottomSheetRefProps;

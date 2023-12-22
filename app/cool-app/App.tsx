@@ -3,11 +3,10 @@ import React, { useCallback } from "react"
 import { ThemeProvider, createTheme } from "@ynssenem/lext"
 import * as SplashScreen from "expo-splash-screen"
 
-import IndexScreen from "./src"
 import TwoScreen from "./src/two"
 import { useFonts } from "expo-font"
 
-const theme = createTheme()
+const theme = createTheme({})
 
 SplashScreen.preventAutoHideAsync()
 
@@ -29,7 +28,7 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider theme={theme} onLayout={onLayoutRootView}>
+    <ThemeProvider theme={theme} gestureHandlerRootView onLayout={onLayoutRootView}>
       <TwoScreen />
     </ThemeProvider>
   )
