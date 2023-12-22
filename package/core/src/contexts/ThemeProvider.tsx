@@ -8,22 +8,32 @@ type ThemeProviderProps = {
   children: ReactNode;
   theme: Theme;
   onLayout?: (event: LayoutChangeEvent) => void;
+  gestureHandlerRootView: boolean;
 };
 
 const ThemeProvider: FC<ThemeProviderProps> = ({
   children,
   theme,
   onLayout,
+  gestureHandlerRootView = false,
 }) => {
+  const themeProviderContent = (
+    <RThemeProvider theme={theme}>
+      <ColorSchemeProvider themeColorScheme={theme.colorScheme}>
+        <View style={{ flex: 1 }} onLayout={onLayout}>
+          {children}
+        </View>
+      </ColorSchemeProvider>
+    </RThemeProvider>
+  );
+
+  if (!gestureHandlerRootView) {
+    return themeProviderContent;
+  }
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <RThemeProvider theme={theme}>
-        <ColorSchemeProvider themeColorScheme={theme.colorScheme}>
-          <View style={{ flex: 1 }} onLayout={onLayout}>
-            {children}
-          </View>
-        </ColorSchemeProvider>
-      </RThemeProvider>
+      {themeProviderContent}
     </GestureHandlerRootView>
   );
 };
