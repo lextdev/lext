@@ -1,6 +1,6 @@
 {
   "name": "@ynssenem/lext",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types.d.ts",
@@ -30,8 +30,8 @@
     "eslint-plugin-react": "^7.33.2",
     "react": "^18.2.0",
     "react-native": "^0.72.6",
-    "react-native-gesture-handler": "~2.12.0",
-    "react-native-reanimated": "~3.3.0",
+    "react-native-gesture-handler": "^2.12.0",
+    "react-native-reanimated": "^3.3.0",
     "rollup": "^3.0.0",
     "rollup-plugin-dts": "^5.3.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -43,8 +43,8 @@
     "@emotion/react": "^11.11.1",
     "react": "18.2.0",
     "react-native": "0.72.6",
-    "react-native-gesture-handler": "~2.12.0",
-    "react-native-reanimated": "~3.3.0"
+    "react-native-gesture-handler": "^2.12.0",
+    "react-native-reanimated": "^3.3.0"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.21.0"
