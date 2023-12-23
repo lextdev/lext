@@ -3,29 +3,69 @@ import React, { FC, ReactNode } from "react";
 import { ButtonProps } from "./DefaultProps";
 import StyledButton from "./Styled";
 import Text from "../../typography/Text/Text";
-import { ColorTypeProps } from "../../../helpers/GetColorValue";
-import { useColor } from "../../../hooks";
+import { useTheme } from "../../../hooks";
+import { TextSizesProps } from "../../../types";
+import { TouchableOpacity } from "react-native";
 
 const Button: FC<
   ButtonProps & {
     children: ReactNode | string;
-    color?: ColorTypeProps;
   }
 > = (props) => {
-  const { children, color = "global", ...touchableComponent } = props;
-  const fonstSize = props.size === "sm" ? "caption" : "body";
+  const { theme } = useTheme();
+  const {
+    children,
+    color,
+    fontFamily,
+    onPress,
+    onLongPress,
+    ...touchableComponent
+  } = props;
+  const currentSize = props.size || theme.components.Button.default.size;
+  const currentFontFamily =
+    fontFamily ||
+    theme.components.Button.default.fontFamily ||
+    theme.fontFamily.text;
 
-  return (
+  let fontSize: keyof TextSizesProps;
+
+  switch (currentSize) {
+    case "sm":
+      fontSize = "caption";
+      break;
+    case "lg":
+      fontSize = "subHeading";
+      break;
+    default:
+      fontSize = "body";
+      break;
+  }
+
+  const buttonElement = (
     <StyledButton
       {...touchableComponent}
       activeOpacity={0.7}
       style={{ opacity: props.disabled ? 0.3 : 1 }}
     >
-      <Text color={color} fontSize={fonstSize}>
+      <Text
+        color={color || theme.components.Button.default.color}
+        fontSize={fontSize}
+        fontFamily={currentFontFamily}
+      >
         {children}
       </Text>
     </StyledButton>
   );
+
+  if (onPress || onLongPress) {
+    return (
+      <TouchableOpacity onPress={onPress} onLayout={onLongPress}>
+        {buttonElement}
+      </TouchableOpacity>
+    );
+  }
+
+  return buttonElement;
 };
 
 export default Button;

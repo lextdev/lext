@@ -23,12 +23,11 @@ const ColorSchemeProvider: FC<{
 
   useEffect(() => {
     if (themeColorScheme) {
-      console.log("State ColorSchemeProvider", themeColorScheme);
       setColorScheme(themeColorScheme);
     }
   }, []);
 
-  const barStyle = colorScheme === "lighten" ? "dark-content" : "light-content";
+  const barStyle = colorScheme !== "darken" ? "dark-content" : "light-content";
 
   return (
     <ColorSchemeContext.Provider value={colorScheme}>

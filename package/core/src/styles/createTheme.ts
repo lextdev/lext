@@ -27,6 +27,13 @@ const createTheme = (newTheme?: DeepPartialTheme): ThemeInterface => {
         ...defaultTheme.spacing,
         ...(newTheme.spacing || {}),
       },
+      fontFamily: {
+        heading:
+          newTheme.fontFamily?.heading ?? defaultTheme.fontFamily.heading,
+        text: newTheme.fontFamily?.text ?? defaultTheme.fontFamily.text,
+        monospace:
+          newTheme.fontFamily?.monospace ?? defaultTheme.fontFamily.monospace,
+      },
       fontSizes: {
         heading: {
           ...defaultTheme.fontSizes.heading,
@@ -43,56 +50,68 @@ const createTheme = (newTheme?: DeepPartialTheme): ThemeInterface => {
             ...defaultTheme.components.Text.default,
             ...(newTheme.components?.Text?.default || {}),
           },
-          classes: newTheme.components?.Text?.classes || {},
         },
         Heading: {
           default: {
             ...defaultTheme.components.Heading.default,
             ...(newTheme.components?.Heading?.default || {}),
           },
-          classes: newTheme.components?.Heading?.classes || {},
         },
         Stack: {
           default: {
-            // Stack - add updates for component here
+            ...defaultTheme.components.Stack.default,
             ...(newTheme.components?.Stack?.default || {}),
           },
           // Other features will be added here
         },
         Group: {
           default: {
-            // Group - add updates for component here
+            ...defaultTheme.components.Group.default,
             ...(newTheme.components?.Group?.default || {}),
           },
           // Other features will be added here
         },
         Grid: {
           default: {
-            // Grid - add updates for component here
+            ...defaultTheme.components.Grid.default,
             ...(newTheme.components?.Grid?.default || {}),
           },
           // Other features will be added here
         },
         Box: {
           default: {
-            // Box - add updates for component here
+            ...defaultTheme.components.Box.default,
             ...(newTheme.components?.Box?.default || {}),
           },
           // Other features will be added here
         },
         Button: {
           default: {
-            // Button - add updates for component here
+            ...defaultTheme.components.Button.default,
             ...(newTheme.components?.Button?.default || {}),
           },
-          // Other features will be added here
         },
         ActionButton: {
           default: {
-            // ActionButton - add updates for component here
+            ...defaultTheme.components.ActionButton.default,
             ...(newTheme.components?.ActionButton?.default || {}),
           },
-          // Other features will be added here
+        },
+        FormLayout: {
+          classes: {
+            label: {
+              ...defaultTheme.components.FormLayout.classes.label,
+              ...(newTheme.components?.FormLayout?.classes?.label || {}),
+            },
+            description: {
+              ...defaultTheme.components.FormLayout.classes.description,
+              ...(newTheme.components?.FormLayout?.classes?.description || {}),
+            },
+            error: {
+              ...defaultTheme.components.FormLayout.classes.error,
+              ...(newTheme.components?.FormLayout?.classes?.error || {}),
+            },
+          },
         },
       },
       defaultOptions: {

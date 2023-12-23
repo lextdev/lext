@@ -12,6 +12,7 @@ import { BoxComponentThemeProps } from "../components/mics/Box/DefaultProps";
 import { ButtonComponentThemeProps } from "../components/button/Button/DefaultProps";
 import { ActionButtonComponentThemeProps } from "../components/button/ActionButton/DefaultProps";
 import { ColorSchemeProps } from "../types";
+import { FormLayoutComponentThemeProps } from "../components/form/_layout/DefaultProps";
 
 interface ThemeInterface {
   colorScheme: ColorSchemeProps;
@@ -20,6 +21,11 @@ interface ThemeInterface {
     lighten: ColorsProps;
   };
   spacing: SpacingProps;
+  fontFamily: {
+    heading?: string;
+    text?: string;
+    monospace?: string;
+  };
   fontSizes: {
     heading: HeadingSizesProps;
     text: TextSizesProps;
@@ -33,6 +39,7 @@ interface ThemeInterface {
     Box: BoxComponentThemeProps;
     Button: ButtonComponentThemeProps;
     ActionButton: ActionButtonComponentThemeProps;
+    FormLayout: FormLayoutComponentThemeProps;
   };
   defaultOptions: {
     gap: number;

@@ -1,4 +1,4 @@
-import { DimensionValue, TouchableOpacityProps } from "react-native";
+import { DimensionValue } from "react-native";
 import { ColorTypeProps } from "../../../helpers/GetColorValue";
 import { ButtonInterface } from "../../../interfaces";
 
@@ -10,12 +10,12 @@ export type ButtonProps = ButtonInterface & {
   paddingHorizontal?: number;
   borderRadius?: number;
   size?: "lg" | "md" | "sm";
-  minHeight?: DimensionValue;
+  color?: ColorTypeProps;
+  fontFamily?: string;
 };
 
 export type ButtonComponentThemeProps = {
   default: ButtonProps;
-  classes?: object;
 };
 
 export const ButtonComponentThemeData: ButtonComponentThemeProps = {
@@ -23,6 +23,6 @@ export const ButtonComponentThemeData: ButtonComponentThemeProps = {
     backgroundColor: "primary",
     variant: "filled",
     size: "md",
-    minHeight: 47,
+    color: "inverse",
   },
 };

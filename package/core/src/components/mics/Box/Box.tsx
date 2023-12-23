@@ -2,7 +2,6 @@ import styled from "@emotion/native";
 
 import { BoxProps } from "./DefaultProps";
 import { ThemeProps } from "../../../styles/Theme";
-import { GetColorValue } from "../../../helpers";
 import { useColor } from "../../../hooks";
 
 const Box = styled.View<BoxProps & ThemeProps>((props) => {
@@ -10,6 +9,7 @@ const Box = styled.View<BoxProps & ThemeProps>((props) => {
   const defaultProps = props.theme?.components.Box.default;
   const merged = { ...defaultProps, ...componentProps };
   const getColor = useColor();
+
   return {
     paddingHorizontal: theme.defaultOptions.paddingHorizontal,
     paddingVertical: theme.defaultOptions.paddingVertical,
