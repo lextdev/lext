@@ -6,7 +6,33 @@ import * as SplashScreen from "expo-splash-screen"
 import TwoScreen from "./src/two"
 import { useFonts } from "expo-font"
 
-const theme = createTheme({})
+const theme = createTheme({
+  colorScheme: "darken",
+  colors: {
+    darken: {
+      background: "#03060F",
+      primary: "#3300FD",
+      secondary: "#091328",
+      muted: "#070F1F",
+      global: "#FFFFFF",
+      emphasis: "#665D8C",
+      inverse: "#091328",
+    },
+  },
+  components: {
+    Box: {
+      default: {
+        paddingHorizontal: 50,
+      },
+    },
+    Button: {
+      default: {
+        color: "global",
+        paddingVertical: 20,
+      },
+    },
+  },
+})
 
 SplashScreen.preventAutoHideAsync()
 

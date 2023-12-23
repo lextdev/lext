@@ -17,8 +17,6 @@ const ThemeProvider: FC<ThemeProviderProps> = ({
   onLayout,
   gestureHandlerRootView = false,
 }) => {
-  console.log(theme.colorScheme);
-
   const themeProviderContent = (
     <RThemeProvider theme={theme}>
       <ColorSchemeProvider themeColorScheme={theme.colorScheme}>

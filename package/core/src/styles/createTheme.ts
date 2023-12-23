@@ -113,6 +113,12 @@ const createTheme = (newTheme?: DeepPartialTheme): ThemeInterface => {
             },
           },
         },
+        Input: {
+          default: {
+            ...defaultTheme.components.Input.default,
+            ...(newTheme.components?.Input?.default || {}),
+          },
+        },
       },
       defaultOptions: {
         ...defaultTheme.defaultOptions,

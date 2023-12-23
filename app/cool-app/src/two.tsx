@@ -4,7 +4,9 @@ import {
   Box,
   Button,
   SafeAreaView,
+  SelectBox,
   Text,
+  TextInput,
   useTheme,
 } from "@ynssenem/lext"
 import { useCallback, useRef } from "react"
@@ -30,7 +32,16 @@ const IndexScreen = () => {
       </Box>
       <BottomSheet ref={bottomSheetRef} snaps={[25]}>
         <Box flex={1}>
-          <Text>Hello World</Text>
+          <TextInput />
+          <SelectBox
+            data={[
+              {
+                label: "deneme",
+                value: "1",
+              },
+            ]}
+            modal={{ visible: false }}
+          />
         </Box>
       </BottomSheet>
     </SafeAreaView>
