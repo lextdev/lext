@@ -35,7 +35,11 @@ export default [
       postcss(),
       json(),
     ],
-    external: ["@emotion/react", "@emotion/native"],
+    external: [
+      "@emotion/react",
+      "@emotion/native",
+      "@react-native-async-storage/async-storage",
+    ],
   },
   {
     input: "src/index.ts",

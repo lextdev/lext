@@ -5,11 +5,10 @@ import {
   Button,
   SafeAreaView,
   SelectBox,
-  Text,
   TextInput,
   useTheme,
 } from "@ynssenem/lext"
-import { useCallback, useRef } from "react"
+import { useCallback, useEffect, useRef } from "react"
 
 const IndexScreen = () => {
   const { colorScheme, setColorScheme } = useTheme()

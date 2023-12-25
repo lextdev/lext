@@ -1,5 +1,7 @@
 # Lext - React Native UI Library
 
+![Logo](https://res.cloudinary.com/dwmejslx5/image/upload/c_thumb,w_200,g_face/v1703523642/LextLogo_m6co1p.png)
+
 Lext is a customizable and easy-to-use UI library for your React Native applications. Developed with TypeScript support, this library helps you quickly create user interfaces.
 
 ## Getting Started
@@ -31,7 +33,6 @@ export default function App() {
       darken: {
         background: "#2B2A4C",
         global: "#FFF",
-        primary: "#83A2FF",
       },
       lighten: {
         background: "#B4BDFF",
@@ -41,22 +42,21 @@ export default function App() {
   });
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} gestureHandlerRootView>
       <IndexScreen />
     </ThemeProvider>
   );
 }
 ```
 
-```json
+```js
 module.exports = function (api) {
-  api.cache(true)
+  api.cache(true);
   return {
     presets: ["babel-preset-expo"],
     plugins: ["react-native-reanimated/plugin"],
-  }
-}
-
+  };
+};
 ```
 
 ```ts
