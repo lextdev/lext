@@ -7,6 +7,7 @@ export type FormLayoutComponentThemeProps = {
     error: TextProps;
   };
 };
+
 export const FormLayoutComponentThemeData: FormLayoutComponentThemeProps = {
   classes: {
     label: {

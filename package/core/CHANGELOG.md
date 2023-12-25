@@ -1,5 +1,17 @@
 # CHANGELOG.md
 
+## 1.2.1
+
+### Fixed
+
+- BottomSheet Theme Data
+- Text & Heading Fixed Style (added textAlign etc.)
+- The getItem undefined error in SessionProvider has been fixed.
+
+### Added
+
+- Added AsyncStorage to Rollup settings file
+
 ## 1.2.0 (unreleased)
 
 ### Added

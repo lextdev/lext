@@ -1,12 +1,14 @@
 import "react-native-gesture-handler"
 import React, { useCallback } from "react"
-import { ThemeProvider, createTheme } from "@ynssenem/lext"
+import { SessionProvider, ThemeProvider, createTheme } from "@ynssenem/lext"
 import * as SplashScreen from "expo-splash-screen"
 
 import TwoScreen from "./src/two"
 import { useFonts } from "expo-font"
 
-const theme = createTheme({})
+const theme = createTheme({
+  colorScheme: "lighten",
+})
 
 SplashScreen.preventAutoHideAsync()
 
@@ -29,7 +31,9 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme} gestureHandlerRootView onLayout={onLayoutRootView}>
-      <TwoScreen />
+      <SessionProvider>
+        <TwoScreen />
+      </SessionProvider>
     </ThemeProvider>
   )
 }

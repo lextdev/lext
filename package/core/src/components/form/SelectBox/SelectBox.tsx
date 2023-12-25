@@ -12,6 +12,7 @@ import { Box, Group, Modal, Stack } from "../..";
 import { CustomModalProps } from "../../mics/Modal/Modal";
 import { css } from "@emotion/native";
 import { useColor, useTheme } from "../../../hooks";
+import { InputProps } from "../_types/InputProps";
 
 type DataProps = {
   image?: string;
@@ -19,7 +20,7 @@ type DataProps = {
   description?: string;
   label: string;
 };
-interface CustomSelectBoxProps extends TextInputProps {
+interface CustomSelectBoxProps extends TextInputProps, InputProps {
   modal: CustomModalProps;
   onPress?: () => any;
   data: DataProps[];
@@ -36,10 +37,14 @@ const CustomSelectBox: FormProps<CustomSelectBoxProps> = (props) => {
     onPress,
     value,
     onChange,
+    color,
+    fontSize,
   } = props;
   const getColor = useColor();
   const [getValue, setValue] = useState<DataProps>();
   const { theme } = useTheme();
+  const defaultProps = theme?.components.Input.default;
+
   const findValue = (value: string) =>
     data.find((item) => item.value === value);
 
@@ -107,13 +112,23 @@ const CustomSelectBox: FormProps<CustomSelectBoxProps> = (props) => {
                 />
               )}
               <Stack gap={0}>
-                <Text fontFamily={theme.fontFamily.monospace}>
+                <Text
+                  color={color ?? defaultProps.color}
+                  fontSize={fontSize ?? defaultProps.fontSize}
+                  fontFamily={theme.fontFamily.monospace}
+                >
                   {getValue.label}
                 </Text>
               </Stack>
             </Group>
           ) : (
-            <Text>{defaultSelectMessage}</Text>
+            <Text
+              color={color ?? defaultProps.color}
+              fontSize={fontSize ?? defaultProps.fontSize}
+              fontFamily={theme.fontFamily.monospace}
+            >
+              {defaultSelectMessage}
+            </Text>
           )}
         </TouchableOpacity>
       </Layout>

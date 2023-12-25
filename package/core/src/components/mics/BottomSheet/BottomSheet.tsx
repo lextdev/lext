@@ -20,6 +20,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { PanGestureHandler } from "react-native-gesture-handler";
 import { BottomSheetRefProps } from "../../../types";
+import { ColorTypeProps } from "../../../helpers/GetColorValue";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
@@ -48,7 +49,9 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     const bottomSheetContainerCss = css({
       height: SCREEN_HEIGHT + 100,
       width: "100%",
-      backgroundColor: getColor("background"),
+      backgroundColor: getColor(
+        theme.components.BottomSheet.default.backgroundColor
+      ),
       position: "absolute",
       top: SCREEN_HEIGHT,
       borderRadius: theme.defaultOptions.borderRadius,
@@ -58,7 +61,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     const lineCss = css({
       width: 75,
       height: 4,
-      backgroundColor: getColor("muted"),
+      backgroundColor: getColor(theme.components.BottomSheet.default.lineColor),
       alignSelf: "center",
       marginVertical: 15,
       borderRadius: theme.defaultOptions.borderRadius / 2,
