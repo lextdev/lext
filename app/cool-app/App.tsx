@@ -31,6 +31,11 @@ const theme = createTheme({
         paddingVertical: 20,
       },
     },
+    BottomSheet: {
+      default: {
+        backgroundColor: "primary",
+      },
+    },
   },
 })
 

@@ -14,6 +14,7 @@ import { ActionButtonComponentThemeProps } from "../components/button/ActionButt
 import { ColorSchemeProps } from "../types";
 import { FormLayoutComponentThemeProps } from "../components/form/_layout/DefaultProps";
 import { InputComponentThemeProps } from "../components/form/_types/InputProps";
+import { BottomSheetComponentThemeProps } from "../components/mics/BottomSheet/defaultProps";
 
 interface ThemeInterface {
   colorScheme: ColorSchemeProps;
@@ -42,6 +43,7 @@ interface ThemeInterface {
     ActionButton: ActionButtonComponentThemeProps;
     FormLayout: FormLayoutComponentThemeProps;
     Input: InputComponentThemeProps;
+    BottomSheet: BottomSheetComponentThemeProps;
   };
   defaultOptions: {
     gap: number;

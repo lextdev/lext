@@ -1,5 +1,12 @@
 # CHANGELOG.md
 
+## 1.2.1
+
+### Fixed
+
+- BottomSheet Theme Data
+- Text & Heading Fixed Style (added textAlign etc.)
+
 ## 1.2.0 (unreleased)
 
 ### Added

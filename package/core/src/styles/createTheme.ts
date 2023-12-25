@@ -119,6 +119,12 @@ const createTheme = (newTheme?: DeepPartialTheme): ThemeInterface => {
             ...(newTheme.components?.Input?.default || {}),
           },
         },
+        BottomSheet: {
+          default: {
+            ...defaultTheme.components.BottomSheet.default,
+            ...(newTheme.components?.BottomSheet?.default || {}),
+          },
+        },
       },
       defaultOptions: {
         ...defaultTheme.defaultOptions,

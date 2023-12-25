@@ -2,6 +2,7 @@ import { ActionButtonComponentThemeData } from "../components/button/ActionButto
 import { ButtonComponentThemeData } from "../components/button/Button/DefaultProps";
 import { FormLayoutComponentThemeData } from "../components/form/_layout/DefaultProps";
 import { InputComponentThemeData } from "../components/form/_types/InputProps";
+import { BottomSheetComponentThemeData } from "../components/mics/BottomSheet/defaultProps";
 import { BoxComponentThemeData } from "../components/mics/Box/DefaultProps";
 import { GridComponentThemeData } from "../components/mics/Grid/DefaultProps";
 import { GroupComponentThemeData } from "../components/mics/Group/DefaultProps";
@@ -45,6 +46,7 @@ const Theme: ThemeInterface = {
     ActionButton: ActionButtonComponentThemeData,
     FormLayout: FormLayoutComponentThemeData,
     Input: InputComponentThemeData,
+    BottomSheet: BottomSheetComponentThemeData,
   },
   defaultOptions: {
     gap: 5,
