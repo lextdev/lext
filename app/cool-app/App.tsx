@@ -3,7 +3,7 @@ import React, { useCallback } from "react"
 import { SessionProvider, ThemeProvider, createTheme } from "@ynssenem/lext"
 import * as SplashScreen from "expo-splash-screen"
 
-import TwoScreen from "./src/two"
+import TwoScreen from "./src"
 import { useFonts } from "expo-font"
 
 const theme = createTheme({

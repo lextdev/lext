@@ -1,5 +1,11 @@
 # CHANGELOG.md
 
+## 1.3.0
+
+### Added
+
+- MaskInput added
+
 ## 1.2.1
 
 ### Fixed

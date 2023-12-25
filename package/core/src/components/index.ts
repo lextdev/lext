@@ -25,3 +25,4 @@ export { default as TextInput } from "./form/TextInput/TextInput";
 export { default as Textarea } from "./form/Textarea/Textarea";
 export { default as Switch } from "./form/Switch/Switch";
 export { default as SelectBox } from "./form/SelectBox/SelectBox";
+export { default as MaskInput } from "./form/MaskInput/MaskInput";

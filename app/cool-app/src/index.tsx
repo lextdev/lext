@@ -1,4 +1,4 @@
-import { Box, Button, Menu, SafeAreaView, Text, useTheme } from "@ynssenem/lext"
+import { Box, Button, MaskInput, Menu, SafeAreaView, Text, useTheme } from "@ynssenem/lext"
 import { useState } from "react"
 
 const IndexScreen = () => {
@@ -14,7 +14,10 @@ const IndexScreen = () => {
           changeColorScheme: {colorScheme}
         </Button>
       </Box>
-      <Box flex={1} justifyContent="center" alignItems="baseline">
+      <Box>
+        <MaskInput layout={{ label: "Hello World", description: "lorem ipsum dolor sit amet" }} />
+      </Box>
+      <Box flex={1} gap={50} justifyContent="center" alignItems="baseline">
         <Menu
           width={250}
           visible={getOpenMenu}
