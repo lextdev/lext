@@ -6,12 +6,20 @@ import { useColor, useTheme } from "../../../hooks";
 import { GetTextSizeValue } from "../../../helpers";
 import { InputProps } from "../_types/InputProps";
 
-interface CustomTextareaProps extends TextInputProps, InputProps {
-  height?: DimensionValue;
-}
+type CustomTextareaProps = TextInputProps &
+  InputProps & {
+    height?: DimensionValue;
+  };
 
 const CustomTextarea: FormProps<CustomTextareaProps> = (props) => {
-  const { layout, height = 150, color, fontSize, ...textInputProps } = props;
+  const {
+    layout,
+    height = 150,
+    color,
+    fontSize,
+    placeholderTextColor,
+    ...textInputProps
+  } = props;
   const { theme } = useTheme();
   const defaultProps = theme?.components.Input.default;
 
@@ -31,6 +39,9 @@ const CustomTextarea: FormProps<CustomTextareaProps> = (props) => {
             theme.fontSizes.text
           ),
         }}
+        placeholderTextColor={getColor(
+          placeholderTextColor ?? defaultProps.placeholderTextColor ?? "muted"
+        )}
         {...textInputProps}
       />
     </Layout>

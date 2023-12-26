@@ -8,6 +8,13 @@ import { useFonts } from "expo-font"
 
 const theme = createTheme({
   colorScheme: "lighten",
+  components: {
+    Input: {
+      default: {
+        placeholderTextColor: "primary",
+      },
+    },
+  },
 })
 
 SplashScreen.preventAutoHideAsync()

@@ -3,13 +3,14 @@ import React, { FC, ReactNode } from "react";
 import { ButtonProps } from "./DefaultProps";
 import StyledButton from "./Styled";
 import Text from "../../typography/Text/Text";
-import { useTheme } from "../../../hooks";
+import { useColor, useTheme } from "../../../hooks";
 import { TextSizesProps } from "../../../types";
-import { TouchableOpacity } from "react-native";
+import { ActivityIndicator, TouchableOpacity } from "react-native";
 
 const Button: FC<
   ButtonProps & {
     children: ReactNode | string;
+    isLoader?: boolean;
   }
 > = (props) => {
   const { theme } = useTheme();
@@ -19,8 +20,10 @@ const Button: FC<
     fontFamily,
     onPress,
     onLongPress,
+    isLoader,
     ...touchableComponent
   } = props;
+  const getColor = useColor();
   const currentSize = props.size || theme.components.Button.default.size;
   const currentFontFamily =
     fontFamily ||
@@ -45,8 +48,19 @@ const Button: FC<
     <StyledButton
       {...touchableComponent}
       activeOpacity={0.7}
-      style={{ opacity: props.disabled ? 0.3 : 1 }}
+      style={{
+        opacity: props.disabled ? 0.3 : 1,
+        flexDirection: "row",
+        gap: 10,
+      }}
     >
+      {isLoader && (
+        <ActivityIndicator
+          color={getColor(
+            color ?? theme.components.Button.default.color ?? "global"
+          )}
+        />
+      )}
       <Text
         color={color || theme.components.Button.default.color}
         fontSize={fontSize}

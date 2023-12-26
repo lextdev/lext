@@ -20,13 +20,15 @@ type DataProps = {
   description?: string;
   label: string;
 };
-interface CustomSelectBoxProps extends TextInputProps, InputProps {
-  modal: CustomModalProps;
-  onPress?: () => any;
-  data: DataProps[];
-  defaultSelectMessage?: string;
-  onChange?: ((e: any) => void) | undefined;
-}
+
+type CustomSelectBoxProps = TextInputProps &
+  InputProps & {
+    modal: CustomModalProps;
+    onPress?: () => any;
+    data: DataProps[];
+    defaultSelectMessage?: string;
+    onChange?: ((e: any) => void) | undefined;
+  };
 
 const CustomSelectBox: FormProps<CustomSelectBoxProps> = (props) => {
   const {

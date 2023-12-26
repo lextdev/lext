@@ -8,10 +8,11 @@ import MaskInput, {
   MaskInputProps as RNMIMaskInputProps,
 } from "react-native-mask-input";
 
-export interface MaskInputProps extends RNMIMaskInputProps, InputProps {}
+export type MaskInputProps = RNMIMaskInputProps & InputProps & {};
 
 const CustomMaskInput: FormProps<MaskInputProps> = (props) => {
-  const { layout, color, fontSize, ...textInputProps } = props;
+  const { layout, color, fontSize, placeholderTextColor, ...textInputProps } =
+    props;
   const { theme } = useTheme();
   const defaultProps = theme?.components.Input.default;
 
@@ -28,6 +29,9 @@ const CustomMaskInput: FormProps<MaskInputProps> = (props) => {
             theme.fontSizes.text
           ),
         }}
+        placeholderTextColor={getColor(
+          placeholderTextColor ?? defaultProps.placeholderTextColor ?? "muted"
+        )}
         {...textInputProps}
       />
     </Layout>

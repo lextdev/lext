@@ -19,6 +19,8 @@ const IndexScreen = () => {
     bottomSheetRef.current?.snapToIndex(destination)
   }, [])
 
+  console.log("HEllo Wolrd")
+
   return (
     <SafeAreaView>
       <Box gap={10}>
@@ -31,16 +33,7 @@ const IndexScreen = () => {
       </Box>
       <BottomSheet ref={bottomSheetRef} snaps={[25]}>
         <Box flex={1}>
-          <TextInput />
-          <SelectBox
-            data={[
-              {
-                label: "deneme",
-                value: "1",
-              },
-            ]}
-            modal={{ visible: false }}
-          />
+          <TextInput placeholder="Test" />
         </Box>
       </BottomSheet>
     </SafeAreaView>

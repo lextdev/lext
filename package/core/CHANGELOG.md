@@ -1,5 +1,11 @@
 # CHANGELOG.md
 
+## 1.3.7
+
+### Added
+
+- Button Loader
+
 ## 1.3.0
 
 ### Added
