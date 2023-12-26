@@ -20,7 +20,6 @@ import Animated, {
 } from "react-native-reanimated";
 import { PanGestureHandler } from "react-native-gesture-handler";
 import { BottomSheetRefProps } from "../../../types";
-import { ColorTypeProps } from "../../../helpers/GetColorValue";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 

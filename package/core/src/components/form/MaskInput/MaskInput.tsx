@@ -4,11 +4,13 @@ import FormProps from "../_types/FormProps";
 import { useColor, useTheme } from "../../../hooks";
 import { InputProps } from "../_types/InputProps";
 import { GetTextSizeValue } from "../../../helpers";
-import MaskInput, { MaskInputProps } from "react-native-mask-input";
+import MaskInput, {
+  MaskInputProps as RNMIMaskInputProps,
+} from "react-native-mask-input";
 
-interface CustomMaskInputProps extends MaskInputProps, InputProps {}
+export interface MaskInputProps extends RNMIMaskInputProps, InputProps {}
 
-const CustomMaskInput: FormProps<CustomMaskInputProps> = (props) => {
+const CustomMaskInput: FormProps<MaskInputProps> = (props) => {
   const { layout, color, fontSize, ...textInputProps } = props;
   const { theme } = useTheme();
   const defaultProps = theme?.components.Input.default;
