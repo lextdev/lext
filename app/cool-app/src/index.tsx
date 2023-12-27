@@ -54,7 +54,6 @@ const IndexScreen = () => {
         </Menu>
       </Box>
       <ArrowLeft color={"#000"} />
-
       <Box>
         <TextInput placeholder="Hes" />
       </Box>

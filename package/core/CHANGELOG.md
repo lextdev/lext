@@ -1,5 +1,12 @@
 # CHANGELOG.md
 
+## 1.4.1
+
+### Added
+
+- ActivityIndicator added
+- View added
+
 ## 1.4.0
 
 ### Added
