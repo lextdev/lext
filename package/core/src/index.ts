@@ -3,6 +3,7 @@ export * from "./hooks";
 export * from "./components";
 export * from "./types";
 export * from "./interfaces";
+export * from "./icons";
 export * from "./components/form/MaskInput/MaskInput";
 
 export { default as Theme } from "./styles/Theme";

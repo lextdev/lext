@@ -9,6 +9,9 @@ import { useFonts } from "expo-font"
 const theme = createTheme({
   colorScheme: "lighten",
   components: {
+    FormLayout: {
+      classes: {},
+    },
     Input: {
       default: {
         placeholderTextColor: "primary",

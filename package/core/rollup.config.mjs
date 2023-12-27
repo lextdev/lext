@@ -40,6 +40,7 @@ export default [
       "@emotion/native",
       "@react-native-async-storage/async-storage",
       "react-native-mask-input",
+      "react-native-svg",
     ],
   },
   {

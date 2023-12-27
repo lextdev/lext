@@ -1,6 +1,6 @@
 {
   "name": "@ynssenem/lext",
-  "version": "1.3.7",
+  "version": "1.4.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types.d.ts",
@@ -11,7 +11,8 @@
     "typescript"
   ],
   "scripts": {
-    "rollup": "rollup -c --bundleConfigAsCjs"
+    "rollup": "rollup -c --bundleConfigAsCjs",
+    "icons": "npx @svgr/cli --native --icon [24,24] --typescript --config-file ./svgr-config.json --out-dir ./src/icons ./icons"
   },
   "author": "Yunus SENEM",
   "license": "MIT",
@@ -24,6 +25,7 @@
     "@rollup/plugin-json": "^6.0.1",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@rollup/plugin-typescript": "^11.1.0",
+    "@svgr/cli": "^8.1.0",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
     "eslint": "^8.55.0",
@@ -48,6 +50,7 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.21.0",
-    "react-native-mask-input": "^1.2.3"
+    "react-native-mask-input": "^1.2.3",
+    "react-native-svg": "^14.1.0"
   }
 }

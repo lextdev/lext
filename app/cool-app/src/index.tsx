@@ -1,4 +1,5 @@
 import {
+  ArrowLeft,
   Box,
   Button,
   MaskInput,
@@ -52,6 +53,8 @@ const IndexScreen = () => {
           <Button size="sm">Hello World</Button>
         </Menu>
       </Box>
+      <ArrowLeft color={"#000"} />
+
       <Box>
         <TextInput placeholder="Hes" />
       </Box>
