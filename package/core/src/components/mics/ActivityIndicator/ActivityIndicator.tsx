@@ -1,9 +1,9 @@
 import React, { FC } from "react";
-import { ActivityIndicator } from "react-native";
+import { ActivityIndicator, ActivityIndicatorProps } from "react-native";
 import { ColorTypeProps } from "../../../helpers/GetColorValue";
 import { useColor } from "../../../hooks";
 
-type CustomActivityIndicatorProps = ActivityIndicator & {
+type CustomActivityIndicatorProps = ActivityIndicatorProps & {
   color?: ColorTypeProps;
 };
 

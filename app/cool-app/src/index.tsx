@@ -1,4 +1,5 @@
 import {
+  ActivityIndicator,
   ArrowLeft,
   Box,
   Button,
@@ -53,7 +54,7 @@ const IndexScreen = () => {
           <Button size="sm">Hello World</Button>
         </Menu>
       </Box>
-      <ArrowLeft color={"#000"} />
+      <ActivityIndicator color="secondary" size={"large"} />
       <Box>
         <TextInput placeholder="Hes" />
       </Box>
