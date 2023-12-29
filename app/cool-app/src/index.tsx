@@ -1,10 +1,10 @@
 import {
+  ArrowDown,
   Box,
-  Heading,
-  Text,
   SafeAreaView,
+  TextInput,
+  Textarea,
   useLoadingOverlay,
-  Button,
 } from "@ynssenem/lext";
 import { useEffect } from "react";
 
@@ -19,10 +19,21 @@ const IndexScreen = () => {
 
   return (
     <SafeAreaView>
-      <Box flex={1} justifyContent="center" alignItems="center">
-        <Heading fontSize="h1">Merhaba Dünya</Heading>
-        <Text>Hello World</Text>
-        <Button onPress={() => setLoading((prev) => !prev)}>Set Loading</Button>
+      <Box flex={1} justifyContent="center">
+        <TextInput
+          layout={{
+            left: <ArrowDown color="black" />,
+            label: "Hello World",
+          }}
+        />
+
+        <Textarea
+          layout={{
+            left: <ArrowDown color="black" />,
+            label: "Hello World",
+          }}
+          placeholder="Deneme"
+        />
       </Box>
     </SafeAreaView>
   );

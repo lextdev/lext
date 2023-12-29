@@ -26,11 +26,12 @@ const CustomMaskInput: FormProps<MaskInputProps> = (props) => {
           color: getColor(color ?? defaultProps.color ?? "global"),
           fontSize: GetTextSizeValue(
             fontSize ?? defaultProps.fontSize,
-            theme.fontSizes.text
+            theme.fontSizes.text,
           ),
+          height: "100%",
         }}
         placeholderTextColor={getColor(
-          placeholderTextColor ?? defaultProps.placeholderTextColor ?? "muted"
+          placeholderTextColor ?? defaultProps.placeholderTextColor ?? "muted",
         )}
         {...textInputProps}
       />

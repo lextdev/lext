@@ -86,17 +86,23 @@ const CustomSelectBox: FormProps<CustomSelectBoxProps> = (props) => {
                 }
                 style={itemCss}
               >
-                {item.image && (
-                  <Image source={{ uri: item.image }} width={32} height={32} />
-                )}
-                <Stack gap={0}>
-                  <Text>{item.label}</Text>
-                  {item.description && (
-                    <Text fontSize={"caption"} color="emphasis">
-                      {item.description}
-                    </Text>
+                <Group>
+                  {item.image && (
+                    <Image
+                      source={{ uri: item.image }}
+                      width={32}
+                      height={32}
+                    />
                   )}
-                </Stack>
+                  <Stack gap={0}>
+                    <Text>{item.label}</Text>
+                    {item.description && (
+                      <Text fontSize={"caption"} color="emphasis">
+                        {item.description}
+                      </Text>
+                    )}
+                  </Stack>
+                </Group>
               </Box>
             </TouchableOpacity>
           ))}

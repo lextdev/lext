@@ -1,12 +1,17 @@
 # CHANGELOG.md
 
-## 1.4.1
+## 1.4.\*
 
 ### Added
 
 - 🖥️ `useLoadingOverlay` & LoadingOverlayProvider added
 - 🌀 ActivityIndicator added
 - 📦 View added
+
+### Fixed
+
+- 👍 SelectBox align center fixed
+- 👍 Inputs height fixed
 
 ## 1.4.0
 

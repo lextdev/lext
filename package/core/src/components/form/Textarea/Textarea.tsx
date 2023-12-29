@@ -36,11 +36,11 @@ const CustomTextarea: FormProps<CustomTextareaProps> = (props) => {
           color: getColor(color ?? defaultProps.color ?? "global"),
           fontSize: GetTextSizeValue(
             fontSize ?? defaultProps.fontSize,
-            theme.fontSizes.text
+            theme.fontSizes.text,
           ),
         }}
         placeholderTextColor={getColor(
-          placeholderTextColor ?? defaultProps.placeholderTextColor ?? "muted"
+          placeholderTextColor ?? defaultProps.placeholderTextColor ?? "muted",
         )}
         {...textInputProps}
       />
