@@ -35,7 +35,7 @@ const LoadingOverlayProvider: FC<LoadingOverlayProps> = ({
             {
               position: "absolute",
               zIndex: 9999,
-              display: loading ? "flex" : undefined,
+              display: loading ? "flex" : "none",
             },
           ]}
         >
