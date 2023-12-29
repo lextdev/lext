@@ -2,11 +2,12 @@ import { ActionButtonComponentThemeData } from "../components/button/ActionButto
 import { ButtonComponentThemeData } from "../components/button/Button/DefaultProps";
 import { FormLayoutComponentThemeData } from "../components/form/_layout/DefaultProps";
 import { InputComponentThemeData } from "../components/form/_types/InputProps";
-import { BottomSheetComponentThemeData } from "../components/mics/BottomSheet/defaultProps";
+import { BottomSheetComponentThemeData } from "../components/mics/BottomSheet/DefaultProps";
 import { BoxComponentThemeData } from "../components/mics/Box/DefaultProps";
 import { GridComponentThemeData } from "../components/mics/Grid/DefaultProps";
 import { GroupComponentThemeData } from "../components/mics/Group/DefaultProps";
 import { StackComponentThemeData } from "../components/mics/Stack/DefaultProps";
+import { LoadingOverlayComponentThemeData } from "../components/overlays/LoadingOverlay/DefaultProps";
 import { HeadingComponentThemeData } from "../components/typography/Heading/DefaultProps";
 import { TextComponentThemeData } from "../components/typography/Text/DefaultProps";
 import { ThemeInterface } from "../interfaces";
@@ -47,6 +48,7 @@ const Theme: ThemeInterface = {
     FormLayout: FormLayoutComponentThemeData,
     Input: InputComponentThemeData,
     BottomSheet: BottomSheetComponentThemeData,
+    LoadingOverlay: LoadingOverlayComponentThemeData,
   },
   defaultOptions: {
     gap: 5,

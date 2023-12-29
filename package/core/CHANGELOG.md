@@ -4,6 +4,7 @@
 
 ### Added
 
+- 🖥️ `useLoadingOverlay` & LoadingOverlayProvider added
 - 🌀 ActivityIndicator added
 - 📦 View added
 

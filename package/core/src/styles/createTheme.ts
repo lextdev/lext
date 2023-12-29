@@ -125,6 +125,12 @@ const createTheme = (newTheme?: DeepPartialTheme): ThemeInterface => {
             ...(newTheme.components?.BottomSheet?.default || {}),
           },
         },
+        LoadingOverlay: {
+          default: {
+            ...defaultTheme.components.LoadingOverlay.default,
+            ...(newTheme.components?.LoadingOverlay?.default || {}),
+          },
+        },
       },
       defaultOptions: {
         ...defaultTheme.defaultOptions,
