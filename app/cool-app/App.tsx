@@ -1,10 +1,16 @@
-import "react-native-gesture-handler"
-import React, { useCallback } from "react"
-import { SessionProvider, ThemeProvider, createTheme } from "@ynssenem/lext"
-import * as SplashScreen from "expo-splash-screen"
+import "react-native-gesture-handler";
+import {
+  LoadingOverlayProvider,
+  SessionProvider,
+  Text,
+  ThemeProvider,
+  createTheme,
+} from "@ynssenem/lext";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import React, { useCallback } from "react";
 
-import TwoScreen from "./src"
-import { useFonts } from "expo-font"
+import TwoScreen from "./src";
 
 const theme = createTheme({
   colorScheme: "lighten",
@@ -17,33 +23,47 @@ const theme = createTheme({
         placeholderTextColor: "primary",
       },
     },
+    LoadingOverlay: {
+      default: {
+        backgroundColor: "secondary",
+        backgroundOpacity: 0.8,
+      },
+    },
   },
-})
+});
 
-SplashScreen.preventAutoHideAsync()
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
     "Urbanist-Black": require("./src/fonts/Urbanist-Black.otf"),
     "Urbanist-Regular": require("./src/fonts/Urbanist-Regular.otf"),
     "Urbanist-Thin": require("./src/fonts/Urbanist-Thin.otf"),
-  })
+  });
 
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
-      await SplashScreen.hideAsync()
+      await SplashScreen.hideAsync();
     }
-  }, [fontsLoaded])
+  }, [fontsLoaded]);
 
   if (!fontsLoaded) {
-    return null
+    return null;
   }
 
   return (
-    <ThemeProvider theme={theme} gestureHandlerRootView onLayout={onLayoutRootView}>
+    <ThemeProvider
+      theme={theme}
+      gestureHandlerRootView
+      onLayout={onLayoutRootView}
+    >
       <SessionProvider>
-        <TwoScreen />
+        <LoadingOverlayProvider
+          content={<Text color="danger">Starting Animation</Text>}
+        >
+          <TwoScreen />
+        </LoadingOverlayProvider>
       </SessionProvider>
     </ThemeProvider>
-  )
+  );
 }

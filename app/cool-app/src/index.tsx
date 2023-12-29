@@ -1,65 +1,31 @@
 import {
-  ActivityIndicator,
-  ArrowLeft,
   Box,
-  Button,
-  MaskInput,
-  Menu,
-  SafeAreaView,
+  Heading,
   Text,
-  TextInput,
-  useTheme,
-} from "@ynssenem/lext"
-import { useState } from "react"
+  SafeAreaView,
+  useLoadingOverlay,
+  Button,
+} from "@ynssenem/lext";
+import { useEffect } from "react";
 
 const IndexScreen = () => {
-  const { colorScheme, setColorScheme } = useTheme()
-  const [getOpenMenu, setOpenMenu] = useState(false)
+  const { setLoading, isLoading } = useLoadingOverlay();
+
+  useEffect(() => {
+    if (isLoading) {
+      setTimeout(() => setLoading(false), 3000);
+    }
+  }, [isLoading]);
 
   return (
     <SafeAreaView>
-      <Box alignItems="center">
-        <Button
-          onPress={() => setColorScheme((prev) => (prev == "lighten" ? "darken" : "lighten"))}
-        >
-          changeColorScheme: {colorScheme}
-        </Button>
-      </Box>
-      <Box>
-        <MaskInput layout={{ label: "Hello World", description: "lorem ipsum dolor sit amet" }} />
-      </Box>
-      <Box flex={1} gap={50} justifyContent="center" alignItems="baseline">
-        <Menu
-          width={250}
-          visible={getOpenMenu}
-          onVisible={() => setOpenMenu((prev) => !prev)}
-          renderItemPosition="bottomLeft"
-          renderItem={
-            <Box
-              backgroundColor="secondary"
-              paddingHorizontal={5}
-              paddingVertical={5}
-              style={{ borderRadius: 1 }}
-              width={150}
-            >
-              <Button onPress={() => console.log("Hello World")} size="sm">
-                Hello
-              </Button>
-              <Text fontSize={"caption"} color="global">
-                Hello World
-              </Text>
-            </Box>
-          }
-        >
-          <Button size="sm">Hello World</Button>
-        </Menu>
-      </Box>
-      <ActivityIndicator color="secondary" size={"large"} />
-      <Box>
-        <TextInput placeholder="Hes" />
+      <Box flex={1} justifyContent="center" alignItems="center">
+        <Heading fontSize="h1">Merhaba Dünya</Heading>
+        <Text>Hello World</Text>
+        <Button onPress={() => setLoading((prev) => !prev)}>Set Loading</Button>
       </Box>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default IndexScreen
+export default IndexScreen;
