@@ -4,11 +4,10 @@ import React, {
   ReactNode,
   SetStateAction,
   createContext,
-  useEffect,
   useState,
 } from "react";
 import { StyleSheet } from "react-native";
-import { ActivityIndicator, LoadingOverlay, Text } from "../components";
+import { LoadingOverlay } from "../components";
 
 export const LoadingOverlayContext = createContext<boolean>(false);
 export const LoadingOverlayContextDispatch = createContext<
@@ -29,18 +28,19 @@ const LoadingOverlayProvider: FC<LoadingOverlayProps> = ({
   return (
     <LoadingOverlayContext.Provider value={loading}>
       <LoadingOverlayContextDispatch.Provider value={setLoading}>
-        <LoadingOverlay
-          style={[
-            StyleSheet.absoluteFillObject,
-            {
-              position: "absolute",
-              zIndex: 9999,
-              display: loading ? "flex" : "none",
-            },
-          ]}
-        >
-          {content}
-        </LoadingOverlay>
+        {loading && (
+          <LoadingOverlay
+            style={[
+              StyleSheet.absoluteFillObject,
+              {
+                position: "absolute",
+                zIndex: 9999,
+              },
+            ]}
+          >
+            {content}
+          </LoadingOverlay>
+        )}
         {children}
       </LoadingOverlayContextDispatch.Provider>
     </LoadingOverlayContext.Provider>

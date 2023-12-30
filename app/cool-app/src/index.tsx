@@ -1,16 +1,16 @@
 import {
-  ArrowDown,
+  Anchor,
   Box,
+  Button,
   SafeAreaView,
-  TextInput,
-  Textarea,
+  SelectBox,
   useLoadingOverlay,
 } from "@ynssenem/lext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const IndexScreen = () => {
   const { setLoading, isLoading } = useLoadingOverlay();
-
+  const [visible, setVisible] = useState(false);
   useEffect(() => {
     if (isLoading) {
       setTimeout(() => setLoading(false), 3000);
@@ -19,20 +19,25 @@ const IndexScreen = () => {
 
   return (
     <SafeAreaView>
+      <Button onPress={() => setLoading(true)}>Click Animation</Button>
       <Box flex={1} justifyContent="center">
-        <TextInput
-          layout={{
-            left: <ArrowDown color="black" />,
-            label: "Hello World",
+        <SelectBox
+          onSelectionChange={() => setVisible(true)}
+          onPress={() => setVisible(true)}
+          modal={{
+            visible,
+            header: {
+              left: (
+                <Anchor onPress={() => setVisible(false)}>Hello World</Anchor>
+              ),
+            },
           }}
-        />
-
-        <Textarea
-          layout={{
-            left: <ArrowDown color="black" />,
-            label: "Hello World",
-          }}
-          placeholder="Deneme"
+          data={[
+            {
+              label: "Hello",
+              value: "1",
+            },
+          ]}
         />
       </Box>
     </SafeAreaView>
