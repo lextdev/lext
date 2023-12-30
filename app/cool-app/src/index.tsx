@@ -1,15 +1,17 @@
 import {
-  Anchor,
   Box,
   Button,
   SafeAreaView,
   SelectBox,
+  View,
   useLoadingOverlay,
+  useSession,
 } from "@ynssenem/lext";
 import { useEffect, useState } from "react";
 
 const IndexScreen = () => {
   const { setLoading, isLoading } = useLoadingOverlay();
+  const { session } = useSession();
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     if (isLoading) {
@@ -28,7 +30,11 @@ const IndexScreen = () => {
             visible,
             header: {
               left: (
-                <Anchor onPress={() => setVisible(false)}>Hello World</Anchor>
+                <View>
+                  <Button size="sm" onPress={() => setVisible(false)}>
+                    Hello World
+                  </Button>
+                </View>
               ),
             },
           }}

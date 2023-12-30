@@ -29,7 +29,7 @@ const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
 
   useEffect(() => {
     onHandlerSession();
-  }, [session]);
+  }, []);
 
   return (
     <SessionContext.Provider value={session}>

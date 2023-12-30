@@ -26,7 +26,7 @@ const CustomModal: FC<CustomModalProps & { children: ReactNode }> = (props) => {
     return (
       <>
         <Box gap={15}>
-          <Group justifyContent="space-between">
+          <Group justifyContent="space-between" alignItems="center">
             <View style={{ flex: 1 }}>{header.left && header.left}</View>
             <View style={{ flex: 1, alignItems: "center" }}>
               {header.center && header.center}
