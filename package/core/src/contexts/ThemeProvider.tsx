@@ -3,12 +3,14 @@ import React, { FC, ReactNode } from "react";
 import ColorSchemeProvider from "./ColorSchemeProvider";
 import { LayoutChangeEvent, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import ReactNavigationProvider from "./ReactNavigationProvider";
 
 type ThemeProviderProps = {
   children: ReactNode;
   theme: Theme;
   onLayout?: (event: LayoutChangeEvent) => void;
   gestureHandlerRootView: boolean;
+  reactNavigationProvider?: boolean;
 };
 
 const ThemeProvider: FC<ThemeProviderProps> = ({
@@ -16,12 +18,17 @@ const ThemeProvider: FC<ThemeProviderProps> = ({
   theme,
   onLayout,
   gestureHandlerRootView = false,
+  reactNavigationProvider = false,
 }) => {
   const themeProviderContent = (
     <RThemeProvider theme={theme}>
       <ColorSchemeProvider themeColorScheme={theme.colorScheme}>
         <View style={{ flex: 1 }} onLayout={onLayout}>
-          {children}
+          {reactNavigationProvider ? (
+            <ReactNavigationProvider>{children}</ReactNavigationProvider>
+          ) : (
+            children
+          )}
         </View>
       </ColorSchemeProvider>
     </RThemeProvider>
