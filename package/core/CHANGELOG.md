@@ -12,6 +12,7 @@
 
 ### Fixed
 
+- 👍 BottomSheet view bound to fixed height
 - 👍 SessionProvider fixed
 - 👍 SelectBox align center fixed
 - 👍 Inputs height fixed

@@ -20,6 +20,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { PanGestureHandler } from "react-native-gesture-handler";
 import { BottomSheetRefProps } from "../../../types";
+import View from "../View/View";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
@@ -42,6 +43,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     // Shared
     const context = useSharedValue({ y: 0, index: 0 });
     const translateY = useSharedValue(0);
+    const viewHeight = useSharedValue(0);
     const index = useSharedValue<number>(0);
     // Shared
 
@@ -49,7 +51,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
       height: SCREEN_HEIGHT + 100,
       width: "100%",
       backgroundColor: getColor(
-        theme.components.BottomSheet.default.backgroundColor
+        theme.components.BottomSheet.default.backgroundColor,
       ),
       position: "absolute",
       top: SCREEN_HEIGHT,
@@ -72,6 +74,12 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
       };
     });
 
+    const rViewHeightStyle = useAnimatedStyle(() => {
+      return {
+        height: viewHeight.value,
+      };
+    });
+
     const presabbleStyle = useAnimatedStyle(() => {
       return {
         display: index.value !== 0 ? "flex" : "none",
@@ -81,6 +89,9 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     const scrollTo = useCallback((destination: number) => {
       "worklet";
 
+      viewHeight.value = withSpring(Math.round(Math.abs(destination) - 75), {
+        damping: 12,
+      });
       translateY.value = withSpring(destination, {
         damping: 12,
       });
@@ -93,7 +104,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
         index.value = toIndex;
         scrollTo(snapSizes[toIndex]);
       },
-      [snapSizes]
+      [snapSizes],
     );
 
     const snapToClose = useCallback(() => {
@@ -109,7 +120,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
           y: number;
           index: number;
         }>,
-        nextY: number
+        nextY: number,
       ) => {
         "worklet";
 
@@ -126,7 +137,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
           snapToIndex(prevIndex);
         }
       },
-      [snapSizes]
+      [snapSizes],
     );
 
     const onPanGestureEvent = useAnimatedGestureHandler({
@@ -151,7 +162,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
         snapToIndex,
         snapToClose,
       }),
-      [snapToIndex, snapToClose]
+      [snapToIndex, snapToClose],
     );
 
     useEffect(() => {
@@ -182,12 +193,12 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
         <PanGestureHandler onGestureEvent={onPanGestureEvent}>
           <Animated.View style={[bottomSheetContainerCss, rBottomSheetStyle]}>
             <Animated.View style={lineCss} />
-            {children}
+            <Animated.View style={[rViewHeightStyle]}>{children}</Animated.View>
           </Animated.View>
         </PanGestureHandler>
       </>
     );
-  }
+  },
 );
 
 export default BottomSheet;
