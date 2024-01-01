@@ -57,7 +57,7 @@ const Button: FC<
       {isLoader && (
         <ActivityIndicator
           color={getColor(
-            color ?? theme.components.Button.default.color ?? "global"
+            color ?? theme.components.Button.default.color ?? "global",
           )}
         />
       )}
