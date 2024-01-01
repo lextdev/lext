@@ -55,6 +55,7 @@ export default function App() {
     <ThemeProvider
       theme={theme}
       gestureHandlerRootView
+      reactNavigationProvider
       onLayout={onLayoutRootView}
     >
       <SessionProvider>

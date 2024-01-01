@@ -4,6 +4,7 @@
 
 ### Added
 
+- 😶‍🌫️ ReactNavigationProvider added to ThemeProvider
 - 🖥️ `useLoadingOverlay` & LoadingOverlayProvider added
 - 🌀 ActivityIndicator added
 - 📦 View added
