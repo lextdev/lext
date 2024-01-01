@@ -4,6 +4,7 @@
 
 ### Added
 
+- 👍 Store MMKV added
 - 😶‍🌫️ ReactNavigationProvider added to ThemeProvider
 - 🖥️ `useLoadingOverlay` & LoadingOverlayProvider added
 - 🌀 ActivityIndicator added
@@ -11,6 +12,7 @@
 
 ### Fixed
 
+- 👍 SessionProvider fixed
 - 👍 SelectBox align center fixed
 - 👍 Inputs height fixed
 
