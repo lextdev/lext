@@ -1,4 +1,5 @@
 import "react-native-gesture-handler";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   LoadingOverlayProvider,
   SessionProvider,
@@ -58,7 +59,7 @@ export default function App() {
       reactNavigationProvider
       onLayout={onLayoutRootView}
     >
-      <SessionProvider>
+      <SessionProvider storage={AsyncStorage}>
         <LoadingOverlayProvider
           content={<Text color="danger">Starting Animation</Text>}
         >

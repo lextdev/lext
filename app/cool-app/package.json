@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/native": "^11.11.0",
     "@emotion/react": "^11.11.1",
+    "@react-native-async-storage/async-storage": "^1.21.0",
     "@ynssenem/lext": "^1.3.6",
     "expo": "~49.0.15",
     "expo-font": "~11.4.0",
