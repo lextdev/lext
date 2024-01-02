@@ -26,12 +26,12 @@ jobs:
         run: npm run pre:build-dev
         working-directory: ./
 
-      - name: Change Directory to packages/core
-        run: cd packages/core
+      - name: Change Directory to package/core
+        run: cd package/core
 
-      - name: Install Dependencies in packages/core
+      - name: Install Dependencies in package/core
         run: npm install
-        working-directory: packages/core
+        working-directory: package/core
 
       - name: Check Version Before Publishing
         id: check_version
@@ -45,11 +45,11 @@ jobs:
             echo "Package version ($PACKAGE_VERSION) is not greater than last version ($LAST_VERSION). Stopping workflow."
             echo "::set-output name=should_publish::false"
           fi
-        working-directory: packages/core
+        working-directory: package/core
 
-      - name: Publish to NPM from packages/core
+      - name: Publish to NPM from package/core
         if: steps.check_version.outputs.should_publish == 'true'
         run: npm publish --tag dev
-        working-directory: packages/core
+        working-directory: package/core
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
