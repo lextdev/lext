@@ -18,17 +18,34 @@ export const SessionContextDispatch = createContext<
 
 type SessionProviderProps = {
   children: ReactNode;
-  storage: AsyncStorageProps | MMKVProps;
+  storage?: AsyncStorageProps | MMKVProps;
 };
 
 const SessionProvider: FC<SessionProviderProps> = ({ children, storage }) => {
   const [session, setSession] = useState<SessionProps | null>(null);
 
   const onHandlerSession = async () => {
+    if (!storage) {
+      return null;
+    }
+
     const result = await SessionStore.getSessionLocale({
       storage,
     });
+
     await setSession(result);
+  };
+
+  const onListener = async () => {
+    if (!storage) {
+      return;
+    }
+
+    if (!session) {
+      await SessionStore.removeSessionLocale({ storage });
+    } else {
+      await SessionStore.setSessionLocale(session, { storage });
+    }
   };
 
   useEffect(() => {
@@ -36,13 +53,6 @@ const SessionProvider: FC<SessionProviderProps> = ({ children, storage }) => {
   }, []);
 
   useEffect(() => {
-    const onListener = async () => {
-      if (!session) {
-        await SessionStore.removeSessionLocale({ storage });
-      } else {
-        await SessionStore.setSessionLocale(session, { storage });
-      }
-    };
     onListener();
   }, [setSession, session]);
 
