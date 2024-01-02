@@ -50,6 +50,7 @@
     "react-native-reanimated": "^3.3.0"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.21.0",
     "@react-navigation/native": "^6.1.9",
     "react-native-mask-input": "^1.2.3",
     "react-native-svg": "^14.1.0"
