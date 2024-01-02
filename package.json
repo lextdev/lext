@@ -8,10 +8,9 @@
   ],
   "scripts": {
     "build": "lerna run rollup --scope @ynssenem/lext",
-    "add": "lerna add @ynssenem/lext --scope @ynssenem/cool-app  --scope @ynssenem/cool-app-mmkv",
+    "add": "lerna add @ynssenem/lext --scope @ynssenem/cool-app",
     "watch": "nodemon --watch 'package/core/src/**/*' --ext 'ts,tsx' --exec 'npm run build && npm run add'",
     "ios": "lerna run ios --scope @ynssenem/cool-app --stream --",
-    "ios:mmkv": "lerna run ios --scope @ynssenem/cool-app-mmkv --stream --",
     "pre:build-dev": "npm run build",
     "pre:build-local": "npm run build && cd package/core && rm -rf *.tgz && npm pack --json"
   },
