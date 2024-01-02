@@ -11,6 +11,7 @@
     "typescript"
   ],
   "scripts": {
+    "commit": "echo 'hello world'",
     "rollup": "rollup -c --bundleConfigAsCjs",
     "icons": "npx @svgr/cli --native --icon [24,24] --typescript --config-file ./svgr-config.json --out-dir ./src/icons ./icons"
   },

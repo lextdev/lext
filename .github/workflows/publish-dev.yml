@@ -1,0 +1,55 @@
+name: Publish Dev Package
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+
+      - name: Install Root Dependencies
+        run: npm install
+        working-directory: ./
+
+      - name: Run Pre-Build Script in Root
+        run: npm run pre:build-dev
+        working-directory: ./
+
+      - name: Change Directory to packages/core
+        run: cd packages/core
+
+      - name: Install Dependencies in packages/core
+        run: npm install
+        working-directory: packages/core
+
+      - name: Check Version Before Publishing
+        id: check_version
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          LAST_VERSION=$(node -p "require('./lastVersion.json').lastVersion")
+          if [[ "$PACKAGE_VERSION" > "$LAST_VERSION" ]]; then
+            echo "Package version is greater than last version. Proceeding to publish."
+            echo "::set-output name=should_publish::true"
+          else
+            echo "Package version ($PACKAGE_VERSION) is not greater than last version ($LAST_VERSION). Stopping workflow."
+            echo "::set-output name=should_publish::false"
+          fi
+        working-directory: packages/core
+
+      - name: Publish to NPM from packages/core
+        if: steps.check_version.outputs.should_publish == 'true'
+        run: npm publish --tag dev
+        working-directory: packages/core
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

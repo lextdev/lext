@@ -9,9 +9,10 @@
   "scripts": {
     "build": "lerna run rollup --scope @ynssenem/lext",
     "add": "lerna add @ynssenem/lext --scope @ynssenem/cool-app  --scope @ynssenem/cool-app-mmkv",
+    "watch": "nodemon --watch 'package/core/src/**/*' --ext 'ts,tsx' --exec 'npm run build && npm run add'",
     "ios": "lerna run ios --scope @ynssenem/cool-app --stream --",
     "ios:mmkv": "lerna run ios --scope @ynssenem/cool-app-mmkv --stream --",
-    "watch": "nodemon --watch 'package/core/src/**/*' --ext 'ts,tsx' --exec 'npm run build && npm run add'"
+    "pre:build-dev": "npm run build"
   },
   "devDependencies": {
     "eslint": "^8.53.0",
