@@ -1,6 +1,6 @@
 {
   "name": "@ynssenem/lext",
-  "version": "1.4.14",
+  "version": "1.4.15",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types.d.ts",
@@ -50,6 +50,7 @@
     "react-native-reanimated": "^3.3.0"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.21.0",
     "@react-navigation/native": "^6.1.9",
     "react-native-mask-input": "^1.2.3",
     "react-native-svg": "^14.1.0"

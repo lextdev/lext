@@ -1,30 +1,10 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { SessionProps } from "../interfaces";
-import { AsyncStorageProps, MMKVProps } from "../types";
-import isMMKVProps from "./isMMKVProps";
 
 const ASYNCSTORAGE_SESSION_KEY = "lext_session";
 
-interface StorageInterface {
-  storage: AsyncStorageProps | MMKVProps;
-}
-
-async function getSessionLocale(
-  storageParams: StorageInterface,
-): Promise<SessionProps | null> {
-  let result;
-
-  switch (true) {
-    case isMMKVProps(storageParams.storage):
-      result = await storageParams.storage.getString(ASYNCSTORAGE_SESSION_KEY);
-      break;
-    case !isMMKVProps(storageParams.storage):
-      result = await storageParams.storage.getItem(ASYNCSTORAGE_SESSION_KEY);
-      break;
-
-    default:
-      result = await storageParams.storage.getItem(ASYNCSTORAGE_SESSION_KEY);
-      break;
-  }
+async function getSessionLocale(): Promise<SessionProps | null> {
+  const result = await AsyncStorage.getItem(ASYNCSTORAGE_SESSION_KEY);
 
   if (result) {
     return JSON.parse(result) as SessionProps;
@@ -33,46 +13,12 @@ async function getSessionLocale(
   return null;
 }
 
-async function setSessionLocale(
-  data: SessionProps,
-  storageParams: StorageInterface,
-) {
-  switch (true) {
-    case isMMKVProps(storageParams.storage):
-      await storageParams.storage.set(
-        ASYNCSTORAGE_SESSION_KEY,
-        JSON.stringify(data),
-      );
-      break;
-    case !isMMKVProps(storageParams.storage):
-      await storageParams.storage.setItem(
-        ASYNCSTORAGE_SESSION_KEY,
-        JSON.stringify(data),
-      );
-      break;
-
-    default:
-      await storageParams.storage.setItem(
-        ASYNCSTORAGE_SESSION_KEY,
-        JSON.stringify(data),
-      );
-      break;
-  }
+async function setSessionLocale(data: SessionProps) {
+  await AsyncStorage.setItem(ASYNCSTORAGE_SESSION_KEY, JSON.stringify(data));
 }
 
-async function removeSessionLocale(storageParams: StorageInterface) {
-  switch (true) {
-    case isMMKVProps(storageParams.storage):
-      await storageParams.storage.delete(ASYNCSTORAGE_SESSION_KEY);
-      break;
-    case !isMMKVProps(storageParams.storage):
-      await storageParams.storage.removeItem(ASYNCSTORAGE_SESSION_KEY);
-      break;
-
-    default:
-      await storageParams.storage.removeItem(ASYNCSTORAGE_SESSION_KEY);
-      break;
-  }
+async function removeSessionLocale() {
+  await AsyncStorage.removeItem(ASYNCSTORAGE_SESSION_KEY);
 }
 
 export default {

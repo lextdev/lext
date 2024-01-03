@@ -38,6 +38,7 @@ export default [
     external: [
       "@emotion/react",
       "@emotion/native",
+      "@react-native-async-storage/async-storage",
       "react-native-mask-input",
       "react-native-svg",
       "@react-navigation/native",
