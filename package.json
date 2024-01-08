@@ -12,6 +12,7 @@
     "watch": "nodemon --watch 'package/core/src/**/*' --ext 'ts,tsx' --exec 'npm run build && npm run add'",
     "ios": "lerna run ios --scope @ynssenem/cool-app --stream --",
     "pre:build-dev": "npm run build",
+    "pre:build-prod": "npm run build",
     "pre:build-local": "npm run build && cd package/core && rm -rf *.tgz && npm pack && mv ynssenem-lext-*.tgz ynssenem-lext-local.tgz"
   },
   "devDependencies": {
