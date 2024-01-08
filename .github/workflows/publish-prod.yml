@@ -35,7 +35,7 @@ jobs:
         working-directory: package/core
 
       - name: Publish to NPM from package/core
-        run: npm publish --tag latest
+        run: npm publish --access publish
         working-directory: package/core
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
