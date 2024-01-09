@@ -6,6 +6,10 @@
 
 - 🥰 New icons added
 
+### Removed
+
+- Store MMKV removed
+
 ## 1.4.16
 
 ### Added
