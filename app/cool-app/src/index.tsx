@@ -9,6 +9,7 @@ import {
   View,
   useLoadingOverlay,
   useSession,
+  useStore,
 } from "@ynssenem/lext";
 import { useEffect, useRef, useState } from "react";
 import { ScrollView } from "react-native";
@@ -16,6 +17,7 @@ import { ScrollView } from "react-native";
 const IndexScreen = () => {
   const { setLoading, isLoading } = useLoadingOverlay();
   const { session, signIn, signOut } = useSession();
+  const { getItem, setItem } = useStore();
   const [visible, setVisible] = useState(false);
   const bottomSheetRef = useRef<BottomSheetRefProps>(null);
   useEffect(() => {
@@ -24,9 +26,28 @@ const IndexScreen = () => {
     }
   }, [isLoading]);
 
+  const onTestGetStore = async () => {
+    console.log("Store", await getItem("testStoreKey"));
+  };
+
+  const onTestSetStore = async () => {
+    await setItem("testStoreKey", "Hello World");
+  };
+
+  useEffect(() => {
+    onTestGetStore();
+  }, []);
+
   return (
     <SafeAreaView>
       <Box gap={10}>
+        <Button
+          onPress={() => {
+            onTestSetStore();
+          }}
+        >
+          Set Test Store
+        </Button>
         <Button onPress={() => setLoading(true)}>Click Animation</Button>
         <Button onPress={() => bottomSheetRef.current?.snapToIndex(1)}>
           Open BottomSheet

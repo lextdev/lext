@@ -4,6 +4,7 @@
 
 ### Added
 
+- 🏬 `useStore` hook added
 - 🥰 New icons added
 
 ### Removed

@@ -15,6 +15,8 @@ export { default as ChevronRight } from "./ChevronRight";
 export { default as CircleUser } from "./CircleUser";
 export { default as Dashboard } from "./Dashboard";
 export { default as EarthAmericas } from "./EarthAmericas";
+export { default as EyeCrossed } from "./EyeCrossed";
+export { default as Eye } from "./Eye";
 export { default as Filter } from "./Filter";
 export { default as Gavel } from "./Gavel";
 export { default as Heart } from "./Heart";
