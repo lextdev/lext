@@ -1,6 +1,12 @@
 # CHANGELOG.md
 
-## 1.4.\*
+## 1.5.\*
+
+### Added
+
+- 🥰 New icons added
+
+## 1.4.16
 
 ### Added
 
