@@ -1,6 +1,6 @@
 # CHANGELOG.md
 
-## 1.5.\*
+## 1.6
 
 ### Added
 

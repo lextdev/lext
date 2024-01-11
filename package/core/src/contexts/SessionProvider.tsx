@@ -8,11 +8,12 @@ import React, {
   useState,
 } from "react";
 import { SessionProps } from "../interfaces";
-import SessionStore from "../utils/SessionStore";
 
-export const SessionContext = createContext<SessionProps | null>(null);
+export const SessionContext = createContext<SessionProps | null | undefined>(
+  undefined,
+);
 export const SessionContextDispatch = createContext<
-  Dispatch<SetStateAction<SessionProps | null>>
+  Dispatch<SetStateAction<SessionProps | null | undefined>>
 >(() => {});
 
 type SessionProviderProps = {
@@ -20,16 +21,9 @@ type SessionProviderProps = {
 };
 
 const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
-  const [session, setSession] = useState<SessionProps | null>(null);
-
-  const onHandlerSession = async () => {
-    const result = await SessionStore.getSessionLocale();
-    await setSession(result);
-  };
-
-  useEffect(() => {
-    onHandlerSession();
-  }, []);
+  const [session, setSession] = useState<SessionProps | null | undefined>(
+    undefined,
+  );
 
   return (
     <SessionContext.Provider value={session}>

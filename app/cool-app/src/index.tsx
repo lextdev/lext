@@ -11,32 +11,40 @@ import {
   useSession,
   useStore,
 } from "@ynssenem/lext";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { ScrollView } from "react-native";
 
 const IndexScreen = () => {
   const { setLoading, isLoading } = useLoadingOverlay();
-  const { session, signIn, signOut } = useSession();
+  const { session, signIn, signOut, sessionLoading } = useSession();
   const { getItem, setItem } = useStore();
   const [visible, setVisible] = useState(false);
   const bottomSheetRef = useRef<BottomSheetRefProps>(null);
-  useEffect(() => {
-    if (isLoading) {
-      setTimeout(() => setLoading(false), 3000);
-    }
-  }, [isLoading]);
-
-  const onTestGetStore = async () => {
-    console.log("Store", await getItem("testStoreKey"));
-  };
 
   const onTestSetStore = async () => {
     await setItem("testStoreKey", "Hello World");
   };
 
-  useEffect(() => {
-    onTestGetStore();
-  }, []);
+  if (sessionLoading) {
+    return <Text>Yükleniyor</Text>;
+  }
+
+  if (!session) {
+    return (
+      <SafeAreaView>
+        <Button
+          onPress={() =>
+            signIn({
+              id: 2,
+              jwt: "jwt key",
+            })
+          }
+        >
+          Sign
+        </Button>
+      </SafeAreaView>
+    );
+  }
 
   return (
     <SafeAreaView>
