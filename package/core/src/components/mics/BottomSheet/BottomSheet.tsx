@@ -20,7 +20,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { PanGestureHandler } from "react-native-gesture-handler";
 import { BottomSheetRefProps } from "../../../types";
-import View from "../View/View";
+import { HexToRGBA } from "../../../helpers";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
@@ -185,7 +185,12 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
             presabbleStyle,
             {
               ...StyleSheet.absoluteFillObject,
-              backgroundColor: "#0000004D",
+              backgroundColor: HexToRGBA(
+                getColor(
+                  theme.components.BottomSheet.default.pressableBackgroundColor,
+                ),
+                theme.components.BottomSheet.default.pressableBackgroundOpacity,
+              ),
               zIndex: 998,
             },
           ]}
