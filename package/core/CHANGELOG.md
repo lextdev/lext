@@ -1,9 +1,10 @@
 # CHANGELOG.md
 
-## 1.6
+## 1.7
 
 ### Added
 
+- 🚢 Steps component and StepsRef added
 - 🏬 `useStore` hook added
 - 🥰 New icons added
 

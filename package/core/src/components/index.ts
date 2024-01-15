@@ -18,6 +18,7 @@ export { default as Menu } from "./mics/Menu/Menu";
 export { default as BottomSheet } from "./mics/BottomSheet/BottomSheet";
 export { default as ActivityIndicator } from "./mics/ActivityIndicator/ActivityIndicator";
 export { default as View } from "./mics/View/View";
+export { default as Steps } from "./mics/Steps/Steps";
 
 // layout
 export { default as SafeAreaView } from "./layout/SafeAreaView/SafeAreaView";

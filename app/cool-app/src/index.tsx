@@ -1,106 +1,48 @@
 import {
-  BottomSheet,
-  BottomSheetRefProps,
   Box,
   Button,
   SafeAreaView,
-  SelectBox,
+  Stack,
+  Steps,
+  StepsRef,
   Text,
-  View,
-  useLoadingOverlay,
-  useSession,
-  useStore,
 } from "@ynssenem/lext";
-import { useRef, useState } from "react";
-import { ScrollView } from "react-native";
+import { useRef } from "react";
 
 const IndexScreen = () => {
-  const { setLoading, isLoading } = useLoadingOverlay();
-  const { session, signIn, signOut, sessionLoading } = useSession();
-  const { getItem, setItem } = useStore();
-  const [visible, setVisible] = useState(false);
-  const bottomSheetRef = useRef<BottomSheetRefProps>(null);
-
-  const onTestSetStore = async () => {
-    await setItem("testStoreKey", "Hello World");
-  };
-
-  if (sessionLoading) {
-    return <Text>Yükleniyor</Text>;
-  }
-
-  if (!session) {
-    return (
-      <SafeAreaView>
-        <Button
-          onPress={() =>
-            signIn({
-              id: 2,
-              jwt: "jwt key",
-            })
-          }
-        >
-          Sign
-        </Button>
-      </SafeAreaView>
-    );
-  }
+  const flatListRef = useRef<StepsRef>(null);
 
   return (
     <SafeAreaView>
-      <Box gap={10}>
-        <Button
-          onPress={() => {
-            onTestSetStore();
-          }}
-        >
-          Set Test Store
-        </Button>
-        <Button onPress={() => setLoading(true)}>Click Animation</Button>
-        <Button onPress={() => bottomSheetRef.current?.snapToIndex(1)}>
-          Open BottomSheet
-        </Button>
-        <Button onPress={() => signOut()}>Clear</Button>
-        <Button
-          onPress={() =>
-            signIn({
-              id: 2,
-              jwt: "jwt key",
-            })
-          }
-        >
-          Sign {session?.id}
-        </Button>
-      </Box>
-      <BottomSheet ref={bottomSheetRef} snaps={[30, 60]}>
-        <ScrollView>
-          <Text>Hello World</Text>
-        </ScrollView>
-      </BottomSheet>
-      <Box flex={1} justifyContent="center">
-        <SelectBox
-          onSelectionChange={() => setVisible(true)}
-          onPress={() => setVisible(true)}
-          modal={{
-            visible,
-            header: {
-              left: (
-                <View>
-                  <Button size="sm" onPress={() => setVisible(false)}>
-                    Hello World
-                  </Button>
-                </View>
-              ),
-            },
-          }}
+      <Stack flex={1}>
+        <Steps
+          ref={flatListRef}
+          scrollEnabled
           data={[
-            {
-              label: "Hello",
-              value: "1",
-            },
+            <Box flex={1} backgroundColor="primary">
+              <Text>Hello World</Text>
+            </Box>,
+            <Box flex={1} backgroundColor="secondary">
+              <Text>Hello World 2</Text>
+            </Box>,
+            <Box flex={1} backgroundColor="muted">
+              <Text>Hello World 3</Text>
+            </Box>,
           ]}
         />
-      </Box>
+        <Box>
+          <Button
+            onPress={() => {
+              flatListRef.current?.scrollToIndex({
+                animated: true,
+                index: 1,
+              });
+            }}
+          >
+            Hello
+          </Button>
+        </Box>
+      </Stack>
     </SafeAreaView>
   );
 };
