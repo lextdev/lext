@@ -2,7 +2,7 @@ name: Publish Dev Package
 
 on:
   release:
-    types: [created, edited]
+    types: [prereleased]
 
 jobs:
   build-and-publish:
@@ -36,13 +36,6 @@ jobs:
       - name: Publish Dev to NPM from package/core
         if: github.event.release.prerelease
         run: npm publish --tag dev
-        working-directory: package/core
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-
-      - name: Publish Prod to NPM from package/core
-        if: !github.event.release.prerelease
-        run: npm dist-tag add @ynssenem/lext@$(node -p "require('./package.json').version") latest
         working-directory: package/core
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
