@@ -2,7 +2,7 @@ name: Publish Dev Package
 
 on:
   release:
-    types: [published]
+    types: [created, edited]
 
 jobs:
   build-and-publish:
