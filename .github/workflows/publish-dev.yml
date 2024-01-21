@@ -1,9 +1,8 @@
 name: Publish Dev Package
 
 on:
-  push:
-    branches:
-      - develop
+  repository_dispatch:
+    types: [pre-release]
 
 jobs:
   build-and-publish:
@@ -34,22 +33,7 @@ jobs:
         run: npm install
         working-directory: package/core
 
-      - name: Check Version Before Publishing
-        id: check_version
-        run: |
-          PACKAGE_VERSION=$(node -p "require('./package.json').version")
-          LAST_VERSION=$(node -p "require('./lastVersion.json').lastVersion")
-          if [[ "$PACKAGE_VERSION" > "$LAST_VERSION" ]]; then
-            echo "Package version is greater than last version. Proceeding to publish."
-            echo "::set-output name=should_publish::true"
-          else
-            echo "Package version ($PACKAGE_VERSION) is not greater than last version ($LAST_VERSION). Stopping workflow."
-            echo "::set-output name=should_publish::false"
-          fi
-        working-directory: package/core
-
       - name: Publish to NPM from package/core
-        if: steps.check_version.outputs.should_publish == 'true'
         run: npm publish --tag dev
         working-directory: package/core
         env:
