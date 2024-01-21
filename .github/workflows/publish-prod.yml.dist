@@ -1,8 +1,8 @@
 name: Publish Prod Package
 
 on:
-  repository_dispatch:
-    types: [release]
+  release:
+    types: [released]
 
 jobs:
   build-and-publish:
