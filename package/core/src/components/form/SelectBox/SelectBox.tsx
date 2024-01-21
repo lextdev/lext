@@ -8,7 +8,7 @@ import {
   TextInputProps,
   TouchableOpacity,
 } from "react-native";
-import { Box, Group, Modal, Stack } from "../..";
+import { Box, Group, Modal, Stack, TextInput } from "../..";
 import { CustomModalProps } from "../../mics/Modal/Modal";
 import { css } from "@emotion/native";
 import { useColor, useTheme } from "../../../hooks";
@@ -28,6 +28,12 @@ type CustomSelectBoxProps = TextInputProps &
     data: DataProps[];
     defaultSelectMessage?: string;
     onChange?: ((e: any) => void) | undefined;
+    searchable?: boolean;
+    searchLabel?: string;
+    searchPlaceholderText?: string;
+    searchDescription?: string;
+    searchLeft?: JSX.Element;
+    searchRight?: JSX.Element;
   };
 
 const CustomSelectBox: FormProps<CustomSelectBoxProps> = (props) => {
@@ -41,9 +47,19 @@ const CustomSelectBox: FormProps<CustomSelectBoxProps> = (props) => {
     onChange,
     color,
     fontSize,
+    searchable = false,
+    searchLabel,
+    searchPlaceholderText,
+    searchDescription,
+    searchLeft,
+    searchRight,
   } = props;
   const getColor = useColor();
+
   const [getValue, setValue] = useState<DataProps>();
+  const [searchResult, setSearchResult] = useState<string>("");
+  const [searchData, setSearchData] = useState<DataProps[]>([]);
+
   const { theme } = useTheme();
   const defaultProps = theme?.components.Input.default;
 
@@ -57,6 +73,14 @@ const CustomSelectBox: FormProps<CustomSelectBoxProps> = (props) => {
     }
   };
 
+  const onHandlerAliasChange = () => {
+    const searchText = searchResult.toLowerCase();
+    const results = data.filter((item) =>
+      item.label.toLowerCase().includes(searchText),
+    );
+    setSearchData(results);
+  };
+
   useEffect(() => {
     if (!getValue && value) {
       const field = findValue(value);
@@ -65,6 +89,14 @@ const CustomSelectBox: FormProps<CustomSelectBoxProps> = (props) => {
       }
     }
   }, []);
+
+  useEffect(() => {
+    if (searchable) {
+      onHandlerAliasChange();
+    } else {
+      setSearchData(data);
+    }
+  }, [searchResult]);
 
   const itemCss = css({
     borderBottomStyle: "solid",
@@ -77,36 +109,57 @@ const CustomSelectBox: FormProps<CustomSelectBoxProps> = (props) => {
   return (
     <>
       <Modal {...modal}>
-        <ScrollView>
-          {data.map((item, index) => (
-            <TouchableOpacity key={index} onPress={() => onPressItem(item)}>
-              <Box
-                backgroundColor={
-                  getValue && item.value == getValue.value ? "muted" : undefined
-                }
-                style={itemCss}
-              >
-                <Group>
-                  {item.image && (
-                    <Image
-                      source={{ uri: item.image }}
-                      width={32}
-                      height={32}
-                    />
-                  )}
-                  <Stack gap={0}>
-                    <Text>{item.label}</Text>
-                    {item.description && (
-                      <Text fontSize={"caption"} color="emphasis">
-                        {item.description}
-                      </Text>
+        <Stack flex={1}>
+          {searchable && (
+            <Box>
+              <TextInput
+                layout={{
+                  label: searchLabel,
+                  left: searchLeft,
+                  right: searchRight,
+                  description: searchDescription,
+                }}
+                placeholder={searchPlaceholderText}
+                value={searchResult ?? ""}
+                onChangeText={(text) => {
+                  setSearchResult(text);
+                }}
+              />
+            </Box>
+          )}
+          <ScrollView style={{ flex: 1 }}>
+            {searchData.map((item, index) => (
+              <TouchableOpacity key={index} onPress={() => onPressItem(item)}>
+                <Box
+                  backgroundColor={
+                    getValue && item.value == getValue.value
+                      ? "muted"
+                      : undefined
+                  }
+                  style={itemCss}
+                >
+                  <Group>
+                    {item.image && (
+                      <Image
+                        source={{ uri: item.image }}
+                        width={32}
+                        height={32}
+                      />
                     )}
-                  </Stack>
-                </Group>
-              </Box>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
+                    <Stack gap={0}>
+                      <Text>{item.label}</Text>
+                      {item.description && (
+                        <Text fontSize={"caption"} color="emphasis">
+                          {item.description}
+                        </Text>
+                      )}
+                    </Stack>
+                  </Group>
+                </Box>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+        </Stack>
       </Modal>
       <Layout layout={layout}>
         <TouchableOpacity onPress={onPress} style={{ flex: 1 }}>

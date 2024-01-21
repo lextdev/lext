@@ -4,6 +4,7 @@
 
 ### Added
 
+- 😎 Search features have been added to the SelectBox component.
 - 🚢 Steps component and StepsRef added
 - 🏬 `useStore` hook added
 - 🥰 New icons added

@@ -2,47 +2,65 @@ import {
   Box,
   Button,
   SafeAreaView,
-  Stack,
-  Steps,
+  SelectBox,
   StepsRef,
   Text,
+  View,
 } from "@ynssenem/lext";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const IndexScreen = () => {
   const flatListRef = useRef<StepsRef>(null);
-
+  const [showModal, setModal] = useState(false);
   return (
     <SafeAreaView>
-      <Stack flex={1}>
-        <Steps
-          ref={flatListRef}
-          scrollEnabled
+      <Box>
+        <SelectBox
+          searchable
+          searchLabel="Search"
+          searchPlaceholderText="placeholder"
+          searchLeft={<Text>Left</Text>}
+          searchRight={<Text>Right</Text>}
+          searchDescription="Hello World"
+          onPress={() => setModal(true)}
+          modal={{
+            visible: showModal,
+            header: {
+              left: (
+                <View>
+                  <Button size="sm" onPress={() => setModal(false)}>
+                    Hello World
+                  </Button>
+                </View>
+              ),
+            },
+          }}
           data={[
-            <Box flex={1} backgroundColor="primary">
-              <Text>Hello World</Text>
-            </Box>,
-            <Box flex={1} backgroundColor="secondary">
-              <Text>Hello World 2</Text>
-            </Box>,
-            <Box flex={1} backgroundColor="muted">
-              <Text>Hello World 3</Text>
-            </Box>,
+            {
+              label: "Yunus",
+              value: "1",
+            },
+
+            {
+              label: "Emre",
+              value: "2",
+            },
+            {
+              label: "Tolga",
+              value: "3",
+            },
+            {
+              label: "Emine",
+              value: "4",
+            },
+            {
+              label: "Metin",
+              value: "5",
+            },
           ]}
+          value="1"
         />
-        <Box>
-          <Button
-            onPress={() => {
-              flatListRef.current?.scrollToIndex({
-                animated: true,
-                index: 1,
-              });
-            }}
-          >
-            Hello
-          </Button>
-        </Box>
-      </Stack>
+      </Box>
     </SafeAreaView>
   );
 };
