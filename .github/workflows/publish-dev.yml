@@ -1,8 +1,8 @@
 name: Publish Dev Package
 
 on:
-  repository_dispatch:
-    types: [pre-release]
+  release:
+    types: [prereleased]
 
 jobs:
   build-and-publish:
@@ -33,7 +33,7 @@ jobs:
         run: npm install
         working-directory: package/core
 
-      - name: Publish to NPM from package/core
+      - name: Publish Dev to NPM from package/core
         run: npm publish --tag dev
         working-directory: package/core
         env:
