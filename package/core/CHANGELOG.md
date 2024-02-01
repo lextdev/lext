@@ -1,6 +1,12 @@
 # CHANGELOG.md
 
-## 1.7
+## 1.7.3
+
+###  Fixed
+
+- Package.json updated
+
+## 1.7.2
 
 ### Added
 
