@@ -1,5 +1,4 @@
 import "react-native-gesture-handler";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   LoadingOverlayProvider,
   SessionProvider,
@@ -11,23 +10,20 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useCallback } from "react";
 
-import TwoScreen from "./src";
+import Index from "./src";
 
 const theme = createTheme({
   colorScheme: "lighten",
+  colors: {
+    lighten: {
+      background: "#FFF",
+    },
+  },
   components: {
-    FormLayout: {
-      classes: {},
-    },
-    Input: {
+    BottomSheet: {
       default: {
-        placeholderTextColor: "primary",
-      },
-    },
-    LoadingOverlay: {
-      default: {
-        backgroundColor: "secondary",
-        backgroundOpacity: 0.8,
+        backgroundColor: "muted",
+        lineColor: "secondary",
       },
     },
   },
@@ -59,11 +55,11 @@ export default function App() {
       reactNavigationProvider
       onLayout={onLayoutRootView}
     >
-      <SessionProvider storage={AsyncStorage}>
+      <SessionProvider>
         <LoadingOverlayProvider
           content={<Text color="danger">Starting Animation</Text>}
         >
-          <TwoScreen />
+          <Index />
         </LoadingOverlayProvider>
       </SessionProvider>
     </ThemeProvider>
