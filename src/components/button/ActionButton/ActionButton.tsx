@@ -10,7 +10,7 @@ const ActionButton: FC<
     children: ReactNode;
     color?: ColorTypeProps;
   }
-> = (props) => {
+> = props => {
   const { children, color, onLongPress, onPress, ...touchableComponent } =
     props;
 

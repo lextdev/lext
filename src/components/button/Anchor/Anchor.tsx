@@ -8,7 +8,7 @@ type AnchorProps = TouchableOpacityProps &
     children: string;
   };
 
-const Anchor: FC<AnchorProps> = (props) => {
+const Anchor: FC<AnchorProps> = props => {
   const {
     children,
     color = "primary",

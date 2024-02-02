@@ -15,7 +15,7 @@ export type CustomModalProps = ModalProps & {
   header?: CustomModalHeaderProps;
 };
 
-const CustomModal: FC<CustomModalProps & { children: ReactNode }> = (props) => {
+const CustomModal: FC<CustomModalProps & { children: ReactNode }> = props => {
   const { header, children, ...modalProps } = props;
 
   const HeaderComponent = () => {

@@ -35,10 +35,10 @@ const Steps = forwardRef<FlatList<ReactElement>, StepsProps>((props, ref) => {
           {item}
         </View>
       )}
-      onMomentumScrollEnd={(event) => {
+      onMomentumScrollEnd={event => {
         const index = Math.floor(
           Math.floor(event.nativeEvent.contentOffset.x) /
-            Math.floor(event.nativeEvent.layoutMeasurement.width),
+            Math.floor(event.nativeEvent.layoutMeasurement.width)
         );
 
         if (props.onChangeSteps) props.onChangeSteps(index);
@@ -47,4 +47,4 @@ const Steps = forwardRef<FlatList<ReactElement>, StepsProps>((props, ref) => {
   );
 });
 
-export default Steps
+export default Steps;

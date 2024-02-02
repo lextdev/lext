@@ -7,7 +7,7 @@ import { useColor } from "../../../hooks";
 
 type HeadingStyledProps = HeadingProps & ThemeProps;
 
-const Heading = styled.Text<HeadingStyledProps>((props) => {
+const Heading = styled.Text<HeadingStyledProps>(props => {
   const { theme, style, children, ...componentProps } = props;
   const defaultProps = props.theme?.components.Heading.default;
   const merged = { ...defaultProps, ...componentProps };

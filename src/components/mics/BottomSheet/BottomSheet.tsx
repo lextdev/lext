@@ -51,7 +51,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
       height: SCREEN_HEIGHT + 100,
       width: "100%",
       backgroundColor: getColor(
-        theme.components.BottomSheet.default.backgroundColor,
+        theme.components.BottomSheet.default.backgroundColor
       ),
       position: "absolute",
       top: SCREEN_HEIGHT,
@@ -104,7 +104,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
         index.value = toIndex;
         scrollTo(snapSizes[toIndex]);
       },
-      [snapSizes],
+      [snapSizes]
     );
 
     const snapToClose = useCallback(() => {
@@ -120,7 +120,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
           y: number;
           index: number;
         }>,
-        nextY: number,
+        nextY: number
       ) => {
         "worklet";
 
@@ -137,7 +137,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
           snapToIndex(prevIndex);
         }
       },
-      [snapSizes],
+      [snapSizes]
     );
 
     const onPanGestureEvent = useAnimatedGestureHandler({
@@ -162,12 +162,12 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
         snapToIndex,
         snapToClose,
       }),
-      [snapToIndex, snapToClose],
+      [snapToIndex, snapToClose]
     );
 
     useEffect(() => {
       if (!snapSizes.length && snaps) {
-        const value = snaps.map((snap) => getSnapSize(snap));
+        const value = snaps.map(snap => getSnapSize(snap));
         value.unshift(0);
         setSnapSizes(value);
       }
@@ -187,9 +187,9 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
               ...StyleSheet.absoluteFillObject,
               backgroundColor: HexToRGBA(
                 getColor(
-                  theme.components.BottomSheet.default.pressableBackgroundColor,
+                  theme.components.BottomSheet.default.pressableBackgroundColor
                 ),
-                theme.components.BottomSheet.default.pressableBackgroundOpacity,
+                theme.components.BottomSheet.default.pressableBackgroundOpacity
               ),
               zIndex: 998,
             },
@@ -198,12 +198,12 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
         <PanGestureHandler onGestureEvent={onPanGestureEvent}>
           <Animated.View style={[bottomSheetContainerCss, rBottomSheetStyle]}>
             <Animated.View style={lineCss} />
-            <Animated.View style={[rViewHeightStyle]}>{children}</Animated.View>
+            <Animated.View style={rViewHeightStyle}>{children}</Animated.View>
           </Animated.View>
         </PanGestureHandler>
       </>
     );
-  },
+  }
 );
 
 export default BottomSheet;

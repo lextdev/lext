@@ -6,7 +6,7 @@ function useCountdown(seconds: number) {
 
   useEffect(() => {
     const countdownInterval = setInterval(() => {
-      setRemainingTime((prevTime) => prevTime - 1);
+      setRemainingTime(prevTime => prevTime - 1);
     }, 1000);
 
     return () => {

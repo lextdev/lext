@@ -3,7 +3,7 @@ import styled from "@emotion/native";
 import { GroupProps } from "./DefaultProps";
 import { ThemeProps } from "../../../styles/Theme";
 
-const Group = styled.View<GroupProps & ThemeProps>((props) => {
+const Group = styled.View<GroupProps & ThemeProps>(props => {
   const { theme, style, children, ...componentProps } = props;
   const defaultProps = props.theme?.components.Group.default;
   const merged = { ...defaultProps, ...componentProps };

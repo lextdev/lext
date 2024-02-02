@@ -11,7 +11,7 @@ type CustomTextareaProps = TextInputProps &
     height?: DimensionValue;
   };
 
-const CustomTextarea: FormProps<CustomTextareaProps> = (props) => {
+const CustomTextarea: FormProps<CustomTextareaProps> = props => {
   const {
     layout,
     height = 150,
@@ -36,11 +36,11 @@ const CustomTextarea: FormProps<CustomTextareaProps> = (props) => {
           color: getColor(color ?? defaultProps.color ?? "global"),
           fontSize: GetTextSizeValue(
             fontSize ?? defaultProps.fontSize,
-            theme.fontSizes.text,
+            theme.fontSizes.text
           ),
         }}
         placeholderTextColor={getColor(
-          placeholderTextColor ?? defaultProps.placeholderTextColor ?? "muted",
+          placeholderTextColor ?? defaultProps.placeholderTextColor ?? "muted"
         )}
         {...textInputProps}
       />

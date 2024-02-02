@@ -6,7 +6,7 @@ import Layout from "../_layout/Layout";
 
 interface CustomSwitchProps extends SwitchProps {}
 
-const CustomSwitch: FormProps<CustomSwitchProps> = (props) => {
+const CustomSwitch: FormProps<CustomSwitchProps> = props => {
   const { layout, ...switchProps } = props;
   const getColor = useColor();
 

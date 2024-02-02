@@ -27,7 +27,7 @@ const GetColorValue = (
   if (color.toString().includes(".")) {
     const [mainColor, subColorIndex] = color.toString().split(".") as [
       keyof ColorsProps,
-      string
+      string,
     ];
     const index = parseInt(subColorIndex, 10);
 

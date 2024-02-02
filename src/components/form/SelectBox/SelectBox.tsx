@@ -36,7 +36,7 @@ type CustomSelectBoxProps = TextInputProps &
     searchRight?: JSX.Element;
   };
 
-const CustomSelectBox: FormProps<CustomSelectBoxProps> = (props) => {
+const CustomSelectBox: FormProps<CustomSelectBoxProps> = props => {
   const {
     layout,
     modal,
@@ -63,8 +63,7 @@ const CustomSelectBox: FormProps<CustomSelectBoxProps> = (props) => {
   const { theme } = useTheme();
   const defaultProps = theme?.components.Input.default;
 
-  const findValue = (value: string) =>
-    data.find((item) => item.value === value);
+  const findValue = (value: string) => data.find(item => item.value === value);
 
   const onPressItem = (item: DataProps) => {
     setValue(item);
@@ -75,8 +74,8 @@ const CustomSelectBox: FormProps<CustomSelectBoxProps> = (props) => {
 
   const onHandlerAliasChange = () => {
     const searchText = searchResult.toLowerCase();
-    const results = data.filter((item) =>
-      item.label.toLowerCase().includes(searchText),
+    const results = data.filter(item =>
+      item.label.toLowerCase().includes(searchText)
     );
     setSearchData(results);
   };
@@ -121,7 +120,7 @@ const CustomSelectBox: FormProps<CustomSelectBoxProps> = (props) => {
                 }}
                 placeholder={searchPlaceholderText}
                 value={searchResult ?? ""}
-                onChangeText={(text) => {
+                onChangeText={text => {
                   setSearchResult(text);
                 }}
               />

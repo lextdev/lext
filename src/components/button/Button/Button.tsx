@@ -12,7 +12,7 @@ const Button: FC<
     children: ReactNode | string;
     isLoader?: boolean;
   }
-> = (props) => {
+> = props => {
   const { theme } = useTheme();
   const {
     children,
@@ -57,7 +57,7 @@ const Button: FC<
       {isLoader && (
         <ActivityIndicator
           color={getColor(
-            color ?? theme.components.Button.default.color ?? "global",
+            color ?? theme.components.Button.default.color ?? "global"
           )}
         />
       )}

@@ -5,13 +5,13 @@ import { ThemeProps } from "../../../styles/Theme";
 import { useColor } from "../../../hooks";
 
 const StyledActionButton = styled.View<ActionButtonProps & ThemeProps>(
-  (props) => {
+  props => {
     const { theme, children, variant, size, ...componentProps } = props;
     const defaultProps = props.theme?.components.ActionButton.default;
     const merged = { ...defaultProps, ...componentProps };
     const getColor = useColor();
 
-    let currentVariant = variant || defaultProps.variant;
+    const currentVariant = variant || defaultProps.variant;
     let variantStyle = {};
 
     if (currentVariant === "outline") {

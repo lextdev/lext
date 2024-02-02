@@ -4,7 +4,7 @@ import { ButtonProps } from "./DefaultProps";
 import { ThemeProps } from "../../../styles/Theme";
 import { useColor } from "../../../hooks";
 
-const StyledButton = styled.View<ButtonProps & ThemeProps>((props) => {
+const StyledButton = styled.View<ButtonProps & ThemeProps>(props => {
   const { theme, children, fontFamily, variant, size, ...componentProps } =
     props;
   const defaultProps = props.theme?.components.Button.default;

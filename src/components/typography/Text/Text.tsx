@@ -5,7 +5,7 @@ import { ThemeProps } from "../../../styles/Theme";
 import { GetTextSizeValue } from "../../../helpers";
 import { useColor } from "../../../hooks";
 
-const Text = styled.Text<TextProps & ThemeProps>((props) => {
+const Text = styled.Text<TextProps & ThemeProps>(props => {
   const getColor = useColor();
   const { theme, style, children, ...componentProps } = props;
   const defaultProps = props.theme?.components.Text.default;

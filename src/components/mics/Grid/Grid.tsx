@@ -5,7 +5,7 @@ import { View } from "react-native";
 import { GridProps } from "./DefaultProps";
 import { ThemeProps } from "../../../styles/Theme";
 
-const Container = styled.View<GridProps & ThemeProps>((props) => {
+const Container = styled.View<GridProps & ThemeProps>(props => {
   const { theme, style, children, ...componentProps } = props;
   const defaultProps = props.theme?.components.Grid.default;
   const merged = { ...defaultProps, ...componentProps };

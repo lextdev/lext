@@ -23,7 +23,7 @@ const Layout: FC<LayoutProps & CustomLayoutProps> = ({
 }) => {
   const { theme } = useTheme();
   const getColor = useColor();
-  let getHeight = () => {
+  const getHeight = () => {
     let h: DimensionValue;
 
     if (height) {

@@ -6,7 +6,7 @@ import { useColor } from "../../../hooks";
 import { HexToRGBA } from "../../../helpers";
 
 const StyledLoadingOverlay = styled.View<LoadingOverlayProps & ThemeProps>(
-  (props) => {
+  props => {
     const { theme, style, children, backgroundOpacity, ...componentProps } =
       props;
     const defaultProps = props.theme?.components.LoadingOverlay.default;
@@ -18,10 +18,10 @@ const StyledLoadingOverlay = styled.View<LoadingOverlayProps & ThemeProps>(
       ...merged,
       backgroundColor: HexToRGBA(
         getColor(merged.backgroundColor ?? "secondary"),
-        backgroundOpacity ?? defaultProps.backgroundOpacity ?? 0.5,
+        backgroundOpacity ?? defaultProps.backgroundOpacity ?? 0.5
       ),
     };
-  },
+  }
 );
 
 export default StyledLoadingOverlay;

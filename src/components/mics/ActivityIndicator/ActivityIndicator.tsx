@@ -7,7 +7,7 @@ type CustomActivityIndicatorProps = ActivityIndicatorProps & {
   color?: ColorTypeProps;
 };
 
-const CustomActivityIndicator: FC<CustomActivityIndicatorProps> = (props) => {
+const CustomActivityIndicator: FC<CustomActivityIndicatorProps> = props => {
   const getColor = useColor();
 
   return (

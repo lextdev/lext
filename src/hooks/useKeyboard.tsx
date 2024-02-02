@@ -11,7 +11,7 @@ const useKeyboard = () => {
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
       "keyboardDidShow",
-      (event) => {
+      event => {
         setIsKeyboardOpen(true);
         setKeyboardHeight(event.endCoordinates.height);
       }

@@ -6,7 +6,7 @@ import Animated, { FadeIn } from "react-native-reanimated";
 
 const LoadingOverlay: FC<
   LoadingOverlayProps & { children: ReactNode; style?: StyleProp<ViewStyle> }
-> = (props) => {
+> = props => {
   const { children, style, ...loadingOverlayProps } = props;
 
   return (
