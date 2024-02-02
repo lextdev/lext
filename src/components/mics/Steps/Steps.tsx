@@ -47,4 +47,4 @@ const Steps = forwardRef<FlatList<ReactElement>, StepsProps>((props, ref) => {
   );
 });
 
-export default Steps;
+export default Steps
