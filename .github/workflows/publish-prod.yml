@@ -9,32 +9,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout Codebase
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Configure Node.js Environment
         uses: actions/setup-node@v3
         with:
           node-version: "20.x"
           registry-url: "https://registry.npmjs.org"
 
-      - name: Install Root Dependencies
+      - name: Install Project Dependencies
         run: npm install
-        working-directory: ./
 
-      - name: Run Pre-Build Script in Root
-        run: npm run pre:build-prod
-        working-directory: ./
+      - name: Execute Rollup Build Process
+        run: npm run rollup
 
-      - name: Change Directory to package/core
-        run: cd package/core
-
-      - name: Install Dependencies in package/core
-        run: npm install
-        working-directory: package/core
-
-      - name: Publish to NPM from package/core
+      - name: Deploy Package to NPM Registry
         run: npm dist-tag add @ynssenem/lext@$(node -p "require('./package.json').version") latest
-        working-directory: package/core
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

@@ -1,25 +1,55 @@
 {
-  "name": "@ynssenem/lextdev",
-  "version": "1.0.0",
-  "private": true,
-  "workspaces": [
-    "app/*",
-    "package/*"
+  "name": "@ynssenem/lext",
+  "version": "1.7.2",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types.d.ts",
+  "repository": "https://github.com/ynssenem/lext",
+  "keywords": [
+    "react-native",
+    "uikit",
+    "typescript"
   ],
   "scripts": {
-    "build": "lerna run rollup --scope @ynssenem/lext",
-    "add": "lerna add @ynssenem/lext --scope @ynssenem/cool-app",
-    "watch": "nodemon --watch 'package/core/src/**/*' --ext 'ts,tsx' --exec 'npm run build && npm run add'",
-    "ios": "lerna run ios --scope @ynssenem/cool-app --stream --",
-    "pre:build-dev": "npm run build",
-    "pre:build-prod": "npm run build",
-    "pre:build-local": "npm run build && cd package/core && rm -rf *.tgz && npm pack && mv ynssenem-lext-*.tgz ynssenem-lext-local.tgz"
+    "commit": "echo 'hello world'",
+    "rollup": "rollup -c --bundleConfigAsCjs",
+    "icons": "npx @svgr/cli --native --icon [24,24] --typescript --config-file ./svgr-config.json --out-dir ./src/icons ./icons",
+    "local": "npm pack"
   },
+  "author": "Yunus SENEM",
+  "license": "MIT",
   "devDependencies": {
-    "eslint": "^8.53.0",
-    "eslint-config-universe": "^12.0.0",
-    "eslint-plugin-unused-imports": "^3.0.0",
-    "lerna": "^4.0.0",
-    "nodemon": "^3.0.1"
+    "@babel/preset-typescript": "^7.21.5",
+    "@emotion/babel-plugin": "^11.11.0",
+    "@rollup/plugin-commonjs": "^24.1.0",
+    "@rollup/plugin-json": "^6.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-typescript": "^11.1.0",
+    "@svgr/cli": "^8.1.0",
+    "@types/react": "^18.2.51",
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "rollup": "^3.0.0",
+    "rollup-plugin-dts": "^5.3.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "typescript": "^5.0.4"
+  },
+  "peerDependencies": {
+    "@emotion/native": "^11.11.0",
+    "@emotion/react": "^11.11.1",
+    "expo": "^50.0.0",
+    "react": "18.2.0",
+    "react-native": "~0.73.2",
+    "react-native-gesture-handler": "~2.14.0",
+    "react-native-reanimated": "~3.6.2"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "1.21.0",
+    "@react-navigation/native": "^6.0.2",
+    "react-native-mask-input": "^1.2.3",
+    "react-native-svg": "^14.1.0"
   }
 }
