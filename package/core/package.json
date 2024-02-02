@@ -39,13 +39,13 @@
     "@emotion/native": "^11.11.0",
     "@emotion/react": "^11.11.1",
     "react": "18.2.0",
-    "react-native": "0.72.6",
-    "react-native-gesture-handler": "^2.12.0",
-    "react-native-reanimated": "~3.3.0"
+    "react-native": "~0.73.2",
+    "react-native-gesture-handler": "~2.14.0",
+    "react-native-reanimated": "~3.6.2"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.21.0",
-    "@react-navigation/native": "^6.1.9",
+    "@react-native-async-storage/async-storage": "1.21.0",
+    "@react-navigation/native": "^6.0.2",
     "react-native-mask-input": "^1.2.3",
     "react-native-svg": "^14.1.0"
   }

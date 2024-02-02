@@ -7,9 +7,7 @@ import {
 import { ColorTypeProps } from "../../../helpers/GetColorValue";
 import { TextSizesProps } from "../../../types";
 
-export type TextProps = TextStyleIOS &
-  TextStyleAndroid &
-  ViewStyle & {
+export type TextProps = {
     color?: ColorTypeProps;
     fontSize?: keyof TextSizesProps | number;
     fontFamily?: string;
@@ -23,7 +21,7 @@ export type TextProps = TextStyleIOS &
     textShadowOffset?: TextStyle["textShadowOffset"];
     textShadowRadius?: TextStyle["textShadowRadius"];
     textTransform?: TextStyle["textTransform"];
-    testID?: TextStyle["testID"];
+    testID?: string;
   };
 
 export type TextComponentThemeProps = {

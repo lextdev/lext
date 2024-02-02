@@ -16,7 +16,7 @@ export type HeadingProps = {
   textShadowOffset?: TextStyle["textShadowOffset"];
   textShadowRadius?: TextStyle["textShadowRadius"];
   textTransform?: TextStyle["textTransform"];
-  testID?: TextStyle["testID"];
+  testID?: string;
 };
 
 export type HeadingComponentThemeProps = {
