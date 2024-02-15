@@ -8,6 +8,9 @@
   "repository": "https://github.com/ynssenem/lext",
   "author": "Yunus SENEM",
   "license": "MIT",
+  "workspaces": [
+    "test/*"
+  ],
   "keywords": [
     "react-native",
     "uikit",
@@ -16,6 +19,9 @@
   "scripts": {
     "rollup": "rollup -c --bundleConfigAsCjs",
     "icons": "npx @svgr/cli --native --icon [24,24] --typescript --config-file ./svgr-config.json --out-dir ./src/icons ./icons",
+    "watch": "nodemon --watch './src/**/*' --ext 'ts,tsx' --exec 'npm run build && npm run add'",
+    "build": "lerna run rollup --scope @ynssenem/lext",
+    "add": "lerna add @ynssenem/lext --scope anatolia",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "lint": "eslint .",
     "pack": "rm -rf *.tgz && npm pack"
@@ -53,6 +59,8 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-native": "^4.1.0",
+    "lerna": "^4.0.0",
+    "nodemon": "^3.0.3",
     "prettier": "^3.2.4",
     "rollup": "^3.0.0",
     "rollup-plugin-dts": "^5.3.0",
