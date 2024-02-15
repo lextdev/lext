@@ -16,6 +16,8 @@ import { FormLayoutComponentThemeProps } from "../components/form/_layout/Defaul
 import { InputComponentThemeProps } from "../components/form/_types/InputProps";
 import { BottomSheetComponentThemeProps } from "../components/mics/BottomSheet/DefaultProps";
 import { LoadingOverlayComponentThemeProps } from "../components/overlays/LoadingOverlay/DefaultProps";
+import { NavigationPluginThemeProps } from "../styles/plugins/Navigation";
+import { TouchableOpacityComponentThemeProps } from "../components/button/TouchableOpacity/DefaultProps";
 
 interface ThemeInterface {
   colorScheme: ColorSchemeProps;
@@ -46,6 +48,8 @@ interface ThemeInterface {
     Input: InputComponentThemeProps;
     BottomSheet: BottomSheetComponentThemeProps;
     LoadingOverlay: LoadingOverlayComponentThemeProps;
+    Navigation: NavigationPluginThemeProps;
+    TouchableOpacity: TouchableOpacityComponentThemeProps;
   };
   defaultOptions: {
     gap: number;

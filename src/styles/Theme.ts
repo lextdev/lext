@@ -1,5 +1,6 @@
 import { ActionButtonComponentThemeData } from "../components/button/ActionButton/DefaultProps";
 import { ButtonComponentThemeData } from "../components/button/Button/DefaultProps";
+import { TouchableOpacityComponentThemeData } from "../components/button/TouchableOpacity/DefaultProps";
 import { FormLayoutComponentThemeData } from "../components/form/_layout/DefaultProps";
 import { InputComponentThemeData } from "../components/form/_types/InputProps";
 import { BottomSheetComponentThemeData } from "../components/mics/BottomSheet/DefaultProps";
@@ -15,6 +16,7 @@ import Colors, { DarkColors } from "./Colors";
 import HeadingSizes from "./HeadingSizes";
 import Spacing from "./Spacing";
 import TextSizes from "./TextSizes";
+import { NavigationPluginThemeData } from "./plugins/Navigation";
 
 export type ThemeProps = {
   theme?: ThemeInterface;
@@ -49,6 +51,8 @@ const Theme: ThemeInterface = {
     Input: InputComponentThemeData,
     BottomSheet: BottomSheetComponentThemeData,
     LoadingOverlay: LoadingOverlayComponentThemeData,
+    Navigation: NavigationPluginThemeData,
+    TouchableOpacity: TouchableOpacityComponentThemeData,
   },
   defaultOptions: {
     gap: 5,

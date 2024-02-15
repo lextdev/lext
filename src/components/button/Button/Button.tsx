@@ -5,30 +5,26 @@ import StyledButton from "./Styled";
 import Text from "../../typography/Text/Text";
 import { useColor, useTheme } from "../../../hooks";
 import { TextSizesProps } from "../../../types";
-import { ActivityIndicator, TouchableOpacity } from "react-native";
+import { ActivityIndicator, StyleProp, TouchableOpacity, ViewStyle } from "react-native";
 
+/**
+ * @deprecated
+ * @param props
+ * @returns
+ */
 const Button: FC<
   ButtonProps & {
     children: ReactNode | string;
     isLoader?: boolean;
+    flex?: number;
   }
 > = props => {
   const { theme } = useTheme();
-  const {
-    children,
-    color,
-    fontFamily,
-    onPress,
-    onLongPress,
-    isLoader,
-    ...touchableComponent
-  } = props;
+  const { children, color, fontFamily, onPress, onLongPress, isLoader, ...touchableComponent } = props;
+
   const getColor = useColor();
   const currentSize = props.size || theme.components.Button.default.size;
-  const currentFontFamily =
-    fontFamily ||
-    theme.components.Button.default.fontFamily ||
-    theme.fontFamily.text;
+  const currentFontFamily = fontFamily || theme.components.Button.default.fontFamily || theme.fontFamily.text;
 
   let fontSize: keyof TextSizesProps;
 
@@ -54,18 +50,8 @@ const Button: FC<
         gap: 10,
       }}
     >
-      {isLoader && (
-        <ActivityIndicator
-          color={getColor(
-            color ?? theme.components.Button.default.color ?? "global"
-          )}
-        />
-      )}
-      <Text
-        color={color || theme.components.Button.default.color}
-        fontSize={fontSize}
-        fontFamily={currentFontFamily}
-      >
+      {isLoader && <ActivityIndicator color={getColor(color ?? theme.components.Button.default.color ?? "global")} />}
+      <Text color={color || theme.components.Button.default.color} fontSize={fontSize} fontFamily={currentFontFamily}>
         {children}
       </Text>
     </StyledButton>

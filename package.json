@@ -18,11 +18,12 @@
     "icons": "npx @svgr/cli --native --icon [24,24] --typescript --config-file ./svgr-config.json --out-dir ./src/icons ./icons",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "lint": "eslint .",
-    "local": "npm pack"
+    "pack": "rm -rf *.tgz && npm pack"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "1.21.0",
     "@react-navigation/native": "^6.0.2",
+    "expo-status-bar": "^1.11.1",
     "react-native-mask-input": "^1.2.3",
     "react-native-svg": "^14.1.0"
   },

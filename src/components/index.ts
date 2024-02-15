@@ -6,6 +6,7 @@ export { default as Heading } from "./typography/Heading/Heading";
 export { default as ActionButton } from "./button/ActionButton/ActionButton";
 export { default as Anchor } from "./button/Anchor/Anchor";
 export { default as Button } from "./button/Button/Button";
+export { default as TouchableOpacity } from "./button/TouchableOpacity/TouchableOpacity";
 
 // mics
 export { default as Box } from "./mics/Box/Box";

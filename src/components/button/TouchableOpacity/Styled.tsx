@@ -1,35 +1,20 @@
 import styled from "@emotion/native";
-
-import { ButtonProps } from "./DefaultProps";
-import { ThemeProps } from "../../../styles/Theme";
 import { useColor } from "../../../hooks";
+import { TouchableOpacityProps } from "./DefaultProps";
+import { ThemeProps } from "../../../styles/Theme";
 
-const StyledButton = styled.View<ButtonProps & ThemeProps>(props => {
-  const { theme, children, fontFamily, variant, size, ...componentProps } = props;
-  const defaultProps = props.theme?.components.Button.default;
-  const merged = { ...defaultProps, ...componentProps };
+const StyledTouchableOpacity = styled.TouchableOpacity<TouchableOpacityProps & ThemeProps>(props => {
+  const { theme, variant, size, ...componentProps } = props;
   const getColor = useColor();
 
-  const currentVariant = variant || defaultProps.variant;
-  let variantStyle = {};
-
-  if (currentVariant === "outline") {
-    variantStyle = {
-      backgroundColor: "transparent",
-      borderWidth: 2,
-      borderColor: merged.backgroundColor && getColor(merged.backgroundColor),
-      borderStyle: "solid",
-    };
-  } else {
-    variantStyle = {
-      backgroundColor: merged.backgroundColor && getColor(merged.backgroundColor),
-    };
-  }
+  const defaultProps = props.theme?.components.TouchableOpacity.default;
+  const merged = { ...defaultProps, ...componentProps };
 
   const divisionValue = (value: number, division: number = 2) => value / division;
 
   const currentSize = size || defaultProps.size;
   let typeStyle = {};
+
   switch (currentSize) {
     case "lg":
       typeStyle = {
@@ -55,13 +40,19 @@ const StyledButton = styled.View<ButtonProps & ThemeProps>(props => {
   }
 
   return {
+    borderWidth: 2,
+    borderColor: merged.backgroundColor && getColor(merged.backgroundColor),
+    borderStyle: "solid",
+    backgroundColor:
+      (variant || defaultProps.variant) === "outline"
+        ? "transparent"
+        : merged.backgroundColor && getColor(merged.backgroundColor),
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     ...typeStyle,
     ...merged,
-    ...variantStyle,
   };
 });
 
-export default StyledButton;
+export default StyledTouchableOpacity;

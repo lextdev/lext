@@ -23,7 +23,14 @@ module.exports = {
   plugins: ["react", "react-native", "@typescript-eslint", "prettier"],
   rules: {
     "react/react-in-jsx-scope": "off",
+    "react-native/no-inline-styles": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
+    "prettier/prettier": [
+      error,
+      {
+        printWidth: 80,
+      },
+    ],
   },
   settings: {
     react: {

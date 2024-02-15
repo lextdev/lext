@@ -8,7 +8,8 @@ import React, {
   useState,
 } from "react";
 import { ColorSchemeProps } from "../types";
-import { StatusBar } from "react-native";
+import { useStore } from "../hooks";
+import { COLOR_SCHEME_KEY } from "../hooks/useTheme";
 
 export const ColorSchemeContext = createContext<ColorSchemeProps>("lighten");
 export const ColorSchemeContextDispatch = createContext<
@@ -17,22 +18,25 @@ export const ColorSchemeContextDispatch = createContext<
 
 const ColorSchemeProvider: FC<{
   children: ReactNode;
-  themeColorScheme?: ColorSchemeProps;
+  themeColorScheme: ColorSchemeProps;
 }> = ({ children, themeColorScheme }) => {
   const [colorScheme, setColorScheme] = useState<ColorSchemeProps>("lighten");
+  const { getItem } = useStore();
+
+  const onColorSchemeChange = async () => {
+    const storeColorScheme = (await getItem(
+      COLOR_SCHEME_KEY
+    )) as ColorSchemeProps | null;
+    setColorScheme(storeColorScheme || themeColorScheme);
+  };
 
   useEffect(() => {
-    if (themeColorScheme) {
-      setColorScheme(themeColorScheme);
-    }
+    onColorSchemeChange();
   }, []);
-
-  const barStyle = colorScheme !== "darken" ? "dark-content" : "light-content";
 
   return (
     <ColorSchemeContext.Provider value={colorScheme}>
       <ColorSchemeContextDispatch.Provider value={setColorScheme}>
-        <StatusBar barStyle={barStyle} />
         {children}
       </ColorSchemeContextDispatch.Provider>
     </ColorSchemeContext.Provider>

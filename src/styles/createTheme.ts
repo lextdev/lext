@@ -9,8 +9,9 @@ type DeepPartialTheme = DeepPartial<ThemeInterface>;
 
 const createTheme = (newTheme?: DeepPartialTheme): ThemeInterface => {
   const defaultTheme = Theme;
+
   return {
-    ...defaultTheme, // varsayılan tema veya mevcut temayı buradan alabilirsiniz
+    ...defaultTheme,
     ...(newTheme && {
       colorScheme: newTheme.colorScheme || defaultTheme.colorScheme,
       colors: {
@@ -62,28 +63,24 @@ const createTheme = (newTheme?: DeepPartialTheme): ThemeInterface => {
             ...defaultTheme.components.Stack.default,
             ...(newTheme.components?.Stack?.default || {}),
           },
-          // Other features will be added here
         },
         Group: {
           default: {
             ...defaultTheme.components.Group.default,
             ...(newTheme.components?.Group?.default || {}),
           },
-          // Other features will be added here
         },
         Grid: {
           default: {
             ...defaultTheme.components.Grid.default,
             ...(newTheme.components?.Grid?.default || {}),
           },
-          // Other features will be added here
         },
         Box: {
           default: {
             ...defaultTheme.components.Box.default,
             ...(newTheme.components?.Box?.default || {}),
           },
-          // Other features will be added here
         },
         Button: {
           default: {
@@ -129,6 +126,18 @@ const createTheme = (newTheme?: DeepPartialTheme): ThemeInterface => {
           default: {
             ...defaultTheme.components.LoadingOverlay.default,
             ...(newTheme.components?.LoadingOverlay?.default || {}),
+          },
+        },
+        Navigation: {
+          default: {
+            ...defaultTheme.components.Navigation.default,
+            ...(newTheme.components?.Navigation?.default || {}),
+          },
+        },
+        TouchableOpacity: {
+          default: {
+            ...defaultTheme.components.TouchableOpacity.default,
+            ...(newTheme.components?.TouchableOpacity?.default || {}),
           },
         },
       },

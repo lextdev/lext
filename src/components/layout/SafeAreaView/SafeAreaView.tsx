@@ -7,10 +7,12 @@ import {
   TapGestureHandler,
   TapGestureHandlerEventPayload,
 } from "react-native-gesture-handler";
+import { StatusBar, StatusBarProps } from "expo-status-bar";
 
 type SafeAreaViewProps = {
   children: ReactNode;
   backgroundColor?: ColorTypeProps | null;
+  statusBar?: StatusBarProps;
   onHandlerStateChange?: (
     event: HandlerStateChangeEvent<TapGestureHandlerEventPayload>
   ) => void;
@@ -19,20 +21,20 @@ type SafeAreaViewProps = {
 const SafeAreaView: FC<SafeAreaViewProps> = ({
   children,
   backgroundColor = "background",
+  statusBar,
   onHandlerStateChange,
 }) => {
   const getColor = useColor();
+  const safeAreaView = {
+    flex: 1,
+    backgroundColor: backgroundColor ? getColor(backgroundColor) : undefined,
+  };
+
   return (
     <TapGestureHandler onHandlerStateChange={onHandlerStateChange}>
-      <RSafeAreaView
-        style={{
-          flex: 1,
-          backgroundColor: backgroundColor
-            ? getColor(backgroundColor)
-            : undefined,
-        }}
-      >
+      <RSafeAreaView style={safeAreaView}>
         {children}
+        <StatusBar {...statusBar} />
       </RSafeAreaView>
     </TapGestureHandler>
   );

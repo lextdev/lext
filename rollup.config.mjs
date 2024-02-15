@@ -5,22 +5,21 @@ import dts from "rollup-plugin-dts";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
 import json from "@rollup/plugin-json";
-
-const packageJson = require("./package.json");
+import pkg from "./package.json";
 
 export default [
   {
     input: "src/index.ts",
     output: [
       {
-        file: packageJson.main,
+        file: pkg.main,
         format: "cjs",
         sourcemap: true,
         exports: "named",
         interop: "compat",
       },
       {
-        file: packageJson.module,
+        file: pkg.module,
         format: "esm",
         sourcemap: true,
         exports: "named",
@@ -46,8 +45,7 @@ export default [
   },
   {
     input: "src/index.ts",
-    output: [{ file: "dist/types.d.ts", format: "es" }],
+    output: [{ file: "dist/types.d.ts", format: "es", interop: "compat" }],
     plugins: [dts.default()],
-    interop: "compat",
   },
 ];

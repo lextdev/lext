@@ -1,4 +1,4 @@
-import { FlexStyle, StyleProp } from "react-native";
+import { FlexStyle } from "react-native";
 import { ColorTypeProps } from "../../../helpers/GetColorValue";
 
 export type LoadingOverlayProps = {
