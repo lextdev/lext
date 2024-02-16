@@ -1,10 +1,11 @@
-import { Dimensions, StyleSheet } from "react-native";
+import { Dimensions, StyleSheet, View as RNView } from "react-native";
 import React, {
   ReactNode,
   forwardRef,
   useCallback,
   useEffect,
   useImperativeHandle,
+  useRef,
   useState,
 } from "react";
 import { css } from "@emotion/native";
@@ -21,24 +22,28 @@ import Animated, {
 import { PanGestureHandler } from "react-native-gesture-handler";
 import { BottomSheetRefProps } from "../../../types";
 import { HexToRGBA } from "../../../helpers";
+import View from "../View/View";
+import { ViewRefSet } from "react-native-reanimated/lib/typescript/reanimated2/ViewDescriptorsSet";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
-function getSnapSize(value: number) {
-  const currentValue = SCREEN_HEIGHT * (value / 100);
+function getSnapSize(value: number | "fit") {
+  const h = value === "fit" ? 20 : value;
+  const currentValue = SCREEN_HEIGHT * (h / 100);
   return -currentValue;
 }
 
 type BottomSheetProps = {
   children: ReactNode;
-  snaps: number[];
+  snaps: Array<"fit" | number>;
 };
 
 const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
   ({ children, snaps }, ref) => {
+    const body = useRef<RNView>(null);
     const getColor = useColor();
     const { theme } = useTheme();
-    const [snapSizes, setSnapSizes] = useState<number[]>([]);
+    const [snapSizes, setSnapSizes] = useState<Array<"fit" | number>>([]);
 
     // Shared
     const context = useSharedValue({ y: 0, index: 0 });
@@ -86,13 +91,13 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
       };
     });
 
-    const scrollTo = useCallback((destination: number) => {
+    const scrollTo = useCallback((destination: number | "fit") => {
       "worklet";
-
-      viewHeight.value = withSpring(Math.round(Math.abs(destination) - 75), {
+      const h = destination === "fit" ? 20 : destination;
+      viewHeight.value = withSpring(Math.round(Math.abs(h) - 75), {
         damping: 12,
       });
-      translateY.value = withSpring(destination, {
+      translateY.value = withSpring(h, {
         damping: 12,
       });
     }, []);
@@ -173,6 +178,14 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
       }
     }, []);
 
+    useEffect(() => {
+      if (body.current) {
+        body.current.measure((width, height) => {
+          console.log(`Width: ${width}, Height: ${height}`);
+        });
+      }
+    }, [body.current]);
+
     return (
       <>
         <Animated.View
@@ -198,7 +211,9 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
         <PanGestureHandler onGestureEvent={onPanGestureEvent}>
           <Animated.View style={[bottomSheetContainerCss, rBottomSheetStyle]}>
             <Animated.View style={lineCss} />
-            <Animated.View style={rViewHeightStyle}>{children}</Animated.View>
+            <Animated.View style={[rViewHeightStyle]}>
+              <View ref={body}>{children}</View>
+            </Animated.View>
           </Animated.View>
         </PanGestureHandler>
       </>

@@ -16,6 +16,7 @@ export { default as Stack } from "./mics/Stack/Stack";
 export { default as Modal } from "./mics/Modal/Modal";
 export { default as Menu } from "./mics/Menu/Menu";
 export { default as BottomSheet } from "./mics/BottomSheet/BottomSheet";
+export { default as Sheet } from "./mics/Sheet/Sheet";
 export { default as ActivityIndicator } from "./mics/ActivityIndicator/ActivityIndicator";
 export { default as View } from "./mics/View/View";
 export { default as Steps } from "./mics/Steps/Steps";

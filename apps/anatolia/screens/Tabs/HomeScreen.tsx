@@ -5,6 +5,7 @@ import {
   Button,
   Heading,
   SafeAreaView,
+  Sheet,
   Text,
 } from "@ynssenem/lext";
 import { useRef, useState } from "react";
@@ -13,29 +14,9 @@ import { Modal, Pressable, StyleSheet } from "react-native";
 export default function () {
   const bottomSheetRef = useRef<BottomSheetRefProps>(null);
   const [modal, setModal] = useState(false);
+  const [hideMessage, setHideMessage] = useState(false);
   return (
     <SafeAreaView>
-      <Modal animationType="fade" transparent visible={modal}>
-        <Pressable
-          style={{
-            flex: 1,
-            backgroundColor: "black",
-            opacity: 0.5,
-            ...StyleSheet.absoluteFillObject,
-          }}
-        />
-        <Box>
-          <Heading>Hello World</Heading>
-          <Text>Lorem ipsum dolor sit amet</Text>
-          <Button
-            onPress={() => {
-              setModal(false);
-            }}
-          >
-            Close Modal
-          </Button>
-        </Box>
-      </Modal>
       <Box gap={10}>
         <Button
           onPress={() => {
@@ -53,13 +34,42 @@ export default function () {
           Open Modal
         </Button>
       </Box>
-      <Text>Tabs</Text>
-      <BottomSheet ref={bottomSheetRef} snaps={[40, 60, 80]}>
-        <Box>
+      <BottomSheet ref={bottomSheetRef} snaps={["fit", 50, 70]}>
+        <Box backgroundColor="primary">
           <Heading>Hello World</Heading>
-          <Text>Lorem ipsum dolor sit amet</Text>
+          {hideMessage && (
+            <Text style={{ height: 200 }}>Lorem ipsum dolor sit amet</Text>
+          )}
+          <Button
+            onPress={() => {
+              setHideMessage(!hideMessage);
+            }}
+          >
+            Click
+          </Button>
         </Box>
       </BottomSheet>
+      {/* <Sheet
+        visible={modal}
+        snaps={["fit", 50]}
+        onPressable={() => {
+          setModal(false);
+        }}
+      >
+        <Box>
+          <Heading>Hello World</Heading>
+          {hideMessage && (
+            <Text style={{ height: 200 }}>Lorem ipsum dolor sit amet</Text>
+          )}
+          <Button
+            onPress={() => {
+              setHideMessage(!hideMessage);
+            }}
+          >
+            Click
+          </Button>
+        </Box>
+      </Sheet> */}
     </SafeAreaView>
   );
 }
