@@ -20,8 +20,15 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
-  plugins: ["react", "react-native", "@typescript-eslint", "prettier"],
+  plugins: [
+    "react",
+    "react-native",
+    "@typescript-eslint",
+    "prettier",
+    "unused-imports",
+  ],
   rules: {
+    "unused-imports/no-unused-imports": "error",
     "react/react-in-jsx-scope": "off",
     "react-native/no-inline-styles": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",

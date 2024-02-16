@@ -11,12 +11,7 @@ Lext is a customizable and easy-to-use UI library for your React Native applicat
 To add Lext to your project, you can use the following command:
 
 ```bash
-npm install /
-  @emotion/native@^11.11.0 /
-  @emotion/react@^11.11.1 /
-  react-native-gesture-handler@~2.14.0 /
-  react-native-reanimated@~3.6.2 /
-  @ynssenem/lext@latest
+npm install @emotion/native@^11.11.0 @emotion/react@^11.11.1 react-native-gesture-handler@~2.14.0 react-native-reanimated@~3.6.2 @ynssenem/lext@latest
 ```
 
 ### Usage
