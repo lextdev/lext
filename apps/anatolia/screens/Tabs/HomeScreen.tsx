@@ -6,6 +6,8 @@ import {
   Heading,
   SafeAreaView,
   Sheet,
+  SheetRef,
+  Stack,
   Text,
 } from "@ynssenem/lext";
 import { useRef, useState } from "react";
@@ -13,63 +15,73 @@ import { Modal, Pressable, StyleSheet } from "react-native";
 
 export default function () {
   const bottomSheetRef = useRef<BottomSheetRefProps>(null);
-  const [modal, setModal] = useState(false);
+  const sheetRef = useRef<SheetRef>(null);
+
+  const [visible, setVisible] = useState(false);
   const [hideMessage, setHideMessage] = useState(false);
   return (
     <SafeAreaView>
       <Box gap={10}>
         <Button
           onPress={() => {
-            bottomSheetRef.current?.snapToIndex(1);
-          }}
-        >
-          Open BottomSheet
-        </Button>
-
-        <Button
-          onPress={() => {
-            setModal(true);
+            setVisible(true);
           }}
         >
           Open Modal
         </Button>
       </Box>
-      <BottomSheet ref={bottomSheetRef} snaps={["fit", 50, 70]}>
-        <Box backgroundColor="primary">
-          <Heading>Hello World</Heading>
-          {hideMessage && (
-            <Text style={{ height: 200 }}>Lorem ipsum dolor sit amet</Text>
-          )}
-          <Button
-            onPress={() => {
-              setHideMessage(!hideMessage);
-            }}
-          >
-            Click
-          </Button>
-        </Box>
-      </BottomSheet>
-      {/* <Sheet
-        visible={modal}
-        snaps={["fit", 50]}
-        onPressable={() => {
-          setModal(false);
-        }}
+
+      <Sheet
+        open={visible}
+        ref={sheetRef}
+        close={setVisible}
+        snaps={["auto", 50, 80]}
       >
         <Box>
           <Heading>Hello World</Heading>
           {hideMessage && (
             <Text style={{ height: 200 }}>Lorem ipsum dolor sit amet</Text>
           )}
-          <Button
-            onPress={() => {
-              setHideMessage(!hideMessage);
-            }}
-          >
-            Click
-          </Button>
+          <Stack>
+            <Button
+              onPress={() => {
+                sheetRef.current?.hardReSize();
+                setHideMessage(!hideMessage);
+              }}
+            >
+              HardReSize
+            </Button>
+            <Button
+              onPress={() => {
+                sheetRef.current?.scrollToIndex(1);
+              }}
+            >
+              Index To 1
+            </Button>
+            <Button
+              onPress={() => {
+                sheetRef.current?.scrollToIndex(0);
+              }}
+            >
+              Index To 0 (Auto)
+            </Button>
+            <Button
+              onPress={() => {
+                sheetRef.current?.scrollToIndex(3);
+              }}
+            >
+              No Index
+            </Button>
+            <Button
+              onPress={() => {
+                sheetRef.current?.scrollToClose();
+              }}
+            >
+              Close
+            </Button>
+          </Stack>
         </Box>
-      </Sheet> */}
+      </Sheet>
     </SafeAreaView>
   );
 }
