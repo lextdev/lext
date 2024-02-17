@@ -19,7 +19,9 @@ export { default as BottomSheet } from "./mics/BottomSheet/BottomSheet";
 export { default as Sheet } from "./mics/Sheet/Sheet";
 export { default as ActivityIndicator } from "./mics/ActivityIndicator/ActivityIndicator";
 export { default as View } from "./mics/View/View";
+export { default as ScrollView } from "./mics/ScrollView/ScrollView";
 export { default as Steps } from "./mics/Steps/Steps";
+export { default as Tabs } from "./mics/Tabs/Tabs";
 
 // layout
 export { default as SafeAreaView } from "./layout/SafeAreaView/SafeAreaView";
