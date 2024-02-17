@@ -20,6 +20,7 @@ export { default as Sheet } from "./mics/Sheet/Sheet";
 export { default as ActivityIndicator } from "./mics/ActivityIndicator/ActivityIndicator";
 export { default as View } from "./mics/View/View";
 export { default as Steps } from "./mics/Steps/Steps";
+export { default as Accordion } from "./mics/Accordion/Accordion";
 
 // layout
 export { default as SafeAreaView } from "./layout/SafeAreaView/SafeAreaView";
