@@ -38,6 +38,9 @@ type BottomSheetProps = {
   snaps: Array<"fit" | number>;
 };
 
+/**
+ * @deprecated use Sheet instead
+ */
 const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
   ({ children, snaps }, ref) => {
     const body = useRef<RNView>(null);
@@ -177,14 +180,6 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
         setSnapSizes(value);
       }
     }, []);
-
-    useEffect(() => {
-      if (body.current) {
-        body.current.measure((width, height) => {
-          console.log(`Width: ${width}, Height: ${height}`);
-        });
-      }
-    }, [body.current]);
 
     return (
       <>

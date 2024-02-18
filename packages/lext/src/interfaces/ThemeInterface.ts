@@ -17,6 +17,7 @@ import { InputComponentThemeProps } from "../components/form/_types/InputProps";
 import { BottomSheetComponentThemeProps } from "../components/mics/BottomSheet/DefaultProps";
 import { LoadingOverlayComponentThemeProps } from "../components/overlays/LoadingOverlay/DefaultProps";
 import { NavigationPluginThemeProps } from "../styles/plugins/Navigation";
+import { SheetComponentThemeProps } from "../components/mics/Sheet/DefaultProps";
 
 interface ThemeInterface {
   colorScheme: ColorSchemeProps;
@@ -46,6 +47,7 @@ interface ThemeInterface {
     FormLayout: FormLayoutComponentThemeProps;
     Input: InputComponentThemeProps;
     BottomSheet: BottomSheetComponentThemeProps;
+    Sheet: SheetComponentThemeProps;
     LoadingOverlay: LoadingOverlayComponentThemeProps;
     Navigation: NavigationPluginThemeProps;
   };
