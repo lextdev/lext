@@ -1,6 +1,6 @@
 # CHANGELOG.md
 
-## 2.0.0-Dev (Feb 18 2024)
+## 2.0.1-dev (Feb 18 2024)
 
 ### Added
 
