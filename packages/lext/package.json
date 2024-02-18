@@ -1,0 +1,60 @@
+{
+  "name": "@ynssenem/lext",
+  "version": "2.0.0",
+  "description": "Lext is an easy and effective UI library for React Native. Offers fast interface design with TypeScript support.",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types.d.ts",
+  "repository": "https://github.com/ynssenem/lext",
+  "author": "Yunus SENEM",
+  "license": "MIT",
+  "workspaces": [
+    "test/*"
+  ],
+  "keywords": [
+    "react-native",
+    "uikit",
+    "typescript"
+  ],
+  "scripts": {
+    "rollup": "rollup -c --bundleConfigAsCjs",
+    "icons": "npx @svgr/cli --native --icon [24,24] --typescript --config-file ./svgr-config.json --out-dir ./src/icons ./icons",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\""
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "1.21.0",
+    "@react-navigation/native": "^6.0.2",
+    "expo-status-bar": "^1.11.1",
+    "react-native-mask-input": "^1.2.3",
+    "react-native-safe-area-context": "^4.8.2",
+    "react-native-svg": "^14.1.0"
+  },
+  "peerDependencies": {
+    "@emotion/native": "^11.11.0",
+    "@emotion/react": "^11.11.1",
+    "expo": "^50.0.0",
+    "react": "18.2.0",
+    "react-native": "~0.73.2",
+    "react-native-gesture-handler": "~2.14.0",
+    "react-native-reanimated": "~3.6.2"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.21.5",
+    "@emotion/babel-plugin": "^11.11.0",
+    "@rollup/plugin-commonjs": "^24.1.0",
+    "@rollup/plugin-json": "^6.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-typescript": "^11.1.0",
+    "@svgr/cli": "^8.1.0",
+    "@types/react": "^18.2.51",
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
+    "nodemon": "^3.0.3",
+    "prettier": "^3.2.4",
+    "rollup": "^3.0.0",
+    "rollup-plugin-dts": "^5.3.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "typescript": "^5.0.4"
+  }
+}

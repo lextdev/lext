@@ -1,25 +1,29 @@
 {
-  "name": "@ynssenem/lextdev",
+  "name": "@ynssenem/lextpkg",
   "version": "1.0.0",
-  "private": true,
   "workspaces": [
-    "app/*",
-    "package/*"
+    "apps/*",
+    "packages/*"
   ],
   "scripts": {
     "build": "lerna run rollup --scope @ynssenem/lext",
-    "add": "lerna add @ynssenem/lext --scope @ynssenem/cool-app",
-    "watch": "nodemon --watch 'package/core/src/**/*' --ext 'ts,tsx' --exec 'npm run build && npm run add'",
-    "ios": "lerna run ios --scope @ynssenem/cool-app --stream --",
+    "add": "lerna add @ynssenem/lext --scope @ynssenem/anatolia",
+    "watch": "nodemon --watch 'packages/lext/src/**/*' --ext 'ts,tsx' --exec 'npm run build && npm run add'",
+    "ios": "lerna run ios --scope @ynssenem/anatolia --stream --",
     "pre:build-dev": "npm run build",
     "pre:build-prod": "npm run build",
-    "pre:build-local": "npm run build && cd package/core && rm -rf *.tgz && npm pack && mv ynssenem-lext-*.tgz ynssenem-lext-local.tgz"
+    "pre:build-local": "npm run build && cd package/lext && rm -rf *.tgz && npm pack && mv ynssenem-lext-*.tgz ynssenem-lext-local.tgz"
   },
   "devDependencies": {
-    "eslint": "^8.53.0",
-    "eslint-config-universe": "^12.0.0",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-native": "^4.1.0",
     "eslint-plugin-unused-imports": "^3.0.0",
     "lerna": "^4.0.0",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "prettier": "^3.2.5"
   }
 }

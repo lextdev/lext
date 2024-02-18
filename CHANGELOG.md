@@ -1,0 +1,30 @@
+# CHANGELOG.md
+
+## 2.0.0-Dev (Feb 18 2024)
+
+### Added
+
+- 😎 Search features have been added to the SelectBox component.
+- 🚢 Steps component and StepsRef added.
+- 🏬 `useStore` hook added.
+- 🥰 New icons added.
+- 👍 Store MMKV added.
+- 😶‍🌫️ ReactNavigationProvider added to ThemeProvider.
+- 🖥️ `useLoadingOverlay` & LoadingOverlayProvider added.
+- 🌀 ActivityIndicator added.
+- 📦 View added.
+- ✅ Icons added.
+- ✅ ButtonLoader.
+- ✅ MaskInput added.
+- ✅ Added AsyncStorage to Rollup settings file.
+- ✅ Form elements added (TextInput, SelectBox, Switch).
+- ✅ Font Family.
+- ✅ Sheet.
+- ✅ Menu (Dropdown).
+- 🦮 "react-native-gesture-handler": "~2.12.0", & "react-native-reanimated": "~3.3.0".
+- ✅ Lighten and Darken theme support - `useColorScheme()` added.
+- ✅ `useTheme()` & `useColor()` added.
+
+### Deprecated
+
+- ❤️‍🩹 BottomSheet: use **Sheet** component instead of BottomSheet.

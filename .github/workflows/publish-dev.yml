@@ -26,15 +26,15 @@ jobs:
         run: npm run pre:build-dev
         working-directory: ./
 
-      - name: Change Directory to package/core
-        run: cd package/core
+      - name: Change Directory to packages/lext
+        run: cd packages/lext
 
-      - name: Install Dependencies in package/core
+      - name: Install Dependencies in packages/lext
         run: npm install
-        working-directory: package/core
+        working-directory: packages/lext
 
-      - name: Publish Dev to NPM from package/core
+      - name: Publish Dev to NPM from packages/lext
         run: npm publish --tag dev
-        working-directory: package/core
+        working-directory: packages/lext
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
