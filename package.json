@@ -12,7 +12,7 @@
     "ios": "lerna run ios --scope @ynssenem/anatolia --stream --",
     "pre:build-dev": "npm run build",
     "pre:build-prod": "npm run build",
-    "pre:build-local": "npm run build && cd package/lext && rm -rf *.tgz && npm pack && mv ynssenem-lext-*.tgz ynssenem-lext-local.tgz"
+    "pre:build-local": "npm run build && cd packages/lext && rm -rf *.tgz && npm pack && mv ynssenem-lext-*.tgz ynssenem-lext-local.tgz"
   },
   "devDependencies": {
     "eslint": "^8.55.0",
