@@ -1,6 +1,5 @@
 import React, {
   Dispatch,
-  FC,
   ReactNode,
   SetStateAction,
   forwardRef,
@@ -10,6 +9,8 @@ import React, {
 import { Modal, StyleSheet } from "react-native";
 import Animated from "react-native-reanimated";
 import SheetContent, { SheetContentRef } from "./SheetContent";
+import { useColor, useTheme } from "../../../hooks";
+import { HexToRGBA } from "../../../helpers";
 
 type SheetProps = {
   children: ReactNode;
@@ -26,7 +27,8 @@ export type SheetRef = {
 
 const Sheet = forwardRef<SheetRef, SheetProps>((props, ref) => {
   const sheetContentRef = useRef<SheetContentRef>(null);
-
+  const { theme } = useTheme();
+  const getColor = useColor();
   const hardReSize = () => {
     if (sheetContentRef.current) {
       sheetContentRef.current.hardReSize();
@@ -66,7 +68,10 @@ const Sheet = forwardRef<SheetRef, SheetProps>((props, ref) => {
       <Animated.View
         onTouchStart={scrollToClose}
         style={{
-          backgroundColor: "rgba(0,0,0,0.5)",
+          backgroundColor: HexToRGBA(
+            getColor(theme.components.Sheet.default.pressableBackgroundColor),
+            theme.components.Sheet.default.pressableBackgroundOpacity
+          ),
           zIndex: 1,
           ...StyleSheet.absoluteFillObject,
         }}
@@ -76,6 +81,7 @@ const Sheet = forwardRef<SheetRef, SheetProps>((props, ref) => {
         isVisible={props.open}
         snaps={props.snaps}
         children={props.children}
+        onClose={scrollToClose}
       />
     </Modal>
   );

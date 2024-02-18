@@ -6,6 +6,7 @@ import { BottomSheetComponentThemeData } from "../components/mics/BottomSheet/De
 import { BoxComponentThemeData } from "../components/mics/Box/DefaultProps";
 import { GridComponentThemeData } from "../components/mics/Grid/DefaultProps";
 import { GroupComponentThemeData } from "../components/mics/Group/DefaultProps";
+import { SheetComponentThemeData } from "../components/mics/Sheet/DefaultProps";
 import { StackComponentThemeData } from "../components/mics/Stack/DefaultProps";
 import { LoadingOverlayComponentThemeData } from "../components/overlays/LoadingOverlay/DefaultProps";
 import { HeadingComponentThemeData } from "../components/typography/Heading/DefaultProps";
@@ -49,6 +50,7 @@ const Theme: ThemeInterface = {
     FormLayout: FormLayoutComponentThemeData,
     Input: InputComponentThemeData,
     BottomSheet: BottomSheetComponentThemeData,
+    Sheet: SheetComponentThemeData,
     LoadingOverlay: LoadingOverlayComponentThemeData,
     Navigation: NavigationPluginThemeData,
   },

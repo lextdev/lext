@@ -1,5 +1,4 @@
 import {
-  BottomSheet,
   BottomSheetRefProps,
   Box,
   Button,
@@ -11,7 +10,6 @@ import {
   Text,
 } from "@ynssenem/lext";
 import { useRef, useState } from "react";
-import { Modal, Pressable, StyleSheet } from "react-native";
 
 export default function () {
   const bottomSheetRef = useRef<BottomSheetRefProps>(null);
@@ -35,7 +33,7 @@ export default function () {
         open={visible}
         ref={sheetRef}
         close={setVisible}
-        snaps={["auto", 50, 80]}
+        snaps={["auto", 80, 70]}
       >
         <Box>
           <Heading>Hello World</Heading>

@@ -9,13 +9,22 @@ const SheetLine = () => {
   const lineCss = css({
     width: 75,
     height: 4,
-    backgroundColor: getColor(theme.components.BottomSheet.default.lineColor),
+    backgroundColor: getColor(theme.components.Sheet.default.lineColor),
     alignSelf: "center",
     marginVertical: 15,
     borderRadius: theme.defaultOptions.borderRadius / 2,
   });
 
-  return <Animated.View style={lineCss} />;
+  return (
+    <Animated.View
+      style={{
+        borderRadius: theme.defaultOptions.borderRadius / 2,
+        width: "100%",
+      }}
+    >
+      <Animated.View style={lineCss} />
+    </Animated.View>
+  );
 };
 
 export default SheetLine;

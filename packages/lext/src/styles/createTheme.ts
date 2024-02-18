@@ -122,6 +122,12 @@ const createTheme = (newTheme?: DeepPartialTheme): ThemeInterface => {
             ...(newTheme.components?.BottomSheet?.default || {}),
           },
         },
+        Sheet: {
+          default: {
+            ...defaultTheme.components.Sheet.default,
+            ...(newTheme.components?.Sheet?.default || {}),
+          },
+        },
         LoadingOverlay: {
           default: {
             ...defaultTheme.components.LoadingOverlay.default,

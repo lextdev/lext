@@ -17,12 +17,14 @@ import View from "../View/View";
 import { css } from "@emotion/native";
 import { useColor, useTheme } from "../../../hooks";
 import { LayoutChangeEvent, useWindowDimensions } from "react-native";
+import { Gesture, GestureDetector } from "react-native-gesture-handler";
 
 type SheetContentProps = {
   children: ReactNode;
   isVisible: boolean;
   snaps: Array<"auto" | number>;
   onLayout?: (event: LayoutChangeEvent) => void;
+  onClose?: () => void;
 };
 
 export type SheetContentRef = {
@@ -41,31 +43,38 @@ const defaultCss = css({
 });
 
 const BUFFER_HEIGHT = 50;
-
+const CLOSE_HEIGHT_PERCENT = 10;
 const SheetContent = forwardRef<SheetContentRef, SheetContentProps>(
-  ({ children, isVisible, snaps, onLayout }, ref) => {
+  ({ children, isVisible, snaps, onLayout, onClose }, ref) => {
     const getColor = useColor();
     const { theme } = useTheme();
     const borderRadius = theme.defaultOptions.borderRadius;
-    const backgroundColor =
-      theme.components.BottomSheet.default.backgroundColor;
+    const backgroundColor = theme.components.Sheet.default.backgroundColor;
     const [contentDefaultHeight, setContentDefaultHeight] = useState(0);
     const [isReady, setIsReady] = useState(false);
+    const [index, setIndex] = useState(0);
     const dimensions = useWindowDimensions();
-
     const sheetContentCss = css({
       backgroundColor: getColor(backgroundColor),
       borderRadius: borderRadius,
     });
 
-    // Shared
+    const context = useSharedValue({ y: 0, index: 0 });
     const opacity = useSharedValue(0);
     const height = useSharedValue(0);
+    const translateY = useSharedValue(0);
 
     const sheetContentAnimationCss = useAnimatedStyle(() => ({
       opacity: opacity.value,
       height: contentDefaultHeight > 0 ? `${height.value}%` : "auto",
+      transform: [{ translateY: translateY.value }],
     }));
+
+    const customOnLayout = (event: LayoutChangeEvent) => {
+      if (onLayout) {
+        onLayout(event);
+      }
+    };
 
     const calculateAutoHeight = (height: number) =>
       Math.round(((height + BUFFER_HEIGHT) / dimensions.height) * 100);
@@ -81,7 +90,6 @@ const SheetContent = forwardRef<SheetContentRef, SheetContentProps>(
     const scrollToWithOpacity = useCallback((destination: number) => {
       "worklet";
 
-      console.log("ScrollToWithOpacity", destination);
       opacity.value = 1;
       scrollTo(destination);
     }, []);
@@ -95,6 +103,7 @@ const SheetContent = forwardRef<SheetContentRef, SheetContentProps>(
         return;
       }
 
+      setIndex(index);
       if (snap === "auto") {
         hardReSize();
       } else {
@@ -105,7 +114,7 @@ const SheetContent = forwardRef<SheetContentRef, SheetContentProps>(
     const scrollTo = useCallback((destination: number) => {
       "worklet";
 
-      console.log("ScrollTo", destination);
+      opacity.value = 1;
       height.value = withSpring(destination, {
         damping: 10,
       });
@@ -114,7 +123,6 @@ const SheetContent = forwardRef<SheetContentRef, SheetContentProps>(
     const scrollToClose = useCallback(() => {
       "worklet";
 
-      console.log("ScrollToClose");
       height.value = withSpring(1);
       opacity.value = withDelay(30, withSpring(0));
     }, []);
@@ -124,7 +132,6 @@ const SheetContent = forwardRef<SheetContentRef, SheetContentProps>(
     };
 
     const resize = () => {
-      console.log("Auto Height!", contentDefaultHeight);
       const percentHeight = calculateAutoHeight(contentDefaultHeight);
       scrollToWithOpacity(percentHeight);
     };
@@ -139,22 +146,70 @@ const SheetContent = forwardRef<SheetContentRef, SheetContentProps>(
       [scrollToIndex, scrollToClose, hardReSize]
     );
 
+    const tapGestureHandler = Gesture.Tap()
+      .onBegin(event => {
+        context.value = {
+          y: calculateAutoHeight(Math.abs(event.absoluteY - dimensions.height)),
+          index: index,
+        };
+      })
+      .onTouchesMove(event => {
+        const newHeight = calculateAutoHeight(
+          Math.abs(event.allTouches[0].absoluteY - dimensions.height)
+        );
+        const previousHeight = context.value.y;
+
+        if (newHeight > previousHeight) {
+          height.value = newHeight;
+        } else {
+          height.value = previousHeight + newHeight - previousHeight;
+        }
+      })
+      .onFinalize(() => {
+        const newHeight = height.value;
+        const previousHeight = context.value.y;
+
+        if (
+          newHeight > previousHeight &&
+          Math.abs(newHeight - previousHeight) > 5 &&
+          snaps[context.value.index + 1]
+        ) {
+          scrollToIndex(context.value.index + 1);
+        } else if (
+          newHeight < previousHeight &&
+          Math.abs(newHeight - previousHeight) > 5 &&
+          snaps[context.value.index - 1]
+        ) {
+          scrollToIndex(context.value.index - 1);
+        } else if (newHeight < CLOSE_HEIGHT_PERCENT) {
+          if (onClose) onClose();
+        } else {
+          scrollToIndex(context.value.index);
+        }
+      });
+
     useEffect(() => {
       const firstSnap = snaps[0];
-
       if (isVisible && contentDefaultHeight > 0 && firstSnap === "auto") {
+        setIndex(0);
         resize();
+      }
+
+      if (isVisible && firstSnap !== "auto") {
+        scrollTo(firstSnap);
       }
     }, [isVisible, isReady]);
 
     return (
-      <Animated.View
-        onLayout={onLayout}
-        style={[defaultCss, sheetContentCss, sheetContentAnimationCss]}
-      >
-        <SheetLine />
-        <View onLayout={onLayoutView}>{children}</View>
-      </Animated.View>
+      <GestureDetector gesture={tapGestureHandler}>
+        <Animated.View
+          onLayout={customOnLayout}
+          style={[defaultCss, sheetContentCss, sheetContentAnimationCss]}
+        >
+          <SheetLine />
+          <View onLayout={onLayoutView}>{children}</View>
+        </Animated.View>
+      </GestureDetector>
     );
   }
 );
