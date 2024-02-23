@@ -1,18 +1,19 @@
 import {
-  BottomSheetRefProps,
   Box,
   Button,
+  Group,
   Heading,
   SafeAreaView,
   Sheet,
   SheetRef,
   Stack,
   Text,
+  TextInput,
+  View,
 } from "@ynssenem/lext";
 import { useRef, useState } from "react";
 
 export default function () {
-  const bottomSheetRef = useRef<BottomSheetRefProps>(null);
   const sheetRef = useRef<SheetRef>(null);
 
   const [visible, setVisible] = useState(false);
@@ -20,20 +21,34 @@ export default function () {
   return (
     <SafeAreaView>
       <Box gap={10}>
-        <Button
-          onPress={() => {
-            setVisible(true);
-          }}
-        >
-          Open Modal
-        </Button>
+        <Group justifyContent="space-between">
+          <Button
+            flex={1}
+            onPress={() => {
+              setVisible(true);
+            }}
+          >
+            Open Modal
+          </Button>
+          <View flex={1}>
+            <TextInput
+              layout={{
+                variant: "md",
+              }}
+              style={{ flex: 1 }}
+            />
+          </View>
+        </Group>
       </Box>
+
+      <Box></Box>
 
       <Sheet
         open={visible}
         ref={sheetRef}
-        close={setVisible}
-        snaps={["auto", 80, 70]}
+        stateAction={setVisible}
+        snaps={["auto", 70]}
+        canTouchMove={true}
       >
         <Box>
           <Heading>Hello World</Heading>

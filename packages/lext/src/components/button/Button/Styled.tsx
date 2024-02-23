@@ -8,6 +8,9 @@ const StyledButton = styled.View<ButtonProps & ThemeProps>(props => {
   const { theme, children, fontFamily, variant, size, ...componentProps } =
     props;
   const defaultProps = props.theme?.components.Button.default;
+  const smProps = props.theme?.components.Button.sm;
+  const mdProps = props.theme?.components.Button.md;
+  const lgProps = props.theme?.components.Button.lg;
   const merged = { ...defaultProps, ...componentProps };
   const getColor = useColor();
 
@@ -21,29 +24,19 @@ const StyledButton = styled.View<ButtonProps & ThemeProps>(props => {
   switch (currentSize) {
     case "lg":
       typeStyle = {
-        paddingVertical:
-          divisionValue(theme.defaultOptions.paddingVertical) * 2,
-        paddingHorizontal:
-          divisionValue(theme.defaultOptions.paddingHorizontal) * 2,
+        ...lgProps,
         borderRadius: theme.defaultOptions.borderRadius * 2,
       };
       break;
     case "sm":
       typeStyle = {
-        paddingVertical:
-          divisionValue(theme.defaultOptions.paddingVertical) * 0.5,
-        paddingHorizontal:
-          divisionValue(theme.defaultOptions.paddingHorizontal) * 0.5,
+        ...smProps,
         borderRadius: theme.defaultOptions.borderRadius * 0.5,
       };
       break;
     default:
       typeStyle = {
-        paddingVertical:
-          divisionValue(theme.defaultOptions.paddingVertical) * 1.5,
-        paddingHorizontal: divisionValue(
-          theme.defaultOptions.paddingHorizontal
-        ),
+        ...mdProps,
         borderRadius: theme.defaultOptions.borderRadius,
       };
       break;
@@ -52,7 +45,7 @@ const StyledButton = styled.View<ButtonProps & ThemeProps>(props => {
   return {
     ...typeStyle,
     ...merged,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: merged.backgroundColor && getColor(merged.backgroundColor),
     borderStyle: "solid",
     backgroundColor:

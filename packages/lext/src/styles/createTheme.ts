@@ -87,6 +87,18 @@ const createTheme = (newTheme?: DeepPartialTheme): ThemeInterface => {
             ...defaultTheme.components.Button.default,
             ...(newTheme.components?.Button?.default || {}),
           },
+          sm: {
+            ...defaultTheme.components.Button.sm,
+            ...(newTheme.components?.Button?.sm || {}),
+          },
+          lg: {
+            ...defaultTheme.components.Button.lg,
+            ...(newTheme.components?.Button?.lg || {}),
+          },
+          md: {
+            ...defaultTheme.components.Button.md,
+            ...(newTheme.components?.Button?.md || {}),
+          },
         },
         ActionButton: {
           default: {
@@ -108,6 +120,14 @@ const createTheme = (newTheme?: DeepPartialTheme): ThemeInterface => {
               ...defaultTheme.components.FormLayout.classes.error,
               ...(newTheme.components?.FormLayout?.classes?.error || {}),
             },
+          },
+          sm: {
+            ...defaultTheme.components.FormLayout.sm,
+            ...(newTheme.components?.FormLayout?.sm || {}),
+          },
+          md: {
+            ...defaultTheme.components.FormLayout.md,
+            ...(newTheme.components?.FormLayout?.md || {}),
           },
         },
         Input: {

@@ -23,38 +23,32 @@ const Layout: FC<LayoutProps & CustomLayoutProps> = ({
 }) => {
   const { theme } = useTheme();
   const getColor = useColor();
-  const getHeight = () => {
-    let h: DimensionValue;
-
-    if (height) {
-      return height;
-    }
-
-    switch (layout?.variant) {
-      case "sm":
-        h =
-          typeof theme.defaultOptions.minHeight === "number"
-            ? theme.defaultOptions.minHeight - 10
-            : theme.defaultOptions.minHeight;
-        break;
-      default:
-        h = theme.defaultOptions.minHeight;
-        break;
-    }
-
-    return h;
-  };
-
   const labelProps = { ...theme.components.FormLayout.classes.label };
   const descriptionProps = {
     ...theme.components.FormLayout.classes.description,
   };
   const errorProps = { ...theme.components.FormLayout.classes.error };
 
+  let typeStyle = {};
+  switch (layout?.variant) {
+    case "sm":
+      typeStyle = {
+        ...theme.components.FormLayout.sm,
+        borderRadius: theme.defaultOptions.borderRadius * 0.5,
+      };
+      break;
+    default:
+      typeStyle = {
+        ...theme.components.FormLayout.md,
+        borderRadius: theme.defaultOptions.borderRadius,
+      };
+      break;
+  }
+
   const viewCss = css({
+    ...typeStyle,
     backgroundColor: getColor("muted"),
     borderRadius: theme.defaultOptions.borderRadius,
-    height: getHeight(),
     paddingHorizontal: theme.defaultOptions.paddingHorizontal / 2,
     paddingVertical:
       alignItems !== "center"

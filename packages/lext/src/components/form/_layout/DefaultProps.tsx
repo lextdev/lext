@@ -6,6 +6,12 @@ export type FormLayoutComponentThemeProps = {
     description: TextProps;
     error: TextProps;
   };
+  sm: {
+    height: number;
+  };
+  md: {
+    height: number;
+  };
 };
 
 export const FormLayoutComponentThemeData: FormLayoutComponentThemeProps = {
@@ -21,5 +27,11 @@ export const FormLayoutComponentThemeData: FormLayoutComponentThemeProps = {
       fontSize: "caption",
       color: "danger",
     },
+  },
+  sm: {
+    height: 40,
+  },
+  md: {
+    height: 50,
   },
 };

@@ -1,5 +1,10 @@
 # CHANGELOG.md
 
+## 2.0.2-dev (Feb 23 2024)
+
+- fixed: When clicking anywhere in the **Sheet**, the content is prevented from rising.
+- fixed: The problem with size props in **FormLayout** and **Button** has been fixed.
+
 ## 2.0.1-dev (Feb 18 2024)
 
 ### Added

@@ -60,7 +60,7 @@ const Theme: ThemeInterface = {
     paddingHorizontal: 25,
     paddingVertical: 15,
     borderRadius: 5,
-    minHeight: 60,
+    minHeight: 50,
   },
 };
 

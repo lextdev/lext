@@ -16,7 +16,9 @@ type SheetProps = {
   children: ReactNode;
   snaps: Array<"auto" | number>;
   open: boolean;
-  close: Dispatch<SetStateAction<boolean>>;
+  stateAction: Dispatch<SetStateAction<boolean>>;
+  canClosePressable?: boolean;
+  canTouchMove?: boolean;
 };
 
 export type SheetRef = {
@@ -27,6 +29,7 @@ export type SheetRef = {
 
 const Sheet = forwardRef<SheetRef, SheetProps>((props, ref) => {
   const sheetContentRef = useRef<SheetContentRef>(null);
+  const { canClosePressable = true, canTouchMove = true } = props;
   const { theme } = useTheme();
   const getColor = useColor();
   const hardReSize = () => {
@@ -39,7 +42,7 @@ const Sheet = forwardRef<SheetRef, SheetProps>((props, ref) => {
     sheetContentRef.current?.scrollToClose();
 
     setTimeout(() => {
-      props.close(false);
+      props.stateAction(false);
     }, 250);
   };
 
@@ -66,7 +69,11 @@ const Sheet = forwardRef<SheetRef, SheetProps>((props, ref) => {
       transparent
     >
       <Animated.View
-        onTouchStart={scrollToClose}
+        onTouchStart={() => {
+          if (canClosePressable) {
+            scrollToClose();
+          }
+        }}
         style={{
           backgroundColor: HexToRGBA(
             getColor(theme.components.Sheet.default.pressableBackgroundColor),
@@ -82,6 +89,7 @@ const Sheet = forwardRef<SheetRef, SheetProps>((props, ref) => {
         snaps={props.snaps}
         children={props.children}
         onClose={scrollToClose}
+        canTouchMove={canTouchMove}
       />
     </Modal>
   );

@@ -25,6 +25,7 @@ type SheetContentProps = {
   snaps: Array<"auto" | number>;
   onLayout?: (event: LayoutChangeEvent) => void;
   onClose?: () => void;
+  canTouchMove: boolean;
 };
 
 export type SheetContentRef = {
@@ -42,10 +43,13 @@ const defaultCss = css({
   bottom: 0,
 });
 
-const BUFFER_HEIGHT = 50;
-const CLOSE_HEIGHT_PERCENT = 10;
+const BUFFER_HEIGHT = 75;
+const CLOSE_HEIGHT_PERCENT = 15;
 const SheetContent = forwardRef<SheetContentRef, SheetContentProps>(
-  ({ children, isVisible, snaps, onLayout, onClose }, ref) => {
+  (
+    { children, isVisible, snaps, onLayout, onClose, canTouchMove = true },
+    ref
+  ) => {
     const getColor = useColor();
     const { theme } = useTheme();
     const borderRadius = theme.defaultOptions.borderRadius;
@@ -54,6 +58,7 @@ const SheetContent = forwardRef<SheetContentRef, SheetContentProps>(
     const [isReady, setIsReady] = useState(false);
     const [index, setIndex] = useState(0);
     const dimensions = useWindowDimensions();
+
     const sheetContentCss = css({
       backgroundColor: getColor(backgroundColor),
       borderRadius: borderRadius,
@@ -90,7 +95,7 @@ const SheetContent = forwardRef<SheetContentRef, SheetContentProps>(
     const scrollToWithOpacity = useCallback((destination: number) => {
       "worklet";
 
-      opacity.value = 1;
+      opacity.value = withDelay(20, withSpring(1));
       scrollTo(destination);
     }, []);
 
@@ -113,18 +118,17 @@ const SheetContent = forwardRef<SheetContentRef, SheetContentProps>(
 
     const scrollTo = useCallback((destination: number) => {
       "worklet";
-
-      opacity.value = 1;
       height.value = withSpring(destination, {
         damping: 10,
       });
+      opacity.value = withDelay(50, withSpring(1));
     }, []);
 
     const scrollToClose = useCallback(() => {
       "worklet";
 
-      height.value = withSpring(1);
-      opacity.value = withDelay(30, withSpring(0));
+      opacity.value = 0;
+      height.value = withSpring(1.5);
     }, []);
 
     const hardReSize = () => {
@@ -160,31 +164,37 @@ const SheetContent = forwardRef<SheetContentRef, SheetContentProps>(
         const previousHeight = context.value.y;
 
         if (newHeight > previousHeight) {
-          height.value = newHeight;
+          scrollTo(newHeight + 30);
         } else {
-          height.value = previousHeight + newHeight - previousHeight;
+          scrollTo(previousHeight + newHeight - previousHeight - 50);
         }
       })
       .onFinalize(() => {
         const newHeight = height.value;
         const previousHeight = context.value.y;
-
         if (
           newHeight > previousHeight &&
-          Math.abs(newHeight - previousHeight) > 5 &&
-          snaps[context.value.index + 1]
+          Math.abs(newHeight - previousHeight) > 2 &&
+          snaps[context.value.index + 1] !== undefined
         ) {
           scrollToIndex(context.value.index + 1);
         } else if (
           newHeight < previousHeight &&
-          Math.abs(newHeight - previousHeight) > 5 &&
-          snaps[context.value.index - 1]
+          Math.abs(previousHeight - newHeight) > 2 &&
+          snaps[context.value.index - 1] !== undefined
         ) {
           scrollToIndex(context.value.index - 1);
-        } else if (newHeight < CLOSE_HEIGHT_PERCENT) {
-          if (onClose) onClose();
         } else {
-          scrollToIndex(context.value.index);
+          const cal = Math.abs(newHeight - previousHeight);
+          if (
+            newHeight < previousHeight &&
+            cal > CLOSE_HEIGHT_PERCENT &&
+            onClose
+          ) {
+            onClose();
+          } else {
+            scrollToIndex(context.value.index);
+          }
         }
       });
 
@@ -201,15 +211,17 @@ const SheetContent = forwardRef<SheetContentRef, SheetContentProps>(
     }, [isVisible, isReady]);
 
     return (
-      <GestureDetector gesture={tapGestureHandler}>
-        <Animated.View
-          onLayout={customOnLayout}
-          style={[defaultCss, sheetContentCss, sheetContentAnimationCss]}
-        >
-          <SheetLine />
-          <View onLayout={onLayoutView}>{children}</View>
-        </Animated.View>
-      </GestureDetector>
+      <Animated.View
+        onLayout={customOnLayout}
+        style={[defaultCss, sheetContentCss, sheetContentAnimationCss]}
+      >
+        {canTouchMove && (
+          <GestureDetector gesture={tapGestureHandler}>
+            <SheetLine />
+          </GestureDetector>
+        )}
+        <View onLayout={onLayoutView}>{children}</View>
+      </Animated.View>
     );
   }
 );

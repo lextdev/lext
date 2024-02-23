@@ -16,6 +16,18 @@ export type ButtonProps = ButtonInterface & {
 
 export type ButtonComponentThemeProps = {
   default: ButtonProps;
+  sm: {
+    paddingHorizontal: number;
+    height: number;
+  };
+  md: {
+    paddingHorizontal: number;
+    height: number;
+  };
+  lg: {
+    paddingHorizontal: number;
+    height: number;
+  };
 };
 
 export const ButtonComponentThemeData: ButtonComponentThemeProps = {
@@ -24,5 +36,17 @@ export const ButtonComponentThemeData: ButtonComponentThemeProps = {
     variant: "filled",
     size: "md",
     color: "inverse",
+  },
+  sm: {
+    height: 40,
+    paddingHorizontal: 10,
+  },
+  md: {
+    height: 50,
+    paddingHorizontal: 20,
+  },
+  lg: {
+    height: 60,
+    paddingHorizontal: 30,
   },
 };

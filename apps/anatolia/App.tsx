@@ -2,19 +2,31 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import HomeScreen from "./screens/HomeScreen";
-import { Theme, ThemeProvider, createTheme } from "@ynssenem/lext";
+import { ThemeProvider, createTheme } from "@ynssenem/lext";
 import _Layout from "./screens/Tabs/_Layout";
 
 export default function App() {
   const Stack = createStackNavigator();
   const theme = createTheme({
     components: {
-      BottomSheet: {
+      Sheet: {
         default: {
           pressableBackgroundColor: "primary",
           pressableBackgroundOpacity: 0.8,
         },
       },
+      Button: {
+        sm: {
+          height: 30,
+        },
+        md: {
+          height: 30,
+          paddingHorizontal: 0,
+        },
+      },
+    },
+    defaultOptions: {
+      minHeight: 50,
     },
   });
 
