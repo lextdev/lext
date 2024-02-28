@@ -22,6 +22,7 @@ const Button: FC<
     onPress,
     onLongPress,
     isLoader,
+    disabled,
     flex,
     ...touchableComponent
   } = props;
@@ -52,7 +53,7 @@ const Button: FC<
       {...touchableComponent}
       activeOpacity={0.7}
       style={{
-        opacity: props.disabled ? 0.3 : 1,
+        opacity: props.disabled || props.isLoader ? 0.5 : 1,
         flexDirection: "row",
         gap: 10,
       }}
@@ -79,8 +80,9 @@ const Button: FC<
     return (
       <TouchableOpacity
         style={{ flex }}
-        onPress={onPress}
-        onLayout={onLongPress}
+        activeOpacity={!isLoader && !disabled ? 0.7 : 1}
+        onPress={!isLoader && !disabled ? onPress : undefined}
+        onLayout={!isLoader && !disabled ? onLongPress : undefined}
       >
         {buttonElement}
       </TouchableOpacity>
