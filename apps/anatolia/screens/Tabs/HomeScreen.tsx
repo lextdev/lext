@@ -35,6 +35,7 @@ export default function () {
               layout={{
                 variant: "md",
               }}
+              placeholder="Search"
               style={{ flex: 1 }}
             />
           </View>

@@ -24,6 +24,21 @@ export default function App() {
           paddingHorizontal: 0,
         },
       },
+      Input: {
+        default: {
+          placeholderTextColor: "danger",
+        },
+      },
+      FormLayout: {
+        classes: {
+          style: {
+            backgroundColor: "primary",
+            borderColor: "success",
+            borderStyle: "solid",
+            borderWidth: 2,
+          },
+        },
+      },
     },
     defaultOptions: {
       minHeight: 50,
