@@ -14,15 +14,18 @@ type CustomLayoutProps = {
   transparent?: boolean;
 };
 
-const Layout: FC<LayoutProps & CustomLayoutProps> = ({
-  layout,
-  children,
-  height,
-  alignItems = "center",
-  transparent = false,
-}) => {
+const Layout: FC<LayoutProps & CustomLayoutProps> = props => {
   const { theme } = useTheme();
   const getColor = useColor();
+  const {
+    layout,
+    children,
+    height,
+    alignItems = "center",
+    transparent = false,
+  } = props;
+  const styleProps = theme.components.FormLayout.classes.style;
+
   const labelProps = { ...theme.components.FormLayout.classes.label };
   const descriptionProps = {
     ...theme.components.FormLayout.classes.description,
@@ -47,7 +50,7 @@ const Layout: FC<LayoutProps & CustomLayoutProps> = ({
 
   const viewCss = css({
     ...typeStyle,
-    backgroundColor: getColor("muted"),
+    backgroundColor: getColor(styleProps.backgroundColor),
     borderRadius: theme.defaultOptions.borderRadius,
     paddingHorizontal: theme.defaultOptions.paddingHorizontal / 2,
     paddingVertical:
@@ -56,8 +59,9 @@ const Layout: FC<LayoutProps & CustomLayoutProps> = ({
         : undefined,
     alignItems: alignItems,
     gap: theme.defaultOptions.gap,
-    borderColor: getColor(layout?.error ? "danger" : "muted"),
-    borderWidth: 1,
+    borderColor: getColor(layout?.error ? "danger" : styleProps.borderColor),
+    borderWidth: styleProps.borderWidth,
+    borderStyle: styleProps.borderStyle,
   });
 
   return (

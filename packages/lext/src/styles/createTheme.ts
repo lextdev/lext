@@ -120,6 +120,10 @@ const createTheme = (newTheme?: DeepPartialTheme): ThemeInterface => {
               ...defaultTheme.components.FormLayout.classes.error,
               ...(newTheme.components?.FormLayout?.classes?.error || {}),
             },
+            style: {
+              ...defaultTheme.components.FormLayout.classes.style,
+              ...(newTheme.components?.FormLayout?.classes?.style || {}),
+            },
           },
           sm: {
             ...defaultTheme.components.FormLayout.sm,
