@@ -1,0 +1,29 @@
+{
+  "name": "@lextdev/core",
+  "version": "0.0.1",
+  "description": "Lext is an easy and effective UI library for React Native. Offers fast interface design with TypeScript support.",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types.d.ts",
+  "license": "MIT",
+  "keywords": [
+    "react-native",
+    "uikit",
+    "typescript"
+  ],
+  "dependencies": {
+    "@react-navigation/native": "^6.0.2",
+    "react-native-mask-input": "^1.2.3"
+  },
+  "peerDependencies": {
+    "react": "18.2.0",
+    "react-native": "~0.73.2",
+    "react-native-gesture-handler": "~2.14.0",
+    "react-native-reanimated": "~3.6.2"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.21.5",
+    "@types/react": "^18.2.51",
+    "typescript": "^5.0.4"
+  }
+}
