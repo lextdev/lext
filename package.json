@@ -1,10 +1,14 @@
 {
   "name": "@lextdev/root",
+  "version": "0.0.1",
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "scripts": {
+    "release:major": "node -r esm scripts/release/index.js major",
+    "release:minor": "node -r esm scripts/release/index.js minor",
+    "release:patch": "node -r esm scripts/release/index.js patch",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
     "build:core": "rollup -c --environment TARGET:core --bundleConfigAsCjs",
@@ -27,6 +31,7 @@
     "@rollup/plugin-json": "^6.0.1",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@rollup/plugin-typescript": "^11.1.0",
+    "esm": "^3.2.25",
     "lerna": "^4.0.0",
     "rollup": "^3.0.0",
     "rollup-plugin-dts": "^5.3.0",

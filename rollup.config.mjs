@@ -7,14 +7,14 @@ import postcss from "rollup-plugin-postcss";
 import alias from "@rollup/plugin-alias";
 import json from "@rollup/plugin-json";
 import path from "path";
-import getPackageJson from "./scripts/readPackageJson";
+import getPkg from "./scripts/pkg/index";
 
 async function bootstrap() {
   const TARGET = process.env.TARGET;
   const PROJECTROOTDIR = `${path.resolve(__dirname)}/packages/${TARGET}`;
   const INPUT = `${PROJECTROOTDIR}/src/index.ts`;
 
-  const pkg = await getPackageJson(PROJECTROOTDIR);
+  const pkg = await getPkg(PROJECTROOTDIR);
   if (!pkg) {
     console.error("Error reading package.json");
     return;

@@ -1,6 +1,6 @@
 import fs from "fs";
 
-const getPackageJson = async (dir) => {
+const pkg = async (dir) => {
   return new Promise((resolve, reject) => {
     fs.readFile(`${dir}/package.json`, "utf8", (err, data) => {
       if (data) {
@@ -14,4 +14,4 @@ const getPackageJson = async (dir) => {
   });
 };
 
-export default getPackageJson;
+export default pkg;
