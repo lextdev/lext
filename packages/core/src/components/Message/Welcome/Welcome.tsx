@@ -1,6 +1,6 @@
-import { Alert } from "@/libs";
 import React, { useEffect } from "react";
 import { Text } from "react-native";
+import { Alert } from "@/libs";
 
 const Welcome = () => {
   useEffect(() => {
@@ -9,7 +9,7 @@ const Welcome = () => {
     });
   }, []);
 
-  return <Text>Hello World Welcome</Text>;
+  return <Text>Hello World Welcome!</Text>;
 };
 
 export default Welcome;

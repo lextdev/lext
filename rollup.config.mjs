@@ -7,61 +7,69 @@ import postcss from "rollup-plugin-postcss";
 import alias from "@rollup/plugin-alias";
 import json from "@rollup/plugin-json";
 import path from "path";
+import getPackageJson from "./scripts/readPackageJson";
 
-const target = process.env.TARGET;
-const projectPath = `packages/${target}`;
-const input = `${projectPath}/src/index.ts`;
-const projectRootDir = `${path.resolve(__dirname)}/packages/${target}`;
-const getPath = (path) => {
-  return `${projectPath}/${path}`;
-};
+async function bootstrap() {
+  const TARGET = process.env.TARGET;
+  const PROJECTROOTDIR = `${path.resolve(__dirname)}/packages/${TARGET}`;
+  const INPUT = `${PROJECTROOTDIR}/src/index.ts`;
 
-const config = [
-  {
-    input,
-    output: [
-      {
-        file: getPath("/dist/cjs/index.js"),
-        format: "cjs",
-        exports: "named",
-        sourcemap: true,
-      },
-      {
-        file: getPath("/dist/esm/index.js"),
-        format: "esm",
-        exports: "named",
-        sourcemap: true,
-      },
-    ],
-    plugins: [
-      external(),
-      resolve({
-        extensions: [".js", ".jsx", ".ts", ".tsx", ".json", ".svg"],
-      }),
-      commonjs(),
-      alias({
-        resolve: [".tsx", ".js", ".ts", ".json", ".svg"],
-        entries: [
-          { find: "@", replacement: path.resolve(projectRootDir, "src") },
-        ],
-      }),
-      typescript({ tsconfig: `${projectPath}/tsconfig.json` }),
-      postcss(),
-      json(),
-    ],
-    external: ["react", "react-native"],
-  },
-  {
-    input: input,
-    output: [
-      {
-        file: getPath("/dist/types.d.ts"),
-        format: "es",
-        interop: "compat",
-      },
-    ],
-    plugins: [dts.default()],
-  },
-];
+  const pkg = await getPackageJson(PROJECTROOTDIR);
+  if (!pkg) {
+    console.error("Error reading package.json");
+    return;
+  }
 
-export default config;
+  const externalModules = Object.keys(pkg.peerDependencies || {});
+  const resolveModules = [".js", ".jsx", ".ts", ".tsx", ".json", ".svg"];
+
+  return [
+    {
+      input: INPUT,
+      output: [
+        {
+          file: pkg.main,
+          format: "cjs",
+          exports: "named",
+          sourcemap: true,
+        },
+        {
+          file: pkg.module,
+          format: "esm",
+          exports: "named",
+          sourcemap: true,
+        },
+      ],
+      plugins: [
+        external(),
+        resolve({
+          extensions: resolveModules,
+        }),
+        commonjs(),
+        alias({
+          resolve: resolveModules,
+          entries: [
+            { find: "@", replacement: path.resolve(PROJECTROOTDIR, "src") },
+          ],
+        }),
+        typescript({ tsconfig: `${PROJECTROOTDIR}/tsconfig.json` }),
+        postcss(),
+        json(),
+      ],
+      external: externalModules,
+    },
+    {
+      input: INPUT,
+      output: [
+        {
+          file: pkg.types,
+          format: "es",
+          interop: "compat",
+        },
+      ],
+      plugins: [dts.default()],
+    },
+  ];
+}
+
+export default bootstrap();
