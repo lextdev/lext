@@ -1,9 +1,10 @@
 import fs from "fs";
+import getPkgWithDir from "../pkg/index";
 import path from "path";
 import semver from "semver";
-import getPkgWithDir from "../pkg/index";
 import updatePkgWithDir from "../pkg/update";
 
+// eslint-disable-next-line no-undef
 const versionType = process.argv[2];
 
 const getSemverType = () => {
@@ -39,6 +40,7 @@ const updatePackagesVersion = (packagesDir, newVersion) => {
 
 async function bootsrap() {
   const type = getSemverType();
+  // eslint-disable-next-line no-undef
   const rootDir = path.resolve(__dirname, "../../");
   const rootPkgDir = `${rootDir}/package.json`;
 

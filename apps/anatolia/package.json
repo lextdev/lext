@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@lextdev/core": "^0.0.1",
-    "@lextdev/hook": "^0.0.1",
     "expo": "~50.0.13",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
