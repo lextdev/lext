@@ -22,19 +22,22 @@ async function bootstrap() {
 
   const externalModules = Object.keys(pkg.peerDependencies || {});
   const resolveModules = [".js", ".jsx", ".ts", ".tsx", ".json", ".svg"];
+  const filePath = (dir) => {
+    return `${PROJECTROOTDIR}/${dir}`;
+  };
 
   return [
     {
       input: INPUT,
       output: [
         {
-          file: pkg.main,
+          file: filePath(pkg.main),
           format: "cjs",
           exports: "named",
           sourcemap: true,
         },
         {
-          file: pkg.module,
+          file: filePath(pkg.module),
           format: "esm",
           exports: "named",
           sourcemap: true,
@@ -62,7 +65,7 @@ async function bootstrap() {
       input: INPUT,
       output: [
         {
-          file: pkg.types,
+          file: filePath(pkg.types),
           format: "es",
           interop: "compat",
         },
