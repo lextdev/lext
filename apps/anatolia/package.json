@@ -6,10 +6,12 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "fix": "expo install --fix"
   },
   "dependencies": {
-    "expo": "~50.0.6",
+    "@lextdev/core": "^0.0.2",
+    "expo": "~50.0.13",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
     "react-native": "0.73.4"

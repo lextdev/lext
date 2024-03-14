@@ -1,7 +1,12 @@
-import {Text} from 'react-native';
+import React from "react";
+import { Test, Welcome } from "@lextdev/core";
+import { SafeAreaView } from "react-native";
 
 export default function App() {
   return (
-     <Text>Hello World</Text>
+    <SafeAreaView>
+      <Welcome />
+      <Test />
+    </SafeAreaView>
   );
 }

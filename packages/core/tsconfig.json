@@ -8,12 +8,17 @@
     "declaration": true,
     "declarationDir": "types",
     "sourceMap": true,
+    "baseUrl": ".",
     "outDir": "dist",
     "moduleResolution": "node",
     "emitDeclarationOnly": true,
     "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
+  "include": ["src"],
   "exclude": [
     "dist",
     "node_modules",
