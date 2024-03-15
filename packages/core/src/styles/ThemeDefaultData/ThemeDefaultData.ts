@@ -5,7 +5,7 @@ const ThemeDefaultData: ThemeInterface = {
     darken: {
       main: {
         background: "#000",
-        primary: "#000",
+        primary: "blue",
         secondary: "#666",
         muted: "#666",
       },
@@ -18,7 +18,7 @@ const ThemeDefaultData: ThemeInterface = {
     lighten: {
       main: {
         background: "#FFF",
-        primary: "#000",
+        primary: "blue",
         secondary: "#666",
         muted: "#666",
       },
@@ -31,16 +31,46 @@ const ThemeDefaultData: ThemeInterface = {
   },
   components: {
     Text: {
-      defaultVariant: "meta",
+      defaultVariant: "global",
       variants: {
         meta: {
-          color: "inverse",
+          color: "emphasis",
           fontStyle: "italic",
-          fontSize: 40,
+          fontSize: 10,
+        },
+        button: {
+          color: "global",
+          fontSize: 14,
         },
         global: {
-          color: "emphasis",
-          fontSize: 20,
+          color: "global",
+          fontSize: 16,
+        },
+      },
+    },
+    Box: {
+      defaultVariant: "global",
+      variants: {
+        global: {
+          padding: 10,
+        },
+        muted: {
+          backgroundColor: "primary",
+        },
+      },
+    },
+    Button: {
+      defaultVariant: "default",
+      variants: {
+        default: {
+          box: {
+            backgroundColor: "primary",
+            paddingHorizontal: 20,
+          },
+          label: {
+            fontSize: 14,
+            color: "inverse",
+          },
         },
       },
     },

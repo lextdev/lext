@@ -1,7 +1,7 @@
 import TextStyle from "../TextStyle/TextStyle"
 import ThemeColorInterface from "../ThemeColorInterface/ThemeColorInterface"
-
-export type ThemeKeyOfComponents = "Text"
+import ThemeVariantType from "@/types/ThemeVariantType/ThemeVariantType"
+import ViewStyle from "../ViewStyle/ViewStyle"
 
 /**
  * @name ThemeInterface
@@ -14,10 +14,15 @@ interface ThemeInterface {
     lighten: ThemeColorInterface
   }
   components: {
-    Text: {
-      defaultVariant: string
-      variants: Record<string, TextStyle>
-    }
+    Text: ThemeVariantType<TextStyle>
+    Box: ThemeVariantType<ViewStyle>
+    Button: ThemeVariantType<{
+      disabledBox?: ViewStyle
+      gap?: number
+      box?: ViewStyle
+      label?: TextStyle
+      description?: TextStyle
+    }>
   }
 }
 
