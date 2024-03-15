@@ -2,3 +2,4 @@ export { default as ChildrenInterface } from "./ChildrenInterface/ChildrenInterf
 export { default as ThemeColorInterface } from "./ThemeColorInterface/ThemeColorInterface"
 export { default as ThemeColorScheme } from "./ThemeColorScheme/ThemeColorScheme"
 export { default as ThemeInterface } from "./ThemeInterface/ThemeInterface"
+export { default as TextStyle } from "./TextStyle/TextStyle"

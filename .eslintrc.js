@@ -26,17 +26,26 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["@typescript-eslint", "react", "unused-imports", "sort-imports-es6-autofix"],
+  plugins: [
+    "@typescript-eslint",
+    "react",
+    "unused-imports",
+    "sort-imports-es6-autofix",
+  ],
   rules: {
-    "sort-imports-es6-autofix/sort-imports-es6": [2, {
-      "ignoreCase": false,
-      "ignoreMemberSort": false,
-      "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
-    }],
+    "sort-imports-es6-autofix/sort-imports-es6": [
+      2,
+      {
+        ignoreCase: false,
+        ignoreMemberSort: false,
+        memberSyntaxSortOrder: ["none", "all", "multiple", "single"],
+      },
+    ],
     "func-names": ["error", "always"],
-    "no-empty": ["error", { "allowEmptyCatch": true }],
+    "no-empty": ["error", { allowEmptyCatch: true }],
     "no-multi-spaces": ["error", { ignoreEOLComments: false }],
     curly: ["error", "multi-line"],
-    quotes: ["error", "double"]
+    quotes: ["error", "double"],
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
   },
 }

@@ -1,19 +1,18 @@
-import ThemeInterface from "@/interfaces/ThemeInterface/ThemeInterface";
+import ThemeInterface from "@/interfaces/ThemeInterface/ThemeInterface"
 
 const ThemeDefaultData: ThemeInterface = {
-  colorScheme: "lighten",
   colors: {
     darken: {
       main: {
-        background: "#FFF",
+        background: "#000",
         primary: "#000",
         secondary: "#666",
         muted: "#666",
       },
       text: {
-        global: "#000",
-        emphasis: "#000",
-        inverse: "#FFF",
+        global: "#FFF",
+        emphasis: "blue",
+        inverse: "purple",
       },
     },
     lighten: {
@@ -25,11 +24,27 @@ const ThemeDefaultData: ThemeInterface = {
       },
       text: {
         global: "#000",
-        emphasis: "#000",
-        inverse: "#FFF",
+        emphasis: "blue",
+        inverse: "red",
       },
     },
   },
-};
+  components: {
+    Text: {
+      defaultVariant: "meta",
+      variants: {
+        meta: {
+          color: "inverse",
+          fontStyle: "italic",
+          fontSize: 40,
+        },
+        global: {
+          color: "emphasis",
+          fontSize: 20,
+        },
+      },
+    },
+  },
+}
 
-export default ThemeDefaultData;
+export default ThemeDefaultData

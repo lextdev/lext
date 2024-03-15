@@ -1,16 +1,19 @@
+export interface ThemeMainColorInterface {
+  background: string
+  primary: string
+  secondary: string
+  muted: string
+}
+
+export interface ThemeTextColorInterface {
+  global: string
+  emphasis: string
+  inverse: string
+}
+
 interface ThemeColorInterface {
-  main: {
-    background: string
-    primary: string
-    secondary: string
-    muted: string
-  }
-  text: {
-    global: string
-    emphasis: string
-    inverse: string
-  }
-  custom?: Record<string, string>
+  main: ThemeMainColorInterface
+  text: ThemeTextColorInterface
 }
 
 export default ThemeColorInterface

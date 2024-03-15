@@ -72,7 +72,15 @@ async function bootstrap() {
           interop: "compat",
         },
       ],
-      plugins: [dts.default()],
+      plugins: [
+        alias({
+          resolve: resolveModules,
+          entries: [
+            { find: "@", replacement: path.resolve(PROJECTROOTDIR, "src") },
+          ],
+        }),
+        dts.default(),
+      ],
     },
   ]
 }
