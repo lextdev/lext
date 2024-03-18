@@ -10,3 +10,6 @@ export { default as Text } from "./typography/Text/Text"
 
 // Button
 export { default as Button } from "./button/Button/Button"
+
+// Form
+export { default as TextInput } from "./form/TextInput/TextInput"

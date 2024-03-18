@@ -1,3 +1,4 @@
+import { StyleProp } from "react-native"
 import TextStyle from "../TextStyle/TextStyle"
 import ThemeColorInterface from "../ThemeColorInterface/ThemeColorInterface"
 import ThemeVariantType from "@/types/ThemeVariantType/ThemeVariantType"
@@ -22,6 +23,14 @@ interface ThemeInterface {
       box?: ViewStyle
       label?: TextStyle
       description?: TextStyle
+    }>
+    Input: ThemeVariantType<{
+      label?: TextStyle
+      input?: TextStyle
+      layout?: ViewStyle
+      errorLayout?: ViewStyle
+      description?: TextStyle
+      error?: TextStyle
     }>
   }
 }

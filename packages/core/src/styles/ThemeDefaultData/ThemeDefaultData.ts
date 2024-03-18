@@ -7,7 +7,7 @@ const ThemeDefaultData: ThemeInterface = {
         background: "#000",
         primary: "blue",
         secondary: "#666",
-        muted: "#666",
+        muted: "#d1d1d1",
       },
       text: {
         global: "#FFF",
@@ -20,7 +20,7 @@ const ThemeDefaultData: ThemeInterface = {
         background: "#FFF",
         primary: "blue",
         secondary: "#666",
-        muted: "#666",
+        muted: "#d1d1d1",
       },
       text: {
         global: "#000",
@@ -71,6 +71,27 @@ const ThemeDefaultData: ThemeInterface = {
             fontSize: 14,
             color: "inverse",
           },
+        },
+      },
+    },
+    Input: {
+      defaultVariant: "default",
+      variants: {
+        default: {
+          label: {},
+          input: {
+            flex: 1,
+            backgroundColor: "primary",
+          },
+          layout: {
+            backgroundColor: "muted",
+            paddingHorizontal: 10,
+            paddingVertical: 0,
+            height: 50,
+          },
+          errorLayout: {},
+          description: {},
+          error: {},
         },
       },
     },
