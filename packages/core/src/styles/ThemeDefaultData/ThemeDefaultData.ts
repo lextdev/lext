@@ -127,6 +127,19 @@ const ThemeDefaultData: ThemeInterface = {
         },
       },
     },
+    Switch: {
+      defaultVariant: "default",
+      variants: {
+        default: {
+          thumbColor: "muted",
+          trackColor: {
+            false: "muted",
+            true: "secondary",
+          },
+          ios_backgroundColor: "primary",
+        },
+      },
+    },
   },
 }
 

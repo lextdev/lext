@@ -1,20 +1,17 @@
-import {
-  Box,
-  InputRef,
-  SafeAreaView,
-  Stack,
-  Switch,
-  Text,
-  TextArea,
-  TextInput,
-} from "@lextdev/core"
-import React, { useRef } from "react"
+import { Box, Button, Modal, SafeAreaView, Stack, Text } from "@lextdev/core"
+import React, { useState } from "react"
 
 const Main = () => {
-  const ref = useRef<InputRef>(null)
+  const [visible, setVisible] = useState(false)
 
   return (
     <SafeAreaView backgroundColor="background">
+      <Modal visible={visible} presentationStyle="pageSheet">
+        <Box>
+          <Text>Hello World</Text>
+          <Button label="Kapat" onPress={() => setVisible(false)} />
+        </Box>
+      </Modal>
       <Stack flex={1}>
         <Box
           justifyContent="center"
@@ -23,35 +20,8 @@ const Main = () => {
         >
           <Text variant="global">Welcome To Lext</Text>
         </Box>
-        <Box variant="global">
-          <TextInput
-            ref={ref}
-            variant="test"
-            placeholder="Test"
-            label="Hello World"
-          />
-        </Box>
         <Box>
-          <TextArea
-            placeholder="Test Value"
-            label="Hello World"
-            description="This is a test description"
-            layoutStyle={{
-              height: 100,
-              paddingVertical: 10,
-            }}
-            inputStyle={{
-              height: "100%",
-            }}
-          />
-        </Box>
-        <Box>
-          <Switch
-            value={true}
-            thumbColor={"yellow"}
-            ios_backgroundColor="#3e3e3e"
-            trackColor={{ false: "#767577", true: "#81b0ff" }}
-          />
+          <Button label="Open Modal" onPress={() => setVisible(true)} />
         </Box>
       </Stack>
     </SafeAreaView>
