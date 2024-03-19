@@ -13,3 +13,5 @@ export { default as Button } from "./button/Button/Button"
 
 // Form
 export { default as TextInput } from "./form/TextInput/TextInput"
+export { default as TextArea } from "./form/TextArea/TextArea"
+export { default as Switch } from "./form/Switch/Switch"

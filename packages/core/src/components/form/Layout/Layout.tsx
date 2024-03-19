@@ -11,6 +11,7 @@ export type CustomLayoutProps = {
   descriptionStyle?: TextStyle
   layoutStyle?: ViewStyle
   errorLayoutStyle?: ViewStyle
+  errorStyle?: TextStyle
   gap?: number
   variant?: string
   label?: string
@@ -27,10 +28,17 @@ const Layout: FC<CustomLayoutProps & ChildrenInterface> = (props) => {
   const variantName = variant ?? getComponent?.Input?.defaultVariant
   const defaultProps = getComponent?.Input?.variants[variantName]
 
-  const labelStyle = props.labelStyle ?? defaultProps.label
-  const descriptionStyle = props.descriptionStyle ?? defaultProps.description
-  const layoutStyle = props.layoutStyle ?? defaultProps.layout
-  const errorLayoutStyle = props.errorLayoutStyle ?? defaultProps.errorLayout
+  const labelStyle = { ...defaultProps.label, ...props.labelStyle }
+  const descriptionStyle = {
+    ...defaultProps.description,
+    ...props.descriptionStyle,
+  }
+  const layoutStyle = { ...defaultProps.layout, ...props.layoutStyle }
+  const errorLayoutStyle = {
+    ...defaultProps.errorLayout,
+    ...props.errorLayoutStyle,
+  }
+  const errorStyle = { ...defaultProps.error, ...props.errorStyle }
 
   let boxMergeStyle = { ...layoutStyle }
 
@@ -54,7 +62,7 @@ const Layout: FC<CustomLayoutProps & ChildrenInterface> = (props) => {
         </Group>
       </Box>
       {error ? (
-        <Text>{error}</Text>
+        <Text {...errorStyle}>{error}</Text>
       ) : (
         <Text {...descriptionStyle}>{description}</Text>
       )}

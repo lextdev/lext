@@ -4,3 +4,4 @@ export { default as ThemeColorScheme } from "./ThemeColorScheme/ThemeColorScheme
 export { default as ThemeInterface } from "./ThemeInterface/ThemeInterface"
 export { default as TextStyle } from "./TextStyle/TextStyle"
 export { default as ViewStyle } from "./ViewStyle/ViewStyle"
+export { default as InputRef } from "./InputRef/InputRef"

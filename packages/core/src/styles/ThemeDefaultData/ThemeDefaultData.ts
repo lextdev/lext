@@ -78,10 +78,13 @@ const ThemeDefaultData: ThemeInterface = {
       defaultVariant: "default",
       variants: {
         default: {
-          label: {},
+          label: {
+            fontSize: 14,
+            fontStyle: "italic",
+          },
           input: {
             flex: 1,
-            backgroundColor: "primary",
+            fontSize: 10,
           },
           layout: {
             backgroundColor: "muted",
@@ -89,9 +92,38 @@ const ThemeDefaultData: ThemeInterface = {
             paddingVertical: 0,
             height: 50,
           },
-          errorLayout: {},
+          errorLayout: {
+            backgroundColor: "background",
+          },
           description: {},
-          error: {},
+          error: {
+            color: "emphasis",
+            fontSize: 12,
+          },
+        },
+        test: {
+          label: {
+            fontSize: 17,
+            fontStyle: "italic",
+          },
+          input: {
+            flex: 1,
+            fontSize: 10,
+          },
+          layout: {
+            backgroundColor: "muted",
+            paddingHorizontal: 10,
+            paddingVertical: 0,
+            height: 50,
+          },
+          errorLayout: {
+            backgroundColor: "background",
+          },
+          description: {},
+          error: {
+            color: "emphasis",
+            fontSize: 12,
+          },
         },
       },
     },

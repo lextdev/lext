@@ -1,76 +1,63 @@
-import { TextInputProps } from "react-native"
-import { TextStyle, ViewStyle } from "@/interfaces"
-import { ThemeProps } from "@/types"
+import { InputRef, TextStyle } from "@/interfaces"
+import { TextInput as RNTextInput, TextInputProps } from "react-native"
 import { useTheme } from "@/hooks"
 import Layout, { CustomLayoutProps } from "../Layout/Layout"
-import React, { FC } from "react"
-import styled from "@emotion/native"
+import React, { forwardRef } from "react"
 
-type CustomInputProps = CustomLayoutProps &
+export type CustomInputProps = CustomLayoutProps &
   TextInputProps & {
     inputStyle?: TextStyle
   }
 
-const TextInputStyled = styled.TextInput<TextStyle & ViewStyle>(
-  ({ color, backgroundColor, children: _children, theme, ...attrProps }) => {
-    const { getTextColor, getMainColor } = theme as ThemeProps
-
-    return {
-      ...attrProps,
-      backgroundColor: getMainColor(backgroundColor ?? "background"),
-      color: getTextColor(color ?? "global"),
-    }
-  },
-)
-
-const TextInput: FC<CustomInputProps> = ({
-  children: _children,
-  variant,
-  inputStyle,
-  allowFontScaling,
-  autoCapitalize,
-  autoComplete,
-  autoCorrect,
-  autoFocus,
-  blurOnSubmit,
-  caretHidden,
-  contextMenuHidden,
-  defaultValue,
-  editable,
-  keyboardType,
-  inputMode,
-  maxLength,
-  multiline,
-  onBlur,
-  onChange,
-  onChangeText,
-  onContentSizeChange,
-  onEndEditing,
-  onPressIn,
-  onPressOut,
-  onFocus,
-  onSelectionChange,
-  onSubmitEditing,
-  onTextInput,
-  onScroll,
-  onKeyPress,
-  placeholder,
-  placeholderTextColor,
-  readOnly,
-  returnKeyType,
-  enterKeyHint,
-  secureTextEntry,
-  selectTextOnFocus,
-  selection,
-  selectionColor,
-  textAlign,
-  testID,
-  inputAccessoryViewID,
-  value,
-  maxFontSizeMultiplier,
-  ...attrLayout
-}) => {
+const TextInput = forwardRef<InputRef, CustomInputProps>((props, ref) => {
   const { getComponent } = useTheme()
+  const {
+    variant,
+    inputStyle,
+    allowFontScaling,
+    autoCapitalize,
+    autoComplete,
+    autoCorrect,
+    autoFocus,
+    blurOnSubmit,
+    caretHidden,
+    contextMenuHidden,
+    defaultValue,
+    editable,
+    keyboardType,
+    inputMode,
+    maxLength,
+    multiline,
+    onBlur,
+    onChange,
+    onChangeText,
+    onContentSizeChange,
+    onEndEditing,
+    onPressIn,
+    onPressOut,
+    onFocus,
+    onSelectionChange,
+    onSubmitEditing,
+    onTextInput,
+    onScroll,
+    onKeyPress,
+    placeholder,
+    placeholderTextColor,
+    readOnly,
+    returnKeyType,
+    enterKeyHint,
+    secureTextEntry,
+    selectTextOnFocus,
+    selection,
+    selectionColor,
+    textAlign,
+    testID,
+    inputAccessoryViewID,
+    value,
+    maxFontSizeMultiplier,
+    ...attrLayout
+  } = props
+
   const variantName = variant ?? getComponent?.Input?.defaultVariant
   const defaultProps = getComponent?.Input?.variants[variantName]
 
@@ -120,12 +107,15 @@ const TextInput: FC<CustomInputProps> = ({
 
   return (
     <Layout variant={variantName} {...attrLayout}>
-      <TextInputStyled
+      <RNTextInput
+        ref={ref}
         {...inputProps}
         style={inputStyle ?? defaultProps.input}
       />
     </Layout>
   )
-}
+})
+
+TextInput.displayName = "TextInput"
 
 export default TextInput
