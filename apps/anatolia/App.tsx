@@ -1,5 +1,6 @@
 import {
   AsyncStorageAdapter,
+  SessionProvider,
   StorageClient,
   StorageProvider,
 } from "@lextdev/storage"
@@ -14,12 +15,14 @@ export default function App() {
 
   return (
     <StorageProvider storage={storage}>
-      <ThemeProvider theme={ThemeDefaultData}>
-        <SafeAreaView backgroundColor="background">
-          <StatusBar barStyle="light-content" />
-          <Main />
-        </SafeAreaView>
-      </ThemeProvider>
+      <SessionProvider>
+        <ThemeProvider theme={ThemeDefaultData}>
+          <SafeAreaView backgroundColor="background">
+            <StatusBar barStyle="light-content" />
+            <Main />
+          </SafeAreaView>
+        </ThemeProvider>
+      </SessionProvider>
     </StorageProvider>
   )
 }
