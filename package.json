@@ -12,19 +12,18 @@
     "eslint:fix": "eslint --fix .",
     "build:core": "rollup -c --environment TARGET:core --bundleConfigAsCjs",
     "build:hook": "rollup -c --environment TARGET:hook --bundleConfigAsCjs",
-    "build:icon": "rollup -c --environment TARGET:icon --bundleConfigAsCjs",
     "build:storage": "rollup -c --environment TARGET:storage --bundleConfigAsCjs",
-    "build:all": "npm run build:core && npm run build:hook && npm run build:icons",
+    "build:form": "rollup -c --environment TARGET:form --bundleConfigAsCjs",
     "watch:core": "rollup -c --environment TARGET:core --bundleConfigAsCjs --watch",
     "watch:hook": "rollup -c --environment TARGET:hook --bundleConfigAsCjs --watch",
-    "watch:icon": "rollup -c --environment TARGET:icon --bundleConfigAsCjs --watch",
     "watch:storage": "rollup -c --environment TARGET:storage --bundleConfigAsCjs --watch",
+    "watch:form": "rollup -c --environment TARGET:form --bundleConfigAsCjs --watch",
     "anatolia:dev": "lerna run ios --scope @lextdev/anatolia --stream --",
     "anatolia:fix": "lerna run fix --scope @lextdev/anatolia --stream --",
     "anatolia:add:core": "lerna add @lextdev/core --scope @lextdev/anatolia",
     "anatolia:add:hook": "lerna add @lextdev/hook --scope @lextdev/anatolia",
-    "anatolia:add:icon": "lerna add @lextdev/icon --scope @lextdev/anatolia",
-    "anatolia:add:storage": "lerna add @lextdev/storage --scope @lextdev/anatolia"
+    "anatolia:add:storage": "lerna add @lextdev/storage --scope @lextdev/anatolia",
+    "anatolia:add:form": "lerna add @lextdev/form --scope @lextdev/anatolia"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.23.3",

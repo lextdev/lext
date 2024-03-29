@@ -1,12 +1,32 @@
+# Lext/Storage Management
+
+A brief description of your project.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+
+## Installation
+
+```bash
+npm install @lextdev/form
+```
+
+## Usage
+
+```ts
 import { Button, SafeAreaView, TextInput } from "@lextdev/core"
 import { Controller, useForm, useResolver } from "@lextdev/form"
 import React from "react"
 
 const Main = () => {
   const { validateResolver, validate } = useResolver()
+
   const scheme = validate.object({
     name: validate.string().email("Not Email").required("This is required"),
   })
+  
   const form = useForm({
     defaultValues: {
       name: "",
@@ -45,3 +65,6 @@ const Main = () => {
 }
 
 export default Main
+
+```
+

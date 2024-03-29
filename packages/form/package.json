@@ -1,0 +1,29 @@
+{
+  "name": "@lextdev/form",
+  "version": "0.0.1",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types.d.ts",
+  "keywords": [
+    "react-native",
+    "uikit",
+    "typescript"
+  ],
+  "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
+    "is-email": "^1.0.2",
+    "react-hook-form": "^7.51.2",
+    "superstruct": "^1.0.4",
+    "yup": "^1.4.0"
+  },
+  "peerDependencies": {
+    "react": "18.2.0",
+    "react-native": "~0.73.2"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.21.5",
+    "@types/is-email": "^1.0.0",
+    "@types/react": "^18.2.51",
+    "typescript": "^5.0.4"
+  }
+}
