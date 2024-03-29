@@ -7,9 +7,9 @@
   "keywords": [
     "react-native",
     "uikit",
+    "storage",
     "typescript"
   ],
-  "dependencies": {},
   "peerDependencies": {
     "react": "18.2.0",
     "react-native": "~0.73.2"
@@ -18,5 +18,9 @@
     "@babel/preset-typescript": "^7.21.5",
     "@types/react": "^18.2.51",
     "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.21.0",
+    "react-native-mmkv": "^2.12.2"
   }
 }

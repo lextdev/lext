@@ -1,1 +1,1 @@
-export { AsyncStorageInterface, MMKVInterface } from "./storage.interface"
+export { default as StorageClientInterface } from "./StorageClientInterface/StorageClientInterface"
