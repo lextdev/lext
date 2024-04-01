@@ -1,4 +1,3 @@
-import { StyleProp } from "react-native"
 import SwitchProps from "../SwitchProps/SwitchProps"
 import TextStyle from "../TextStyle/TextStyle"
 import ThemeColorInterface from "../ThemeColorInterface/ThemeColorInterface"
@@ -34,6 +33,17 @@ interface ThemeInterface {
       error?: TextStyle
     }>
     Switch: ThemeVariantType<SwitchProps>
+    BottomSheet: ThemeVariantType<{
+      style?: ViewStyle
+      dragHandleStyle?: ViewStyle
+    }>
+    Select: ThemeVariantType<{
+      itemStyle?: ViewStyle
+      itemActiveStyle?: ViewStyle
+      itemTextStyle?: TextStyle
+      itemDescriptionStyle?: TextStyle
+      itemLeftStyle?: ViewStyle
+    }>
   }
 }
 

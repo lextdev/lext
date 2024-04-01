@@ -1,20 +1,25 @@
-import { ModalProps, Modal as RNModal } from "react-native"
+import { ModalProps, Modal as RNModal, View } from "react-native"
 import { ThemeMainColorInterface } from "@/interfaces/ThemeColorInterface/ThemeColorInterface"
 import React, { FC } from "react"
 import SafeAreaView from "../SafeAreaView/SafeAreaView"
 
-type CustomModalProps = ModalProps & {
+export type CustomModalProps = ModalProps & {
   backgroundColor?: keyof ThemeMainColorInterface
+  header?: JSX.Element
 }
 
 const Modal: FC<CustomModalProps> = ({
   children,
   backgroundColor,
+  header,
   ...props
 }) => {
   return (
     <RNModal animationType="slide" {...props}>
-      <SafeAreaView backgroundColor={backgroundColor}>{children}</SafeAreaView>
+      <SafeAreaView backgroundColor={backgroundColor}>
+        {header && header}
+        {children}
+      </SafeAreaView>
     </RNModal>
   )
 }

@@ -6,6 +6,7 @@ import ThemeProps from "@/types/ThemeProps/ThemeProps"
 const useTheme = () => {
   const theme = emotionUseTheme() as ThemeProps
   const scheme = useContext(ColorSchemeContext)
+
   return {
     ...theme,
     ...scheme,

@@ -1,45 +1,42 @@
-import { Button, SafeAreaView, TextInput } from "@lextdev/core"
-import { Controller, useForm, useResolver } from "@lextdev/form"
-import React from "react"
+import {
+  Box,
+  Button,
+  SafeAreaView,
+  Select,
+  SelectDataProps,
+  Text,
+} from "@lextdev/core"
+import React, { useState } from "react"
+
+const _dataExample: SelectDataProps[] = [
+  {
+    label: "Option 1",
+    value: 1,
+    left: <Text>Option 1</Text>,
+  },
+  {
+    label: "Option 2",
+    value: 2,
+    left: <Text>Option 2</Text>,
+    description: "This is option 2",
+  },
+]
 
 const Main = () => {
-  const { validateResolver, validate } = useResolver()
-  const scheme = validate.object({
-    name: validate.string().email("Not Email").required("This is required"),
-  })
-  const form = useForm({
-    defaultValues: {
-      name: "",
-    },
-    resolver: validateResolver(scheme),
-  })
-
+  const [visible, setVisible] = useState(true)
+  const [value, setValue] = useState(1)
   return (
     <SafeAreaView backgroundColor="background">
-      <Controller
-        name="name"
-        control={form.control}
-        rules={{
-          required: "This is required",
-        }}
-        render={({
-          field: { value, onChange, onBlur },
-          fieldState: { error },
-        }) => (
-          <TextInput
-            error={error?.message}
-            label="Your Email Address"
-            value={value}
-            onChangeText={onChange}
-            onBlur={onBlur}
-          />
-        )}
+      <Select
+        visible={visible}
+        data={_dataExample}
+        value={value}
+        presentationStyle="formSheet"
+        onChange={(value) => setValue(value as number)}
       />
-
-      <Button
-        label="Submit"
-        onPress={form.handleSubmit((item) => console.log(item))}
-      />
+      <Box>
+        <Button label="Open Modal" onPress={() => setVisible(true)} />
+      </Box>
     </SafeAreaView>
   )
 }

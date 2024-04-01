@@ -1,4 +1,4 @@
-# Lext/Storage Management
+# Lext/Form Management
 
 A brief description of your project.
 
@@ -15,7 +15,7 @@ npm install @lextdev/form
 
 ## Usage
 
-```ts
+```tsx
 import { Button, SafeAreaView, TextInput } from "@lextdev/core"
 import { Controller, useForm, useResolver } from "@lextdev/form"
 import React from "react"
@@ -53,7 +53,7 @@ const Main = () => {
             onChangeText={onChange}
             onBlur={onBlur}
           />
-        )}
+        )} 
       />
 
       <Button

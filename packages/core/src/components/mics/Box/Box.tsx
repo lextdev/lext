@@ -8,20 +8,15 @@ type CustomBoxProps = ViewStyle & {
 
 const Box = styled.View<CustomBoxProps>(
   ({ variant, theme, style: _style, children: _children, ...attrProps }) => {
-    const { getComponent, getMainColor } = theme as ThemeProps
+    const { getComponent, styleParse } = theme as ThemeProps
 
     const variantName = variant ?? getComponent?.Box?.defaultVariant
     const defaultProps = getComponent?.Box?.variants[variantName] ?? {}
 
-    const backgroundColor = getMainColor(
-      attrProps.backgroundColor ?? defaultProps.backgroundColor ?? "background",
-    )
-
-    return {
+    return styleParse({
       ...defaultProps,
       ...attrProps,
-      backgroundColor,
-    }
+    })
   },
 )
 

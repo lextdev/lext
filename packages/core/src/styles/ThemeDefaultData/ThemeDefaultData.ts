@@ -140,6 +140,39 @@ const ThemeDefaultData: ThemeInterface = {
         },
       },
     },
+    BottomSheet: {
+      defaultVariant: "default",
+      variants: {
+        default: {
+          style: {
+            backgroundColor: "background",
+          },
+          dragHandleStyle: {
+            backgroundColor: "muted",
+            height: 4,
+            width: 50,
+            borderRadius: 2,
+          },
+        },
+      },
+    },
+    Select: {
+      defaultVariant: "default",
+      variants: {
+        default: {
+          itemStyle: {
+            paddingVertical: 10,
+            minHeight: 50,
+            paddingHorizontal: 20,
+            borderBottomWidth: 1,
+          },
+          itemActiveStyle: { backgroundColor: "primary" },
+          itemDescriptionStyle: { color: "emphasis" },
+          itemLeftStyle: {},
+          itemTextStyle: { color: "global" },
+        },
+      },
+    },
   },
 }
 

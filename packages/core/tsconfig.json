@@ -18,7 +18,7 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "./color.d.ts"],
   "exclude": [
     "dist",
     "node_modules",

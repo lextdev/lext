@@ -5,12 +5,12 @@ import styled from "@emotion/native"
 const SafeAreaView = styled.SafeAreaView<{
   backgroundColor?: keyof ThemeMainColorInterface
 }>((props) => {
-  const { getMainColor } = props.theme as ThemeProps
+  const { styleParse } = props.theme as ThemeProps
 
-  return {
+  return styleParse({
     flex: 1,
-    backgroundColor: getMainColor(props.backgroundColor ?? "background"),
-  }
+    backgroundColor: props.backgroundColor,
+  })
 })
 
 export default SafeAreaView
