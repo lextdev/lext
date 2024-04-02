@@ -23,7 +23,7 @@ const _dataExample: SelectDataProps[] = [
 ]
 
 const Main = () => {
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(false)
   const [value, setValue] = useState(1)
   return (
     <SafeAreaView backgroundColor="background">

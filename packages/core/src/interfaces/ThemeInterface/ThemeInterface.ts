@@ -1,8 +1,13 @@
-import SwitchProps from "../SwitchProps/SwitchProps"
-import TextStyle from "../TextStyle/TextStyle"
+import {
+  ThemeComponentBottomSheetInterface,
+  ThemeComponentBoxInterface,
+  ThemeComponentButtonInterface,
+  ThemeComponentInputInterface,
+  ThemeComponentSelectInterface,
+  ThemeComponentSwitchInterface,
+  ThemeComponentTextInterface,
+} from "../ThemeComponentInterface/ThemeComponentInterface"
 import ThemeColorInterface from "../ThemeColorInterface/ThemeColorInterface"
-import ThemeVariantType from "@/types/ThemeVariantType/ThemeVariantType"
-import ViewStyle from "../ViewStyle/ViewStyle"
 
 /**
  * @name ThemeInterface
@@ -15,35 +20,13 @@ interface ThemeInterface {
     lighten: ThemeColorInterface
   }
   components: {
-    Text: ThemeVariantType<TextStyle>
-    Box: ThemeVariantType<ViewStyle>
-    Button: ThemeVariantType<{
-      disabledBox?: ViewStyle
-      gap?: number
-      box?: ViewStyle
-      label?: TextStyle
-      description?: TextStyle
-    }>
-    Input: ThemeVariantType<{
-      label?: TextStyle
-      input?: TextStyle
-      layout?: ViewStyle
-      errorLayout?: ViewStyle
-      description?: TextStyle
-      error?: TextStyle
-    }>
-    Switch: ThemeVariantType<SwitchProps>
-    BottomSheet: ThemeVariantType<{
-      style?: ViewStyle
-      dragHandleStyle?: ViewStyle
-    }>
-    Select: ThemeVariantType<{
-      itemStyle?: ViewStyle
-      itemActiveStyle?: ViewStyle
-      itemTextStyle?: TextStyle
-      itemDescriptionStyle?: TextStyle
-      itemLeftStyle?: ViewStyle
-    }>
+    Text: ThemeComponentTextInterface
+    Box: ThemeComponentBoxInterface
+    Button: ThemeComponentButtonInterface
+    Input: ThemeComponentInputInterface
+    Switch: ThemeComponentSwitchInterface
+    BottomSheet: ThemeComponentBottomSheetInterface
+    Select: ThemeComponentSelectInterface
   }
 }
 
