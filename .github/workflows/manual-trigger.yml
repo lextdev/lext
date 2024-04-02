@@ -22,7 +22,7 @@ jobs:
       - name: Run build
         run: npm run build:all
 
-      - name: Publish latest packages
-        run: npm run publish:latest
+      - name: Publish dev packages
+        run: npm run publish:dev
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
