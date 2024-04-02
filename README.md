@@ -1,4 +1,4 @@
-# Lextdev React UI Lib
+# Lextdev React Native UI Lib
 
 Brief description of your project.
 
