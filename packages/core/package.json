@@ -11,6 +11,20 @@
     "uikit",
     "typescript"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lextdev/lext.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lextdev/lext/issues"
+  },
+  "maintainers": [
+    {
+      "name": "lextdev",
+      "email": "support@lext.dev",
+      "url": "https://lext.dev"
+    }
+  ],
   "dependencies": {
     "@devvie/bottom-sheet": "^0.3.0",
     "@react-navigation/native": "^6.0.2",
