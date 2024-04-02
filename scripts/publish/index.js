@@ -12,17 +12,16 @@ async function bootsrap() {
     packages.forEach((packageName) => {
       const packagePath = `./packages/${packageName}`
       const _tag = `${tag}${typeof tagNumber === "undefined" ? "" : `.${tagNumber}`}`
-      console.log(`npm publish ${packagePath} --access public --tag ${_tag}`)
-      // exec(
-      //   `npm publish ${packagePath} --access public --tag ${_tag}`,
-      //   (err, stdout, stderr) => {
-      //     if (err) {
-      //       console.error(err)
-      //       return
-      //     }
-      //     console.log(stdout)
-      //   },
-      // )
+      exec(
+        `npm publish ${packagePath} --access public --tag ${_tag}`,
+        (err, stdout, stderr) => {
+          if (err) {
+            console.error(err)
+            return
+          }
+          console.log(stdout)
+        },
+      )
     })
   } catch (error) {
     console.error(error)
