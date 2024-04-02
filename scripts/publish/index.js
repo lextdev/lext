@@ -14,7 +14,7 @@ async function bootsrap() {
       const _tag = `${tag}${typeof tagNumber === "undefined" ? "" : `.${tagNumber}`}`
       exec(
         `npm publish ${packagePath} --access public --tag ${_tag}`,
-        (err, stdout, stderr) => {
+        (err, stdout) => {
           if (err) {
             console.error(err)
             return
