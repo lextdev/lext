@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npx commitlint --edit $1
+
+commit_message=$(cat $1)
+
+if [[$commit_message == fix:*]]; then
+  new_commit_message="🥸 $commit_message"
+elif [[$commit_message == "perm:*"]]; then
+  new_commit_message="🥳 $commit_message"
+else
+  new_commit_message="🚀 $commit_message"
+fi
