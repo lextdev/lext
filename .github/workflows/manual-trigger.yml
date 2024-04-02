@@ -1,4 +1,4 @@
-name: Publish Latest Packages
+name: Publish Manual Trigger Packages
 
 on:
   workflow_dispatch:
