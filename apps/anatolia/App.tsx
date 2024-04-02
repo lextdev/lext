@@ -4,12 +4,7 @@ import {
   StorageClient,
   StorageProvider,
 } from "@lextdev/storage"
-import {
-  CreateStyle,
-  SafeAreaView,
-  ThemeDefaultData,
-  ThemeProvider,
-} from "@lextdev/core"
+import { CreateStyle, SafeAreaView, ThemeProvider } from "@lextdev/core"
 import { StatusBar } from "react-native"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import Main from "./components/Main"

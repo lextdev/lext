@@ -1,4 +1,4 @@
-import { ModalProps, Modal as RNModal, View } from "react-native"
+import { ModalProps, Modal as RNModal } from "react-native"
 import { ThemeMainColorInterface } from "@/interfaces/ThemeColorInterface/ThemeColorInterface"
 import React, { FC } from "react"
 import SafeAreaView from "../SafeAreaView/SafeAreaView"

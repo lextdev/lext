@@ -23,10 +23,13 @@
     "anatolia:add:core": "lerna add @lextdev/core --scope @lextdev/anatolia",
     "anatolia:add:hook": "lerna add @lextdev/hook --scope @lextdev/anatolia",
     "anatolia:add:storage": "lerna add @lextdev/storage --scope @lextdev/anatolia",
-    "anatolia:add:form": "lerna add @lextdev/form --scope @lextdev/anatolia"
+    "anatolia:add:form": "lerna add @lextdev/form --scope @lextdev/anatolia",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.23.3",
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^19.1.0",
     "@rollup/plugin-alias": "^5.1.0",
     "@rollup/plugin-commonjs": "^24.1.0",
     "@rollup/plugin-json": "^6.0.1",
@@ -41,6 +44,7 @@
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
     "eslint-plugin-unused-imports": "^3.1.0",
     "esm": "^3.2.25",
+    "husky": "^8.0.0",
     "lerna": "^4.0.0",
     "prettier": "3.2.5",
     "rollup": "^3.0.0",
