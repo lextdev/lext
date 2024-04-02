@@ -5,10 +5,28 @@ npx commitlint --edit $1
 
 commit_message=$(cat $1)
 
-if [[ $commit_message == fix:* ]]; then
-  new_commit_message="🥸 $commit_message"
-elif [[ $commit_message == perm:* ]]; then
-  new_commit_message="🥳 $commit_message"
+if [[ $commit_message == *build:* ]]; then
+  new_commit_message="🏗️ $commit_message"
+elif [[ $commit_message == *chore:* ]]; then
+  new_commit_message="🧹 $commit_message"
+elif [[ $commit_message == *ci:* ]]; then
+  new_commit_message="🤖 $commit_message"
+elif [[ $commit_message == *docs:* ]]; then
+  new_commit_message="📚 $commit_message"
+elif [[ $commit_message == *feat:* ]]; then
+  new_commit_message="✨ $commit_message"
+elif [[ $commit_message == *fix:* ]]; then
+  new_commit_message="🐛 $commit_message"
+elif [[ $commit_message == *perf:* ]]; then
+  new_commit_message="🚀 $commit_message"
+elif [[ $commit_message == *refactor:* ]]; then
+  new_commit_message="🔨 $commit_message"
+elif [[ $commit_message == *revert:* ]]; then
+  new_commit_message="⏪ $commit_message"
+elif [[ $commit_message == *style:* ]]; then
+  new_commit_message="💅 $commit_message"
+elif [[ $commit_message == *test:* ]]; then
+  new_commit_message="🧪 $commit_message"
 else
   new_commit_message="🚀 $commit_message"
 fi
