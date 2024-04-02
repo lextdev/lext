@@ -12,3 +12,5 @@ elif [[$commit_message == "perm:*"]]; then
 else
   new_commit_message="🚀 $commit_message"
 fi
+
+echo "$new_commit_message" >$1
