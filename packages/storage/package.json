@@ -1,6 +1,10 @@
 {
   "name": "@lextdev/storage",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types.d.ts",
@@ -9,6 +13,20 @@
     "uikit",
     "storage",
     "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lextdev/lext.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lextdev/lext/issues"
+  },
+  "maintainers": [
+    {
+      "name": "lextdev",
+      "email": "support@lext.dev",
+      "url": "https://lext.dev"
+    }
   ],
   "peerDependencies": {
     "react": "18.2.0",
