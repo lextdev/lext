@@ -13,7 +13,7 @@ async function bootsrap() {
       const packagePath = `./packages/${packageName}`
       const _tag = `${tag}${typeof tagNumber === "undefined" ? "" : `.${tagNumber}`}`
       exec(
-        `npm publish ${packagePath} --access public --tag ${_tag}`,
+        `npm publish ${packagePath} --tag ${_tag}`,
         (err, stdout) => {
           if (err) {
             console.error(err)

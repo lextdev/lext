@@ -1,6 +1,6 @@
 {
   "name": "@lextdev/hook",
-  "version": "0.0.5",
+  "version": "0.0.2",
   "private": false,
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
@@ -34,7 +34,6 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.21.5",
-    "@lextdev/storage": "^0.0.1",
     "@types/react": "^18.2.51",
     "typescript": "^5.0.4"
   }
