@@ -17,11 +17,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20.x"
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@lextdev"
+          registry-url: "https://registry.npmjs.org/"
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run build
         run: npm run build:all
@@ -29,4 +28,4 @@ jobs:
       - name: Publish beta packages
         run: npm run publish:beta
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NODE_GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
