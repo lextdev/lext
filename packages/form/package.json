@@ -1,9 +1,9 @@
 {
   "name": "@lextdev/form",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": false,
   "publishConfig": {
-    "access": "public"
+    "registry": "https://npm.pkg.github.com"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
