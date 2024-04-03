@@ -1,6 +1,6 @@
 {
   "name": "@lextdev/root",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -19,7 +19,7 @@
     "watch:hook": "rollup -c --environment TARGET:hook --bundleConfigAsCjs --watch",
     "watch:storage": "rollup -c --environment TARGET:storage --bundleConfigAsCjs --watch",
     "watch:form": "rollup -c --environment TARGET:form --bundleConfigAsCjs --watch",
-    "publish:dev": "node -r esm scripts/publish/index.js dev",
+    "publish:dev": "node -r esm scripts/publish/index.js next",
     "publish:beta": "node -r esm scripts/publish/index.js beta",
     "publish:latest": "node -r esm scripts/publish/index.js latest",
     "anatolia:dev": "lerna run ios --scope @lextdev/anatolia --stream --",
