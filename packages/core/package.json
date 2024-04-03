@@ -1,7 +1,7 @@
 {
   "name": "@lextdev/core",
   "description": "Lext is an easy and effective UI library for React Native. Offers fast interface design with TypeScript support.",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
