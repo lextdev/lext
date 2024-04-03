@@ -2,7 +2,7 @@
 
 **Simplify Mobile App Development with Powerful, Flexible, and User-Friendly UI Components**
 
-![Lext Logo](cover.jpg)  
+![Lext Logo](https://res.cloudinary.com/dwmejslx5/video/upload/ac_none/v1712173674/namsqlrjd4yslli11tzv.gif)  
 *Lext is a sophisticated UI library designed for React Native, aiming to enhance mobile app development.*
 
 [![npm version](https://img.shields.io/npm/v/@lextdev/core.svg?style=flat)](https://www.npmjs.com/package/@lextdev/core)
