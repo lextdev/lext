@@ -7,14 +7,18 @@ on:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "18"
-          registry-url: "https://registry.npmjs.org/"
+          node-version: "20.x"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@lextdev"
 
       - name: Install dependencies
         run: npm install
@@ -25,4 +29,4 @@ jobs:
       - name: Publish beta packages
         run: npm run publish:beta
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.NODE_GITHUB_TOKEN}}
