@@ -37,5 +37,5 @@ export type ThemeComponentCheckboxInterface = ThemeVariantType<{
   checkbox?: ViewStyle
   container?: ViewStyle
   label?: TextStyle
-  checkedColor?: keyof ThemeMainColorInterface
+  checkboxActive?: ViewStyle
 }>

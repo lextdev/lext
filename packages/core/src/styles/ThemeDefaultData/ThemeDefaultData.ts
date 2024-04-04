@@ -188,13 +188,16 @@ const ThemeDefaultData: ThemeInterface = {
             alignItems: "center",
           },
           label: {},
-          checkedColor: "primary",
+          checkboxActive: {
+            backgroundColor: "primary",
+          },
         },
         demo: {
           checkbox: {
             width: 20,
             height: 20,
             borderWidth: 1,
+            borderColor: "secondary",
             marginRight: 10,
           },
           container: {
@@ -204,7 +207,10 @@ const ThemeDefaultData: ThemeInterface = {
           label: {
             color: "emphasis",
           },
-          checkedColor: "primary",
+          checkboxActive: {
+            backgroundColor: "secondary",
+            borderRadius: 100,
+          },
         },
       },
     },

@@ -1,9 +1,8 @@
 import { Pressable } from "react-native"
 import { TextStyle, ViewStyle } from "@/interfaces"
-import { ThemeMainColorInterface } from "@/interfaces/ThemeColorInterface/ThemeColorInterface"
 import { useTheme } from "@/hooks"
 import Box from "@/components/mics/Box/Box"
-import React, { FC, useState } from "react"
+import React, { FC } from "react"
 import Text from "@/components/typography/Text/Text"
 
 type CheckboxProps = {
@@ -14,7 +13,7 @@ type CheckboxProps = {
   checkboxStyle?: ViewStyle
   containerStyle?: ViewStyle
   variant?: string
-  checkedColor?: keyof ThemeMainColorInterface
+  checkboxActive?: ViewStyle
 }
 
 const Checkbox: FC<CheckboxProps> = ({
@@ -25,23 +24,28 @@ const Checkbox: FC<CheckboxProps> = ({
   checkboxStyle,
   labelStyle,
   containerStyle,
-  checkedColor,
+  checkboxActive,
 }) => {
-  const [isChecked, setIsChecked] = useState(checked)
-  const { getComponent, styleParse, getMainColor } = useTheme()
+  const { getComponent, styleParse } = useTheme()
 
   const variantName = variant ?? getComponent?.Checkbox?.defaultVariant
   const defaultProps = getComponent?.Checkbox?.variants[variantName]
 
   const currentLabelStyle = { ...defaultProps?.label, ...labelStyle }
   const currentCheckboxStyle = { ...defaultProps?.checkbox, ...checkboxStyle }
-  const currentContainerStyle = { ...defaultProps?.container, containerStyle }
-  const currentCheckedColor = checkedColor ?? defaultProps?.checkedColor
+  const currentContainerStyle = {
+    ...defaultProps?.container,
+    ...containerStyle,
+  }
+  const currentCheckboxActiveColor = {
+    ...defaultProps.checkboxActive,
+    ...checkboxActive,
+  }
 
   const toggleCheckbox = () => {
-    const newValue = !isChecked
-    setIsChecked(newValue)
-    onChange(newValue)
+    if (onChange) {
+      onChange(!checked)
+    }
   }
 
   return (
@@ -52,9 +56,7 @@ const Checkbox: FC<CheckboxProps> = ({
       <Box
         style={[
           styleParse(currentCheckboxStyle),
-          isChecked
-            ? { backgroundColor: getMainColor(currentCheckedColor) }
-            : null,
+          checked && styleParse(currentCheckboxActiveColor),
         ]}
       />
       <Text style={styleParse(currentLabelStyle)}>{label}</Text>

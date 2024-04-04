@@ -38,7 +38,6 @@ export default function App() {
       <SessionProvider>
         <ThemeProvider theme={createTheme}>
           <SafeAreaView backgroundColor="background">
-            <StatusBar barStyle="light-content" />
             <Main />
           </SafeAreaView>
         </ThemeProvider>
