@@ -36,7 +36,7 @@
     }
   },
   "validate-branch-name": {
-    "pattern": "^(master|main|develop){1}$|^(feature|fix|hotfix|release)/.+$",
+    "pattern": "^(master|main|develop){1}$|^(feat|fix|hotfix|release)/.+$",
     "errorMsg": "your own error message"
   },
   "devDependencies": {

@@ -1,4 +1,5 @@
 import { SwitchProps, TextStyle, ThemeInterface, ViewStyle } from "@/interfaces"
+import { ThemeMainColorInterface } from "@/interfaces/ThemeColorInterface/ThemeColorInterface"
 import ThemeDefaultData from "../ThemeDefaultData/ThemeDefaultData"
 
 type DeepPartial<T> = {
@@ -144,6 +145,23 @@ const CreateStyle = (newTheme: DeepPartialTheme): ThemeInterface => {
                 itemTextStyle?: TextStyle | undefined
                 itemDescriptionStyle?: TextStyle | undefined
                 itemLeftStyle?: ViewStyle | undefined
+              }
+            >) || {}),
+          },
+        },
+        Checkbox: {
+          defaultVariant:
+            (newTheme.components?.Checkbox?.defaultVariant as string) ??
+            _defaultTheme.components.Checkbox.defaultVariant,
+          variants: {
+            ..._defaultTheme.components.Checkbox.variants,
+            ...((newTheme.components?.Checkbox?.variants as Record<
+              string,
+              {
+                checkbox?: ViewStyle | undefined
+                label?: TextStyle | undefined
+                container?: ViewStyle | undefined
+                checkedColor?: keyof ThemeMainColorInterface | undefined
               }
             >) || {}),
           },

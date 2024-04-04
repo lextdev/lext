@@ -1,3 +1,4 @@
+import { ThemeMainColorInterface } from "../ThemeColorInterface/ThemeColorInterface"
 import { ThemeVariantType } from "@/types"
 import SwitchProps from "../SwitchProps/SwitchProps"
 import TextStyle from "../TextStyle/TextStyle"
@@ -31,4 +32,10 @@ export type ThemeComponentSelectInterface = ThemeVariantType<{
   itemTextStyle?: TextStyle
   itemDescriptionStyle?: TextStyle
   itemLeftStyle?: ViewStyle
+}>
+export type ThemeComponentCheckboxInterface = ThemeVariantType<{
+  checkbox?: ViewStyle
+  container?: ViewStyle
+  label?: TextStyle
+  checkedColor?: keyof ThemeMainColorInterface
 }>
