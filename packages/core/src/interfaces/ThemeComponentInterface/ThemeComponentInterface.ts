@@ -1,4 +1,3 @@
-import { ThemeMainColorInterface } from "../ThemeColorInterface/ThemeColorInterface"
 import { ThemeVariantType } from "@/types"
 import SwitchProps from "../SwitchProps/SwitchProps"
 import TextStyle from "../TextStyle/TextStyle"

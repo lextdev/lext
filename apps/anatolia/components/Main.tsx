@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, SafeAreaView, Select } from "@lextdev/core"
+import { Box, Button, Checkbox, SafeAreaView } from "@lextdev/core"
 import React, { useState } from "react"
 
 const Main = () => {
