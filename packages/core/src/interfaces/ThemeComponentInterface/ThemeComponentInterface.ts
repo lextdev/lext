@@ -32,3 +32,9 @@ export type ThemeComponentSelectInterface = ThemeVariantType<{
   itemDescriptionStyle?: TextStyle
   itemLeftStyle?: ViewStyle
 }>
+export type ThemeComponentCheckboxInterface = ThemeVariantType<{
+  checkbox?: ViewStyle
+  container?: ViewStyle
+  label?: TextStyle
+  checkboxActive?: ViewStyle
+}>

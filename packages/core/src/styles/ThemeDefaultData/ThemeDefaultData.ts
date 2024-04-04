@@ -173,6 +173,47 @@ const ThemeDefaultData: ThemeInterface = {
         },
       },
     },
+    Checkbox: {
+      defaultVariant: "default",
+      variants: {
+        default: {
+          checkbox: {
+            width: 20,
+            height: 20,
+            borderWidth: 1,
+            marginRight: 10,
+          },
+          container: {
+            flexDirection: "row",
+            alignItems: "center",
+          },
+          label: {},
+          checkboxActive: {
+            backgroundColor: "primary",
+          },
+        },
+        demo: {
+          checkbox: {
+            width: 20,
+            height: 20,
+            borderWidth: 1,
+            borderColor: "secondary",
+            marginRight: 10,
+          },
+          container: {
+            flexDirection: "row",
+            alignItems: "center",
+          },
+          label: {
+            color: "emphasis",
+          },
+          checkboxActive: {
+            backgroundColor: "secondary",
+            borderRadius: 100,
+          },
+        },
+      },
+    },
   },
 }
 

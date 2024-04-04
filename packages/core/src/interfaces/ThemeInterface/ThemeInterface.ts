@@ -2,6 +2,7 @@ import {
   ThemeComponentBottomSheetInterface,
   ThemeComponentBoxInterface,
   ThemeComponentButtonInterface,
+  ThemeComponentCheckboxInterface,
   ThemeComponentInputInterface,
   ThemeComponentSelectInterface,
   ThemeComponentSwitchInterface,
@@ -27,6 +28,7 @@ interface ThemeInterface {
     Switch: ThemeComponentSwitchInterface
     BottomSheet: ThemeComponentBottomSheetInterface
     Select: ThemeComponentSelectInterface
+    Checkbox: ThemeComponentCheckboxInterface
   }
 }
 

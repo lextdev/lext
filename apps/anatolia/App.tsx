@@ -5,7 +5,6 @@ import {
   StorageProvider,
 } from "@lextdev/storage"
 import { CreateStyle, SafeAreaView, ThemeProvider } from "@lextdev/core"
-import { StatusBar } from "react-native"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import Main from "./components/Main"
 import React from "react"
@@ -38,7 +37,6 @@ export default function App() {
       <SessionProvider>
         <ThemeProvider theme={createTheme}>
           <SafeAreaView backgroundColor="background">
-            <StatusBar barStyle="light-content" />
             <Main />
           </SafeAreaView>
         </ThemeProvider>
