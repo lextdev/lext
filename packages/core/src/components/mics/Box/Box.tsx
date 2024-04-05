@@ -1,5 +1,5 @@
-import ThemeProps from "@/types/ThemeProps/ThemeProps"
-import ViewStyle from "@/interfaces/ViewStyle/ViewStyle"
+import { ThemeProps } from "@/types"
+import { ViewStyle } from "@/interfaces"
 import styled from "@emotion/native"
 
 type CustomBoxProps = ViewStyle & {

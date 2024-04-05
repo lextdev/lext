@@ -1,4 +1,4 @@
-import ThemeInterface from "@/interfaces/ThemeInterface/ThemeInterface"
+import { ThemeInterface } from "@/interfaces"
 
 const ThemeDefaultData: ThemeInterface = {
   colors: {

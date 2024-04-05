@@ -1,12 +1,11 @@
 import { Pressable, PressableProps } from "react-native"
+import { TextStyle, ViewStyle } from "@/interfaces"
 import { useTheme } from "@/hooks"
 import Box from "@/components/mics/Box/Box"
 import Group from "@/components/mics/Group/Group"
 import React, { FC, ReactNode } from "react"
 import Stack from "@/components/mics/Stack/Stack"
 import Text from "@/components/typography/Text/Text"
-import TextStyle from "@/interfaces/TextStyle/TextStyle"
-import ViewStyle from "@/interfaces/ViewStyle/ViewStyle"
 
 type ButtonProps = PressableProps & {
   label: string

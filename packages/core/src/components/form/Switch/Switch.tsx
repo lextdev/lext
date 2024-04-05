@@ -1,7 +1,7 @@
 import { Switch as RNSwitch } from "react-native"
+import { SwitchProps } from "@/interfaces"
 import { useTheme } from "@/hooks"
 import React, { FC } from "react"
-import SwitchProps from "@/interfaces/SwitchProps/SwitchProps"
 
 type CustomSwitchProps = SwitchProps & {
   variant?: string

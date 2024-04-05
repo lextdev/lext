@@ -5,11 +5,11 @@
     "skipLibCheck": true,
     "jsx": "react",
     "module": "ESNext",
+    "outDir": "./dist",
     "declaration": true,
-    "declarationDir": "types",
+    "declarationDir": "./dist",
     "sourceMap": true,
     "baseUrl": ".",
-    "outDir": "dist",
     "moduleResolution": "node",
     "emitDeclarationOnly": true,
     "allowSyntheticDefaultImports": true,
@@ -18,7 +18,7 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "./color.d.ts"],
+  "include": ["src"],
   "exclude": [
     "dist",
     "node_modules",

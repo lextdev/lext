@@ -1,23 +1,14 @@
-import { Box, Button, Checkbox, SafeAreaView } from "@lextdev/core"
-import React, { useState } from "react"
+import { SafeAreaView, Text, useTheme } from "@lextdev/core"
+import React from "react"
 
 const Main = () => {
-  const [visible, setVisible] = useState(false)
+  const { getMainColor } = useTheme()
+
+  getMainColor("main")
 
   return (
     <SafeAreaView backgroundColor="background">
-      <Box gap={50}>
-        <Checkbox
-          variant="demo"
-          label="Hello World"
-          checked={visible}
-          onChange={setVisible}
-        />
-        <Button
-          label={`Open Modal ${visible}`}
-          onPress={() => setVisible(true)}
-        />
-      </Box>
+      <Text>Hello World</Text>
     </SafeAreaView>
   )
 }

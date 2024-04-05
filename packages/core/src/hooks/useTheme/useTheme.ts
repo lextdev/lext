@@ -1,7 +1,7 @@
 import { ColorSchemeContext } from "@/contexts"
+import { ThemeProps } from "@/types"
 import { useTheme as emotionUseTheme } from "@emotion/react"
 import { useContext } from "react"
-import ThemeProps from "@/types/ThemeProps/ThemeProps"
 
 const useTheme = () => {
   const theme = emotionUseTheme() as ThemeProps

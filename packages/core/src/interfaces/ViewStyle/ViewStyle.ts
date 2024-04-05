@@ -1,7 +1,7 @@
 import { ViewStyle as RNViewStyle } from "react-native"
 import { ThemeMainColorInterface } from "../ThemeColorInterface/ThemeColorInterface"
 
-interface ViewStyle extends RNViewStyle {
+export interface ViewStyle extends RNViewStyle {
   backgroundColor?: keyof ThemeMainColorInterface
   borderBlockColor?: keyof ThemeMainColorInterface
   borderBlockEndColor?: keyof ThemeMainColorInterface
@@ -14,5 +14,3 @@ interface ViewStyle extends RNViewStyle {
   borderStartColor?: keyof ThemeMainColorInterface
   borderTopColor?: keyof ThemeMainColorInterface
 }
-
-export default ViewStyle

@@ -11,9 +11,7 @@ export interface ThemeTextColorInterface {
   inverse: string
 }
 
-interface ThemeColorInterface {
+export interface ThemeColorInterface {
   main: ThemeMainColorInterface
   text: ThemeTextColorInterface
 }
-
-export default ThemeColorInterface

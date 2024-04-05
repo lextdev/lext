@@ -1,5 +1,5 @@
 import { TextStyle } from "@/interfaces"
-import ThemeProps from "@/types/ThemeProps/ThemeProps"
+import { ThemeProps } from "@/types"
 import styled from "@emotion/native"
 
 type CustomTextProps = TextStyle & {

@@ -1,3 +1,4 @@
+import { ThemeColorInterface } from "../"
 import {
   ThemeComponentBottomSheetInterface,
   ThemeComponentBoxInterface,
@@ -8,14 +9,13 @@ import {
   ThemeComponentSwitchInterface,
   ThemeComponentTextInterface,
 } from "../ThemeComponentInterface/ThemeComponentInterface"
-import ThemeColorInterface from "../ThemeColorInterface/ThemeColorInterface"
 
 /**
  * @name ThemeInterface
  * @description
  * Interface for the theme object
  */
-interface ThemeInterface {
+export interface ThemeInterface {
   colors: {
     darken: ThemeColorInterface
     lighten: ThemeColorInterface
@@ -31,5 +31,3 @@ interface ThemeInterface {
     Checkbox: ThemeComponentCheckboxInterface
   }
 }
-
-export default ThemeInterface
