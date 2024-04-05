@@ -1,22 +1,11 @@
+import { CheckboxComponentProps } from "@/interfaces"
 import { Pressable } from "react-native"
-import { TextStyle, ViewStyle } from "@/interfaces"
 import { useTheme } from "@/hooks"
 import Box from "@/components/mics/Box/Box"
 import React, { FC } from "react"
 import Text from "@/components/typography/Text/Text"
 
-type CheckboxProps = {
-  label: string
-  checked: boolean
-  onChange: (isChecked: boolean) => void
-  labelStyle?: TextStyle
-  checkboxStyle?: ViewStyle
-  containerStyle?: ViewStyle
-  variant?: string
-  checkboxActive?: ViewStyle
-}
-
-const Checkbox: FC<CheckboxProps> = ({
+const Checkbox: FC<CheckboxComponentProps> = ({
   label,
   checked,
   onChange,

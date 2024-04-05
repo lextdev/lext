@@ -1,4 +1,4 @@
-import { ThemeColorInterface } from "../"
+import { ThemeColorInterface } from ".."
 import {
   ThemeComponentBottomSheetInterface,
   ThemeComponentBoxInterface,
@@ -17,8 +17,8 @@ import {
  */
 export interface ThemeInterface {
   colors: {
-    darken: ThemeColorInterface
-    lighten: ThemeColorInterface
+    dark: ThemeColorInterface
+    light: ThemeColorInterface
   }
   components: {
     Text: ThemeComponentTextInterface

@@ -13,13 +13,30 @@ export default function App() {
   const storage = new StorageClient(new AsyncStorageAdapter(AsyncStorage))
   const createTheme = CreateStyle({
     colors: {
-      lighten: {
+      light: {
         main: {
           primary: "purple",
+          main: "blue",
+        },
+        text: {
+          example: "yellow",
+        },
+      },
+      dark: {
+        main: {
+          background: "#000",
         },
       },
     },
     components: {
+      Text: {
+        defaultVariant: "global",
+        variants: {
+          global: {
+            color: "example",
+          },
+        },
+      },
       Select: {
         defaultVariant: "test",
         variants: {
@@ -35,10 +52,8 @@ export default function App() {
   return (
     <StorageProvider storage={storage}>
       <SessionProvider>
-        <ThemeProvider theme={createTheme}>
-          <SafeAreaView backgroundColor="background">
-            <Main />
-          </SafeAreaView>
+        <ThemeProvider theme={createTheme} colorScheme="system">
+          <Main />
         </ThemeProvider>
       </SessionProvider>
     </StorageProvider>

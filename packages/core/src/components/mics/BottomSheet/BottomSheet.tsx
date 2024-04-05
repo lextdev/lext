@@ -1,20 +1,10 @@
-import { ReactNode, forwardRef } from "react"
-import { ViewStyle } from "@/interfaces"
+import { BottomSheetComponentProps } from "@/interfaces"
+import { forwardRef } from "react"
 import { useTheme } from "@/hooks"
-import RNBottomSheet, {
-  BottomSheetMethods,
-  BottomSheetProps as RNBottomSheetProps,
-} from "@devvie/bottom-sheet"
+import RNBottomSheet, { BottomSheetMethods } from "@devvie/bottom-sheet"
 import React from "react"
 
-type BottomSheetProps = RNBottomSheetProps & {
-  children: ReactNode
-  variant?: string
-  style?: ViewStyle
-  dragHandleStyle?: ViewStyle
-}
-
-const BottomSheet = forwardRef<BottomSheetMethods, BottomSheetProps>(
+const BottomSheet = forwardRef<BottomSheetMethods, BottomSheetComponentProps>(
   ({ children, variant, style, dragHandleStyle, ...props }, ref) => {
     const { getComponent, styleParse } = useTheme()
 

@@ -1,13 +1,9 @@
+import { FormSwitchComponentProps } from "@/interfaces"
 import { Switch as RNSwitch } from "react-native"
-import { SwitchProps } from "@/interfaces"
 import { useTheme } from "@/hooks"
 import React, { FC } from "react"
 
-type CustomSwitchProps = SwitchProps & {
-  variant?: string
-}
-
-const Switch: FC<CustomSwitchProps> = ({
+const Switch: FC<FormSwitchComponentProps> = ({
   variant,
   thumbColor,
   ios_backgroundColor,

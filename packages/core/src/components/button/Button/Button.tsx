@@ -1,26 +1,13 @@
-import { Pressable, PressableProps } from "react-native"
-import { TextStyle, ViewStyle } from "@/interfaces"
+import { ButtonComponentProps } from "@/interfaces"
+import { Pressable } from "react-native"
 import { useTheme } from "@/hooks"
 import Box from "@/components/mics/Box/Box"
 import Group from "@/components/mics/Group/Group"
-import React, { FC, ReactNode } from "react"
+import React, { FC } from "react"
 import Stack from "@/components/mics/Stack/Stack"
 import Text from "@/components/typography/Text/Text"
 
-type ButtonProps = PressableProps & {
-  label: string
-  variant?: string
-  description?: string
-  disabledBoxStyle?: ViewStyle
-  boxStyle?: ViewStyle
-  labelStyle?: TextStyle
-  descriptionStyle?: TextStyle
-  gap?: number
-  left?: ReactNode
-  right?: ReactNode
-}
-
-const Button: FC<ButtonProps> = ({
+const Button: FC<ButtonComponentProps> = ({
   label,
   description,
   gap = 5,

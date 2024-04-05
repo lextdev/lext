@@ -1,12 +1,8 @@
+import { BoxComponentProps } from "@/interfaces"
 import { ThemeProps } from "@/types"
-import { ViewStyle } from "@/interfaces"
 import styled from "@emotion/native"
 
-type CustomBoxProps = ViewStyle & {
-  variant?: string
-}
-
-const Box = styled.View<CustomBoxProps>(
+const Box = styled.View<BoxComponentProps>(
   ({ variant, theme, style: _style, children: _children, ...attrProps }) => {
     const { getComponent, styleParse } = theme as ThemeProps
 
