@@ -1,10 +1,24 @@
-import { SafeAreaView, Text } from "@lextdev/core"
+import { FlatList, SafeAreaView, Text, View } from "@lextdev/core"
+import { StatusBar } from "expo-status-bar"
 import React from "react"
 
 const Main = () => {
   return (
-    <SafeAreaView backgroundColor="background">
-      <Text variant="global">Hello World</Text>
+    <SafeAreaView>
+      <StatusBar style="dark" />
+      <View flex={1}>
+        <Text>Hello World</Text>
+      </View>
+      <FlatList
+        flex={1}
+        backgroundColor="primary"
+        data={[
+          {
+            label: "Message",
+          },
+        ]}
+        renderItem={() => <Text>Hello World</Text>}
+      />
     </SafeAreaView>
   )
 }
