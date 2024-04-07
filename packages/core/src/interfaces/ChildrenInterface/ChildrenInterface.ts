@@ -1,7 +1,5 @@
-import { ReactNode } from "react";
+import { ReactNode } from "react"
 
-interface ChildrenInterface {
-  children: ReactNode;
+export interface ChildrenInterface {
+  children: ReactNode
 }
-
-export default ChildrenInterface

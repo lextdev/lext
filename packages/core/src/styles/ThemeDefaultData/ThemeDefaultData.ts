@@ -1,8 +1,8 @@
-import ThemeInterface from "@/interfaces/ThemeInterface/ThemeInterface"
+import { ThemeInterface } from "@/interfaces"
 
 const ThemeDefaultData: ThemeInterface = {
   colors: {
-    darken: {
+    dark: {
       main: {
         background: "#000",
         primary: "blue",
@@ -15,7 +15,7 @@ const ThemeDefaultData: ThemeInterface = {
         inverse: "purple",
       },
     },
-    lighten: {
+    light: {
       main: {
         background: "#FFF",
         primary: "blue",

@@ -10,20 +10,41 @@ import {
   ThemeMainColorInterface,
   ThemeTextColorInterface,
 } from "@/interfaces/ThemeColorInterface/ThemeColorInterface"
+import { useColorScheme } from "react-native"
 import React, { FC, useState } from "react"
 
 const ThemeProvider: FC<
   ChildrenInterface & { theme: ThemeInterface; colorScheme?: ThemeColorScheme }
-> = ({ children, theme, colorScheme = "lighten" }) => {
+> = ({ children, theme, colorScheme = "system" }) => {
   const [getColorScheme, setColorScheme] =
     useState<ThemeColorScheme>(colorScheme)
 
+  const systemColor = useColorScheme()
+
+  const getSystemColorScheme = () => {
+    if (typeof systemColor !== "string") {
+      return "light"
+    }
+
+    return systemColor
+  }
+
   const getMainColor = (color?: keyof ThemeMainColorInterface) => {
-    return color && theme.colors[getColorScheme].main[color]
+    return (
+      color &&
+      theme.colors[
+        getColorScheme === "system" ? getSystemColorScheme() : getColorScheme
+      ].main[color]
+    )
   }
 
   const getTextColor = (color?: keyof ThemeTextColorInterface) => {
-    return color && theme.colors[getColorScheme].text[color]
+    return (
+      color &&
+      theme.colors[
+        getColorScheme === "system" ? getSystemColorScheme() : getColorScheme
+      ].text[color]
+    )
   }
 
   const styleParse = (style: StyleType) => {

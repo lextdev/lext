@@ -1,23 +1,24 @@
-import { Box, Button, Checkbox, SafeAreaView } from "@lextdev/core"
-import React, { useState } from "react"
+import { FlatList, SafeAreaView, Text, View } from "@lextdev/core"
+import { StatusBar } from "expo-status-bar"
+import React from "react"
 
 const Main = () => {
-  const [visible, setVisible] = useState(false)
-
   return (
-    <SafeAreaView backgroundColor="background">
-      <Box gap={50}>
-        <Checkbox
-          variant="demo"
-          label="Hello World"
-          checked={visible}
-          onChange={setVisible}
-        />
-        <Button
-          label={`Open Modal ${visible}`}
-          onPress={() => setVisible(true)}
-        />
-      </Box>
+    <SafeAreaView>
+      <StatusBar style="dark" />
+      <View flex={1}>
+        <Text>Hello World</Text>
+      </View>
+      <FlatList
+        flex={1}
+        backgroundColor="primary"
+        data={[
+          {
+            label: "Message",
+          },
+        ]}
+        renderItem={() => <Text>Hello World</Text>}
+      />
     </SafeAreaView>
   )
 }

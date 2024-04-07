@@ -1,7 +1,7 @@
 import { SwitchProps as RNSwitchProps } from "react-native"
 import { ThemeMainColorInterface } from "../ThemeColorInterface/ThemeColorInterface"
 
-interface SwitchProps extends RNSwitchProps {
+export interface SwitchProps extends RNSwitchProps {
   thumbColor?: keyof ThemeMainColorInterface
   trackColor?: {
     false?: keyof ThemeMainColorInterface
@@ -9,5 +9,3 @@ interface SwitchProps extends RNSwitchProps {
   }
   ios_backgroundColor?: keyof ThemeMainColorInterface
 }
-
-export default SwitchProps

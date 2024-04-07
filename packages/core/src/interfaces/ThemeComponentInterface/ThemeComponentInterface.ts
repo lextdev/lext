@@ -1,7 +1,5 @@
+import { SwitchProps, TextStyle, ViewStyle } from ".."
 import { ThemeVariantType } from "@/types"
-import SwitchProps from "../SwitchProps/SwitchProps"
-import TextStyle from "../TextStyle/TextStyle"
-import ViewStyle from "../ViewStyle/ViewStyle"
 
 export type ThemeComponentTextInterface = ThemeVariantType<TextStyle>
 export type ThemeComponentBoxInterface = ThemeVariantType<ViewStyle>

@@ -21,24 +21,24 @@ const CreateStyle = (newTheme: DeepPartialTheme): ThemeInterface => {
     ..._defaultTheme,
     ...(newTheme && {
       colors: {
-        darken: {
+        dark: {
           main: {
-            ..._defaultTheme.colors.darken.main,
-            ...(newTheme.colors?.darken?.main || {}),
+            ..._defaultTheme.colors.dark.main,
+            ...(newTheme.colors?.dark?.main || {}),
           },
           text: {
-            ..._defaultTheme.colors.darken.text,
-            ...(newTheme.colors?.darken?.text || {}),
+            ..._defaultTheme.colors.dark.text,
+            ...(newTheme.colors?.dark?.text || {}),
           },
         },
-        lighten: {
+        light: {
           main: {
-            ..._defaultTheme.colors.lighten.main,
-            ...(newTheme.colors?.lighten?.main || {}),
+            ..._defaultTheme.colors.light.main,
+            ...(newTheme.colors?.light?.main || {}),
           },
           text: {
-            ..._defaultTheme.colors.lighten.text,
-            ...(newTheme.colors?.lighten?.text || {}),
+            ..._defaultTheme.colors.light.text,
+            ...(newTheme.colors?.light?.text || {}),
           },
         },
       },

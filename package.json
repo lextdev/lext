@@ -1,6 +1,6 @@
 {
   "name": "@lextdev/root",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "workspaces": [
     "apps/*",
     "packages/*"

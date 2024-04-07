@@ -4,7 +4,7 @@ import {
   StorageClient,
   StorageProvider,
 } from "@lextdev/storage"
-import { CreateStyle, SafeAreaView, ThemeProvider } from "@lextdev/core"
+import { CreateStyle, ThemeProvider } from "@lextdev/core"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import Main from "./components/Main"
 import React from "react"
@@ -13,21 +13,18 @@ export default function App() {
   const storage = new StorageClient(new AsyncStorageAdapter(AsyncStorage))
   const createTheme = CreateStyle({
     colors: {
-      lighten: {
+      light: {
         main: {
           primary: "purple",
+          main: "blue",
+        },
+        text: {
+          example: "yellow",
         },
       },
-    },
-    components: {
-      Select: {
-        defaultVariant: "test",
-        variants: {
-          test: {
-            itemActiveStyle: {
-              backgroundColor: "secondary",
-            },
-          },
+      dark: {
+        main: {
+          background: "#000",
         },
       },
     },
@@ -35,10 +32,8 @@ export default function App() {
   return (
     <StorageProvider storage={storage}>
       <SessionProvider>
-        <ThemeProvider theme={createTheme}>
-          <SafeAreaView backgroundColor="background">
-            <Main />
-          </SafeAreaView>
+        <ThemeProvider theme={createTheme} colorScheme="light">
+          <Main />
         </ThemeProvider>
       </SessionProvider>
     </StorageProvider>

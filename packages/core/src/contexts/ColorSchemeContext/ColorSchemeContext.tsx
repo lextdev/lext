@@ -7,7 +7,7 @@ type ColorSchemeContextProps = {
 }
 
 const ColorSchemeContext = createContext<ColorSchemeContextProps>({
-  colorScheme: "lighten",
+  colorScheme: "light",
   setColorScheme: () => {},
 })
 

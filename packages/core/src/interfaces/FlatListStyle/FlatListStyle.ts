@@ -1,7 +1,7 @@
-import { ViewStyle as RNViewStyle } from "react-native"
 import { ThemeMainColorInterface } from "../ThemeColorInterface/ThemeColorInterface"
+import { ViewStyle } from "../ViewStyle/ViewStyle"
 
-export interface ViewStyle extends RNViewStyle {
+export interface FlatListStyle extends ViewStyle {
   backgroundColor?: keyof ThemeMainColorInterface
   borderBlockColor?: keyof ThemeMainColorInterface
   borderBlockEndColor?: keyof ThemeMainColorInterface

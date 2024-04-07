@@ -1,26 +1,12 @@
 import { FlatList, Pressable, View } from "react-native"
-import { SelectDataProps } from "@/types"
-import { TextStyle, ViewStyle } from "@/interfaces"
+import { FormSelectComponentProps } from "@/interfaces"
 import { useTheme } from "@/hooks"
-import Modal, { CustomModalProps } from "@/components/mics/Modal/Modal"
+import Modal from "@/components/mics/Modal/Modal"
 import React, { FC } from "react"
 import Stack from "@/components/mics/Stack/Stack"
 import Text from "@/components/typography/Text/Text"
 
-type SelectProps = CustomModalProps & {
-  data: SelectDataProps[]
-  onChange?: (value: string | number) => void
-  variant?: string
-  itemSeparator?: JSX.Element
-  value?: string | number
-  itemStyle?: ViewStyle
-  itemActiveStyle?: ViewStyle
-  itemDescriptionStyle?: TextStyle
-  itemTextStyle?: TextStyle
-  itemLeftStyle?: ViewStyle
-}
-
-const Select: FC<SelectProps> = ({
+const Select: FC<FormSelectComponentProps> = ({
   data,
   value,
   onChange,

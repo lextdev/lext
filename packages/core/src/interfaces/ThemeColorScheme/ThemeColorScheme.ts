@@ -1,3 +1,1 @@
-type ThemeColorScheme = "lighten" | "darken"
-
-export default ThemeColorScheme
+export type ThemeColorScheme = "light" | "dark" | "system"
