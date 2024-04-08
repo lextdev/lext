@@ -1,6 +1,6 @@
 {
   "name": "@lextdev/storage",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

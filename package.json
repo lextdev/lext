@@ -1,6 +1,6 @@
 {
   "name": "@lextdev/root",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -22,8 +22,9 @@
     "publish:dev": "node -r esm scripts/publish/index.js dev",
     "publish:beta": "node -r esm scripts/publish/index.js beta",
     "publish:latest": "node -r esm scripts/publish/index.js latest",
-    "anatolia:dev": "lerna run ios --scope @lextdev/anatolia --stream --",
     "anatolia:fix": "lerna run fix --scope @lextdev/anatolia --stream --",
+    "anatolia:dev:ios": "lerna run ios --scope @lextdev/anatolia --stream --",
+    "anatolia:dev:android": "lerna run android --scope @lextdev/anatolia --stream --",
     "anatolia:add:core": "lerna add @lextdev/core --scope @lextdev/anatolia",
     "anatolia:add:hook": "lerna add @lextdev/hook --scope @lextdev/anatolia",
     "anatolia:add:storage": "lerna add @lextdev/storage --scope @lextdev/anatolia",

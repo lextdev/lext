@@ -2,8 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## 0.0.8 - 2024 Apr 08
+## 0.0.9 - 2024 Apr 08
 
+- feat: image-background component added
 - fix: button background-color, border-color and color
 
 ```md

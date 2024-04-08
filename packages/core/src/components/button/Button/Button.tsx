@@ -72,9 +72,6 @@ const Button: FC<ButtonComponentProps> = ({
   const labelStyle = {
     ...defaultProps?.label,
     ...props.labelStyle,
-    ...{
-      color: color,
-    },
   }
   const disabledBoxStyle = {
     ...defaultProps?.disabledBox,
@@ -83,9 +80,6 @@ const Button: FC<ButtonComponentProps> = ({
   const descriptionStyle = {
     ...defaultProps.description,
     ...props.descriptionStyle,
-    ...{
-      color: color,
-    },
   }
 
   return (
