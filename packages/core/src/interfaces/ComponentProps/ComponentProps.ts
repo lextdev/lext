@@ -2,7 +2,12 @@ import { BottomSheetProps } from "@devvie/bottom-sheet"
 import { ModalProps, PressableProps, TextInputProps } from "react-native"
 import { ReactNode } from "react"
 import { SelectDataProps } from "@/types"
-import { SwitchProps, ThemeMainColorInterface, ViewStyle } from ".."
+import {
+  SwitchProps,
+  ThemeMainColorInterface,
+  ThemeTextColorInterface,
+  ViewStyle,
+} from ".."
 import { TextStyle } from "../TextStyle/TextStyle"
 
 export interface TextComponentProps extends TextStyle {
@@ -20,6 +25,9 @@ export interface ButtonComponentProps extends PressableProps {
   gap?: number
   left?: ReactNode
   right?: ReactNode
+  backgroundColor?: keyof ThemeMainColorInterface
+  borderColor?: keyof ThemeMainColorInterface
+  color?: keyof ThemeTextColorInterface
 }
 
 export interface CheckboxComponentProps {

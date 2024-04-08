@@ -1,15 +1,18 @@
 import { ButtonComponentProps } from "@/interfaces"
 import { Pressable } from "react-native"
 import { useTheme } from "@/hooks"
-import Box from "@/components/mics/Box/Box"
 import Group from "@/components/mics/Group/Group"
 import React, { FC } from "react"
 import Stack from "@/components/mics/Stack/Stack"
 import Text from "@/components/typography/Text/Text"
+import View from "@/components/mics/View/View"
 
 const Button: FC<ButtonComponentProps> = ({
   label,
   description,
+  backgroundColor,
+  borderColor,
+  color,
   gap = 5,
   left,
   right,
@@ -62,14 +65,37 @@ const Button: FC<ButtonComponentProps> = ({
   }
 
   const gapStyle = gap ?? defaultProps.gap
-  const boxStyle = props.boxStyle ?? defaultProps?.box
-  const disabledBoxStyle = props.disabledBoxStyle ?? defaultProps?.disabledBox
-  const labelStyle = props.labelStyle ?? defaultProps?.label
-  const descriptionStyle = props.descriptionStyle ?? defaultProps?.description
+  const boxStyle = {
+    ...defaultProps.box,
+    ...props.boxStyle,
+  }
+  const labelStyle = {
+    ...defaultProps?.label,
+    ...props.labelStyle,
+    ...{
+      color: color,
+    },
+  }
+  const disabledBoxStyle = {
+    ...defaultProps?.disabledBox,
+    ...props.disabledBoxStyle,
+  }
+  const descriptionStyle = {
+    ...defaultProps.description,
+    ...props.descriptionStyle,
+    ...{
+      color: color,
+    },
+  }
 
   return (
     <Pressable {...pressableProps}>
-      <Box {...boxStyle} style={disabled && disabledBoxStyle}>
+      <View
+        {...boxStyle}
+        backgroundColor={backgroundColor ?? boxStyle.backgroundColor}
+        borderColor={borderColor ?? boxStyle.borderColor}
+        style={disabled && disabledBoxStyle}
+      >
         <Group
           gap={gapStyle}
           justifyContent="space-between"
@@ -77,12 +103,21 @@ const Button: FC<ButtonComponentProps> = ({
         >
           {left && left}
           <Stack gap={0} alignItems="center">
-            <Text {...labelStyle}>{label}</Text>
-            {description && <Text {...descriptionStyle}>{description}</Text>}
+            <Text {...labelStyle} color={color ?? labelStyle.color}>
+              {label}
+            </Text>
+            {description && (
+              <Text
+                {...descriptionStyle}
+                color={color ?? descriptionStyle.color}
+              >
+                {description}
+              </Text>
+            )}
           </Stack>
           {right && right}
         </Group>
-      </Box>
+      </View>
     </Pressable>
   )
 }
