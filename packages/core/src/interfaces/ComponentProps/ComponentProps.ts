@@ -56,7 +56,7 @@ export interface FormLayoutComponentProps {
   right?: ReactNode
 }
 
-export interface FormSelectComponentProps {
+export interface FormSelectComponentProps extends ModalComponentProps {
   data: SelectDataProps[]
   onChange?: (value: string | number) => void
   variant?: string
