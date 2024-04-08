@@ -1,13 +1,15 @@
-import { Box, Button, SafeAreaView } from "@lextdev/core"
+import { Box, Button, ImageBackground, SafeAreaView } from "@lextdev/core"
 import React from "react"
 
 const Main = () => {
   return (
-    <SafeAreaView>
-      <Box>
-        <Button label="Test" backgroundColor="primary" color="inverse" />
-      </Box>
-    </SafeAreaView>
+    <ImageBackground flex={1}>
+      <SafeAreaView>
+        <Box>
+          <Button label="Test" backgroundColor="primary" color="global" />
+        </Box>
+      </SafeAreaView>
+    </ImageBackground>
   )
 }
 

@@ -14,6 +14,9 @@ export default function App() {
               borderRadius: 10,
               backgroundColor: "secondary",
             },
+            label: {
+              color: "inverse",
+            },
           },
         },
       },
