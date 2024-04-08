@@ -2,8 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.0.8 - 2024 Apr 08
+
+- fix: button background-color, border-color and color
+
 ```md
-## [testVersion] - 2022-01-01
+## [testVersion] - 2024 Apr 08
 
 - fix: test
 - perm: test
