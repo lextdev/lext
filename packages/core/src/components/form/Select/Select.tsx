@@ -46,7 +46,7 @@ const Select: FC<FormSelectComponentProps> = ({
     <Modal {...props}>
       <FlatList
         data={data}
-        keyExtractor={(item) => item.value.toString()}
+        keyExtractor={(_item, index: number) => index.toString()}
         ItemSeparatorComponent={() => itemSeparator}
         renderItem={({ index, item }) => (
           <Pressable

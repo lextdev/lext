@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.0.11 - 2024 Apr 09
+
+- fix: keyExtractor should add to Select Component
+
 ## 0.0.9 - 2024 Apr 08
 
 - feat: image-background component added
