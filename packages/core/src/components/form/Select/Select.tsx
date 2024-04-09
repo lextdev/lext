@@ -17,6 +17,7 @@ const Select: FC<FormSelectComponentProps> = ({
   itemDescriptionStyle,
   itemLeftStyle,
   itemTextStyle,
+  keyExtractor,
   ...props
 }) => {
   const { getComponent, styleParse } = useTheme()
@@ -46,7 +47,7 @@ const Select: FC<FormSelectComponentProps> = ({
     <Modal {...props}>
       <FlatList
         data={data}
-        keyExtractor={(item) => item.value.toString()}
+        keyExtractor={keyExtractor}
         ItemSeparatorComponent={() => itemSeparator}
         renderItem={({ index, item }) => (
           <Pressable

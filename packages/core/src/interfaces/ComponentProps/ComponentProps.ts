@@ -67,6 +67,7 @@ export interface FormSelectComponentProps extends ModalComponentProps {
   itemDescriptionStyle?: TextStyle
   itemTextStyle?: TextStyle
   itemLeftStyle?: ViewStyle
+  keyExtractor?: (item: SelectDataProps, index: number) => string
 }
 
 export interface FormSwitchComponentProps extends SwitchProps {
