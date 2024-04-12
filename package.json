@@ -1,6 +1,6 @@
 {
   "name": "@lextdev/root",
-  "version": "0.0.12",
+  "version": "0.0.1",
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -37,7 +37,7 @@
     }
   },
   "validate-branch-name": {
-    "pattern": "^(master|main|develop){1}$|^(feat|fix|hotfix|release)/.+$",
+    "pattern": "^(master|main|develop){1}$|^(feat|fix|hotfix|release|ci)/.+$",
     "errorMsg": "your own error message"
   },
   "devDependencies": {
