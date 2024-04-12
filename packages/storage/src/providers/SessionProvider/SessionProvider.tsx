@@ -29,7 +29,6 @@ const SessionProvider: FC<SessionProviderProps> = ({
         setStatus("anonymous")
       }
     } catch (error) {
-      console.error(error)
       setStatus("anonymous")
     }
   }

@@ -12,7 +12,7 @@ const Checkbox: FC<CheckboxComponentProps> = ({
   variant,
   checkboxStyle,
   labelStyle,
-  containerStyle,
+  boxStyle,
   checkboxActive,
 }) => {
   const { getComponent, styleParse } = useTheme()
@@ -22,9 +22,9 @@ const Checkbox: FC<CheckboxComponentProps> = ({
 
   const currentLabelStyle = { ...defaultProps?.label, ...labelStyle }
   const currentCheckboxStyle = { ...defaultProps?.checkbox, ...checkboxStyle }
-  const currentContainerStyle = {
-    ...defaultProps?.container,
-    ...containerStyle,
+  const currentBoxStyle = {
+    ...defaultProps?.box,
+    ...boxStyle,
   }
   const currentCheckboxActiveColor = {
     ...defaultProps.checkboxActive,
@@ -38,10 +38,7 @@ const Checkbox: FC<CheckboxComponentProps> = ({
   }
 
   return (
-    <Pressable
-      onPress={toggleCheckbox}
-      style={styleParse(currentContainerStyle)}
-    >
+    <Pressable onPress={toggleCheckbox} style={styleParse(currentBoxStyle)}>
       <Box
         style={[
           styleParse(currentCheckboxStyle),

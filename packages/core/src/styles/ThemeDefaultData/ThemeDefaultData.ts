@@ -140,22 +140,6 @@ const ThemeDefaultData: ThemeInterface = {
         },
       },
     },
-    BottomSheet: {
-      defaultVariant: "default",
-      variants: {
-        default: {
-          style: {
-            backgroundColor: "background",
-          },
-          dragHandleStyle: {
-            backgroundColor: "muted",
-            height: 4,
-            width: 50,
-            borderRadius: 2,
-          },
-        },
-      },
-    },
     Select: {
       defaultVariant: "default",
       variants: {
@@ -183,7 +167,7 @@ const ThemeDefaultData: ThemeInterface = {
             borderWidth: 1,
             marginRight: 10,
           },
-          container: {
+          box: {
             flexDirection: "row",
             alignItems: "center",
           },
@@ -200,7 +184,7 @@ const ThemeDefaultData: ThemeInterface = {
             borderColor: "secondary",
             marginRight: 10,
           },
-          container: {
+          box: {
             flexDirection: "row",
             alignItems: "center",
           },
@@ -210,6 +194,27 @@ const ThemeDefaultData: ThemeInterface = {
           checkboxActive: {
             backgroundColor: "secondary",
             borderRadius: 100,
+          },
+        },
+      },
+    },
+    Sheet: {
+      defaultVariant: "default",
+      variants: {
+        default: {
+          borderRadius: 5,
+          backgroundColor: "background",
+          backdropColor: "primary",
+          backdropOpacity: 0.3,
+          top: {
+            paddingVertical: 10,
+            justifyContent: "center",
+            alignItems: "center",
+          },
+          line: {
+            width: 75,
+            height: 5,
+            backgroundColor: "primary",
           },
         },
       },

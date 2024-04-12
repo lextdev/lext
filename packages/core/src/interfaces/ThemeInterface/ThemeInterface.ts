@@ -1,11 +1,11 @@
 import { ThemeColorInterface } from ".."
 import {
-  ThemeComponentBottomSheetInterface,
   ThemeComponentBoxInterface,
   ThemeComponentButtonInterface,
   ThemeComponentCheckboxInterface,
   ThemeComponentInputInterface,
   ThemeComponentSelectInterface,
+  ThemeComponentSheetInterface,
   ThemeComponentSwitchInterface,
   ThemeComponentTextInterface,
 } from "../ThemeComponentInterface/ThemeComponentInterface"
@@ -26,8 +26,8 @@ export interface ThemeInterface {
     Button: ThemeComponentButtonInterface
     Input: ThemeComponentInputInterface
     Switch: ThemeComponentSwitchInterface
-    BottomSheet: ThemeComponentBottomSheetInterface
     Select: ThemeComponentSelectInterface
     Checkbox: ThemeComponentCheckboxInterface
+    Sheet: ThemeComponentSheetInterface
   }
 }
