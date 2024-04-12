@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.0.12 - 2024 Apr 12
+
+- feat: @devvie/bottom-sheet remove
+- feat: sheet component added
+
 ## 0.0.11 - 2024 Apr 09
 
 - fix: keyExtractor should add to Select Component
@@ -21,7 +26,6 @@ All notable changes to this project will be documented in this file.
 - ci: test
 - docs: test
 - feat: test
-- fix: test
 - perf: test
 - refactor: test
 - revert: test

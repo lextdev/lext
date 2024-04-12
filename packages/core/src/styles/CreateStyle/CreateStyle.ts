@@ -116,21 +116,6 @@ const CreateStyle = (newTheme: DeepPartialTheme): ThemeInterface => {
             >) || {}),
           },
         },
-        BottomSheet: {
-          defaultVariant:
-            (newTheme.components?.BottomSheet?.defaultVariant as string) ??
-            _defaultTheme.components.BottomSheet.defaultVariant,
-          variants: {
-            ..._defaultTheme.components.BottomSheet.variants,
-            ...((newTheme.components?.BottomSheet?.variants as Record<
-              string,
-              {
-                style?: ViewStyle | undefined
-                dragHandleStyle?: ViewStyle | undefined
-              }
-            >) || {}),
-          },
-        },
         Select: {
           defaultVariant:
             (newTheme.components?.Select?.defaultVariant as string) ??
@@ -160,8 +145,27 @@ const CreateStyle = (newTheme: DeepPartialTheme): ThemeInterface => {
               {
                 checkbox?: ViewStyle | undefined
                 label?: TextStyle | undefined
-                container?: ViewStyle | undefined
+                box?: ViewStyle | undefined
                 checkedColor?: keyof ThemeMainColorInterface | undefined
+              }
+            >) || {}),
+          },
+        },
+        Sheet: {
+          defaultVariant:
+            (newTheme.components?.Sheet?.defaultVariant as string) ??
+            _defaultTheme.components.Sheet.defaultVariant,
+          variants: {
+            ..._defaultTheme.components.Sheet.variants,
+            ...((newTheme.components?.Sheet?.variants as Record<
+              string,
+              {
+                borderRadius?: number | undefined
+                backgroundColor?: keyof ThemeMainColorInterface | undefined
+                backdropColor?: keyof ThemeMainColorInterface | undefined
+                backdropOpacity?: number | undefined
+                top?: ViewStyle | undefined
+                line?: ViewStyle | undefined
               }
             >) || {}),
           },

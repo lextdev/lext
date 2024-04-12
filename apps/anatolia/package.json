@@ -10,13 +10,12 @@
     "fix": "expo install --fix"
   },
   "dependencies": {
-    "@lextdev/core": "^0.0.10",
     "@react-native-async-storage/async-storage": "1.21.0",
-    "expo": "~50.0.13",
+    "expo": "~50.0.15",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
     "react-native": "0.73.6",
-    "react-native-mmkv": "^2.12.2"
+    "react-native-reanimated": "~3.6.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

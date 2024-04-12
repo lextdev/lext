@@ -1,4 +1,3 @@
-import { BottomSheetProps } from "@devvie/bottom-sheet"
 import { ModalProps, PressableProps, TextInputProps } from "react-native"
 import { ReactNode } from "react"
 import { SelectDataProps } from "@/types"
@@ -36,7 +35,7 @@ export interface CheckboxComponentProps {
   onChange: (isChecked: boolean) => void
   labelStyle?: TextStyle
   checkboxStyle?: ViewStyle
-  containerStyle?: ViewStyle
+  boxStyle?: ViewStyle
   variant?: string
   checkboxActive?: ViewStyle
 }
@@ -80,13 +79,6 @@ export interface FormTextInputComponentProps
   inputStyle?: TextStyle
 }
 
-export interface BottomSheetComponentProps extends BottomSheetProps {
-  children: ReactNode
-  variant?: string
-  style?: ViewStyle
-  dragHandleStyle?: ViewStyle
-}
-
 export interface BoxComponentProps extends ViewStyle {
   variant?: string
 }
@@ -98,4 +90,17 @@ export interface ModalComponentProps extends ModalProps {
 
 export interface SafeAreaViewComponentProps {
   backgroundColor?: keyof ThemeMainColorInterface
+}
+
+export interface SheetComponentProps {
+  children: ReactNode
+  variant?: string
+  touchableNativeFeedback?: boolean
+  animationDamping?: number
+  backdropColor?: keyof ThemeMainColorInterface
+  backdropOpacity?: number
+  topStyle?: ViewStyle
+  lineStyle?: ViewStyle
+  backgroundColor?: keyof ThemeMainColorInterface
+  borderRadius?: number
 }

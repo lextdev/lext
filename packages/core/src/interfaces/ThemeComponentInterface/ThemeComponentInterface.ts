@@ -1,4 +1,4 @@
-import { SwitchProps, TextStyle, ViewStyle } from ".."
+import { SwitchProps, TextStyle, ThemeMainColorInterface, ViewStyle } from ".."
 import { ThemeVariantType } from "@/types"
 
 export type ThemeComponentTextInterface = ThemeVariantType<TextStyle>
@@ -19,10 +19,6 @@ export type ThemeComponentInputInterface = ThemeVariantType<{
   error?: TextStyle
 }>
 export type ThemeComponentSwitchInterface = ThemeVariantType<SwitchProps>
-export type ThemeComponentBottomSheetInterface = ThemeVariantType<{
-  style?: ViewStyle
-  dragHandleStyle?: ViewStyle
-}>
 export type ThemeComponentSelectInterface = ThemeVariantType<{
   itemStyle?: ViewStyle
   itemActiveStyle?: ViewStyle
@@ -32,7 +28,15 @@ export type ThemeComponentSelectInterface = ThemeVariantType<{
 }>
 export type ThemeComponentCheckboxInterface = ThemeVariantType<{
   checkbox?: ViewStyle
-  container?: ViewStyle
+  box?: ViewStyle
   label?: TextStyle
   checkboxActive?: ViewStyle
+}>
+export type ThemeComponentSheetInterface = ThemeVariantType<{
+  borderRadius?: number
+  backgroundColor?: keyof ThemeMainColorInterface
+  backdropColor?: keyof ThemeMainColorInterface
+  backdropOpacity?: number
+  top?: ViewStyle
+  line?: ViewStyle
 }>
