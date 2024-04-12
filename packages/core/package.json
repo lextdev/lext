@@ -27,7 +27,7 @@
     }
   ],
   "dependencies": {
-    "@lextdev/hook": "*",
+    "@lextdev/hook": "0.0.*",
     "@react-navigation/native": "^6.0.2",
     "react-native-mask-input": "^1.2.3"
   },
