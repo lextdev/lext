@@ -26,12 +26,9 @@
       "url": "https://lext.dev"
     }
   ],
-  "dependencies": {
-    "@lextdev/hook": "0.0.*",
-    "@react-navigation/native": "^6.0.2",
-    "react-native-mask-input": "^1.2.3"
-  },
+  "dependencies": {},
   "peerDependencies": {
+    "@lextdev/hook": "*",
     "@emotion/native": "*",
     "@emotion/react": "*",
     "react": "*",
