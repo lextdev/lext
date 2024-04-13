@@ -1,9 +1,9 @@
+import { Platform, useWindowDimensions } from "react-native"
 import { SheetComponentProps } from "@/interfaces"
 import { SheetRef } from "@/types"
 import { css } from "@emotion/native"
 import { useKeyboard } from "@lextdev/hook"
 import { useTheme } from "@/hooks"
-import { useWindowDimensions } from "react-native"
 import Animated, {
   SlideInDown,
   SlideOutDown,
@@ -151,7 +151,7 @@ const Sheet = forwardRef<SheetRef, SheetComponentProps>(
     )
 
     useEffect(() => {
-      if (isKeyboardOpen) {
+      if (isKeyboardOpen && Platform.OS === "ios") {
         _paddingHandler(getKeyboardHeight)
       } else {
         _paddingHandler(0)

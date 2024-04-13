@@ -1,4 +1,5 @@
 import { CreateStyle, ThemeProvider } from "@lextdev/core"
+import { SafeAreaProvider } from "react-native-safe-area-context"
 import Main from "./components/Main"
 import React from "react"
 
@@ -24,7 +25,9 @@ export default function App() {
   })
   return (
     <ThemeProvider theme={createTheme} colorScheme="light">
-      <Main />
+      <SafeAreaProvider>
+        <Main />
+      </SafeAreaProvider>
     </ThemeProvider>
   )
 }

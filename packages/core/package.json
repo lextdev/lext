@@ -1,7 +1,7 @@
 {
   "name": "@lextdev/core",
   "description": "Lext is an easy and effective UI library for React Native. Offers fast interface design with TypeScript support.",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -26,8 +26,8 @@
       "url": "https://lext.dev"
     }
   ],
-  "dependencies": {},
   "peerDependencies": {
+    "react-native-safe-area-context": "^4.8.2",
     "@lextdev/hook": "*",
     "@emotion/native": "*",
     "@emotion/react": "*",
