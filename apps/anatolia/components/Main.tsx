@@ -9,7 +9,7 @@ const Main = () => {
       <Select
         header={<Text>Header</Text>}
         presentationStyle="formSheet"
-        onChange={(value) => setVisible(false)}
+        onChange={() => setVisible(false)}
         data={[
           {
             label: "Test",
