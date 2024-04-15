@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.0.13 - 2024 Apr 15
+
+- fix: safe-are-view
+
 ## 0.0.12 - 2024 Apr 12
 
 - feat: @devvie/bottom-sheet remove

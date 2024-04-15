@@ -14,12 +14,4 @@ const SafeAreaView = styled(RNSafeAreaView)<SafeAreaViewComponentProps>((
   })
 })
 
-// const SafeAreaView = styled(RNSafeAreaView)<SafeAreaViewComponentProps>
-
-// const SafeAreaView:FC<> = () => {
-//   return <SafeAreaView>
-
-//   </SafeAreaView>
-// }
-
 export default SafeAreaView

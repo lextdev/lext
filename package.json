@@ -25,6 +25,7 @@
     "anatolia:fix": "lerna run fix --scope @lextdev/anatolia --stream --",
     "anatolia:dev:ios": "lerna run ios --scope @lextdev/anatolia --stream --",
     "anatolia:dev:android": "lerna run android --scope @lextdev/anatolia --stream --",
+    "anatolia:dev:all": "lerna run all --scope @lextdev/anatolia --stream --",
     "anatolia:add:core": "lerna add @lextdev/core --scope @lextdev/anatolia",
     "anatolia:add:hook": "lerna add @lextdev/hook --scope @lextdev/anatolia",
     "anatolia:add:storage": "lerna add @lextdev/storage --scope @lextdev/anatolia",
