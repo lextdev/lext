@@ -1,25 +1,25 @@
-import { Button, SafeAreaView, Select, Text } from "@lextdev/core"
-import React, { useState } from "react"
+import {
+  Button,
+  SafeAreaView,
+  Sheet,
+  SheetRef,
+  TextInput,
+  View,
+} from "@lextdev/core"
+import React, { useRef } from "react"
 
 const Main = () => {
-  const [visible, setVisible] = useState(false)
+  const sheetRef = useRef<SheetRef>(null)
 
   return (
     <SafeAreaView backgroundColor="muted">
-      <Select
-        header={<Text>Header</Text>}
-        presentationStyle="formSheet"
-        onChange={() => setVisible(false)}
-        data={[
-          {
-            label: "Test",
-            value: "Hello",
-          },
-        ]}
-        visible={visible}
-      />
+      <Sheet ref={sheetRef}>
+        <View>
+          <TextInput label="Test" />
+        </View>
+      </Sheet>
 
-      <Button label="Click on me!" onPress={() => setVisible(true)} />
+      <Button label="Click on me!" onPress={() => sheetRef.current?.open()} />
     </SafeAreaView>
   )
 }

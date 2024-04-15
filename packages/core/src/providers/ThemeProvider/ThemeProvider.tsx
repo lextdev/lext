@@ -5,7 +5,6 @@ import {
 } from "@/interfaces"
 import { ColorSchemeContext } from "@/contexts"
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react"
-import { SafeAreaProvider } from "react-native-safe-area-context"
 import { StyleType } from "@/types"
 import {
   ThemeMainColorInterface,
@@ -84,7 +83,7 @@ const ThemeProvider: FC<
           setColorScheme,
         }}
       >
-        <SafeAreaProvider>{children}</SafeAreaProvider>
+        {children}
       </ColorSchemeContext.Provider>
     </EmotionThemeProvider>
   )

@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## 0.0.13 - 2024 Apr 15
+## 0.0.15 - 2024 Apr 15
 
 - fix: safe-are-view
 
