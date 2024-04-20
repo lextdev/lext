@@ -7,14 +7,25 @@ const Modal: FC<ModalComponentProps> = ({
   children,
   backgroundColor,
   header,
+  safeAreaView = true,
+  animationType = "slide",
   ...props
 }) => {
+  if (safeAreaView) {
+    return (
+      <RNModal animationType={animationType} {...props}>
+        <SafeAreaView backgroundColor={backgroundColor}>
+          {header && header}
+          {children}
+        </SafeAreaView>
+      </RNModal>
+    )
+  }
+
   return (
-    <RNModal animationType="slide" {...props}>
-      <SafeAreaView backgroundColor={backgroundColor}>
-        {header && header}
-        {children}
-      </SafeAreaView>
+    <RNModal animationType={animationType} {...props}>
+      {header && header}
+      {children}
     </RNModal>
   )
 }

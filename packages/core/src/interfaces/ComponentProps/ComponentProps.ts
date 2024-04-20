@@ -86,6 +86,7 @@ export interface BoxComponentProps extends ViewStyle {
 export interface ModalComponentProps extends ModalProps {
   backgroundColor?: keyof ThemeMainColorInterface
   header?: JSX.Element
+  safeAreaView?: boolean
 }
 
 export interface SafeAreaViewComponentProps {
