@@ -1,6 +1,6 @@
 {
   "name": "@lextdev/hook",
-  "version": "0.0.12",
+  "version": "0.0.17",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -26,8 +26,8 @@
     }
   ],
   "peerDependencies": {
-    "react": "18.2.0",
-    "react-native": "~0.73.2"
+    "react": "*",
+    "react-native": "*"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.21.5",

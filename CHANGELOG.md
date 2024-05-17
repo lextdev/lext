@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.0.16 - 2024 May 17
+
+- feat: expo sdk 51 upgrade
+
 ## 0.0.16 - 2024 Apr 20
 
 - feat: safeareaview prop added in modal

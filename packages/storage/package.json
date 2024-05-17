@@ -1,6 +1,6 @@
 {
   "name": "@lextdev/storage",
-  "version": "0.0.12",
+  "version": "0.0.17",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -26,8 +26,8 @@
     }
   ],
   "peerDependencies": {
-    "react": "18.2.0",
-    "react-native": "~0.73.2"
+    "react": "*",
+    "react-native": "*"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.21.5",
@@ -35,7 +35,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.21.0",
+    "@react-native-async-storage/async-storage": "^1.23.1",
     "react-native-mmkv": "^2.12.2"
   }
 }
