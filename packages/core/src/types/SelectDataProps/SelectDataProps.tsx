@@ -3,4 +3,5 @@ export type SelectDataProps = {
   value: string | number
   left?: JSX.Element
   description?: string
+  customFields?: unknown
 }

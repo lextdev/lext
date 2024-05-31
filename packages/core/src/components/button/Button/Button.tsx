@@ -1,5 +1,5 @@
 import { ButtonComponentProps } from "@/interfaces"
-import { Pressable } from "react-native"
+import { TouchableOpacity } from "react-native"
 import { useTheme } from "@/hooks"
 import Group from "@/components/mics/Group/Group"
 import React, { FC } from "react"
@@ -17,51 +17,41 @@ const Button: FC<ButtonComponentProps> = ({
   left,
   right,
   variant,
-  onHoverIn,
-  onHoverOut,
   onPress,
   onPressIn,
   onPressOut,
   onLongPress,
   onBlur,
   onFocus,
-  cancelable,
-  delayHoverIn,
-  delayHoverOut,
-  delayLongPress,
   disabled,
-  hitSlop,
   pressRetentionOffset,
-  android_disableSound,
-  android_ripple,
-  testOnly_pressed,
-  unstable_pressDelay,
+  activeOpacity = 0.8,
+  delayLongPress,
+  delayPressIn,
+  delayPressOut,
+  hitSlop,
+  onLayout,
   ...props
 }) => {
   const { getComponent } = useTheme()
   const variantName = variant ?? getComponent?.Button?.defaultVariant
   const defaultProps = getComponent?.Button?.variants[variantName]
 
-  const pressableProps = {
-    onHoverIn,
-    onHoverOut,
+  const touchableOpacityProps = {
     onPress,
     onPressIn,
     onPressOut,
     onLongPress,
     onBlur,
     onFocus,
-    cancelable,
-    delayHoverIn,
-    delayHoverOut,
     delayLongPress,
     disabled,
     hitSlop,
     pressRetentionOffset,
-    android_disableSound,
-    android_ripple,
-    testOnly_pressed,
-    unstable_pressDelay,
+    activeOpacity,
+    delayPressIn,
+    delayPressOut,
+    onLayout,
   }
 
   const gapStyle = gap ?? defaultProps.gap
@@ -83,7 +73,7 @@ const Button: FC<ButtonComponentProps> = ({
   }
 
   return (
-    <Pressable {...pressableProps}>
+    <TouchableOpacity {...touchableOpacityProps}>
       <View
         {...boxStyle}
         backgroundColor={backgroundColor ?? boxStyle.backgroundColor}
@@ -112,7 +102,7 @@ const Button: FC<ButtonComponentProps> = ({
           {right && right}
         </Group>
       </View>
-    </Pressable>
+    </TouchableOpacity>
   )
 }
 

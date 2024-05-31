@@ -1,4 +1,4 @@
-import { ModalProps, PressableProps, TextInputProps } from "react-native"
+import { ModalProps, TextInputProps, TouchableOpacityProps } from "react-native"
 import { ReactNode } from "react"
 import { SelectDataProps } from "@/types"
 import {
@@ -13,7 +13,7 @@ export interface TextComponentProps extends TextStyle {
   variant?: string
 }
 
-export interface ButtonComponentProps extends PressableProps {
+export interface ButtonComponentProps extends TouchableOpacityProps {
   label: string
   variant?: string
   description?: string
@@ -57,7 +57,7 @@ export interface FormLayoutComponentProps {
 
 export interface FormSelectComponentProps extends ModalComponentProps {
   data: SelectDataProps[]
-  onChange?: (value: string | number) => void
+  onChange?: (value: SelectDataProps) => void
   variant?: string
   itemSeparator?: JSX.Element
   value?: string | number
@@ -66,6 +66,7 @@ export interface FormSelectComponentProps extends ModalComponentProps {
   itemDescriptionStyle?: TextStyle
   itemTextStyle?: TextStyle
   itemLeftStyle?: ViewStyle
+  onSelect?: () => void
   keyExtractor?: (item: SelectDataProps, index: number) => string
 }
 

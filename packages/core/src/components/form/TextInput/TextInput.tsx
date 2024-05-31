@@ -6,7 +6,7 @@ import React, { forwardRef } from "react"
 
 const TextInput = forwardRef<InputRef, FormTextInputComponentProps>(
   (props, ref) => {
-    const { getComponent } = useTheme()
+    const { getComponent, styleParse } = useTheme()
     const {
       variant,
       inputStyle,
@@ -101,12 +101,17 @@ const TextInput = forwardRef<InputRef, FormTextInputComponentProps>(
       maxFontSizeMultiplier,
     }
 
+    const rnInputStyle = {
+      ...inputStyle,
+      ...defaultProps.input,
+    }
+
     return (
       <Layout variant={variantName} {...attrLayout}>
         <RNTextInput
           ref={ref}
           {...inputProps}
-          style={inputStyle ?? defaultProps.input}
+          style={styleParse(rnInputStyle)}
         />
       </Layout>
     )

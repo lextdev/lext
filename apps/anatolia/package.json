@@ -11,8 +11,10 @@
     "all": "expo start --android --ios"
   },
   "dependencies": {
-    "@lextdev/core": "^0.0.13",
-    "@lextdev/hook": "^0.0.12",
+    "@lextdev/core": "^0.0.17",
+    "@lextdev/form": "^0.0.17",
+    "@lextdev/hook": "^0.0.17",
+    "@lextdev/storage": "^0.0.17",
     "@react-native-async-storage/async-storage": "1.21.0",
     "expo": "~50.0.15",
     "expo-status-bar": "~1.11.1",

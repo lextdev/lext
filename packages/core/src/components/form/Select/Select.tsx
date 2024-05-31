@@ -1,5 +1,6 @@
 import { FlatList, Pressable, View } from "react-native"
 import { FormSelectComponentProps } from "@/interfaces"
+import { SelectDataProps } from "@/types"
 import { useTheme } from "@/hooks"
 import Modal from "@/components/mics/Modal/Modal"
 import React, { FC } from "react"
@@ -18,6 +19,7 @@ const Select: FC<FormSelectComponentProps> = ({
   itemLeftStyle,
   itemTextStyle,
   keyExtractor,
+  onSelect,
   ...props
 }) => {
   const { getComponent, styleParse } = useTheme()
@@ -37,10 +39,9 @@ const Select: FC<FormSelectComponentProps> = ({
     ...itemDescriptionStyle,
   }
 
-  const onHandleChange = (value: string | number) => {
-    if (onChange) {
-      onChange(value)
-    }
+  const onHandleChange = (value: SelectDataProps) => {
+    onChange && onChange(value)
+    onSelect && onSelect()
   }
 
   return (
@@ -61,7 +62,7 @@ const Select: FC<FormSelectComponentProps> = ({
               }),
               item.value === value && styleParse(itemActiveStyleProp),
             ]}
-            onPress={() => onHandleChange(item.value)}
+            onPress={() => onHandleChange(item)}
           >
             {item.left && (
               <View style={styleParse(itemLeftStyleProp)}>{item.left}</View>

@@ -14,7 +14,7 @@
     "build:hook": "rollup -c --environment TARGET:hook --bundleConfigAsCjs",
     "build:storage": "rollup -c --environment TARGET:storage --bundleConfigAsCjs",
     "build:form": "rollup -c --environment TARGET:form --bundleConfigAsCjs",
-    "build:all": "npm run build:core && npm run build:hook && npm run build:storage && npm run build:form",
+    "build:all": "npm run build:hook && npm run build:core && npm run build:storage && npm run build:form",
     "watch:core": "rollup -c --environment TARGET:core --bundleConfigAsCjs --watch",
     "watch:hook": "rollup -c --environment TARGET:hook --bundleConfigAsCjs --watch",
     "watch:storage": "rollup -c --environment TARGET:storage --bundleConfigAsCjs --watch",
