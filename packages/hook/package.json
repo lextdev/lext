@@ -1,6 +1,6 @@
 {
   "name": "@lextdev/hook",
-  "version": "0.0.17",
+  "version": "0.0.19",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
