@@ -1,80 +1,20 @@
 {
-  "name": "@lextdev/root",
-  "version": "0.0.23",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "name": "lextdev",
+  "private": true,
+  "workspaces": ["apps/*", "packages/*"],
   "scripts": {
-    "release:major": "node -r esm scripts/release/index.js major",
-    "release:minor": "node -r esm scripts/release/index.js minor",
-    "release:patch": "node -r esm scripts/release/index.js patch",
-    "eslint:fix": "eslint --fix .",
-    "build:core": "rollup -c --environment TARGET:core --bundleConfigAsCjs",
-    "build:hook": "rollup -c --environment TARGET:hook --bundleConfigAsCjs",
-    "build:storage": "rollup -c --environment TARGET:storage --bundleConfigAsCjs",
-    "build:form": "rollup -c --environment TARGET:form --bundleConfigAsCjs",
-    "build:all": "npm run build:hook && npm run build:core && npm run build:storage && npm run build:form",
-    "watch:core": "rollup -c --environment TARGET:core --bundleConfigAsCjs --watch",
-    "watch:hook": "rollup -c --environment TARGET:hook --bundleConfigAsCjs --watch",
-    "watch:storage": "rollup -c --environment TARGET:storage --bundleConfigAsCjs --watch",
-    "watch:form": "rollup -c --environment TARGET:form --bundleConfigAsCjs --watch",
-    "publish:dev": "node -r esm scripts/publish/index.js dev",
-    "publish:beta": "node -r esm scripts/publish/index.js beta",
-    "publish:latest": "node -r esm scripts/publish/index.js latest",
-    "publish:core:latest": "node -r esm scripts/publish/package.js core:latest",
-    "publish:form:latest": "node -r esm scripts/publish/package.js form:latest",
-    "publish:storage:latest": "node -r esm scripts/publish/package.js storage:latest",
-    "publish:hook:latest": "node -r esm scripts/publish/package.js hook:latest",
-    "publish:core:next": "node -r esm scripts/publish/package.js core:next",
-    "publish:form:next": "node -r esm scripts/publish/package.js form:next",
-    "publish:storage:next": "node -r esm scripts/publish/package.js storage:next",
-    "publish:hook:next": "node -r esm scripts/publish/package.js hook:next",
-    "anatolia:fix": "lerna run fix --scope @lextdev/anatolia --stream --",
-    "anatolia:dev:ios": "lerna run ios --scope @lextdev/anatolia --stream --",
-    "anatolia:dev:android": "lerna run android --scope @lextdev/anatolia --stream --",
-    "anatolia:dev:all": "lerna run all --scope @lextdev/anatolia --stream --",
-    "anatolia:add:core": "lerna add @lextdev/core --scope @lextdev/anatolia",
-    "anatolia:add:hook": "lerna add @lextdev/hook --scope @lextdev/anatolia",
-    "anatolia:add:storage": "lerna add @lextdev/storage --scope @lextdev/anatolia",
-    "anatolia:add:form": "lerna add @lextdev/form --scope @lextdev/anatolia",
-    "prepare": "husky install"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npx validate-branch-name"
-    }
-  },
-  "validate-branch-name": {
-    "pattern": "^(master|main|develop){1}$|^(feat|fix|hotfix|release|ci)/.+$",
-    "errorMsg": "your own error message"
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "lint": "turbo run lint",
+    "test": "turbo run test"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.23.3",
-    "@commitlint/cli": "^19.2.1",
-    "@commitlint/config-conventional": "^19.1.0",
-    "@rollup/plugin-alias": "^5.1.0",
-    "@rollup/plugin-commonjs": "^24.1.0",
-    "@rollup/plugin-json": "^6.0.1",
-    "@rollup/plugin-node-resolve": "^15.0.2",
-    "@rollup/plugin-typescript": "^11.1.0",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-react": "^7.34.0",
-    "eslint-plugin-simple-import-sort": "^12.0.0",
-    "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
-    "eslint-plugin-unused-imports": "^3.1.0",
-    "esm": "^3.2.25",
-    "husky": "^8.0.0",
-    "lerna": "^4.0.0",
-    "prettier": "3.2.5",
-    "rollup": "^3.0.0",
-    "rollup-plugin-dts": "^5.3.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.2",
-    "typescript": "^5.4.2",
-    "validate-branch-name": "^1.3.0"
-  }
+    "@biomejs/biome": "^1.5.3",
+    "turbo": "^2.2.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "bun@1.1.29"
 }
