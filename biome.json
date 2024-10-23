@@ -7,17 +7,22 @@
     "enabled": true,
     "rules": {
       "recommended": true
-    }
+    },
+    "ignore": ["scripts/example/**"]
   },
   "formatter": {
     "enabled": true,
     "formatWithErrors": false,
     "indentStyle": "space",
-    "lineWidth": 100
+    "lineWidth": 100,
+    "ignore": ["scripts/example/**"]
   },
   "javascript": {
     "formatter": {
       "quoteStyle": "single"
     }
+  },
+  "files": {
+    "ignore": ["scripts/example/**"]
   }
 }
