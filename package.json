@@ -8,7 +8,9 @@
     "clean": "turbo run clean && rm -rf node_modules",
     "lint": "turbo run lint",
     "test": "turbo run test",
-    "create": "bun run scripts/create-package.ts"
+    "create": "bun run scripts/create-package.ts",
+    "ios": "cd apps/native && expo prebuild --clean &&bun run ios",
+    "android": "cd apps/native && bun run android"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.5.3",
